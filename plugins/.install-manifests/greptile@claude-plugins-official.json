@@ -1,0 +1,9 @@
+{
+  "pluginId": "greptile@claude-plugins-official",
+  "createdAt": "2026-03-14T01:18:35.820Z",
+  "files": {
+    ".claude-plugin\\plugin.json": "6dc37e6efc59b2b9a70466cf7d28e7de0e39121af7e71f4b87df2613e39e0b8d",
+    ".mcp.json": "3d8a133bf003825e21f315fe6340b11d16d662315f335a8421e5cf7147ff608d",
+    "README.md": "82bcf7deebd7f784d0b21dfdc61b081f1784476160fd4119787355593173e467"
+  }
+}

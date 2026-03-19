@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Analyze all project directories for git status, remotes, and structure",
+    "status": "in_progress",
+    "activeForm": "Analyzing all project directories for git status, remotes, and structure"
+  },
+  {
+    "content": "Read key configuration and documentation files for each project",
+    "status": "pending",
+    "activeForm": "Reading key configuration and documentation files for each project"
+  },
+  {
+    "content": "Examine source code to understand project implementations",
+    "status": "pending",
+    "activeForm": "Examining source code to understand project implementations"
+  },
+  {
+    "content": "Compile comprehensive report with findings for all projects",
+    "status": "pending",
+    "activeForm": "Compiling comprehensive report with findings for all projects"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Phase 1: SweepBot Flows Natural Language Automation Engine",
+    "status": "completed",
+    "activeForm": "Completed Phase 1 - All 10 core modules built, 200+ tests written, documentation complete"
+  },
+  {
+    "content": "Integrate action execution with browser automation engine",
+    "status": "pending",
+    "activeForm": "Integrating action execution"
+  },
+  {
+    "content": "Implement LLM fallback for low-confidence interpretations",
+    "status": "pending",
+    "activeForm": "Adding LLM fallback"
+  },
+  {
+    "content": "Deploy Phase 1 to staging environment",
+    "status": "pending",
+    "activeForm": "Deploying to staging"
+  },
+  {
+    "content": "User beta testing and feedback incorporation",
+    "status": "pending",
+    "activeForm": "Running beta tests"
+  },
+  {
+    "content": "Phase 2: Top 25 Features (Win/Loss Heatmaps, Achievements, etc)",
+    "status": "pending",
+    "activeForm": "Planning Phase 2 features"
+  }
+]

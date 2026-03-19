@@ -1,0 +1,102 @@
+[
+  {
+    "content": "PHASE 1: Setup test infrastructure (vitest config, mocks, fixtures)",
+    "status": "in_progress",
+    "activeForm": "Setting up test infrastructure"
+  },
+  {
+    "content": "Create /apps/api/vitest.config.ts with coverage thresholds",
+    "status": "completed",
+    "activeForm": "Creating vitest config"
+  },
+  {
+    "content": "Create /apps/api/src/__tests__/setup.ts with test utilities and mocks",
+    "status": "completed",
+    "activeForm": "Creating test setup utilities"
+  },
+  {
+    "content": "Create /apps/api/src/__tests__/fixtures/index.ts with test data factories",
+    "status": "completed",
+    "activeForm": "Creating test fixtures"
+  },
+  {
+    "content": "Create /apps/api/src/__tests__/routes/auth.test.ts (12 critical tests)",
+    "status": "in_progress",
+    "activeForm": "Writing authentication tests"
+  },
+  {
+    "content": "Create /apps/api/src/__tests__/routes/webhooks.test.ts (15 critical tests)",
+    "status": "pending",
+    "activeForm": "Writing Stripe webhook tests"
+  },
+  {
+    "content": "Create /apps/api/src/__tests__/routes/flows.test.ts (18 critical tests)",
+    "status": "pending",
+    "activeForm": "Writing flows/sessions tests"
+  },
+  {
+    "content": "PHASE 2: Error handling & monitoring (Sentry, PII protection)",
+    "status": "pending",
+    "activeForm": "Implementing error handling"
+  },
+  {
+    "content": "Add @sentry/node to /apps/api/package.json",
+    "status": "pending",
+    "activeForm": "Adding Sentry dependency"
+  },
+  {
+    "content": "Modify /apps/api/src/server.ts to initialize Sentry",
+    "status": "pending",
+    "activeForm": "Configuring Sentry initialization"
+  },
+  {
+    "content": "Update /apps/api/src/utils/env.ts to validate SENTRY_DSN",
+    "status": "pending",
+    "activeForm": "Updating environment validation"
+  },
+  {
+    "content": "Audit and fix all route files to remove PII from logging",
+    "status": "pending",
+    "activeForm": "Fixing PII in logs"
+  },
+  {
+    "content": "Fix async operations in flows.ts to track in DB with error handling",
+    "status": "pending",
+    "activeForm": "Fixing async flow execution tracking"
+  },
+  {
+    "content": "Create /apps/api/src/__tests__/routes/sentry.test.ts (5 error tracking tests)",
+    "status": "pending",
+    "activeForm": "Writing Sentry integration tests"
+  },
+  {
+    "content": "PHASE 3: Data integrity & integration tests",
+    "status": "pending",
+    "activeForm": "Building integration tests"
+  },
+  {
+    "content": "Create /apps/api/src/__tests__/db/integrity.test.ts (10 database tests)",
+    "status": "pending",
+    "activeForm": "Writing database integrity tests"
+  },
+  {
+    "content": "Create /apps/api/src/__tests__/integration/e2e.test.ts (8 e2e scenarios)",
+    "status": "pending",
+    "activeForm": "Writing end-to-end tests"
+  },
+  {
+    "content": "Create /apps/api/src/__tests__/performance/load.test.ts (5 performance tests)",
+    "status": "pending",
+    "activeForm": "Writing performance tests"
+  },
+  {
+    "content": "Run full test suite and verify ≥70% coverage",
+    "status": "pending",
+    "activeForm": "Running full test suite"
+  },
+  {
+    "content": "Verify no PII in logs, all async ops tracked, database integrity intact",
+    "status": "pending",
+    "activeForm": "Final verification"
+  }
+]

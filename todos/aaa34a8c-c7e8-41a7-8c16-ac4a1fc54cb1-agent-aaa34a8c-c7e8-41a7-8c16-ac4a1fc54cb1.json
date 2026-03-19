@@ -1,0 +1,57 @@
+[
+  {
+    "content": "Create organized folder structure",
+    "status": "completed",
+    "activeForm": "Creating organized folder structure"
+  },
+  {
+    "content": "Move shortcut files (.lnk) to _Shortcuts folder",
+    "status": "completed",
+    "activeForm": "Moving shortcut files to _Shortcuts folder"
+  },
+  {
+    "content": "Move music/audio files (.mp3, .wav, .m4a) to _Music folder",
+    "status": "completed",
+    "activeForm": "Moving music/audio files"
+  },
+  {
+    "content": "Move image files to _Images folder",
+    "status": "completed",
+    "activeForm": "Moving image files"
+  },
+  {
+    "content": "Move video files (.mp4) to _Videos folder",
+    "status": "completed",
+    "activeForm": "Moving video files"
+  },
+  {
+    "content": "Move documents to _Documents subfolders",
+    "status": "completed",
+    "activeForm": "Moving document files"
+  },
+  {
+    "content": "Move installers/executables to _Installers folder",
+    "status": "completed",
+    "activeForm": "Moving installer files"
+  },
+  {
+    "content": "Move archives (.zip, .tar) to _Archives folder",
+    "status": "completed",
+    "activeForm": "Moving archive files"
+  },
+  {
+    "content": "Move code/dev files to _Code folder",
+    "status": "completed",
+    "activeForm": "Moving code/dev files"
+  },
+  {
+    "content": "Clean up incomplete downloads (.crdownload, .tmp) to _Trash folder",
+    "status": "completed",
+    "activeForm": "Cleaning up incomplete downloads"
+  },
+  {
+    "content": "Move remaining miscellaneous files",
+    "status": "in_progress",
+    "activeForm": "Moving remaining miscellaneous files"
+  }
+]

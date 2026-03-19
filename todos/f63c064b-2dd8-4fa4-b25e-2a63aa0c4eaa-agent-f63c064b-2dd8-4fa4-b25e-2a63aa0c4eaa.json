@@ -1,0 +1,42 @@
+[
+  {
+    "content": "Create clean folder structure in C:\\Users\\Public",
+    "status": "completed",
+    "activeForm": "Creating clean folder structure"
+  },
+  {
+    "content": "Consolidate all documentation folders into _Documentation",
+    "status": "completed",
+    "activeForm": "Consolidating documentation folders"
+  },
+  {
+    "content": "Consolidate desktop shortcuts into _Shortcuts",
+    "status": "completed",
+    "activeForm": "Consolidating desktop shortcuts"
+  },
+  {
+    "content": "Sort the dump folder by file type",
+    "status": "completed",
+    "activeForm": "Sorting the dump folder"
+  },
+  {
+    "content": "Move personal data dirs (.MQ420_OL, .NewMASTER) into _Personal",
+    "status": "in_progress",
+    "activeForm": "Organizing personal data"
+  },
+  {
+    "content": "Consolidate projects dirs (.projects, AI_WORKSPACE, etc.) into _Projects",
+    "status": "pending",
+    "activeForm": "Consolidating project directories"
+  },
+  {
+    "content": "Move loose root files into proper locations",
+    "status": "pending",
+    "activeForm": "Moving loose root files"
+  },
+  {
+    "content": "Clean up empty directories and remaining items",
+    "status": "pending",
+    "activeForm": "Cleaning up empty directories"
+  }
+]

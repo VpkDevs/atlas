@@ -1,0 +1,37 @@
+[
+  {
+    "content": "Check for suspicious credential provider modifications",
+    "status": "completed",
+    "activeForm": "Checking credential provider modifications"
+  },
+  {
+    "content": "Check for suspicious scheduled tasks",
+    "status": "completed",
+    "activeForm": "Checking scheduled tasks"
+  },
+  {
+    "content": "Check for suspicious startup programs and services",
+    "status": "completed",
+    "activeForm": "Checking startup programs and services"
+  },
+  {
+    "content": "Check for suspicious recent user account activity",
+    "status": "completed",
+    "activeForm": "Checking recent user account activity"
+  },
+  {
+    "content": "Check Windows Defender status and threat history",
+    "status": "completed",
+    "activeForm": "Checking Windows Defender status"
+  },
+  {
+    "content": "Check for suspicious network connections",
+    "status": "completed",
+    "activeForm": "Checking network connections"
+  },
+  {
+    "content": "Re-enable PINLogonProvider",
+    "status": "pending",
+    "activeForm": "Re-enabling PINLogonProvider"
+  }
+]

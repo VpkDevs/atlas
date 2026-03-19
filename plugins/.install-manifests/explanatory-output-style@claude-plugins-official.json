@@ -1,0 +1,11 @@
+{
+  "pluginId": "explanatory-output-style@claude-plugins-official",
+  "createdAt": "2026-03-14T01:18:54.204Z",
+  "files": {
+    ".claude-plugin\\plugin.json": "87091886952de21906d545f1514cc9d809ab068e81565a4d90418aed1e8c8bdb",
+    "hooks\\hooks.json": "5e1f2dc0acc1988aea4e9e98c751959cc78ebf8f06e18ad776bf44e220d82a97",
+    "hooks-handlers\\session-start.sh": "918050b6326f6e049818c16b66cb1e4500a4acf77ddd97de9b14ba1b47684e21",
+    "LICENSE": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+    "README.md": "b2477b0e83fd3d260abb37f8875dae9e623a0c447d1d3aaeaceec8fdb79ff7be"
+  }
+}

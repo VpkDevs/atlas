@@ -1,0 +1,22 @@
+[
+  {
+    "content": "All account deletions complete",
+    "status": "completed",
+    "activeForm": "Completing account deletions"
+  },
+  {
+    "content": "Delete troll folders in VAULT\\personal",
+    "status": "completed",
+    "activeForm": "Deleting troll folders"
+  },
+  {
+    "content": "Handle TEMP accounts and CodingSpace",
+    "status": "completed",
+    "activeForm": "Handling TEMP accounts and CodingSpace"
+  },
+  {
+    "content": "Review VAULT\\personal sensitive files (passwords CSVs, recovery codes)",
+    "status": "pending",
+    "activeForm": "Reviewing sensitive files"
+  }
+]

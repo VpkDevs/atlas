@@ -1,0 +1,355 @@
+{
+  "version": 2,
+  "plugins": {
+    "asana@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\asana\\d5c15b861cd2",
+        "version": "d5c15b861cd2",
+        "installedAt": "2026-03-14T01:17:30.597Z",
+        "lastUpdated": "2026-03-14T01:17:30.597Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "amazon-location-service@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\amazon-location-service\\1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-14T01:17:33.738Z",
+        "lastUpdated": "2026-03-14T01:17:33.738Z",
+        "gitCommitSha": "c13aa3b2161f18b710242d4ce8b55ddca931a291"
+      }
+    ],
+    "agent-sdk-dev@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\agent-sdk-dev\\d5c15b861cd2",
+        "version": "d5c15b861cd2",
+        "installedAt": "2026-03-14T01:17:34.416Z",
+        "lastUpdated": "2026-03-14T01:17:34.416Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "adspirer-ads-agent@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\adspirer-ads-agent\\1.1.0",
+        "version": "1.1.0",
+        "installedAt": "2026-03-14T01:17:36.235Z",
+        "lastUpdated": "2026-03-14T01:17:36.235Z",
+        "gitCommitSha": "aa70dbdbbbb843e94a794c10c2b13f5dd66b5e40"
+      }
+    ],
+    "aws-serverless@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\aws-serverless\\1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-14T01:17:40.249Z",
+        "lastUpdated": "2026-03-14T01:17:40.249Z",
+        "gitCommitSha": "c13aa3b2161f18b710242d4ce8b55ddca931a291"
+      }
+    ],
+    "clangd-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\clangd-lsp\\1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-14T01:17:41.289Z",
+        "lastUpdated": "2026-03-14T01:17:41.289Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "chrome-devtools-mcp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\chrome-devtools-mcp\\latest",
+        "version": "latest",
+        "installedAt": "2026-03-14T01:17:43.877Z",
+        "lastUpdated": "2026-03-14T01:17:43.877Z",
+        "gitCommitSha": "c2d8009ff75f76bce1ec4cf79c2467b50d81725e"
+      }
+    ],
+    "circleback@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\circleback\\1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-14T01:17:49.293Z",
+        "lastUpdated": "2026-03-14T01:17:49.293Z",
+        "gitCommitSha": "6369dec7da4059dd0a12cf1b62ba749799ee15ef"
+      }
+    ],
+    "atlassian@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\atlassian\\385c1469c567",
+        "version": "385c1469c567",
+        "installedAt": "2026-03-14T01:17:52.117Z",
+        "lastUpdated": "2026-03-14T01:17:52.117Z",
+        "gitCommitSha": "385c1469c567399970e1d3fc23687a0312aa63dc"
+      }
+    ],
+    "code-review@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\code-review\\d5c15b861cd2",
+        "version": "d5c15b861cd2",
+        "installedAt": "2026-03-14T01:17:53.528Z",
+        "lastUpdated": "2026-03-14T01:17:53.528Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "claude-code-setup@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\claude-code-setup\\1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-14T01:17:54.131Z",
+        "lastUpdated": "2026-03-14T01:17:54.131Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "wix@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\wix\\1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-14T01:18:14.194Z",
+        "lastUpdated": "2026-03-14T01:18:14.194Z",
+        "gitCommitSha": "15dda227e34959b1340e33bb9aede7e23a273f42"
+      }
+    ],
+    "vercel@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\vercel\\1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-14T01:18:03.612Z",
+        "lastUpdated": "2026-03-14T01:18:03.612Z",
+        "gitCommitSha": "ae067751b4f42c97d13054211657275029ca8b6d"
+      }
+    ],
+    "typescript-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\typescript-lsp\\1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-14T01:18:17.491Z",
+        "lastUpdated": "2026-03-14T01:18:17.491Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "swift-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\swift-lsp\\1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-14T01:18:11.369Z",
+        "lastUpdated": "2026-03-14T01:18:11.369Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "superpowers@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\superpowers\\5.0.2",
+        "version": "5.0.2",
+        "installedAt": "2026-03-14T01:18:20.759Z",
+        "lastUpdated": "2026-03-14T01:18:20.759Z",
+        "gitCommitSha": "363923f74aa9cd7b470c0aaa73dee629a8bfdc90"
+      }
+    ],
+    "supabase@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\supabase\\d5c15b861cd2",
+        "version": "d5c15b861cd2",
+        "installedAt": "2026-03-14T01:18:23.524Z",
+        "lastUpdated": "2026-03-14T01:18:23.524Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "stripe@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\stripe\\0.1.0",
+        "version": "0.1.0",
+        "installedAt": "2026-03-14T01:18:27.717Z",
+        "lastUpdated": "2026-03-14T01:18:27.717Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "playground@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\playground\\d5c15b861cd2",
+        "version": "d5c15b861cd2",
+        "installedAt": "2026-03-14T01:18:29.758Z",
+        "lastUpdated": "2026-03-14T01:18:29.758Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "hookify@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\hookify\\d5c15b861cd2",
+        "version": "d5c15b861cd2",
+        "installedAt": "2026-03-14T01:18:33.716Z",
+        "lastUpdated": "2026-03-14T01:18:33.716Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "greptile@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\greptile\\d5c15b861cd2",
+        "version": "d5c15b861cd2",
+        "installedAt": "2026-03-14T01:18:35.747Z",
+        "lastUpdated": "2026-03-14T01:18:35.747Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "kotlin-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\kotlin-lsp\\1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-14T01:18:37.782Z",
+        "lastUpdated": "2026-03-14T01:18:37.782Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "sourcegraph@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\sourcegraph\\0.1.0",
+        "version": "0.1.0",
+        "installedAt": "2026-03-14T01:18:40.114Z",
+        "lastUpdated": "2026-03-14T01:18:40.114Z",
+        "gitCommitSha": "cfe3d44476957b16d1575261bef6b2dc7cb1e0b7"
+      }
+    ],
+    "sonatype-guide@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\sonatype-guide\\1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-14T01:18:44.750Z",
+        "lastUpdated": "2026-03-14T01:18:44.750Z",
+        "gitCommitSha": "ce3e3f3da4585fd5c3ea03c55b7d024575a041f9"
+      }
+    ],
+    "sumup@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\sumup\\1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-14T01:18:47.823Z",
+        "lastUpdated": "2026-03-14T01:18:47.823Z",
+        "gitCommitSha": "802476c39a0422d3277e37288b03968ad731bc30"
+      }
+    ],
+    "slack@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\slack\\1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-14T01:18:50.414Z",
+        "lastUpdated": "2026-03-14T01:18:50.414Z",
+        "gitCommitSha": "5a4ffe5ef353c1893eb0f1762a9071bebeeb7fde"
+      }
+    ],
+    "skill-creator@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\skill-creator\\d5c15b861cd2",
+        "version": "d5c15b861cd2",
+        "installedAt": "2026-03-14T01:18:52.358Z",
+        "lastUpdated": "2026-03-14T01:18:52.358Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "explanatory-output-style@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\explanatory-output-style\\d5c15b861cd2",
+        "version": "d5c15b861cd2",
+        "installedAt": "2026-03-14T01:18:54.139Z",
+        "lastUpdated": "2026-03-14T01:18:54.139Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "data@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\data\\0.1.0",
+        "version": "0.1.0",
+        "installedAt": "2026-03-14T01:18:59.664Z",
+        "lastUpdated": "2026-03-14T01:18:59.664Z",
+        "gitCommitSha": "7ef022b02f5296b5ecc52ba0db3ba9345ec03c9e"
+      }
+    ],
+    "csharp-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\csharp-lsp\\1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-14T01:19:01.968Z",
+        "lastUpdated": "2026-03-14T01:19:01.968Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "figma@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\figma\\1.2.0",
+        "version": "1.2.0",
+        "installedAt": "2026-03-14T01:19:04.244Z",
+        "lastUpdated": "2026-03-14T01:19:04.244Z",
+        "gitCommitSha": "f046182e32c8160b1254ad12ec8318f9a9aa50b5"
+      }
+    ],
+    "laravel-boost@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\laravel-boost\\d5c15b861cd2",
+        "version": "d5c15b861cd2",
+        "installedAt": "2026-03-14T01:19:07.059Z",
+        "lastUpdated": "2026-03-14T01:19:07.059Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "claude-md-management@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\claude-md-management\\1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-14T01:19:08.861Z",
+        "lastUpdated": "2026-03-14T01:19:08.861Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "gopls-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\gopls-lsp\\1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-14T01:19:10.480Z",
+        "lastUpdated": "2026-03-14T01:19:10.480Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "github@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\MQ420_OL\\.claude\\plugins\\cache\\claude-plugins-official\\github\\d5c15b861cd2",
+        "version": "d5c15b861cd2",
+        "installedAt": "2026-03-14T01:19:13.493Z",
+        "lastUpdated": "2026-03-14T01:19:13.493Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ]
+  }
+}

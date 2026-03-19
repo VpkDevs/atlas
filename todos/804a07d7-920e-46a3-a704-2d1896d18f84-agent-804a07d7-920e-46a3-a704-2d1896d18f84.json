@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Fix API env loading: switch dev script to node --env-file",
+    "status": "completed",
+    "activeForm": "Fixing API env loading"
+  },
+  {
+    "content": "Fix flows package: remove broken project references, fix build",
+    "status": "completed",
+    "activeForm": "Fixing flows package build"
+  },
+  {
+    "content": "Re-enable flows routes in API",
+    "status": "completed",
+    "activeForm": "Re-enabling flows routes"
+  },
+  {
+    "content": "Fix web .env.local with VITE_API_URL",
+    "status": "completed",
+    "activeForm": "Fixing web env vars"
+  },
+  {
+    "content": "Run dev stack and verify clean startup",
+    "status": "in_progress",
+    "activeForm": "Running dev stack"
+  }
+]

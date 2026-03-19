@@ -1,0 +1,28 @@
+2026-02-27T07:59:20.792Z [DEBUG] [Query.streamInput] Starting to process input stream
+2026-02-27T07:59:20.793Z [DEBUG] [Query.streamInput] Processing message 1: user
+2026-02-27T08:00:42.907Z [DEBUG] [Query.streamInput] Processing message 2: user
+2026-02-27T08:13:46.701Z [DEBUG] [Query.streamInput] Starting to process input stream
+2026-02-27T08:13:46.713Z [DEBUG] [Query.streamInput] Processing message 1: user
+2026-02-27T09:05:02.094Z [DEBUG] [Query.streamInput] Starting to process input stream
+2026-02-27T09:05:02.098Z [DEBUG] [Query.streamInput] Processing message 1: user
+2026-02-27T09:05:47.887Z [DEBUG] [Query.streamInput] Starting to process input stream
+2026-02-27T09:05:47.925Z [DEBUG] [Query.streamInput] Processing message 1: user
+2026-02-27T19:33:29.408Z [DEBUG] [Query.streamInput] Starting to process input stream
+2026-02-27T19:33:29.447Z [DEBUG] [Query.streamInput] Processing message 1: user
+2026-02-27T20:21:09.394Z [DEBUG] [Query.streamInput] Starting to process input stream
+2026-02-27T20:21:09.427Z [DEBUG] [Query.streamInput] Processing message 1: user
+2026-02-27T20:27:46.720Z [DEBUG] [Query.streamInput] Starting to process input stream
+2026-02-27T20:27:46.735Z [DEBUG] [Query.streamInput] Processing message 1: user
+2026-02-27T21:33:19.448Z [DEBUG] [Query.streamInput] Starting to process input stream
+2026-02-27T21:33:19.482Z [DEBUG] [Query.streamInput] Processing message 1: user
+2026-02-27T21:40:22.158Z [DEBUG] [Query.streamInput] Starting to process input stream
+2026-02-27T21:40:22.171Z [DEBUG] [Query.streamInput] Processing message 1: user
+2026-02-27T22:59:37.889Z [DEBUG] [Query.streamInput] Starting to process input stream
+2026-02-27T22:59:37.908Z [DEBUG] [Query.streamInput] Processing message 1: user
+2026-02-27T22:59:55.801Z [DEBUG] [Query.streamInput] Finished processing 1 messages from input stream
+2026-02-27T22:59:55.801Z [DEBUG] [Query.streamInput] Has bidirectional needs, waiting for first result
+2026-02-27T22:59:55.801Z [DEBUG] [Query.streamInput] Finished processing 2 messages from input stream
+2026-02-27T22:59:55.801Z [DEBUG] [Query.streamInput] Has bidirectional needs, waiting for first result
+2026-02-27T22:59:55.801Z [DEBUG] [Query.waitForFirstResult] Result already received, returning immediately
+2026-02-27T22:59:55.801Z [DEBUG] [Query] Calling transport.endInput() to close stdin to CLI process
+2026-02-27T22:59:55.827Z [DEBUG] [Query] Calling transport.endInput() to close stdin to CLI process

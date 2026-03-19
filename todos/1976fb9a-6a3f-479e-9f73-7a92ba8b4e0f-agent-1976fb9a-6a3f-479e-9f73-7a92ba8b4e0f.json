@@ -1,0 +1,37 @@
+[
+  {
+    "content": "Fix game aliases: Change hyphens to underscores in entity-recognizer.ts gameAliases map",
+    "status": "pending",
+    "activeForm": "Fixing game aliases"
+  },
+  {
+    "content": "Fix JSON.stringify in notifications.ts: Add ::jsonb type cast for safe JSONB insertion",
+    "status": "pending",
+    "activeForm": "Adding JSONB type cast"
+  },
+  {
+    "content": "Fix weekly schedule logic in alarm-scheduler.ts: Prevent overshooting target day of week",
+    "status": "pending",
+    "activeForm": "Fixing weekly scheduling logic"
+  },
+  {
+    "content": "Add hourly schedule support in entity-recognizer.ts extractSchedules",
+    "status": "pending",
+    "activeForm": "Adding hourly schedule extraction"
+  },
+  {
+    "content": "Verify API client structure - check if any pages are using incorrect api.get/post patterns",
+    "status": "pending",
+    "activeForm": "Verifying API client usage"
+  },
+  {
+    "content": "Check NotificationPanel for window.location.href usage that could break router",
+    "status": "pending",
+    "activeForm": "Checking NotificationPanel navigation"
+  },
+  {
+    "content": "Check ContentScriptMessage union for missing PAGE_LOADED type",
+    "status": "pending",
+    "activeForm": "Checking message types"
+  }
+]

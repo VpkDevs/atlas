@@ -1,0 +1,8 @@
+{
+  "pluginId": "clangd-lsp@claude-plugins-official",
+  "createdAt": "2026-03-14T01:17:41.355Z",
+  "files": {
+    "LICENSE": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+    "README.md": "65dd0462892f42a706de9d70eceed8b99ac9975e714b2e4da03db3dad26f573b"
+  }
+}

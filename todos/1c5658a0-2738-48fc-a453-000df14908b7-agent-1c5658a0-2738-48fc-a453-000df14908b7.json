@@ -1,0 +1,77 @@
+[
+  {
+    "content": "Create packages/flows monorepo structure with package.json and tsconfig.json",
+    "status": "completed",
+    "activeForm": "Created packages/flows structure"
+  },
+  {
+    "content": "Define all TypeScript types in /packages/flows/src/types.ts",
+    "status": "completed",
+    "activeForm": "Defined Flow types"
+  },
+  {
+    "content": "Create database schema using Drizzle ORM in /apps/api/src/db/schema/flows.ts",
+    "status": "completed",
+    "activeForm": "Created Drizzle schema"
+  },
+  {
+    "content": "Implement EntityRecognizer for NLP entity extraction",
+    "status": "completed",
+    "activeForm": "Built entity recognizer"
+  },
+  {
+    "content": "Implement FlowInterpreter main service with multi-pass interpretation",
+    "status": "completed",
+    "activeForm": "Built flow interpreter"
+  },
+  {
+    "content": "Implement ResponsiblePlayValidator with guardrail enforcement",
+    "status": "completed",
+    "activeForm": "Built RP validator"
+  },
+  {
+    "content": "Implement FlowExecutor runtime engine",
+    "status": "completed",
+    "activeForm": "Built executor"
+  },
+  {
+    "content": "Implement FlowScheduler for cron-based triggers",
+    "status": "completed",
+    "activeForm": "Built scheduler"
+  },
+  {
+    "content": "Implement ConversationManager for multi-turn Flow building",
+    "status": "completed",
+    "activeForm": "Built conversation manager"
+  },
+  {
+    "content": "Create all API endpoints in /apps/api/src/routes/flows.ts",
+    "status": "completed",
+    "activeForm": "Created API endpoints"
+  },
+  {
+    "content": "Create React frontend pages (FlowsPage, FlowChat, FlowDetail, etc)",
+    "status": "completed",
+    "activeForm": "Built React components"
+  },
+  {
+    "content": "Write unit and integration tests",
+    "status": "pending",
+    "activeForm": "Writing tests"
+  },
+  {
+    "content": "Complete AST building in FlowInterpreter for complex patterns",
+    "status": "pending",
+    "activeForm": "Implementing AST builder"
+  },
+  {
+    "content": "Integrate with automation engine for action execution",
+    "status": "pending",
+    "activeForm": "Integrating automation"
+  },
+  {
+    "content": "Deploy and test Phase 1 in staging",
+    "status": "pending",
+    "activeForm": "Testing Phase 1"
+  }
+]

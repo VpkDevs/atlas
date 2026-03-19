@@ -1,0 +1,52 @@
+[
+  {
+    "content": "Explore Public/dev structure (crown jewel, don't disrupt)",
+    "status": "completed",
+    "activeForm": "Exploring Public/dev structure"
+  },
+  {
+    "content": "Explore Public/dump contents and file types",
+    "status": "completed",
+    "activeForm": "Exploring dump contents"
+  },
+  {
+    "content": "Explore Public/_Archives contents and file types",
+    "status": "completed",
+    "activeForm": "Exploring _Archives contents"
+  },
+  {
+    "content": "Explore Public/_Personal structure",
+    "status": "completed",
+    "activeForm": "Exploring _Personal structure"
+  },
+  {
+    "content": "Explore Public/_Projects for merge into dev",
+    "status": "completed",
+    "activeForm": "Exploring _Projects for merge"
+  },
+  {
+    "content": "Explore major non-main user profiles",
+    "status": "in_progress",
+    "activeForm": "Exploring user profiles"
+  },
+  {
+    "content": "Explore MQ420_OL active projects (leave in place)",
+    "status": "pending",
+    "activeForm": "Exploring MQ420_OL projects"
+  },
+  {
+    "content": "Identify deletable dev tool configs across profiles",
+    "status": "pending",
+    "activeForm": "Identifying deletable configs"
+  },
+  {
+    "content": "Design new Public folder schema",
+    "status": "pending",
+    "activeForm": "Designing new folder schema"
+  },
+  {
+    "content": "Create phased execution plan",
+    "status": "pending",
+    "activeForm": "Creating phased execution plan"
+  }
+]

@@ -1,0 +1,107 @@
+[
+  {
+    "content": "Create .env.template with placeholder values for all secrets",
+    "status": "completed",
+    "activeForm": "Creating .env.template with placeholder values"
+  },
+  {
+    "content": "Create .gitignore file",
+    "status": "completed",
+    "activeForm": "Creating .gitignore file"
+  },
+  {
+    "content": "Update dashboard/app.py to load secrets from environment variables",
+    "status": "completed",
+    "activeForm": "Updating dashboard/app.py to load secrets from environment"
+  },
+  {
+    "content": "Update SharedCore/engine manager files to use environment variables",
+    "status": "completed",
+    "activeForm": "Updating SharedCore/engine manager files"
+  },
+  {
+    "content": "Initialize git repository and create initial commit",
+    "status": "completed",
+    "activeForm": "Initializing git repository"
+  },
+  {
+    "content": "Fix StateBus singleton race condition with double-checked locking",
+    "status": "completed",
+    "activeForm": "Fixing StateBus singleton race condition"
+  },
+  {
+    "content": "Fix global state in launcher.py with thread-safe loader",
+    "status": "completed",
+    "activeForm": "Fixing global state in launcher.py"
+  },
+  {
+    "content": "Remove global singleton instances from vision/mouse/keyboard",
+    "status": "completed",
+    "activeForm": "Removing global singleton instances"
+  },
+  {
+    "content": "Eliminate dashboard route duplication",
+    "status": "completed",
+    "activeForm": "Eliminating dashboard route duplication"
+  },
+  {
+    "content": "Fix O(n) performance bottleneck in mouse.py",
+    "status": "completed",
+    "activeForm": "Fixing O(n) performance bottleneck in mouse movement"
+  },
+  {
+    "content": "Create custom exception hierarchy (SharedCore/utils/exceptions.py)",
+    "status": "in_progress",
+    "activeForm": "Creating custom exception hierarchy"
+  },
+  {
+    "content": "Apply custom exceptions to vision/motor/launcher",
+    "status": "pending",
+    "activeForm": "Applying custom exceptions to core modules"
+  },
+  {
+    "content": "Create consolidated requirements.txt structure",
+    "status": "pending",
+    "activeForm": "Creating consolidated requirements structure"
+  },
+  {
+    "content": "Create pyproject.toml with tool configurations",
+    "status": "pending",
+    "activeForm": "Creating pyproject.toml configuration"
+  },
+  {
+    "content": "Create .pre-commit-config.yaml",
+    "status": "pending",
+    "activeForm": "Creating pre-commit configuration"
+  },
+  {
+    "content": "Create CI/CD pipeline (.github/workflows/ci.yml)",
+    "status": "pending",
+    "activeForm": "Creating CI/CD pipeline"
+  },
+  {
+    "content": "Create comprehensive test structure (unit/integration)",
+    "status": "pending",
+    "activeForm": "Creating comprehensive test structure"
+  },
+  {
+    "content": "Write thread-safety tests",
+    "status": "pending",
+    "activeForm": "Writing thread-safety tests"
+  },
+  {
+    "content": "Create README.md with comprehensive documentation",
+    "status": "pending",
+    "activeForm": "Creating README.md"
+  },
+  {
+    "content": "Create CONTRIBUTING.md with development guidelines",
+    "status": "pending",
+    "activeForm": "Creating CONTRIBUTING.md"
+  },
+  {
+    "content": "Create CHANGELOG.md",
+    "status": "pending",
+    "activeForm": "Creating CHANGELOG.md"
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "content": "SQLite migration: company-template server.js, migrate.js, routes/*.js",
+    "status": "completed",
+    "activeForm": "Migrating company-template from PostgreSQL to SQLite"
+  },
+  {
+    "content": "Update company-template/.claude/CLAUDE.md: Revenue Mission + 5th agent",
+    "status": "completed",
+    "activeForm": "Updating CLAUDE.md with Revenue Mission"
+  },
+  {
+    "content": "Build smtp-mcp: SMTP send + IMAP read (replaces Gmail OAuth)",
+    "status": "completed",
+    "activeForm": "Building smtp-mcp server"
+  },
+  {
+    "content": "Build llm-router: Groq free tier + tier-based routing",
+    "status": "completed",
+    "activeForm": "Building LLM router"
+  },
+  {
+    "content": "Build revenue-engine: product-creator, pdf-builder, treasury, marketplace, reinvestment",
+    "status": "completed",
+    "activeForm": "Building revenue engine"
+  },
+  {
+    "content": "Build gumroad-mcp: Gumroad API tools",
+    "status": "completed",
+    "activeForm": "Building Gumroad MCP server"
+  },
+  {
+    "content": "Build setup-wizard: 5-min turnkey wizard",
+    "status": "completed",
+    "activeForm": "Building setup wizard"
+  },
+  {
+    "content": "Update agent-core: LLM router integration + revenue-agent role",
+    "status": "completed",
+    "activeForm": "Updating agent-core daily cycle"
+  },
+  {
+    "content": "Orchestrator SQLite migration",
+    "status": "in_progress",
+    "activeForm": "Migrating orchestrator to SQLite"
+  },
+  {
+    "content": "Update email-agent + sales-agent: smtp-mcp, community promotion",
+    "status": "pending",
+    "activeForm": "Updating email and sales agents"
+  },
+  {
+    "content": "Update root: .env.example, package.json, docker-compose.yml, README, scripts/start-all.ts",
+    "status": "pending",
+    "activeForm": "Updating root config files"
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "pluginId": "hookify@claude-plugins-official",
+  "createdAt": "2026-03-14T01:18:33.911Z",
+  "files": {
+    ".claude-plugin\\plugin.json": "5e6e3cfb27d45efb73f569a70d76e1da9674864bf712b497d4eb8ca17e6005e4",
+    ".gitignore": "36fcee7c4a98e9a30d2c65c7aedf67b6df4aa106dde55e1606a3359555277617",
+    "agents\\conversation-analyzer.md": "a5fabeb2cf20b84e4af06b70f84784d90cfdfbe49f240fcf42e28a0c7e9ba591",
+    "commands\\configure.md": "736c2ba7d5a6b7f30cb552d1f35b4d6306f0e1ebedcbbac92c4aee1f4add11d0",
+    "commands\\help.md": "60bb38ea39e81a32a3e2f458ba85103c8b8d23d48c92f4a05965907a4d4602fb",
+    "commands\\hookify.md": "fba40a0f757b6e93dbbf6091afe45da42bdb9c48bb902d8a78927bc00896b5d5",
+    "commands\\list.md": "95f8e3c39149d27453b9c1e42782f919e191c61c89d61f82682c2380759599c0",
+    "core\\config_loader.py": "c675272f649e2025ab8078df65c8f0d74eae1dae10b427c26d64cc963a4ed866",
+    "core\\rule_engine.py": "f7419088d44a4ddf178b905504f385cdddc8754e8db46ccae4df3de7acac4453",
+    "core\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "examples\\console-log-warning.local.md": "ccec662c7ca4fc652872e299694ce72ad96dfef92482b65547412288fdca7354",
+    "examples\\dangerous-rm.local.md": "8f3b1048757a200ebda8e8538de33859530090581b53184a9c3b55fa4beda9b9",
+    "examples\\require-tests-stop.local.md": "f5c636ab82c4cfa02ed549c99e8a2362d8a4cec6580a21123e500d93f22d3b51",
+    "examples\\sensitive-files-warning.local.md": "98583521be5d0ab08a4132ffbb1c0fcf303381e912327deb480632bb2059ca7a",
+    "hooks\\hooks.json": "15511b8fb7b90915441f08a3a85a871fed36e2fce023dff161fbcc8789cc84ec",
+    "hooks\\posttooluse.py": "6cec3685933d04765a4cd892d572661cef1c02f83a27d33216d74b9ae7067d83",
+    "hooks\\pretooluse.py": "c0105460c209c13e1cf089c1dfcd6b72bb1a8303a8a2786e9c2385dcbf05747d",
+    "hooks\\stop.py": "a912c8d9f1a9c749cef53c73a765462071abcbdda9c6f035dbb187e886d41915",
+    "hooks\\userpromptsubmit.py": "3c91d1f95d4a1cd48b2c500941fa54e776c9e3a769a748b85e28869d6066cb7f",
+    "hooks\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "LICENSE": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+    "matchers\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "README.md": "cab9bff697291cccf23d12184807e24f105057e0ac2ec4b109f51e9815166ae7",
+    "skills\\writing-rules\\SKILL.md": "7eef1d5a7316652d5963fe3dbc5f1625ef736001fb3a7c138cdac2ab8f18a502",
+    "utils\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Run Group A + Group C deletion scripts in UAC-elevated admin terminal (user action)",
+    "status": "in_progress",
+    "activeForm": "Waiting for user to run deletion scripts in UAC-elevated terminal"
+  },
+  {
+    "content": "Delete troll folders in VAULT\\personal (admin terminal)",
+    "status": "pending",
+    "activeForm": "Deleting troll folders"
+  },
+  {
+    "content": "Handle TEMP accounts and CodingSpace (reboot may be needed)",
+    "status": "pending",
+    "activeForm": "Handling TEMP accounts and CodingSpace"
+  },
+  {
+    "content": "Review VAULT\\personal sensitive files (passwords CSVs, recovery codes)",
+    "status": "pending",
+    "activeForm": "Reviewing sensitive files"
+  }
+]

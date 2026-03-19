@@ -1,0 +1,14 @@
+2026-03-09T01:12:13.844Z [DEBUG] detectFileEncoding failed for expected reason: ENOENT
+2026-03-09T01:12:13.848Z [DEBUG] MDM settings load completed in 272ms
+2026-03-09T01:12:14.324Z [DEBUG] [init] configureGlobalMTLS starting
+2026-03-09T01:12:14.324Z [DEBUG] [init] configureGlobalMTLS complete
+2026-03-09T01:12:14.324Z [DEBUG] [init] configureGlobalAgents starting
+2026-03-09T01:12:14.324Z [DEBUG] [init] configureGlobalAgents complete
+2026-03-09T01:12:14.705Z [DEBUG] Using bash path: "C:\Program Files\Git\bin\bash.exe"
+2026-03-09T01:12:14.715Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-03-09T01:12:14.718Z [DEBUG] Found 0 enabled plugins with scopes:
+2026-03-09T01:12:14.718Z [DEBUG] Git remote URL: null
+2026-03-09T01:12:14.718Z [DEBUG] No git remote URL found
+2026-03-09T01:12:14.835Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-03-09T01:12:14.994Z [DEBUG] Install counts cache is stale (>24h old)
+2026-03-09T01:12:14.994Z [DEBUG] Fetching install counts from https://raw.githubusercontent.com/anthropics/claude-plugins-official/refs/heads/stats/stats/plugin-installs.json

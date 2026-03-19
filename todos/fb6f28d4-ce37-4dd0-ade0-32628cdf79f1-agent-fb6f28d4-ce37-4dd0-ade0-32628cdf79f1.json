@@ -1,0 +1,42 @@
+[
+  {
+    "content": "Create manifest.json and icon placeholders",
+    "status": "in_progress",
+    "activeForm": "Creating manifest.json and icon placeholders"
+  },
+  {
+    "content": "Write background/credential-manager.js (PBKDF2 + AES-GCM)",
+    "status": "pending",
+    "activeForm": "Writing background/credential-manager.js"
+  },
+  {
+    "content": "Write background/container-manager.js",
+    "status": "pending",
+    "activeForm": "Writing background/container-manager.js"
+  },
+  {
+    "content": "Write background/background.js (orchestration)",
+    "status": "pending",
+    "activeForm": "Writing background/background.js"
+  },
+  {
+    "content": "Write content/content.js (DOM utilities)",
+    "status": "pending",
+    "activeForm": "Writing content/content.js"
+  },
+  {
+    "content": "Write content/adapters/generic.js, google.js, github.js",
+    "status": "pending",
+    "activeForm": "Writing content adapters"
+  },
+  {
+    "content": "Write popup/ (HTML, JS, CSS)",
+    "status": "pending",
+    "activeForm": "Writing popup files"
+  },
+  {
+    "content": "Write options/ (HTML, JS, CSS)",
+    "status": "pending",
+    "activeForm": "Writing options files"
+  }
+]

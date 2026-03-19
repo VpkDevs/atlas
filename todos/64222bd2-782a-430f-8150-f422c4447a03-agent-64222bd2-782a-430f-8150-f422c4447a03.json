@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Survey all user accounts and their sizes",
+    "status": "in_progress",
+    "activeForm": "Surveying user accounts"
+  },
+  {
+    "content": "Audit C:\\Users\\Public\\dev (most important directory)",
+    "status": "pending",
+    "activeForm": "Auditing Public\\dev"
+  },
+  {
+    "content": "Catalog personal files across all user profiles",
+    "status": "pending",
+    "activeForm": "Cataloging personal files"
+  },
+  {
+    "content": "Present findings and get explicit approval before any moves/deletions",
+    "status": "pending",
+    "activeForm": "Presenting findings for approval"
+  },
+  {
+    "content": "Execute approved reorganization",
+    "status": "pending",
+    "activeForm": "Executing reorganization"
+  }
+]

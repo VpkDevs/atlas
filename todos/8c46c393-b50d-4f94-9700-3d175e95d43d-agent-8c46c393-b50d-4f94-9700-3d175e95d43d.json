@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Run the test suite and identify failures",
+    "status": "in_progress",
+    "activeForm": "Running the test suite and identifying failures"
+  },
+  {
+    "content": "Fix test failures and import errors",
+    "status": "pending",
+    "activeForm": "Fixing test failures and import errors"
+  },
+  {
+    "content": "Update existing test_sdk.py for interface changes",
+    "status": "pending",
+    "activeForm": "Updating existing test_sdk.py for interface changes"
+  },
+  {
+    "content": "Run final verification pass",
+    "status": "pending",
+    "activeForm": "Running final verification pass"
+  }
+]

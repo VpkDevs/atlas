@@ -1,0 +1,1147 @@
+2026-03-07T18:50:09.883Z [DEBUG] detectFileEncoding failed for expected reason: ENOENT
+2026-03-07T18:50:09.884Z [DEBUG] MDM settings load completed in 30ms
+2026-03-07T18:50:09.906Z [DEBUG] [init] configureGlobalMTLS starting
+2026-03-07T18:50:09.906Z [DEBUG] [init] configureGlobalMTLS complete
+2026-03-07T18:50:09.906Z [DEBUG] [init] configureGlobalAgents starting
+2026-03-07T18:50:09.906Z [DEBUG] [init] configureGlobalAgents complete
+2026-03-07T18:50:09.957Z [DEBUG] Using bash path: "C:\Program Files\Git\bin\bash.exe"
+2026-03-07T18:50:09.975Z [DEBUG] Applying permission update: Adding 18 allow rule(s) to destination 'localSettings': ["Bash(powershell -Command:*)","Bash(wmic logicaldisk:*)","Bash(dir:*)","Bash(reg query:*)","Bash(findstr:*)","Bash(powershell -File:*)","Bash(ls:*)","Bash(cmd /c dir:*)","Bash(for dir in \"C:\\\\Users\\\\Public\"/*/)","Bash(done)","Bash(cmd /c \"dir /b C:\\\\Users\\\\Public\")","Bash(cmd /c \"dir /b C:\\\\Users\")","Bash(cmd /c \"dir /b C:\"\")","Bash(powershell:*)","mcp__Desktop_Commander__start_process","mcp__Desktop_Commander__read_process_output","mcp__Desktop_Commander__read_file","mcp__Desktop_Commander__write_file"]
+2026-03-07T18:50:09.977Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-03-07T18:50:09.979Z [DEBUG] [ToolSearch:optimistic] mode=standard, ENABLE_TOOL_SEARCH=false, result=false
+2026-03-07T18:50:09.979Z [DEBUG] [STARTUP] Running setup()...
+2026-03-07T18:50:09.981Z [DEBUG] Git remote URL: null
+2026-03-07T18:50:09.981Z [DEBUG] No git remote URL found
+2026-03-07T18:50:09.982Z [DEBUG] Loading skills from: managed=C:\ProgramData\ClaudeCode\.claude\skills, user=C:\Users\MQ420_OL\.claude\skills, project=[]
+2026-03-07T18:50:09.982Z [DEBUG] Error log sink initialized
+2026-03-07T18:50:10.023Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-03-07T18:50:10.024Z [DEBUG] Loaded 0 unique skills (0 unconditional, 0 conditional, managed: 0, user: 0, project: 0, additional: 0, legacy commands: 0)
+2026-03-07T18:50:10.046Z [DEBUG] Loaded inline plugin from path: anthropic-skills
+2026-03-07T18:50:10.046Z [DEBUG] Loaded 1 session-only plugins from --plugin-dir
+2026-03-07T18:50:10.046Z [DEBUG] Found 1 plugins (1 enabled, 0 disabled)
+2026-03-07T18:50:10.046Z [DEBUG] getPluginSkills: Processing 1 enabled plugins
+2026-03-07T18:50:10.046Z [DEBUG] Checking plugin anthropic-skills: skillsPath=exists, skillsPaths=0 paths
+2026-03-07T18:50:10.046Z [DEBUG] Attempting to load skills from plugin anthropic-skills default skillsPath: C:\Users\MQ420_OL\AppData\Roaming\Claude\local-agent-mode-sessions\skills-plugin\54b56db1-cf39-4c06-9546-28457803660e\7f21ad0f-1a75-4050-ad77-50d9aa6e65ce\skills
+2026-03-07T18:50:10.047Z [DEBUG] Total plugin commands loaded: 0
+2026-03-07T18:50:10.047Z [DEBUG] Registered 0 hooks from 1 plugins
+2026-03-07T18:50:10.047Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-03-07T18:50:10.047Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-03-07T18:50:10.047Z [DEBUG] [claudeai-mcp] Missing user:mcp_servers scope (scopes=user:inference)
+2026-03-07T18:50:10.102Z [DEBUG] Loaded 15 skills from plugin anthropic-skills default directory
+2026-03-07T18:50:10.102Z [DEBUG] Total plugin skills loaded: 15
+2026-03-07T18:50:10.102Z [DEBUG] getSkills returning: 0 skill dir commands, 15 plugin skills, 5 bundled skills
+2026-03-07T18:50:10.268Z [DEBUG] [STARTUP] setup() completed in 289ms
+2026-03-07T18:50:10.268Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-03-07T18:50:10.271Z [DEBUG] Total plugin agents loaded: 0
+2026-03-07T18:50:10.271Z [DEBUG] [STARTUP] Commands and agents loaded in 3ms
+2026-03-07T18:50:10.271Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-03-07T18:50:10.271Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-03-07T18:50:10.271Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-03-07T18:50:10.277Z [DEBUG] [STARTUP] MCP configs loaded in 300ms
+2026-03-07T18:50:10.287Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-03-07T18:50:10.288Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:10.365Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-03-07T18:50:10.365Z [DEBUG] [3P telemetry] isTelemetryEnabled=false (CLAUDE_CODE_ENABLE_TELEMETRY=undefined)
+2026-03-07T18:50:10.370Z [DEBUG] Plugin autoupdate: skipped (auto-updater disabled)
+2026-03-07T18:50:10.386Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-03-07T18:50:10.386Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:50:10.386Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2026-03-07T18:50:10.401Z [DEBUG] installPluginsForHeadless: starting
+2026-03-07T18:50:10.402Z [DEBUG] Found 0 installed plugins
+2026-03-07T18:50:10.402Z [DEBUG] installPluginsForHeadless: no missing plugins or marketplaces configured
+2026-03-07T18:50:10.403Z [DEBUG] Total LSP servers loaded: 0
+2026-03-07T18:50:10.403Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-03-07T18:50:10.403Z [DEBUG] LSP manager initialized with 0 servers
+2026-03-07T18:50:10.403Z [DEBUG] LSP server manager initialized successfully
+2026-03-07T18:50:10.403Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-03-07T18:50:10.412Z [ERROR] Failed to fetch org fast mode status, defaulting to disabled: AxiosError: Request failed with status code 403
+2026-03-07T18:50:10.412Z [DEBUG] Watching for changes in setting files C:\Users\MQ420_OL\.claude\settings.json, C:\.claude\settings.json, C:\.claude\settings.local.json...
+2026-03-07T18:50:10.413Z [DEBUG] Fetching plugin security messages from https://raw.githubusercontent.com/anthropics/claude-plugins-official/refs/heads/security/security.json
+2026-03-07T18:50:10.417Z [DEBUG] Total plugin output styles loaded: 0
+2026-03-07T18:50:10.418Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:10.537Z [DEBUG] Security messages saved successfully
+2026-03-07T18:50:10.596Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:50:10.596Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:50:10.596Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:50:10.596Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:50:10.597Z [DEBUG] Sending 18 skills via attachment (initial, 18 total sent)
+2026-03-07T18:50:10.597Z [DEBUG] Skill prompt: showing "anthropic-skills:doc-coauthoring" (userFacingName="doc-coauthoring")
+2026-03-07T18:50:10.597Z [DEBUG] Skill prompt: showing "anthropic-skills:brand-guidelines" (userFacingName="brand-guidelines")
+2026-03-07T18:50:10.597Z [DEBUG] Skill prompt: showing "anthropic-skills:algorithmic-art" (userFacingName="algorithmic-art")
+2026-03-07T18:50:10.597Z [DEBUG] Skill prompt: showing "anthropic-skills:theme-factory" (userFacingName="theme-factory")
+2026-03-07T18:50:10.597Z [DEBUG] Skill prompt: showing "anthropic-skills:skill-creator" (userFacingName="skill-creator")
+2026-03-07T18:50:10.597Z [DEBUG] Skill prompt: showing "anthropic-skills:web-artifacts-builder" (userFacingName="web-artifacts-builder")
+2026-03-07T18:50:10.597Z [DEBUG] Skill prompt: showing "anthropic-skills:xlsx" (userFacingName="xlsx")
+2026-03-07T18:50:10.597Z [DEBUG] Skill prompt: showing "anthropic-skills:pdf" (userFacingName="pdf")
+2026-03-07T18:50:10.597Z [DEBUG] Skill prompt: showing "anthropic-skills:canvas-design" (userFacingName="canvas-design")
+2026-03-07T18:50:10.597Z [DEBUG] Skill prompt: showing "anthropic-skills:slack-gif-creator" (userFacingName="slack-gif-creator")
+2026-03-07T18:50:10.597Z [DEBUG] Skill prompt: showing "anthropic-skills:schedule" (userFacingName="schedule")
+2026-03-07T18:50:10.597Z [DEBUG] Skill prompt: showing "anthropic-skills:docx" (userFacingName="docx")
+2026-03-07T18:50:10.597Z [DEBUG] Skill prompt: showing "anthropic-skills:mcp-builder" (userFacingName="mcp-builder")
+2026-03-07T18:50:10.597Z [DEBUG] Skill prompt: showing "anthropic-skills:internal-comms" (userFacingName="internal-comms")
+2026-03-07T18:50:10.597Z [DEBUG] Skill prompt: showing "anthropic-skills:pptx" (userFacingName="pptx")
+2026-03-07T18:50:10.598Z [WARN] [3P telemetry] Event dropped (no event logger initialized): user_prompt
+2026-03-07T18:50:10.599Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-03-07T18:50:10.599Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:50:10.599Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-03-07T18:50:10.599Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:10.604Z [DEBUG] autocompact: tokens=1893 threshold=167000 effectiveWindow=180000
+2026-03-07T18:50:10.606Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:50:10.644Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:50:10.644Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:10.644Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:50:10.644Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:50:10.645Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:10.645Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:50:10.645Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:10.801Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=C:\Users\MQ420_OL\AppData\Roaming\Claude\claude-code\2.1.63\claude.exe)
+2026-03-07T18:50:11.826Z [DEBUG] "rg error (signal=undefined, code=ERR_CHILD_PROCESS_STDIO_MAXBUFFER, stderr: rg: C:\\Recovery: Access is denied. (os error 5)\nrg: C:\\Library Folders\\Shortcuts: Access is denied. (os error 5)\nrg: C:\\OneDriveTemp\\S-1-5-21-1067785876-3014793013-136133255-1064: Access is denied. (os error 5)\nrg: C:\\Config.Msi: Access is denied. (os error 5)\nrg: C:\\Users\\Public\\_Personal\\desktop-items\\desktop-items\\3I1c8ee49zMlEV9qza: Access is denied. (os error 5)\nrg: C:\\Windows\\WUModels: Access is denied. (os error 5)\nrg: C:\\System Volume Information: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-Win10-Win11-Oct4\\Packages: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-Win10-Win11-Oct4\\Config: Access is denied. (os error 5)\nrg: C:\\Program Files (x86)\\Google\\CrashReports: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-MinimalSetup-221003_web\\Config: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-MinimalSetup-221003_web\\Bin64: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1064: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1061: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1059: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1049: Access is denied. (os error 5)\nrg: C:\\Program Files (x86)\\Dropbox\\CrashReports: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1045: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1044: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1038: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1035: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1031: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-18: Access is denied. (os error 5)\nrg: C:\\ProgramData\\WindowsHolographicDevices: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Windows Master Store\\ServiceData: Access is denied. (os error 5)\nrg: C:\\Program Files (x86)\\BraveSoftware\\CrashReports: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Alienware\\Alienware Command Center\\FXMetadata: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Avast Software\\Icarus\\Logs\\.private: Access is denied. (os error 5)\nrg: C:\\ProgramData\\DockerDesktop\\tmp-d4w: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Dell\\UpdateService: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Dell\\SARemediation: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Dell\\DellDataVault\\Log: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Dell\\DellDataVault\\Data: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Dell\\DellDataVault\\Archive: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Dell\\AWCCService: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows NT\\MSFax: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\Support: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\Scans: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\Quarantine: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Spectrum: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\SmsRouter: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Search\\Data: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Provisioning\\AssetCache: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Network\\Downloader: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\NetFramework\\BreadcrumbStore: Access is denied. (os error 5)\n), 212133 results"
+2026-03-07T18:50:11.826Z [ERROR] "RangeError: RangeError: stdout maxBuffer length exceeded\n    at unknown\n    at onData (node:child_process:153:110)\n    at emit (node:events:95:22)\n    at addChunk (internal:streams/readable:264:47)\n    at readableAddChunkPushByteMode (internal:streams/readable:242:18)\n    at handleNumberResult (internal:streams/native-readable:79:18)\n    at <anonymous> (internal:streams/native-readable:53:68)\n    at processTicksAndRejections (native:7:39)"
+2026-03-07T18:50:15.991Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:50:21.931Z [DEBUG] executePreToolHooks called for tool: TodoWrite
+2026-03-07T18:50:21.932Z [DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+2026-03-07T18:50:21.932Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:50:21.932Z [DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+2026-03-07T18:50:21.934Z [DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+2026-03-07T18:50:21.934Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:50:21.934Z [DEBUG] Matched 1 unique hooks for query "TodoWrite" (1 before deduplication)
+2026-03-07T18:50:21.947Z [DEBUG] Writing to temp file: C:\Users\MQ420_OL\.claude.json.tmp.50672.1772909421947
+2026-03-07T18:50:21.947Z [DEBUG] Preserving file permissions: 100666
+2026-03-07T18:50:21.948Z [DEBUG] Temp file written successfully, size: 16171 bytes
+2026-03-07T18:50:21.949Z [DEBUG] Applied original permissions to temp file
+2026-03-07T18:50:21.949Z [DEBUG] Renaming C:\Users\MQ420_OL\.claude.json.tmp.50672.1772909421947 to C:\Users\MQ420_OL\.claude.json
+2026-03-07T18:50:21.949Z [DEBUG] File C:\Users\MQ420_OL\.claude.json written atomically
+2026-03-07T18:50:21.968Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-07T18:50:21.968Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:50:21.968Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:50:21.968Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:50:21.968Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:50:21.969Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:50:21.969Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:21.969Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:50:21.969Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:50:21.970Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:21.970Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:50:21.970Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:21.972Z [DEBUG] autocompact: tokens=122721 threshold=167000 effectiveWindow=180000
+2026-03-07T18:50:21.972Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:50:21.977Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:50:21.977Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:21.978Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:50:21.978Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:50:21.978Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:21.978Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:50:21.978Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:22.783Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:50:28.797Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:50:28.798Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__create_directory
+2026-03-07T18:50:28.799Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__create_directory
+2026-03-07T18:50:28.799Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:50:28.799Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__create_directory" (0 before deduplication)
+2026-03-07T18:50:28.799Z [DEBUG] "Permission suggestions for mcp__Desktop_Commander__create_directory: [\n  {\n    \"type\": \"addRules\",\n    \"rules\": [\n      {\n        \"toolName\": \"mcp__Desktop_Commander__create_directory\"\n      }\n    ],\n    \"behavior\": \"allow\",\n    \"destination\": \"localSettings\"\n  }\n]"
+2026-03-07T18:50:28.800Z [DEBUG] executePermissionRequestHooks called for tool: mcp__Desktop_Commander__create_directory
+2026-03-07T18:50:28.800Z [DEBUG] Getting matching hook commands for PermissionRequest with query: mcp__Desktop_Commander__create_directory
+2026-03-07T18:50:28.800Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:50:28.800Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__create_directory" (0 before deduplication)
+2026-03-07T18:50:29.143Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: create_directory
+2026-03-07T18:50:29.308Z [DEBUG] MCP server "Desktop Commander": Tool 'create_directory' completed successfully in 165ms
+2026-03-07T18:50:29.310Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__create_directory
+2026-03-07T18:50:29.310Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:50:29.310Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__create_directory" (1 before deduplication)
+2026-03-07T18:50:29.312Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__create_directory
+2026-03-07T18:50:29.312Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__create_directory
+2026-03-07T18:50:29.312Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:50:29.312Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__create_directory" (0 before deduplication)
+2026-03-07T18:50:29.313Z [DEBUG] "Permission suggestions for mcp__Desktop_Commander__create_directory: [\n  {\n    \"type\": \"addRules\",\n    \"rules\": [\n      {\n        \"toolName\": \"mcp__Desktop_Commander__create_directory\"\n      }\n    ],\n    \"behavior\": \"allow\",\n    \"destination\": \"localSettings\"\n  }\n]"
+2026-03-07T18:50:29.313Z [DEBUG] executePermissionRequestHooks called for tool: mcp__Desktop_Commander__create_directory
+2026-03-07T18:50:29.313Z [DEBUG] Getting matching hook commands for PermissionRequest with query: mcp__Desktop_Commander__create_directory
+2026-03-07T18:50:29.313Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:50:29.313Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__create_directory" (0 before deduplication)
+2026-03-07T18:50:29.735Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: create_directory
+2026-03-07T18:50:29.864Z [DEBUG] MCP server "Desktop Commander": Tool 'create_directory' completed successfully in 129ms
+2026-03-07T18:50:29.866Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__create_directory
+2026-03-07T18:50:29.866Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:50:29.866Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__create_directory" (1 before deduplication)
+2026-03-07T18:50:29.867Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__create_directory
+2026-03-07T18:50:29.868Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__create_directory
+2026-03-07T18:50:29.868Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:50:29.868Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__create_directory" (0 before deduplication)
+2026-03-07T18:50:29.868Z [DEBUG] "Permission suggestions for mcp__Desktop_Commander__create_directory: [\n  {\n    \"type\": \"addRules\",\n    \"rules\": [\n      {\n        \"toolName\": \"mcp__Desktop_Commander__create_directory\"\n      }\n    ],\n    \"behavior\": \"allow\",\n    \"destination\": \"localSettings\"\n  }\n]"
+2026-03-07T18:50:29.868Z [DEBUG] executePermissionRequestHooks called for tool: mcp__Desktop_Commander__create_directory
+2026-03-07T18:50:29.869Z [DEBUG] Getting matching hook commands for PermissionRequest with query: mcp__Desktop_Commander__create_directory
+2026-03-07T18:50:29.869Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:50:29.869Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__create_directory" (0 before deduplication)
+2026-03-07T18:50:30.247Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: create_directory
+2026-03-07T18:50:30.379Z [DEBUG] MCP server "Desktop Commander": Tool 'create_directory' completed successfully in 132ms
+2026-03-07T18:50:30.381Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__create_directory
+2026-03-07T18:50:30.381Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:50:30.381Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__create_directory" (1 before deduplication)
+2026-03-07T18:50:30.384Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-07T18:50:30.384Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:50:30.384Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:50:30.384Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:50:30.384Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:50:30.385Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:50:30.385Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:30.385Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:50:30.385Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:50:30.385Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:30.385Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:50:30.385Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:30.387Z [DEBUG] autocompact: tokens=122967 threshold=167000 effectiveWindow=180000
+2026-03-07T18:50:30.389Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:50:30.394Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:50:30.395Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:30.395Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:50:30.395Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:50:30.395Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:30.395Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:50:30.395Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:30.762Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:50:34.926Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:50:36.919Z [DEBUG] executePreToolHooks called for tool: TodoWrite
+2026-03-07T18:50:36.920Z [DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+2026-03-07T18:50:36.920Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:50:36.920Z [DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+2026-03-07T18:50:36.923Z [DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+2026-03-07T18:50:36.923Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:50:36.923Z [DEBUG] Matched 1 unique hooks for query "TodoWrite" (1 before deduplication)
+2026-03-07T18:50:36.929Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-07T18:50:36.930Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:50:36.930Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:50:36.930Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:50:36.930Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:50:36.930Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:50:36.930Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:36.931Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:50:36.931Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:50:36.931Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:36.931Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:50:36.931Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:36.933Z [DEBUG] autocompact: tokens=123414 threshold=167000 effectiveWindow=180000
+2026-03-07T18:50:36.934Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:50:36.939Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:50:36.939Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:36.939Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:50:36.939Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:50:36.939Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:36.939Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:50:36.939Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:38.323Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:50:40.228Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:50:44.132Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__write_file
+2026-03-07T18:50:44.133Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__write_file
+2026-03-07T18:50:44.133Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:50:44.133Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__write_file" (0 before deduplication)
+2026-03-07T18:50:44.134Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: write_file
+2026-03-07T18:50:44.385Z [DEBUG] MCP server "Desktop Commander": Tool 'write_file' completed successfully in 251ms
+2026-03-07T18:50:44.388Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__write_file
+2026-03-07T18:50:44.388Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:50:44.388Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__write_file" (1 before deduplication)
+2026-03-07T18:50:44.390Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-07T18:50:44.391Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:50:44.391Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:50:44.391Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:50:44.391Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:50:44.391Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:50:44.391Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:44.391Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:50:44.391Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:50:44.391Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:44.391Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:50:44.391Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:44.392Z [DEBUG] autocompact: tokens=123845 threshold=167000 effectiveWindow=180000
+2026-03-07T18:50:44.392Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:50:44.395Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:50:44.395Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:44.395Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:50:44.395Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:50:44.395Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:44.395Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:50:44.395Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:44.790Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:50:46.610Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:50:48.707Z [DEBUG] executePreToolHooks called for tool: TodoWrite
+2026-03-07T18:50:48.708Z [DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+2026-03-07T18:50:48.708Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:50:48.708Z [DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+2026-03-07T18:50:48.710Z [DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+2026-03-07T18:50:48.710Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:50:48.710Z [DEBUG] Matched 1 unique hooks for query "TodoWrite" (1 before deduplication)
+2026-03-07T18:50:48.712Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-07T18:50:48.713Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:50:48.713Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:50:48.713Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:50:48.713Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:50:48.713Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:50:48.713Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:48.713Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:50:48.713Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:50:48.714Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:48.714Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:50:48.714Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:48.715Z [DEBUG] autocompact: tokens=124197 threshold=167000 effectiveWindow=180000
+2026-03-07T18:50:48.715Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:50:48.720Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:50:48.720Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:48.720Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:50:48.720Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:50:48.720Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:48.720Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:50:48.720Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:50:49.520Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:50:54.432Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:51:07.706Z [DEBUG] detectFileEncoding failed for expected reason: ENOENT
+2026-03-07T18:51:07.706Z [DEBUG] MDM settings load completed in 16ms
+2026-03-07T18:51:07.725Z [DEBUG] [init] configureGlobalMTLS starting
+2026-03-07T18:51:07.725Z [DEBUG] [init] configureGlobalMTLS complete
+2026-03-07T18:51:07.725Z [DEBUG] [init] configureGlobalAgents starting
+2026-03-07T18:51:07.725Z [DEBUG] [init] configureGlobalAgents complete
+2026-03-07T18:51:07.781Z [DEBUG] Using bash path: "C:\Program Files\Git\bin\bash.exe"
+2026-03-07T18:51:07.801Z [DEBUG] Applying permission update: Adding 18 allow rule(s) to destination 'localSettings': ["Bash(powershell -Command:*)","Bash(wmic logicaldisk:*)","Bash(dir:*)","Bash(reg query:*)","Bash(findstr:*)","Bash(powershell -File:*)","Bash(ls:*)","Bash(cmd /c dir:*)","Bash(for dir in \"C:\\\\Users\\\\Public\"/*/)","Bash(done)","Bash(cmd /c \"dir /b C:\\\\Users\\\\Public\")","Bash(cmd /c \"dir /b C:\\\\Users\")","Bash(cmd /c \"dir /b C:\"\")","Bash(powershell:*)","mcp__Desktop_Commander__start_process","mcp__Desktop_Commander__read_process_output","mcp__Desktop_Commander__read_file","mcp__Desktop_Commander__write_file"]
+2026-03-07T18:51:07.803Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-03-07T18:51:07.804Z [DEBUG] [ToolSearch:optimistic] mode=standard, ENABLE_TOOL_SEARCH=false, result=false
+2026-03-07T18:51:07.806Z [DEBUG] [STARTUP] Running setup()...
+2026-03-07T18:51:07.807Z [DEBUG] Git remote URL: null
+2026-03-07T18:51:07.807Z [DEBUG] No git remote URL found
+2026-03-07T18:51:07.809Z [DEBUG] Loading skills from: managed=C:\ProgramData\ClaudeCode\.claude\skills, user=C:\Users\MQ420_OL\.claude\skills, project=[]
+2026-03-07T18:51:07.809Z [DEBUG] Error log sink initialized
+2026-03-07T18:51:07.850Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-03-07T18:51:07.857Z [DEBUG] Loaded 0 unique skills (0 unconditional, 0 conditional, managed: 0, user: 0, project: 0, additional: 0, legacy commands: 0)
+2026-03-07T18:51:07.869Z [DEBUG] Loaded inline plugin from path: anthropic-skills
+2026-03-07T18:51:07.869Z [DEBUG] Loaded 1 session-only plugins from --plugin-dir
+2026-03-07T18:51:07.869Z [DEBUG] Found 1 plugins (1 enabled, 0 disabled)
+2026-03-07T18:51:07.869Z [DEBUG] getPluginSkills: Processing 1 enabled plugins
+2026-03-07T18:51:07.869Z [DEBUG] Checking plugin anthropic-skills: skillsPath=exists, skillsPaths=0 paths
+2026-03-07T18:51:07.869Z [DEBUG] Attempting to load skills from plugin anthropic-skills default skillsPath: C:\Users\MQ420_OL\AppData\Roaming\Claude\local-agent-mode-sessions\skills-plugin\54b56db1-cf39-4c06-9546-28457803660e\7f21ad0f-1a75-4050-ad77-50d9aa6e65ce\skills
+2026-03-07T18:51:07.869Z [DEBUG] Total plugin commands loaded: 0
+2026-03-07T18:51:07.869Z [DEBUG] Registered 0 hooks from 1 plugins
+2026-03-07T18:51:07.869Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-03-07T18:51:07.870Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-03-07T18:51:07.870Z [DEBUG] [claudeai-mcp] Missing user:mcp_servers scope (scopes=user:inference)
+2026-03-07T18:51:07.901Z [DEBUG] Loaded 15 skills from plugin anthropic-skills default directory
+2026-03-07T18:51:07.901Z [DEBUG] Total plugin skills loaded: 15
+2026-03-07T18:51:07.901Z [DEBUG] getSkills returning: 0 skill dir commands, 15 plugin skills, 5 bundled skills
+2026-03-07T18:51:07.905Z [DEBUG] [STARTUP] setup() completed in 99ms
+2026-03-07T18:51:07.905Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-03-07T18:51:07.907Z [DEBUG] Total plugin agents loaded: 0
+2026-03-07T18:51:07.907Z [DEBUG] [STARTUP] Commands and agents loaded in 2ms
+2026-03-07T18:51:07.907Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-03-07T18:51:07.907Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-03-07T18:51:07.907Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-03-07T18:51:07.911Z [DEBUG] [STARTUP] MCP configs loaded in 108ms
+2026-03-07T18:51:07.917Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-03-07T18:51:07.917Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:51:07.973Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-03-07T18:51:07.973Z [DEBUG] [3P telemetry] isTelemetryEnabled=false (CLAUDE_CODE_ENABLE_TELEMETRY=undefined)
+2026-03-07T18:51:07.977Z [DEBUG] Plugin autoupdate: skipped (auto-updater disabled)
+2026-03-07T18:51:07.989Z [DEBUG] Total LSP servers loaded: 0
+2026-03-07T18:51:07.989Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-03-07T18:51:07.989Z [DEBUG] LSP manager initialized with 0 servers
+2026-03-07T18:51:07.989Z [DEBUG] LSP server manager initialized successfully
+2026-03-07T18:51:07.989Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-03-07T18:51:07.992Z [DEBUG] Getting matching hook commands for SessionStart with query: resume
+2026-03-07T18:51:07.992Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:51:07.992Z [DEBUG] Matched 0 unique hooks for query "resume" (0 before deduplication)
+2026-03-07T18:51:08.008Z [DEBUG] installPluginsForHeadless: starting
+2026-03-07T18:51:08.008Z [DEBUG] Found 0 installed plugins
+2026-03-07T18:51:08.008Z [DEBUG] installPluginsForHeadless: no missing plugins or marketplaces configured
+2026-03-07T18:51:08.011Z [DEBUG] Security messages are fresh (<1h old), skipping fetch
+2026-03-07T18:51:08.011Z [DEBUG] Watching for changes in setting files C:\Users\MQ420_OL\.claude\settings.json, C:\.claude\settings.json, C:\.claude\settings.local.json...
+2026-03-07T18:51:08.026Z [DEBUG] Total plugin output styles loaded: 0
+2026-03-07T18:51:08.026Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:51:08.106Z [ERROR] Failed to fetch org fast mode status, defaulting to disabled: AxiosError: Request failed with status code 403
+2026-03-07T18:51:08.423Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=C:\Users\MQ420_OL\AppData\Roaming\Claude\claude-code\2.1.63\claude.exe)
+2026-03-07T18:51:09.858Z [DEBUG] "rg error (signal=undefined, code=ERR_CHILD_PROCESS_STDIO_MAXBUFFER, stderr: rg: C:\\Config.Msi: Access is denied. (os error 5)\nrg: C:\\Windows\\WUModels: Access is denied. (os error 5)\nrg: C:\\Windows\\SystemTemp: Access is denied. (os error 5)\nrg: C:\\Windows\\ModemLogs: Access is denied. (os error 5)\nrg: C:\\Windows\\Minidump: Access is denied. (os error 5)\nrg: C:\\Windows\\Provisioning\\Autopilot: Access is denied. (os error 5)\nrg: C:\\Windows\\Prefetch: Access is denied. (os error 5)\nrg: C:\\Windows\\ServiceState: Access is denied. (os error 5)\nrg: C:\\Windows\\ServiceProfiles\\OVRLibraryService: Access is denied. (os error 5)\nrg: C:\\Windows\\ServiceProfiles\\NetworkService: Access is denied. (os error 5)\nrg: C:\\Windows\\ServiceProfiles\\LocalService: Access is denied. (os error 5)\nrg: C:\\Windows\\security\\cap: Access is denied. (os error 5)\nrg: C:\\Windows\\security\\audit: Access is denied. (os error 5)\nrg: C:\\Windows\\Resources\\Themes\\aero\\VSCache: Access is denied. (os error 5)\nrg: C:\\Windows\\Installer\\Config.Msi: Access is denied. (os error 5)\nrg: C:\\Windows\\Temp: Access is denied. (os error 5)\nrg: C:\\Windows\\Tasks\\ImCleanDisabled: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-Win10-Win11-Oct4\\Packages: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-Win10-Win11-Oct4\\Config: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-MinimalSetup-221003_web\\Config: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-MinimalSetup-221003_web\\Bin64: Access is denied. (os error 5)\nrg: C:\\Windows\\Logs\\SystemRestore: Access is denied. (os error 5)\nrg: C:\\Windows\\LiveKernelReports: Access is denied. (os error 5)\nrg: C:\\Windows\\SysWOW64\\Tasks: Access is denied. (os error 5)\nrg: C:\\Windows\\SysWOW64\\sru: Access is denied. (os error 5)\nrg: C:\\Windows\\SysWOW64\\NetworkList: Access is denied. (os error 5)\nrg: C:\\Windows\\SysWOW64\\Msdtc: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1064: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1061: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1059: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1049: Access is denied. (os error 5)\nrg: C:\\Windows\\SysWOW64\\Configuration: Access is denied. (os error 5)\nrg: C:\\Windows\\SysWOW64\\config: Access is denied. (os error 5)\nrg: C:\\Windows\\SysWOW64\\Com\\dmp: Access is denied. (os error 5)\nrg: C:\\Windows\\System32\\Com\\dmp: Access is denied. (os error 5)\nrg: C:\\Windows\\System32\\Configuration: Access is denied. (os error 5)\nrg: C:\\Windows\\System32\\config: Access is denied. (os error 5)\nrg: C:\\Windows\\System32\\drivers\\DriverData: Access is denied. (os error 5)\nrg: C:\\Windows\\System32\\WebThreatDefSvc: Access is denied. (os error 5)\nrg: C:\\Windows\\System32\\WDI: Access is denied. (os error 5)\nrg: C:\\Windows\\System32\\wbem\\MOF: Access is denied. (os error 5)\nrg: C:\\Windows\\System32\\Tasks_Migrated: Access is denied. (os error 5)\nrg: C:\\Windows\\System32\\Tasks: Access is denied. (os error 5)\nrg: C:\\Windows\\System32\\sru: Access is denied. (os error 5)\nrg: C:\\Windows\\System32\\DriverState: Access is denied. (os error 5)\nrg: C:\\Windows\\System32\\spool\\SERVERS: Access is denied. (os error 5)\nrg: C:\\Windows\\System32\\spool\\PRINTERS: Access is denied. (os error 5)\nrg: C:\\Windows\\System32\\SleepStudy: Access is denied. (os error 5)\nrg: C:\\Windows\\System32\\networklist: Access is denied. (os error 5)\nrg: C:\\Windows\\System32\\MsDtc: Access is denied. (os error 5)\nrg: C:\\Windows\\System32\\LogFiles\\WMI\\RtBackup: Access is denied. (os error 5)\nrg: C:\\Windows\\System32\\ias: Access is denied. (os error 5)\nrg: C:\\Windows\\appcompat\\Programs: Access is denied. (os error 5)\nrg: C:\\Windows\\appcompat\\Backup: Access is denied. (os error 5)\nrg: C:\\Windows\\appcompat\\appraiser: Access is denied. (os error 5)\nrg: C:\\Users\\Public\\_Personal\\desktop-items\\desktop-items\\3I1c8ee49zMlEV9qza: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1045: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1044: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1038: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1035: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1031: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-18: Access is denied. (os error 5)\nrg: C:\\Library Folders\\Shortcuts: Access is denied. (os error 5)\nrg: C:\\ProgramData\\WindowsHolographicDevices: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Windows Master Store\\ServiceData: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Avast Software\\Icarus\\Logs\\.private: Access is denied. (os error 5)\nrg: C:\\ProgramData\\DockerDesktop\\tmp-d4w: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Alienware\\Alienware Command Center\\FXMetadata: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Dell\\UpdateService: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Dell\\SARemediation: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Dell\\DellDataVault\\Log: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Dell\\DellDataVault\\Data: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Dell\\DellDataVault\\Archive: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Dell\\AWCCService: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows NT\\MSFax: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\Support: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\Scans: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\Quarantine: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Diagnosis: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Crypto\\PCPKSP\\WindowsAIK: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\Payloads: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\Network Inspection System: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\LocalCopy: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\Features: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\DLPCache: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\Clean Store: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WindowsApps: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\wfp: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\NonCritical_Update;ScanForUp_a738f8128b46a1e3bf7beac0f96aa419bec1bd6_00000000_edbf18bb-634b-4330-a551-460af75a3383: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Kernel_3b_d3315e8f252572cd9d881bd2b718a7fb83a62d44_00000000_cab_b1b3be1f-5901-4e0c-b9b5-a5b91f3b19cd: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_WizTree64.exe_a1ccd576b4c5e97dc3ec7b2b1527ef923864044_62e3f7bf_5a68ffe2-c5f2-4822-a76b-27e1b36a8f1b: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_WizTree64.exe_6e42f29d88cbc1c6aacdc43eef25782e169f0_62e3f7bf_d42e7498-ca6f-45ce-a6f7-f5acfe22e471: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Wispr Flow.exe_fb1dc7bbceee5390d12b9a95f46161d8c4f655b5_e73a242b_21f9a90c-ef21-4882-8846-e7972eb5055e: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Wispr Flow.exe_f2b8ad137fb9b232657cf26236c3d662205c8da3_be5ca41e_a7258cf7-4ede-4683-ad7b-ea694fc9a5e6: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Wispr Flow.exe_6fb980fe52478e32196bb71bc0a3364bbeaccad0_55791c5b_d75c20c7-6be0-4745-9af9-fb99cf4b1fcf: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Wispr Flow.exe_6fb980fe52478e32196bb71bc0a3364bbeaccad0_55791c5b_32c1314a-b2b2-45d1-9272-38dbd9d45391: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Wispr Flow.exe_6fb980fe52478e32196bb71bc0a3364bbeaccad0_55791c5b_12977b6d-f1f4-4323-86d9-0750241d1268: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_VSCodium.exe_8a248da97317d34d7243c75d7f2a4e3903ed7e9_c7b6f0eb_ea257de3-4168-4e14-a7e9-5e006eac666d: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_VSCodium.exe_11fa35b046a84a4a5e358d45ce97fdc96a9d0b6_c7b6f0eb_8308e521-1c88-4e6c-b977-ad572b971d81: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_sublime_text.exe_383fcaaebf3b13c31120768086b5ba1857161b_f2f8854a_578fa927-0b30-4488-9524-fe6b28b07227: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Spark Desktop.ex_8f9cd701248dd88cf8a44d2fcad395afd43d66_6ff20d85_da200e6b-8aa7-4ed9-985a-3d75d504115d: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Spark Desktop.ex_7b5e6952a5229ff874c02ed76d3a8a988df4dc7_6ff20d85_722ee419-4226-4550-947a-d9167f46ce45: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Spark Desktop.ex_7b5e6952a5229ff874c02ed76d3a8a988df4dc7_6ff20d85_45d7fdfa-8e74-4fd1-ad0a-ee8ec66793b6: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Spark Desktop.ex_7426a36a369b6aece15da31cb6971a79c4d0f8_6ff20d85_deabd204-dae8-4590-b1ff-747b587bb71b: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_powershell.exe_3b7d575faf2d999f6b2f82546a685497f018a5_00000000_69db637d-e8a1-4a32-910c-514babdf50a6: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_opera.exe_d239d61d5b7da09e4e4db9df398a8a11d78abe42_546d9e59_f7161976-60f0-4c4f-9ee9-9ceec9eedc91: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_opera.exe_8dd24ffe685afe362ffbf44e2f1dd90227544b5_546d9e59_dbf60bdd-1539-4dc7-ac3d-7d64f081555f: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_opera.exe_8dd24ffe685afe362ffbf44e2f1dd90227544b5_546d9e59_9f985075-161b-45c8-8f7a-d4bf86f290a5: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_opera.exe_8dd24ffe685afe362ffbf44e2f1dd90227544b5_546d9e59_09b16425-74f3-4834-9ab3-31d4f87d735b: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_opera.exe_6c8d8a24a10fb92cc78443b571ccdbb8dc2ea4f_dc888f9f_bd36b5fa-3b6d-40ea-9713-80dded8e1323: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_opera.exe_2ad71e9371e35de09efe8dfedf3752b922d9370_546d9e59_3b1ac86f-40a0-4bb3-b174-6b69785b1b21: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_opera.exe_2142b11f70ecbd814e349458e4b6dcf5acebed2_4c4486eb_564ddd96-6b7f-4f5d-ab07-ef4777493230: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Obsidian.exe_945aeafdf51f77f2c5c9c62976b1cbde8b1b8c57_7bf89393_bcfa06fa-95fa-4c9c-a0aa-c69ed122152d: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_msedge.exe_f026f248724925462ec12cc80a897d5c8c5064_af073baf_addcce2c-429c-49a9-b1a1-e2a4ae30e66f: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_msedge.exe_dfdba89f6b9c334c9e92bb1ecb3e37941ed9195_29b13430_a9dcc525-28c1-427b-89cc-4944f16ed33d: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_msedge.exe_d4b21bda7937f0b242713876ce6a7805eca301d_af073baf_88e8c353-70cb-4e86-87ff-72e3251f43e9: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_msedge.exe_d2ff185fd2fcbeb873404dea5f77d7aaea5bd9_29b13430_85c758bb-b90b-456b-a129-a9749acadb95: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_msedge.exe_c8bd23dbfa59468539cff1bb48c734a95530e7_af073baf_88ed885d-a254-46e0-9227-6fd16348f9ed: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_msedge.exe_a5cd444d9a5763c95d8de236b4e0c6aa8267f9fc_29b13430_c461a280-7035-43ba-b63b-2b508a0b9bf9: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_msedge.exe_31803ea4628c43149e42dd5a5014f12447e7d1_af073baf_c6aa85df-7bc3-41cc-868c-02bf3db78057: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Microsoft.Window_97caae6e82a1a1db74adf9aa80518362ca656188_b9805265_a5d01281-9409-4519-9b76-79ca27cddecd: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Microsoft.Copilo_773ae071f948dc345758d4bdbb3608c959af83_bbe09b1c_fc4da3ae-6138-4f51-acfc-fee1e51b4f44: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Microsoft.Copilo_773ae071f948dc345758d4bdbb3608c959af83_bbe09b1c_d1a8a444-dd50-4806-9733-4dfd995d4bd6: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Microsoft.Copilo_773ae071f948dc345758d4bdbb3608c959af83_bbe09b1c_2a88eddd-230f-42d2-9c3b-e02516b4771c: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Microsoft.Copilo_4b8c839ebf24822e7f9fe3f60404c740437b42_bbe09b1c_c7fd51e5-1353-4986-8ffa-28fe835b24d2: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Microsoft.Copilo_17fe35ae9a7fa8570c78c292f92b7fa8541d_bbe09b1c_d8aa9007-f6d3-4804-8dcd-3f3996278c87: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Highlight.exe_1c8fc4e8d08de41dadf9744c72c651d7c888e_3f401bb4_b8642958-c668-4dcd-ae7e-4cc3c983a0f9: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Highlight.exe_1c8fc4e8d08de41dadf9744c72c651d7c888e_3f401bb4_11a1ebe0-12bb-41a1-98f0-b5349920db5d: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Cursor.exe_daa6f81d48cbe5c26bc26f3c915c8f208c4bde7_ccb0705b_633a8104-e3bc-4077-8ad6-0f839e433a90: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Cursor.exe_7e7ec032c5abdab34c1759cf312ecc1cd12c8cd8_fa0b9d4c_55f48257-15ff-4e0e-acf3-e640ac9ca66f: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Cursor.exe_227cd870d33ca499ee7bcf5a725bba6997496ea1_1083aea4_1de3f4a5-cd1a-46b3-b27e-1ab4b29b33f2: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_f1a729b1a87e3f255d71cc9e2a1937b91d4b22_2d26e0fa_c6293379-bbc9-4967-b8d1-8eeb42bc1ac3: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_bbb4bc258ba67d8135dc745c13a31fa513d46_edde25bb_1b21a1a7-5877-4c70-b0d3-347238b84748: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_b4f6a688be88accb376941763c3f35301390f720_2d26e0fa_217ae293-8401-4d30-9c34-94c0087ee1bc: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_a310c3df7c1d9ffec6ed46598d819b4121e5e7f_edde25bb_ee031ebd-7d29-4ce7-abfc-e0b8f039a9da: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_a310c3df7c1d9ffec6ed46598d819b4121e5e7f_edde25bb_2ec8d645-ee45-4cff-8a10-c2d75e43c0be: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_a2a1f857bc6cfd5ed57622ce8e4d757091d215c_edde25bb_5d095b2f-19bf-4a91-a17a-06a5a6e7d098: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_7a499e965113475b3d96da4b458825c35f08b96_edde25bb_ec2999ea-c195-4bed-8c24-840cae58a691: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_665b24566b8ac6dc19175e7b136396793f2d1df_edde25bb_007983d3-506c-4dd9-aa0e-7c519ba43ed3: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_4e7d3f49dbf8edf32baa859199d7212a4afc8_2d26e0fa_81e1efcb-5b76-4ebd-9662-10075566df00: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_1d3bc94e2671d13540b37dac6951b495e16ddfda_2d26e0fa_fc6d4e9c-8cb5-46c3-acb8-a3fd38b33cdc: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Code.exe_f7ca49f88e19d85dae41acd78be3268d6acde03f_72264d88_5f6d38af-8e27-4c63-8625-c80e04a1c28d: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Code - Insiders._257626fbf1c1b7f853b6c83ebf6d7f66afe4cfc_2261f58d_6a188e4e-d8cb-433f-a9ad-bc79794a1443: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.4498._7746944b0cff3c32817e95654835d9c65fa7c_5625bfa7_29f943e9-646b-427e-bc89-415819a7c745: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.4498._12d6a481b730e2ca734f7f27b4e5d5bf0e543c_5625bfa7_6e146d66-e622-4c8b-bc0b-eb7e2a7e41da: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.4328._f01bc5af2755decd1d6c50c19ef0364ccd4d7b53_a5b74e23_e680dbda-85c2-4ebf-97b0-7a2281b0be25: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.4328._f01bc5af2755decd1d6c50c19ef0364ccd4d7b53_a5b74e23_96dbeb8a-761c-4fa5-87ab-0707e7018efd: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.4173._2a4feda97b99075989480594f8fc9fbd48e349f_5bd511f6_6414b8ed-1944-4d06-9209-b6d3cd0052d3: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.4088._dce737ca71fdbfc8e1cdbd6b1317ec0dd899fda_5de32f90_367a6bc9-18d4-40dc-bd27-2cfd8a48a4a2: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.4010._fcf2fe92ce738615d4bd5cbd25a08ddff150a3_91e6a047_a4bb629e-1244-420e-9ade-1e0fef175d15: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.4010._e157137d3bafe8fee6f99642d1f9c40ecc7e443_91e6a047_6ec50156-e29a-47cc-b5b2-d2e6d765d702: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.3963._dabfcd1a46bbf09289c959b0516a685ebdef0_1a7fef52_ba136b79-f94f-4a8b-8c74-8e975ef965c4: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.3963._dabfcd1a46bbf09289c959b0516a685ebdef0_1a7fef52_a33545e8-7abd-4dcf-8327-51d79e593d1b: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_chrome.exe_ed32d656c93ae9d3d1725a8731d4d26691496a_58c89a43_1765bdc9-c7aa-44c0-8b85-f9e0389a96ef: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_chrome.exe_de1cd1e56912dbb2d88da07155a95ec12e9dc_9549d710_b7c0051e-88ff-465b-a83f-11cf3ef1cba2: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_chrome.exe_cd9fb2d5fdeb4eedc47a54a9f6b439da44a8a6_58c89a43_97c2b000-d52d-43c5-9b10-2d4fa4a633c3: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_chrome.exe_88175027348df6a4f2f29ed1b8e244dc230a6_6c772a6c_e7b719b5-9f48-4683-8812-6bce5d3c64cf: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_chrome.exe_87fcbdf97f2787af181ab7b0d2cbbf7e4487dba_58c89a43_d29ef2cb-a6dd-476f-98d4-69a5aaca097e: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_chrome.exe_7659ab404d85ca49cd9c5d3992e79aef49b69486_277ecb22_ccac5609-0aef-4f6d-a8ae-a2c924dbab0e: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_chrome.exe_6d9990266ce230d62a5d83e4bf7c39fc549188_58c89a43_ff4fd3bf-fb3c-4fe6-a181-a71b9a87380a: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_chrome.exe_49f27f0546ee65c4ccaec5c7649d91e3efcc59c_277ecb22_c98c1bd4-d112-4662-90b3-5812016ffb69: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_chrome.exe_2abb221df1add962217465e48e8fbe5b557ddf_e3732f96_19961b24-039e-4b0a-adc1-2b335d74c90c: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_AnythingLLM.exe_f416a2a8f44938d6f6b62fe2a6c54cddd120b5_f0e53a3b_7ecbfd2b-bd8c-46c0-9bfd-86a6b3f0d84e: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Antigravity.exe_cfee23745b6df3bfed7eadf8b382edeccdc2d1dd_8abe7c47_fac9c1fc-a911-46d5-b645-e3e4e844f18a: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Antigravity.exe_2318b96ae7984148d5138333e9b3ea553965c_c5e4a824_d3d6dd93-7b80-45bf-b0b9-46028c1a07ee: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Antigravity.exe_2318b96ae7984148d5138333e9b3ea553965c_c5e4a824_3d666444-76cd-4102-9a1f-42b6989229d8: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Antigravity.exe_2318b96ae7984148d5138333e9b3ea553965c_c5e4a824_06902494-1685-4487-b5de-8825c4804e5b: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_ace.exe_ce65ed806ed6648474f8ae64a3491777394161_06ad1160_4edf5af4-9b68-4769-8f8c-c4c303cc13ef: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_ace.exe_4e88c291d866348343b0b78984981043dcdcdca3_06ad1160_cac09372-6bd2-4f8b-ba5f-0acfddf5304d: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_WizTree64.exe_bf8f62ed72788ebf92653e112f83e54b73ab81b_62e3f7bf_886aeb63-76a6-48eb-909a-225af52788b1: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_WizTree64.exe_1d9a1042177d25a96f183fd247bda25f7aa6ef75_62e3f7bf_7ea79f15-9067-4d1d-a8f1-fd0d1b0d17e3: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_video_enhancer_a_1d4a2b667edb2e221697f468ea4ba1f276f5fa0_58795d43_2049a5c8-8b1a-4e69-9f3d-8a7a4842fca4: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_SDFSSvc.exe_ab11fb97f60223b29a31df9ba8b24adc8efb497_d999bcd8_a55dd272-1b9e-427c-b9e5-b4f6b4119b7d: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_SDFSSvc.exe_ab11fb97f60223b29a31df9ba8b24adc8efb497_d999bcd8_44c70f38-e54f-4cc4-afaa-cc3cf47084e1: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_SDFSSvc.exe_ab11fb97f60223b29a31df9ba8b24adc8efb497_d999bcd8_1b047a08-6ad0-4c83-9e6d-e17a2f53f227: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_GUBootService.ex_605786bff3248248edba18299ed1593346d81e9_5d8ecedd_c435f347-09e1-4d1e-979a-cf9aa7a34b9d: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_Explorer.EXE_edb7ec84e35f8c996ef82c8bc688bc8b61ba4_d82e04e4_878a0a37-b7be-4a89-8633-b1942d8e0151: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_Explorer.EXE_b61972d9d2a27da9dff0ff58eb4ed25d7356833_d82e04e4_7815c586-cb4a-4189-ac00-4db4c4a50aaa: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_Explorer.EXE_9d18ee76430443e01c4614a86f793c6bc53ff6_d82e04e4_5e3233c8-8809-45e0-9233-3923e67fc71f: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_dwm.exe_547fba8367653b90cc8c6967d84218589fda884_557f5e4f_9d6d64ac-1840-41db-9f0f-cf0e8444c1c7: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_dwm.exe_28260ff2e7c8a5e39a2e89723e138ef6b2f24_557f5e4f_f5befe6c-063e-4e6e-8273-531d7145cb57: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_dwm.exe_28260ff2e7c8a5e39a2e89723e138ef6b2f24_557f5e4f_902dbfe4-d4a3-4bde-b5ff-d63b176628ad: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_dwm.exe_28260ff2e7c8a5e39a2e89723e138ef6b2f24_557f5e4f_35f25a96-31a1-4628-af6c-6008f852b179: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_ctfmon.exe_77b1826b9b10251f9d38c4a32e6a2407cf333f5_12f2b76e_23d48f76-d885-457f-91d1-c20bddd9f115: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_comet.exe_d332c7fa1f245270dd8a52ce91329df5969d373_2d26e0fa_bbe6e636-4f4d-44b0-a5e4-f52c4e91aad2: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_comet.exe_bc92cc9493115833b7b082933d791560e9135b5_2d26e0fa_ab9b83ec-cef9-4cc8-8ae4-2c4788879a70: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_comet.exe_bc92cc9493115833b7b082933d791560e9135b5_2d26e0fa_a8c27285-9c19-4b4c-b8cc-42fe3597d7c8: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_comet.exe_bc92cc9493115833b7b082933d791560e9135b5_2d26e0fa_4eb70232-88b6-4564-881b-42da4534245c: Access is denied. (os error 5)\nrg: C:\\System Volume Information: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_chrome.exe_9551e592962fb4bf6565accd8e77124f966ddcb_277ecb22_fb0ee0bb-0c67-4cfc-8930-bbffda0ff42e: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\Virtual Hard Disks: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\SystemData: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\Power Efficiency Diagnostics: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\PackagedEventProviders: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\Models: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\LfSvc: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\Hyper-V: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\CapabilityAccessManager: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\AppRepository: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Spectrum: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\SmsRouter: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Search\\Data: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Provisioning\\AssetCache: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Network\\Downloader: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\NetFramework\\BreadcrumbStore: Access is denied. (os error 5)\nrg: C:\\Recovery: Access is denied. (os error 5)\n), 219268 results"
+2026-03-07T18:51:09.858Z [ERROR] "RangeError: RangeError: stdout maxBuffer length exceeded\n    at unknown\n    at onData (node:child_process:153:110)\n    at emit (node:events:95:22)\n    at addChunk (internal:streams/readable:264:47)\n    at readableAddChunkPushByteMode (internal:streams/readable:242:18)\n    at handleNumberResult (internal:streams/native-readable:79:18)\n    at <anonymous> (internal:streams/native-readable:53:68)\n    at processTicksAndRejections (native:7:39)"
+2026-03-07T18:52:05.664Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:52:05.664Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:52:05.664Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:52:05.664Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:52:05.664Z [DEBUG] Sending 18 skills via attachment (initial, 18 total sent)
+2026-03-07T18:52:05.665Z [DEBUG] Skill prompt: showing "anthropic-skills:canvas-design" (userFacingName="canvas-design")
+2026-03-07T18:52:05.665Z [DEBUG] Skill prompt: showing "anthropic-skills:brand-guidelines" (userFacingName="brand-guidelines")
+2026-03-07T18:52:05.665Z [DEBUG] Skill prompt: showing "anthropic-skills:doc-coauthoring" (userFacingName="doc-coauthoring")
+2026-03-07T18:52:05.665Z [DEBUG] Skill prompt: showing "anthropic-skills:algorithmic-art" (userFacingName="algorithmic-art")
+2026-03-07T18:52:05.665Z [DEBUG] Skill prompt: showing "anthropic-skills:skill-creator" (userFacingName="skill-creator")
+2026-03-07T18:52:05.665Z [DEBUG] Skill prompt: showing "anthropic-skills:docx" (userFacingName="docx")
+2026-03-07T18:52:05.665Z [DEBUG] Skill prompt: showing "anthropic-skills:pdf" (userFacingName="pdf")
+2026-03-07T18:52:05.665Z [DEBUG] Skill prompt: showing "anthropic-skills:web-artifacts-builder" (userFacingName="web-artifacts-builder")
+2026-03-07T18:52:05.665Z [DEBUG] Skill prompt: showing "anthropic-skills:theme-factory" (userFacingName="theme-factory")
+2026-03-07T18:52:05.665Z [DEBUG] Skill prompt: showing "anthropic-skills:mcp-builder" (userFacingName="mcp-builder")
+2026-03-07T18:52:05.665Z [DEBUG] Skill prompt: showing "anthropic-skills:schedule" (userFacingName="schedule")
+2026-03-07T18:52:05.665Z [DEBUG] Skill prompt: showing "anthropic-skills:internal-comms" (userFacingName="internal-comms")
+2026-03-07T18:52:05.665Z [DEBUG] Skill prompt: showing "anthropic-skills:xlsx" (userFacingName="xlsx")
+2026-03-07T18:52:05.665Z [DEBUG] Skill prompt: showing "anthropic-skills:slack-gif-creator" (userFacingName="slack-gif-creator")
+2026-03-07T18:52:05.665Z [DEBUG] Skill prompt: showing "anthropic-skills:pptx" (userFacingName="pptx")
+2026-03-07T18:52:05.666Z [WARN] [3P telemetry] Event dropped (no event logger initialized): user_prompt
+2026-03-07T18:52:05.667Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-03-07T18:52:05.667Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:52:05.667Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-03-07T18:52:05.668Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:52:05.671Z [DEBUG] autocompact: tokens=127902 threshold=167000 effectiveWindow=180000
+2026-03-07T18:52:05.672Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:52:05.692Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.464; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:52:05.692Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:52:05.693Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:52:05.693Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:52:05.693Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:52:05.694Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:52:05.694Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:52:09.211Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:53:10.526Z [DEBUG] detectFileEncoding failed for expected reason: ENOENT
+2026-03-07T18:53:10.527Z [DEBUG] MDM settings load completed in 17ms
+2026-03-07T18:53:10.543Z [DEBUG] [init] configureGlobalMTLS starting
+2026-03-07T18:53:10.543Z [DEBUG] [init] configureGlobalMTLS complete
+2026-03-07T18:53:10.543Z [DEBUG] [init] configureGlobalAgents starting
+2026-03-07T18:53:10.543Z [DEBUG] [init] configureGlobalAgents complete
+2026-03-07T18:53:10.597Z [DEBUG] Using bash path: "C:\Program Files\Git\bin\bash.exe"
+2026-03-07T18:53:10.611Z [DEBUG] Applying permission update: Adding 18 allow rule(s) to destination 'localSettings': ["Bash(powershell -Command:*)","Bash(wmic logicaldisk:*)","Bash(dir:*)","Bash(reg query:*)","Bash(findstr:*)","Bash(powershell -File:*)","Bash(ls:*)","Bash(cmd /c dir:*)","Bash(for dir in \"C:\\\\Users\\\\Public\"/*/)","Bash(done)","Bash(cmd /c \"dir /b C:\\\\Users\\\\Public\")","Bash(cmd /c \"dir /b C:\\\\Users\")","Bash(cmd /c \"dir /b C:\"\")","Bash(powershell:*)","mcp__Desktop_Commander__start_process","mcp__Desktop_Commander__read_process_output","mcp__Desktop_Commander__read_file","mcp__Desktop_Commander__write_file"]
+2026-03-07T18:53:10.612Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-03-07T18:53:10.613Z [DEBUG] [ToolSearch:optimistic] mode=standard, ENABLE_TOOL_SEARCH=false, result=false
+2026-03-07T18:53:10.613Z [DEBUG] [STARTUP] Running setup()...
+2026-03-07T18:53:10.614Z [DEBUG] Git remote URL: null
+2026-03-07T18:53:10.614Z [DEBUG] No git remote URL found
+2026-03-07T18:53:10.615Z [DEBUG] Loading skills from: managed=C:\ProgramData\ClaudeCode\.claude\skills, user=C:\Users\MQ420_OL\.claude\skills, project=[]
+2026-03-07T18:53:10.616Z [DEBUG] Error log sink initialized
+2026-03-07T18:53:10.649Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-03-07T18:53:10.654Z [DEBUG] Loaded 0 unique skills (0 unconditional, 0 conditional, managed: 0, user: 0, project: 0, additional: 0, legacy commands: 0)
+2026-03-07T18:53:10.668Z [DEBUG] Loaded inline plugin from path: anthropic-skills
+2026-03-07T18:53:10.668Z [DEBUG] Loaded 1 session-only plugins from --plugin-dir
+2026-03-07T18:53:10.669Z [DEBUG] Found 1 plugins (1 enabled, 0 disabled)
+2026-03-07T18:53:10.669Z [DEBUG] getPluginSkills: Processing 1 enabled plugins
+2026-03-07T18:53:10.669Z [DEBUG] Checking plugin anthropic-skills: skillsPath=exists, skillsPaths=0 paths
+2026-03-07T18:53:10.669Z [DEBUG] Attempting to load skills from plugin anthropic-skills default skillsPath: C:\Users\MQ420_OL\AppData\Roaming\Claude\local-agent-mode-sessions\skills-plugin\54b56db1-cf39-4c06-9546-28457803660e\7f21ad0f-1a75-4050-ad77-50d9aa6e65ce\skills
+2026-03-07T18:53:10.669Z [DEBUG] Total plugin commands loaded: 0
+2026-03-07T18:53:10.669Z [DEBUG] Registered 0 hooks from 1 plugins
+2026-03-07T18:53:10.669Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-03-07T18:53:10.669Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-03-07T18:53:10.669Z [DEBUG] [claudeai-mcp] Missing user:mcp_servers scope (scopes=user:inference)
+2026-03-07T18:53:10.701Z [DEBUG] Loaded 15 skills from plugin anthropic-skills default directory
+2026-03-07T18:53:10.701Z [DEBUG] Total plugin skills loaded: 15
+2026-03-07T18:53:10.701Z [DEBUG] getSkills returning: 0 skill dir commands, 15 plugin skills, 5 bundled skills
+2026-03-07T18:53:10.704Z [DEBUG] [STARTUP] setup() completed in 91ms
+2026-03-07T18:53:10.704Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-03-07T18:53:10.706Z [DEBUG] Total plugin agents loaded: 0
+2026-03-07T18:53:10.706Z [DEBUG] [STARTUP] Commands and agents loaded in 2ms
+2026-03-07T18:53:10.707Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-03-07T18:53:10.707Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-03-07T18:53:10.707Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-03-07T18:53:10.712Z [DEBUG] [STARTUP] MCP configs loaded in 100ms
+2026-03-07T18:53:10.716Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-03-07T18:53:10.716Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:53:10.769Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-03-07T18:53:10.769Z [DEBUG] [3P telemetry] isTelemetryEnabled=false (CLAUDE_CODE_ENABLE_TELEMETRY=undefined)
+2026-03-07T18:53:10.772Z [DEBUG] Plugin autoupdate: skipped (auto-updater disabled)
+2026-03-07T18:53:10.785Z [DEBUG] Total LSP servers loaded: 0
+2026-03-07T18:53:10.785Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-03-07T18:53:10.785Z [DEBUG] LSP manager initialized with 0 servers
+2026-03-07T18:53:10.785Z [DEBUG] LSP server manager initialized successfully
+2026-03-07T18:53:10.785Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-03-07T18:53:10.788Z [DEBUG] Getting matching hook commands for SessionStart with query: resume
+2026-03-07T18:53:10.788Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:53:10.788Z [DEBUG] Matched 0 unique hooks for query "resume" (0 before deduplication)
+2026-03-07T18:53:10.803Z [DEBUG] installPluginsForHeadless: starting
+2026-03-07T18:53:10.803Z [DEBUG] Found 0 installed plugins
+2026-03-07T18:53:10.803Z [DEBUG] installPluginsForHeadless: no missing plugins or marketplaces configured
+2026-03-07T18:53:10.809Z [DEBUG] Total plugin output styles loaded: 0
+2026-03-07T18:53:10.809Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:53:10.810Z [DEBUG] Security messages are fresh (<1h old), skipping fetch
+2026-03-07T18:53:10.810Z [DEBUG] Watching for changes in setting files C:\Users\MQ420_OL\.claude\settings.json, C:\.claude\settings.json, C:\.claude\settings.local.json...
+2026-03-07T18:53:10.931Z [ERROR] Failed to fetch org fast mode status, defaulting to disabled: AxiosError: Request failed with status code 403
+2026-03-07T18:53:10.976Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:53:10.976Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:53:10.976Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:53:10.976Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:53:10.976Z [DEBUG] Sending 18 skills via attachment (initial, 18 total sent)
+2026-03-07T18:53:10.977Z [DEBUG] Skill prompt: showing "anthropic-skills:brand-guidelines" (userFacingName="brand-guidelines")
+2026-03-07T18:53:10.977Z [DEBUG] Skill prompt: showing "anthropic-skills:docx" (userFacingName="docx")
+2026-03-07T18:53:10.977Z [DEBUG] Skill prompt: showing "anthropic-skills:mcp-builder" (userFacingName="mcp-builder")
+2026-03-07T18:53:10.977Z [DEBUG] Skill prompt: showing "anthropic-skills:algorithmic-art" (userFacingName="algorithmic-art")
+2026-03-07T18:53:10.977Z [DEBUG] Skill prompt: showing "anthropic-skills:internal-comms" (userFacingName="internal-comms")
+2026-03-07T18:53:10.977Z [DEBUG] Skill prompt: showing "anthropic-skills:canvas-design" (userFacingName="canvas-design")
+2026-03-07T18:53:10.977Z [DEBUG] Skill prompt: showing "anthropic-skills:doc-coauthoring" (userFacingName="doc-coauthoring")
+2026-03-07T18:53:10.977Z [DEBUG] Skill prompt: showing "anthropic-skills:pdf" (userFacingName="pdf")
+2026-03-07T18:53:10.977Z [DEBUG] Skill prompt: showing "anthropic-skills:pptx" (userFacingName="pptx")
+2026-03-07T18:53:10.977Z [DEBUG] Skill prompt: showing "anthropic-skills:schedule" (userFacingName="schedule")
+2026-03-07T18:53:10.977Z [DEBUG] Skill prompt: showing "anthropic-skills:skill-creator" (userFacingName="skill-creator")
+2026-03-07T18:53:10.977Z [DEBUG] Skill prompt: showing "anthropic-skills:theme-factory" (userFacingName="theme-factory")
+2026-03-07T18:53:10.977Z [DEBUG] Skill prompt: showing "anthropic-skills:slack-gif-creator" (userFacingName="slack-gif-creator")
+2026-03-07T18:53:10.977Z [DEBUG] Skill prompt: showing "anthropic-skills:web-artifacts-builder" (userFacingName="web-artifacts-builder")
+2026-03-07T18:53:10.977Z [DEBUG] Skill prompt: showing "anthropic-skills:xlsx" (userFacingName="xlsx")
+2026-03-07T18:53:10.977Z [WARN] [3P telemetry] Event dropped (no event logger initialized): user_prompt
+2026-03-07T18:53:10.978Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-03-07T18:53:10.978Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:53:10.978Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-03-07T18:53:10.979Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:53:10.981Z [DEBUG] autocompact: tokens=126034 threshold=167000 effectiveWindow=180000
+2026-03-07T18:53:10.982Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:53:11.010Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.464; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:53:11.011Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:53:11.011Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:53:11.011Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:53:11.011Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:53:11.011Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:53:11.012Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:53:11.239Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=C:\Users\MQ420_OL\AppData\Roaming\Claude\claude-code\2.1.63\claude.exe)
+2026-03-07T18:53:12.049Z [DEBUG] "rg error (signal=undefined, code=ERR_CHILD_PROCESS_STDIO_MAXBUFFER, stderr: rg: C:\\Config.Msi: Access is denied. (os error 5)\nrg: C:\\Windows\\WUModels: Access is denied. (os error 5)\nrg: C:\\Windows\\Provisioning\\Autopilot: Access is denied. (os error 5)\nrg: C:\\ProgramData\\WindowsHolographicDevices: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Windows Master Store\\ServiceData: Access is denied. (os error 5)\nrg: C:\\Windows\\Prefetch: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-Win10-Win11-Oct4\\Packages: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-Win10-Win11-Oct4\\Config: Access is denied. (os error 5)\nrg: C:\\Windows\\ModemLogs: Access is denied. (os error 5)\nrg: C:\\Windows\\Minidump: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-MinimalSetup-221003_web\\Config: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-MinimalSetup-221003_web\\Bin64: Access is denied. (os error 5)\nrg: C:\\Windows\\appcompat\\Programs: Access is denied. (os error 5)\nrg: C:\\Windows\\appcompat\\Backup: Access is denied. (os error 5)\nrg: C:\\Windows\\appcompat\\appraiser: Access is denied. (os error 5)\nrg: C:\\Users\\Public\\_Personal\\desktop-items\\desktop-items\\3I1c8ee49zMlEV9qza: Access is denied. (os error 5)\nrg: C:\\Windows\\ServiceState: Access is denied. (os error 5)\nrg: C:\\Windows\\ServiceProfiles\\OVRLibraryService: Access is denied. (os error 5)\nrg: C:\\Windows\\ServiceProfiles\\NetworkService: Access is denied. (os error 5)\nrg: C:\\Windows\\ServiceProfiles\\LocalService: Access is denied. (os error 5)\nrg: C:\\Windows\\security\\cap: Access is denied. (os error 5)\nrg: C:\\Windows\\security\\audit: Access is denied. (os error 5)\nrg: C:\\Windows\\Resources\\Themes\\aero\\VSCache: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Avast Software\\Icarus\\Logs\\.private: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Alienware\\Alienware Command Center\\FXMetadata: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1064: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1061: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1059: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1049: Access is denied. (os error 5)\nrg: C:\\Recovery: Access is denied. (os error 5)\nrg: C:\\System Volume Information: Access is denied. (os error 5)\nrg: C:\\Windows\\Logs\\SystemRestore: Access is denied. (os error 5)\nrg: C:\\Windows\\LiveKernelReports: Access is denied. (os error 5)\nrg: C:\\Windows\\Installer\\Config.Msi: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1045: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1044: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1038: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1035: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1031: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-18: Access is denied. (os error 5)\nrg: C:\\Program Files (x86)\\Dropbox\\CrashReports: Access is denied. (os error 5)\n), 198947 results"
+2026-03-07T18:53:12.049Z [ERROR] "RangeError: RangeError: stdout maxBuffer length exceeded\n    at unknown\n    at onData (node:child_process:153:110)\n    at emit (node:events:95:22)\n    at addChunk (internal:streams/readable:264:47)\n    at readableAddChunkPushByteMode (internal:streams/readable:242:18)\n    at handleNumberResult (internal:streams/native-readable:79:18)\n    at <anonymous> (internal:streams/native-readable:53:68)\n    at processTicksAndRejections (native:7:39)"
+2026-03-07T18:53:14.199Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:53:24.102Z [DEBUG] detectFileEncoding failed for expected reason: ENOENT
+2026-03-07T18:53:24.102Z [DEBUG] MDM settings load completed in 16ms
+2026-03-07T18:53:24.123Z [DEBUG] [init] configureGlobalMTLS starting
+2026-03-07T18:53:24.123Z [DEBUG] [init] configureGlobalMTLS complete
+2026-03-07T18:53:24.123Z [DEBUG] [init] configureGlobalAgents starting
+2026-03-07T18:53:24.123Z [DEBUG] [init] configureGlobalAgents complete
+2026-03-07T18:53:24.179Z [DEBUG] Using bash path: "C:\Program Files\Git\bin\bash.exe"
+2026-03-07T18:53:24.194Z [DEBUG] Applying permission update: Adding 18 allow rule(s) to destination 'localSettings': ["Bash(powershell -Command:*)","Bash(wmic logicaldisk:*)","Bash(dir:*)","Bash(reg query:*)","Bash(findstr:*)","Bash(powershell -File:*)","Bash(ls:*)","Bash(cmd /c dir:*)","Bash(for dir in \"C:\\\\Users\\\\Public\"/*/)","Bash(done)","Bash(cmd /c \"dir /b C:\\\\Users\\\\Public\")","Bash(cmd /c \"dir /b C:\\\\Users\")","Bash(cmd /c \"dir /b C:\"\")","Bash(powershell:*)","mcp__Desktop_Commander__start_process","mcp__Desktop_Commander__read_process_output","mcp__Desktop_Commander__read_file","mcp__Desktop_Commander__write_file"]
+2026-03-07T18:53:24.195Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-03-07T18:53:24.196Z [DEBUG] [ToolSearch:optimistic] mode=standard, ENABLE_TOOL_SEARCH=false, result=false
+2026-03-07T18:53:24.197Z [DEBUG] [STARTUP] Running setup()...
+2026-03-07T18:53:24.197Z [DEBUG] Git remote URL: null
+2026-03-07T18:53:24.197Z [DEBUG] No git remote URL found
+2026-03-07T18:53:24.199Z [DEBUG] Loading skills from: managed=C:\ProgramData\ClaudeCode\.claude\skills, user=C:\Users\MQ420_OL\.claude\skills, project=[]
+2026-03-07T18:53:24.199Z [DEBUG] Error log sink initialized
+2026-03-07T18:53:24.237Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-03-07T18:53:24.244Z [DEBUG] Loaded 0 unique skills (0 unconditional, 0 conditional, managed: 0, user: 0, project: 0, additional: 0, legacy commands: 0)
+2026-03-07T18:53:24.260Z [DEBUG] Loaded inline plugin from path: anthropic-skills
+2026-03-07T18:53:24.260Z [DEBUG] Loaded 1 session-only plugins from --plugin-dir
+2026-03-07T18:53:24.260Z [DEBUG] Found 1 plugins (1 enabled, 0 disabled)
+2026-03-07T18:53:24.260Z [DEBUG] getPluginSkills: Processing 1 enabled plugins
+2026-03-07T18:53:24.260Z [DEBUG] Checking plugin anthropic-skills: skillsPath=exists, skillsPaths=0 paths
+2026-03-07T18:53:24.260Z [DEBUG] Attempting to load skills from plugin anthropic-skills default skillsPath: C:\Users\MQ420_OL\AppData\Roaming\Claude\local-agent-mode-sessions\skills-plugin\54b56db1-cf39-4c06-9546-28457803660e\7f21ad0f-1a75-4050-ad77-50d9aa6e65ce\skills
+2026-03-07T18:53:24.261Z [DEBUG] Total plugin commands loaded: 0
+2026-03-07T18:53:24.261Z [DEBUG] Registered 0 hooks from 1 plugins
+2026-03-07T18:53:24.261Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-03-07T18:53:24.261Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-03-07T18:53:24.261Z [DEBUG] [claudeai-mcp] Missing user:mcp_servers scope (scopes=user:inference)
+2026-03-07T18:53:24.289Z [DEBUG] Loaded 15 skills from plugin anthropic-skills default directory
+2026-03-07T18:53:24.289Z [DEBUG] Total plugin skills loaded: 15
+2026-03-07T18:53:24.290Z [DEBUG] getSkills returning: 0 skill dir commands, 15 plugin skills, 5 bundled skills
+2026-03-07T18:53:24.293Z [DEBUG] [STARTUP] setup() completed in 96ms
+2026-03-07T18:53:24.293Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-03-07T18:53:24.295Z [DEBUG] Total plugin agents loaded: 0
+2026-03-07T18:53:24.295Z [DEBUG] [STARTUP] Commands and agents loaded in 2ms
+2026-03-07T18:53:24.295Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-03-07T18:53:24.295Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-03-07T18:53:24.295Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-03-07T18:53:24.299Z [DEBUG] [STARTUP] MCP configs loaded in 104ms
+2026-03-07T18:53:24.304Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-03-07T18:53:24.305Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:53:24.364Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-03-07T18:53:24.364Z [DEBUG] [3P telemetry] isTelemetryEnabled=false (CLAUDE_CODE_ENABLE_TELEMETRY=undefined)
+2026-03-07T18:53:24.368Z [DEBUG] Plugin autoupdate: skipped (auto-updater disabled)
+2026-03-07T18:53:24.380Z [DEBUG] Total LSP servers loaded: 0
+2026-03-07T18:53:24.380Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-03-07T18:53:24.380Z [DEBUG] LSP manager initialized with 0 servers
+2026-03-07T18:53:24.380Z [DEBUG] LSP server manager initialized successfully
+2026-03-07T18:53:24.380Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-03-07T18:53:24.383Z [DEBUG] Getting matching hook commands for SessionStart with query: resume
+2026-03-07T18:53:24.383Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:53:24.383Z [DEBUG] Matched 0 unique hooks for query "resume" (0 before deduplication)
+2026-03-07T18:53:24.402Z [DEBUG] installPluginsForHeadless: starting
+2026-03-07T18:53:24.403Z [DEBUG] Found 0 installed plugins
+2026-03-07T18:53:24.403Z [DEBUG] installPluginsForHeadless: no missing plugins or marketplaces configured
+2026-03-07T18:53:24.412Z [DEBUG] Total plugin output styles loaded: 0
+2026-03-07T18:53:24.412Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:53:24.413Z [DEBUG] Watching for changes in setting files C:\Users\MQ420_OL\.claude\settings.json, C:\.claude\settings.json, C:\.claude\settings.local.json...
+2026-03-07T18:53:24.414Z [DEBUG] Security messages are fresh (<1h old), skipping fetch
+2026-03-07T18:53:24.461Z [ERROR] Failed to fetch org fast mode status, defaulting to disabled: AxiosError: Request failed with status code 403
+2026-03-07T18:53:24.666Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:53:24.666Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:53:24.666Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:53:24.666Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:53:24.667Z [DEBUG] Sending 18 skills via attachment (initial, 18 total sent)
+2026-03-07T18:53:24.667Z [DEBUG] Skill prompt: showing "anthropic-skills:brand-guidelines" (userFacingName="brand-guidelines")
+2026-03-07T18:53:24.667Z [DEBUG] Skill prompt: showing "anthropic-skills:algorithmic-art" (userFacingName="algorithmic-art")
+2026-03-07T18:53:24.667Z [DEBUG] Skill prompt: showing "anthropic-skills:canvas-design" (userFacingName="canvas-design")
+2026-03-07T18:53:24.667Z [DEBUG] Skill prompt: showing "anthropic-skills:doc-coauthoring" (userFacingName="doc-coauthoring")
+2026-03-07T18:53:24.667Z [DEBUG] Skill prompt: showing "anthropic-skills:docx" (userFacingName="docx")
+2026-03-07T18:53:24.667Z [DEBUG] Skill prompt: showing "anthropic-skills:skill-creator" (userFacingName="skill-creator")
+2026-03-07T18:53:24.667Z [DEBUG] Skill prompt: showing "anthropic-skills:web-artifacts-builder" (userFacingName="web-artifacts-builder")
+2026-03-07T18:53:24.667Z [DEBUG] Skill prompt: showing "anthropic-skills:xlsx" (userFacingName="xlsx")
+2026-03-07T18:53:24.667Z [DEBUG] Skill prompt: showing "anthropic-skills:schedule" (userFacingName="schedule")
+2026-03-07T18:53:24.667Z [DEBUG] Skill prompt: showing "anthropic-skills:pdf" (userFacingName="pdf")
+2026-03-07T18:53:24.667Z [DEBUG] Skill prompt: showing "anthropic-skills:theme-factory" (userFacingName="theme-factory")
+2026-03-07T18:53:24.667Z [DEBUG] Skill prompt: showing "anthropic-skills:pptx" (userFacingName="pptx")
+2026-03-07T18:53:24.667Z [DEBUG] Skill prompt: showing "anthropic-skills:slack-gif-creator" (userFacingName="slack-gif-creator")
+2026-03-07T18:53:24.667Z [DEBUG] Skill prompt: showing "anthropic-skills:internal-comms" (userFacingName="internal-comms")
+2026-03-07T18:53:24.667Z [DEBUG] Skill prompt: showing "anthropic-skills:mcp-builder" (userFacingName="mcp-builder")
+2026-03-07T18:53:24.668Z [WARN] [3P telemetry] Event dropped (no event logger initialized): user_prompt
+2026-03-07T18:53:24.669Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-03-07T18:53:24.669Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:53:24.669Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-03-07T18:53:24.670Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:53:24.673Z [DEBUG] autocompact: tokens=126034 threshold=167000 effectiveWindow=180000
+2026-03-07T18:53:24.674Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:53:24.697Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.464; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:53:24.698Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:53:24.698Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:53:24.698Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:53:24.698Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:53:24.699Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:53:24.699Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:53:24.997Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=C:\Users\MQ420_OL\AppData\Roaming\Claude\claude-code\2.1.63\claude.exe)
+2026-03-07T18:53:25.639Z [DEBUG] "rg error (signal=undefined, code=ERR_CHILD_PROCESS_STDIO_MAXBUFFER, stderr: rg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1064: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1061: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1059: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1049: Access is denied. (os error 5)\nrg: C:\\Config.Msi: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1045: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1044: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1038: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1035: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1031: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-18: Access is denied. (os error 5)\nrg: C:\\ProgramData\\WindowsHolographicDevices: Access is denied. (os error 5)\nrg: C:\\Windows\\WUModels: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Windows Master Store\\ServiceData: Access is denied. (os error 5)\nrg: C:\\Users\\Public\\_Personal\\desktop-items\\desktop-items\\3I1c8ee49zMlEV9qza: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-Win10-Win11-Oct4\\Packages: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-MinimalSetup-221003_web\\Config: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Alienware\\Alienware Command Center\\FXMetadata: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-MinimalSetup-221003_web\\Bin64: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-Win10-Win11-Oct4\\Config: Access is denied. (os error 5)\nrg: C:\\Library Folders\\Shortcuts: Access is denied. (os error 5)\nrg: C:\\OneDriveTemp\\S-1-5-21-1067785876-3014793013-136133255-1064: Access is denied. (os error 5)\nrg: C:\\Program Files (x86)\\Dropbox\\CrashReports: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Avast Software\\Icarus\\Logs\\.private: Access is denied. (os error 5)\nrg: C:\\ProgramData\\DockerDesktop\\tmp-d4w: Access is denied. (os error 5)\nrg: C:\\System Volume Information: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Dell\\UpdateService: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Dell\\SARemediation: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Dell\\DellDataVault\\Log: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Dell\\DellDataVault\\Data: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Dell\\DellDataVault\\Archive: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Dell\\AWCCService: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows NT\\MSFax: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\Support: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\Scans: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\Quarantine: Access is denied. (os error 5)\nrg: C:\\Program Files (x86)\\Google\\CrashReports: Access is denied. (os error 5)\nrg: C:\\Recovery: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\Payloads: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\Network Inspection System: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\LocalCopy: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\Features: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\DLPCache: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows Defender\\Clean Store: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WindowsApps: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\wfp: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\NonCritical_Update;ScanForUp_a738f8128b46a1e3bf7beac0f96aa419bec1bd6_00000000_edbf18bb-634b-4330-a551-460af75a3383: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Kernel_3b_d3315e8f252572cd9d881bd2b718a7fb83a62d44_00000000_cab_b1b3be1f-5901-4e0c-b9b5-a5b91f3b19cd: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_WizTree64.exe_a1ccd576b4c5e97dc3ec7b2b1527ef923864044_62e3f7bf_5a68ffe2-c5f2-4822-a76b-27e1b36a8f1b: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_WizTree64.exe_6e42f29d88cbc1c6aacdc43eef25782e169f0_62e3f7bf_d42e7498-ca6f-45ce-a6f7-f5acfe22e471: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Wispr Flow.exe_fb1dc7bbceee5390d12b9a95f46161d8c4f655b5_e73a242b_21f9a90c-ef21-4882-8846-e7972eb5055e: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Wispr Flow.exe_f2b8ad137fb9b232657cf26236c3d662205c8da3_be5ca41e_a7258cf7-4ede-4683-ad7b-ea694fc9a5e6: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Wispr Flow.exe_6fb980fe52478e32196bb71bc0a3364bbeaccad0_55791c5b_d75c20c7-6be0-4745-9af9-fb99cf4b1fcf: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Wispr Flow.exe_6fb980fe52478e32196bb71bc0a3364bbeaccad0_55791c5b_32c1314a-b2b2-45d1-9272-38dbd9d45391: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Wispr Flow.exe_6fb980fe52478e32196bb71bc0a3364bbeaccad0_55791c5b_12977b6d-f1f4-4323-86d9-0750241d1268: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_VSCodium.exe_8a248da97317d34d7243c75d7f2a4e3903ed7e9_c7b6f0eb_ea257de3-4168-4e14-a7e9-5e006eac666d: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_VSCodium.exe_11fa35b046a84a4a5e358d45ce97fdc96a9d0b6_c7b6f0eb_8308e521-1c88-4e6c-b977-ad572b971d81: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_sublime_text.exe_383fcaaebf3b13c31120768086b5ba1857161b_f2f8854a_578fa927-0b30-4488-9524-fe6b28b07227: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Spark Desktop.ex_8f9cd701248dd88cf8a44d2fcad395afd43d66_6ff20d85_da200e6b-8aa7-4ed9-985a-3d75d504115d: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Spark Desktop.ex_7b5e6952a5229ff874c02ed76d3a8a988df4dc7_6ff20d85_722ee419-4226-4550-947a-d9167f46ce45: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Spark Desktop.ex_7b5e6952a5229ff874c02ed76d3a8a988df4dc7_6ff20d85_45d7fdfa-8e74-4fd1-ad0a-ee8ec66793b6: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Spark Desktop.ex_7426a36a369b6aece15da31cb6971a79c4d0f8_6ff20d85_deabd204-dae8-4590-b1ff-747b587bb71b: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_powershell.exe_3b7d575faf2d999f6b2f82546a685497f018a5_00000000_69db637d-e8a1-4a32-910c-514babdf50a6: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_opera.exe_d239d61d5b7da09e4e4db9df398a8a11d78abe42_546d9e59_f7161976-60f0-4c4f-9ee9-9ceec9eedc91: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_opera.exe_8dd24ffe685afe362ffbf44e2f1dd90227544b5_546d9e59_dbf60bdd-1539-4dc7-ac3d-7d64f081555f: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_opera.exe_8dd24ffe685afe362ffbf44e2f1dd90227544b5_546d9e59_9f985075-161b-45c8-8f7a-d4bf86f290a5: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_opera.exe_8dd24ffe685afe362ffbf44e2f1dd90227544b5_546d9e59_09b16425-74f3-4834-9ab3-31d4f87d735b: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_opera.exe_6c8d8a24a10fb92cc78443b571ccdbb8dc2ea4f_dc888f9f_bd36b5fa-3b6d-40ea-9713-80dded8e1323: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_opera.exe_2ad71e9371e35de09efe8dfedf3752b922d9370_546d9e59_3b1ac86f-40a0-4bb3-b174-6b69785b1b21: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_opera.exe_2142b11f70ecbd814e349458e4b6dcf5acebed2_4c4486eb_564ddd96-6b7f-4f5d-ab07-ef4777493230: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Obsidian.exe_945aeafdf51f77f2c5c9c62976b1cbde8b1b8c57_7bf89393_bcfa06fa-95fa-4c9c-a0aa-c69ed122152d: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_msedge.exe_f026f248724925462ec12cc80a897d5c8c5064_af073baf_addcce2c-429c-49a9-b1a1-e2a4ae30e66f: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_msedge.exe_dfdba89f6b9c334c9e92bb1ecb3e37941ed9195_29b13430_a9dcc525-28c1-427b-89cc-4944f16ed33d: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_msedge.exe_d4b21bda7937f0b242713876ce6a7805eca301d_af073baf_88e8c353-70cb-4e86-87ff-72e3251f43e9: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_msedge.exe_d2ff185fd2fcbeb873404dea5f77d7aaea5bd9_29b13430_85c758bb-b90b-456b-a129-a9749acadb95: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_msedge.exe_c8bd23dbfa59468539cff1bb48c734a95530e7_af073baf_88ed885d-a254-46e0-9227-6fd16348f9ed: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_msedge.exe_a5cd444d9a5763c95d8de236b4e0c6aa8267f9fc_29b13430_c461a280-7035-43ba-b63b-2b508a0b9bf9: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_msedge.exe_31803ea4628c43149e42dd5a5014f12447e7d1_af073baf_c6aa85df-7bc3-41cc-868c-02bf3db78057: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Microsoft.Window_97caae6e82a1a1db74adf9aa80518362ca656188_b9805265_a5d01281-9409-4519-9b76-79ca27cddecd: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Microsoft.Copilo_773ae071f948dc345758d4bdbb3608c959af83_bbe09b1c_fc4da3ae-6138-4f51-acfc-fee1e51b4f44: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Microsoft.Copilo_773ae071f948dc345758d4bdbb3608c959af83_bbe09b1c_d1a8a444-dd50-4806-9733-4dfd995d4bd6: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Microsoft.Copilo_773ae071f948dc345758d4bdbb3608c959af83_bbe09b1c_2a88eddd-230f-42d2-9c3b-e02516b4771c: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Microsoft.Copilo_4b8c839ebf24822e7f9fe3f60404c740437b42_bbe09b1c_c7fd51e5-1353-4986-8ffa-28fe835b24d2: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Microsoft.Copilo_17fe35ae9a7fa8570c78c292f92b7fa8541d_bbe09b1c_d8aa9007-f6d3-4804-8dcd-3f3996278c87: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Highlight.exe_1c8fc4e8d08de41dadf9744c72c651d7c888e_3f401bb4_b8642958-c668-4dcd-ae7e-4cc3c983a0f9: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Highlight.exe_1c8fc4e8d08de41dadf9744c72c651d7c888e_3f401bb4_11a1ebe0-12bb-41a1-98f0-b5349920db5d: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Cursor.exe_daa6f81d48cbe5c26bc26f3c915c8f208c4bde7_ccb0705b_633a8104-e3bc-4077-8ad6-0f839e433a90: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Cursor.exe_7e7ec032c5abdab34c1759cf312ecc1cd12c8cd8_fa0b9d4c_55f48257-15ff-4e0e-acf3-e640ac9ca66f: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Cursor.exe_227cd870d33ca499ee7bcf5a725bba6997496ea1_1083aea4_1de3f4a5-cd1a-46b3-b27e-1ab4b29b33f2: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_f1a729b1a87e3f255d71cc9e2a1937b91d4b22_2d26e0fa_c6293379-bbc9-4967-b8d1-8eeb42bc1ac3: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_bbb4bc258ba67d8135dc745c13a31fa513d46_edde25bb_1b21a1a7-5877-4c70-b0d3-347238b84748: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_b4f6a688be88accb376941763c3f35301390f720_2d26e0fa_217ae293-8401-4d30-9c34-94c0087ee1bc: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_a310c3df7c1d9ffec6ed46598d819b4121e5e7f_edde25bb_ee031ebd-7d29-4ce7-abfc-e0b8f039a9da: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_a310c3df7c1d9ffec6ed46598d819b4121e5e7f_edde25bb_2ec8d645-ee45-4cff-8a10-c2d75e43c0be: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_a2a1f857bc6cfd5ed57622ce8e4d757091d215c_edde25bb_5d095b2f-19bf-4a91-a17a-06a5a6e7d098: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_7a499e965113475b3d96da4b458825c35f08b96_edde25bb_ec2999ea-c195-4bed-8c24-840cae58a691: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_665b24566b8ac6dc19175e7b136396793f2d1df_edde25bb_007983d3-506c-4dd9-aa0e-7c519ba43ed3: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_4e7d3f49dbf8edf32baa859199d7212a4afc8_2d26e0fa_81e1efcb-5b76-4ebd-9662-10075566df00: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_comet.exe_1d3bc94e2671d13540b37dac6951b495e16ddfda_2d26e0fa_fc6d4e9c-8cb5-46c3-acb8-a3fd38b33cdc: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Code.exe_f7ca49f88e19d85dae41acd78be3268d6acde03f_72264d88_5f6d38af-8e27-4c63-8625-c80e04a1c28d: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Code - Insiders._257626fbf1c1b7f853b6c83ebf6d7f66afe4cfc_2261f58d_6a188e4e-d8cb-433f-a9ad-bc79794a1443: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.4498._7746944b0cff3c32817e95654835d9c65fa7c_5625bfa7_29f943e9-646b-427e-bc89-415819a7c745: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.4498._12d6a481b730e2ca734f7f27b4e5d5bf0e543c_5625bfa7_6e146d66-e622-4c8b-bc0b-eb7e2a7e41da: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.4328._f01bc5af2755decd1d6c50c19ef0364ccd4d7b53_a5b74e23_e680dbda-85c2-4ebf-97b0-7a2281b0be25: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.4328._f01bc5af2755decd1d6c50c19ef0364ccd4d7b53_a5b74e23_96dbeb8a-761c-4fa5-87ab-0707e7018efd: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.4173._2a4feda97b99075989480594f8fc9fbd48e349f_5bd511f6_6414b8ed-1944-4d06-9209-b6d3cd0052d3: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.4088._dce737ca71fdbfc8e1cdbd6b1317ec0dd899fda_5de32f90_367a6bc9-18d4-40dc-bd27-2cfd8a48a4a2: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.4010._fcf2fe92ce738615d4bd5cbd25a08ddff150a3_91e6a047_a4bb629e-1244-420e-9ade-1e0fef175d15: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.4010._e157137d3bafe8fee6f99642d1f9c40ecc7e443_91e6a047_6ec50156-e29a-47cc-b5b2-d2e6d765d702: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.3963._dabfcd1a46bbf09289c959b0516a685ebdef0_1a7fef52_ba136b79-f94f-4a8b-8c74-8e975ef965c4: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Claude_1.1.3963._dabfcd1a46bbf09289c959b0516a685ebdef0_1a7fef52_a33545e8-7abd-4dcf-8327-51d79e593d1b: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_chrome.exe_ed32d656c93ae9d3d1725a8731d4d26691496a_58c89a43_1765bdc9-c7aa-44c0-8b85-f9e0389a96ef: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_chrome.exe_de1cd1e56912dbb2d88da07155a95ec12e9dc_9549d710_b7c0051e-88ff-465b-a83f-11cf3ef1cba2: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_chrome.exe_cd9fb2d5fdeb4eedc47a54a9f6b439da44a8a6_58c89a43_97c2b000-d52d-43c5-9b10-2d4fa4a633c3: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_chrome.exe_88175027348df6a4f2f29ed1b8e244dc230a6_6c772a6c_e7b719b5-9f48-4683-8812-6bce5d3c64cf: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_chrome.exe_87fcbdf97f2787af181ab7b0d2cbbf7e4487dba_58c89a43_d29ef2cb-a6dd-476f-98d4-69a5aaca097e: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_chrome.exe_7659ab404d85ca49cd9c5d3992e79aef49b69486_277ecb22_ccac5609-0aef-4f6d-a8ae-a2c924dbab0e: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_chrome.exe_6d9990266ce230d62a5d83e4bf7c39fc549188_58c89a43_ff4fd3bf-fb3c-4fe6-a181-a71b9a87380a: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_chrome.exe_49f27f0546ee65c4ccaec5c7649d91e3efcc59c_277ecb22_c98c1bd4-d112-4662-90b3-5812016ffb69: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_chrome.exe_2abb221df1add962217465e48e8fbe5b557ddf_e3732f96_19961b24-039e-4b0a-adc1-2b335d74c90c: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_AnythingLLM.exe_f416a2a8f44938d6f6b62fe2a6c54cddd120b5_f0e53a3b_7ecbfd2b-bd8c-46c0-9bfd-86a6b3f0d84e: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Antigravity.exe_cfee23745b6df3bfed7eadf8b382edeccdc2d1dd_8abe7c47_fac9c1fc-a911-46d5-b645-e3e4e844f18a: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Antigravity.exe_2318b96ae7984148d5138333e9b3ea553965c_c5e4a824_d3d6dd93-7b80-45bf-b0b9-46028c1a07ee: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Antigravity.exe_2318b96ae7984148d5138333e9b3ea553965c_c5e4a824_3d666444-76cd-4102-9a1f-42b6989229d8: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_Antigravity.exe_2318b96ae7984148d5138333e9b3ea553965c_c5e4a824_06902494-1685-4487-b5de-8825c4804e5b: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_ace.exe_ce65ed806ed6648474f8ae64a3491777394161_06ad1160_4edf5af4-9b68-4769-8f8c-c4c303cc13ef: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\Critical_ace.exe_4e88c291d866348343b0b78984981043dcdcdca3_06ad1160_cac09372-6bd2-4f8b-ba5f-0acfddf5304d: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_WizTree64.exe_bf8f62ed72788ebf92653e112f83e54b73ab81b_62e3f7bf_886aeb63-76a6-48eb-909a-225af52788b1: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_WizTree64.exe_1d9a1042177d25a96f183fd247bda25f7aa6ef75_62e3f7bf_7ea79f15-9067-4d1d-a8f1-fd0d1b0d17e3: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_video_enhancer_a_1d4a2b667edb2e221697f468ea4ba1f276f5fa0_58795d43_2049a5c8-8b1a-4e69-9f3d-8a7a4842fca4: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_SDFSSvc.exe_ab11fb97f60223b29a31df9ba8b24adc8efb497_d999bcd8_a55dd272-1b9e-427c-b9e5-b4f6b4119b7d: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_SDFSSvc.exe_ab11fb97f60223b29a31df9ba8b24adc8efb497_d999bcd8_44c70f38-e54f-4cc4-afaa-cc3cf47084e1: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_SDFSSvc.exe_ab11fb97f60223b29a31df9ba8b24adc8efb497_d999bcd8_1b047a08-6ad0-4c83-9e6d-e17a2f53f227: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_GUBootService.ex_605786bff3248248edba18299ed1593346d81e9_5d8ecedd_c435f347-09e1-4d1e-979a-cf9aa7a34b9d: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_Explorer.EXE_edb7ec84e35f8c996ef82c8bc688bc8b61ba4_d82e04e4_878a0a37-b7be-4a89-8633-b1942d8e0151: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_Explorer.EXE_b61972d9d2a27da9dff0ff58eb4ed25d7356833_d82e04e4_7815c586-cb4a-4189-ac00-4db4c4a50aaa: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_Explorer.EXE_9d18ee76430443e01c4614a86f793c6bc53ff6_d82e04e4_5e3233c8-8809-45e0-9233-3923e67fc71f: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_dwm.exe_547fba8367653b90cc8c6967d84218589fda884_557f5e4f_9d6d64ac-1840-41db-9f0f-cf0e8444c1c7: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_dwm.exe_28260ff2e7c8a5e39a2e89723e138ef6b2f24_557f5e4f_f5befe6c-063e-4e6e-8273-531d7145cb57: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_dwm.exe_28260ff2e7c8a5e39a2e89723e138ef6b2f24_557f5e4f_902dbfe4-d4a3-4bde-b5ff-d63b176628ad: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_dwm.exe_28260ff2e7c8a5e39a2e89723e138ef6b2f24_557f5e4f_35f25a96-31a1-4628-af6c-6008f852b179: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_ctfmon.exe_77b1826b9b10251f9d38c4a32e6a2407cf333f5_12f2b76e_23d48f76-d885-457f-91d1-c20bddd9f115: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_comet.exe_d332c7fa1f245270dd8a52ce91329df5969d373_2d26e0fa_bbe6e636-4f4d-44b0-a5e4-f52c4e91aad2: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_comet.exe_bc92cc9493115833b7b082933d791560e9135b5_2d26e0fa_ab9b83ec-cef9-4cc8-8ae4-2c4788879a70: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_comet.exe_bc92cc9493115833b7b082933d791560e9135b5_2d26e0fa_a8c27285-9c19-4b4c-b8cc-42fe3597d7c8: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_comet.exe_bc92cc9493115833b7b082933d791560e9135b5_2d26e0fa_4eb70232-88b6-4564-881b-42da4534245c: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_chrome.exe_9551e592962fb4bf6565accd8e77124f966ddcb_277ecb22_fb0ee0bb-0c67-4cfc-8930-bbffda0ff42e: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\Virtual Hard Disks: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\SystemData: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\Power Efficiency Diagnostics: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\PackagedEventProviders: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\Models: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\LfSvc: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\Hyper-V: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\CapabilityAccessManager: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Crypto\\PCPKSP\\WindowsAIK: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Razer\\Razer Central\\Notifications\\RZR_028097274d6982e10748814cc088\\BigData: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Windows\\AppRepository: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Razer\\Razer Central\\Accounts: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Spectrum: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\SmsRouter: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Search\\Data: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Provisioning\\AssetCache: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\Network\\Downloader: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Microsoft\\NetFramework\\BreadcrumbStore: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Piriform\\Icarus\\Logs\\.private: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Packages: Access is denied. (os error 5)\n), 211830 results"
+2026-03-07T18:53:25.639Z [ERROR] "RangeError: RangeError: stdout maxBuffer length exceeded\n    at unknown\n    at onData (node:child_process:153:110)\n    at emit (node:events:95:22)\n    at addChunk (internal:streams/readable:264:47)\n    at readableAddChunkPushByteMode (internal:streams/readable:242:18)\n    at handleNumberResult (internal:streams/native-readable:79:18)\n    at <anonymous> (internal:streams/native-readable:53:68)\n    at processTicksAndRejections (native:7:39)"
+2026-03-07T18:53:27.214Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:54:11.043Z [WARN] Streaming stall detected: 39.4s gap between events (stall #1)
+2026-03-07T18:54:11.990Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__write_file
+2026-03-07T18:54:11.990Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__write_file
+2026-03-07T18:54:11.990Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:54:11.990Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__write_file" (0 before deduplication)
+2026-03-07T18:54:11.991Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: write_file
+2026-03-07T18:54:12.010Z [WARN] Streaming completed with 1 stall(s), total stall time: 39.4s
+2026-03-07T18:54:12.218Z [DEBUG] MCP server "Desktop Commander": Tool 'write_file' completed successfully in 227ms
+2026-03-07T18:54:12.220Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__write_file
+2026-03-07T18:54:12.220Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:54:12.220Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__write_file" (1 before deduplication)
+2026-03-07T18:54:12.226Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-07T18:54:12.227Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:54:12.227Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:54:12.227Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:54:12.227Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:54:12.227Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:54:12.227Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:54:12.227Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:54:12.227Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:54:12.228Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:54:12.228Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:54:12.228Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:54:12.229Z [DEBUG] autocompact: tokens=127887 threshold=167000 effectiveWindow=180000
+2026-03-07T18:54:12.229Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:54:12.235Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.464; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:54:12.235Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:54:12.236Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:54:12.236Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:54:12.236Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:54:12.236Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:54:12.236Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:54:13.659Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:54:14.703Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:54:17.689Z [DEBUG] executePreToolHooks called for tool: TodoWrite
+2026-03-07T18:54:17.691Z [DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+2026-03-07T18:54:17.691Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:54:17.691Z [DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+2026-03-07T18:54:17.694Z [DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+2026-03-07T18:54:17.694Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:54:17.694Z [DEBUG] Matched 1 unique hooks for query "TodoWrite" (1 before deduplication)
+2026-03-07T18:54:17.698Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-07T18:54:17.699Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:54:17.699Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:54:17.699Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:54:17.699Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:54:17.699Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:54:17.699Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:54:17.699Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:54:17.699Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:54:17.700Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:54:17.700Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:54:17.700Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:54:17.701Z [DEBUG] autocompact: tokens=128236 threshold=167000 effectiveWindow=180000
+2026-03-07T18:54:17.702Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:54:17.706Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.464; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:54:17.706Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:54:17.707Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:54:17.707Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:54:17.707Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:54:17.707Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:54:17.707Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:54:18.707Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:54:21.427Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:54:56.523Z [WARN] Streaming stall detected: 35.1s gap between events (stall #1)
+2026-03-07T18:54:56.893Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__write_file
+2026-03-07T18:54:56.893Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__write_file
+2026-03-07T18:54:56.893Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:54:56.893Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__write_file" (0 before deduplication)
+2026-03-07T18:54:56.894Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: write_file
+2026-03-07T18:54:56.913Z [WARN] Streaming completed with 1 stall(s), total stall time: 35.1s
+2026-03-07T18:54:56.916Z [DEBUG] Writing to temp file: C:\Users\MQ420_OL\.claude.json.tmp.17768.1772909696916
+2026-03-07T18:54:56.917Z [DEBUG] Preserving file permissions: 100666
+2026-03-07T18:54:56.918Z [DEBUG] Temp file written successfully, size: 16171 bytes
+2026-03-07T18:54:56.918Z [DEBUG] Applied original permissions to temp file
+2026-03-07T18:54:56.918Z [DEBUG] Renaming C:\Users\MQ420_OL\.claude.json.tmp.17768.1772909696916 to C:\Users\MQ420_OL\.claude.json
+2026-03-07T18:54:56.918Z [DEBUG] File C:\Users\MQ420_OL\.claude.json written atomically
+2026-03-07T18:54:57.131Z [DEBUG] MCP server "Desktop Commander": Tool 'write_file' completed successfully in 237ms
+2026-03-07T18:54:57.133Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__write_file
+2026-03-07T18:54:57.133Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:54:57.133Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__write_file" (1 before deduplication)
+2026-03-07T18:54:57.137Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-07T18:54:57.138Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:54:57.138Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:54:57.138Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:54:57.138Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:54:57.138Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:54:57.138Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:54:57.139Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:54:57.139Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:54:57.139Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:54:57.139Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:54:57.139Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:54:57.144Z [DEBUG] autocompact: tokens=131653 threshold=167000 effectiveWindow=180000
+2026-03-07T18:54:57.144Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:54:57.151Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.464; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:54:57.151Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:54:57.151Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:54:57.151Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:54:57.151Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:54:57.151Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:54:57.151Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:54:58.149Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:55:01.008Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:55:01.010Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__create_directory
+2026-03-07T18:55:01.010Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__create_directory
+2026-03-07T18:55:01.010Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:55:01.010Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__create_directory" (0 before deduplication)
+2026-03-07T18:55:01.011Z [DEBUG] "Permission suggestions for mcp__Desktop_Commander__create_directory: [\n  {\n    \"type\": \"addRules\",\n    \"rules\": [\n      {\n        \"toolName\": \"mcp__Desktop_Commander__create_directory\"\n      }\n    ],\n    \"behavior\": \"allow\",\n    \"destination\": \"localSettings\"\n  }\n]"
+2026-03-07T18:55:01.012Z [DEBUG] executePermissionRequestHooks called for tool: mcp__Desktop_Commander__create_directory
+2026-03-07T18:55:01.012Z [DEBUG] Getting matching hook commands for PermissionRequest with query: mcp__Desktop_Commander__create_directory
+2026-03-07T18:55:01.012Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:55:01.012Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__create_directory" (0 before deduplication)
+2026-03-07T18:55:37.863Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: create_directory
+2026-03-07T18:55:38.051Z [DEBUG] MCP server "Desktop Commander": Tool 'create_directory' completed successfully in 188ms
+2026-03-07T18:55:38.053Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__create_directory
+2026-03-07T18:55:38.053Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:55:38.053Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__create_directory" (1 before deduplication)
+2026-03-07T18:55:38.059Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-07T18:55:38.059Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:55:38.059Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:55:38.059Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:55:38.059Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:55:38.060Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:55:38.060Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:55:38.060Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:55:38.060Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:55:38.061Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:55:38.061Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:55:38.061Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:55:38.065Z [DEBUG] autocompact: tokens=131776 threshold=167000 effectiveWindow=180000
+2026-03-07T18:55:38.066Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:55:38.072Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.464; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:55:38.072Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:55:38.072Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:55:38.072Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:55:38.072Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:55:38.072Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:55:38.072Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:55:38.807Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:55:38.834Z [DEBUG] Writing to temp file: C:\Users\MQ420_OL\.claude.json.tmp.17768.1772909738834
+2026-03-07T18:55:38.835Z [DEBUG] Preserving file permissions: 100666
+2026-03-07T18:55:38.836Z [DEBUG] Temp file written successfully, size: 16171 bytes
+2026-03-07T18:55:38.836Z [DEBUG] Applied original permissions to temp file
+2026-03-07T18:55:38.836Z [DEBUG] Renaming C:\Users\MQ420_OL\.claude.json.tmp.17768.1772909738834 to C:\Users\MQ420_OL\.claude.json
+2026-03-07T18:55:38.836Z [DEBUG] File C:\Users\MQ420_OL\.claude.json written atomically
+2026-03-07T18:55:40.795Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:55:44.063Z [DEBUG] executePreToolHooks called for tool: TodoWrite
+2026-03-07T18:55:44.063Z [DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+2026-03-07T18:55:44.063Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:55:44.063Z [DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+2026-03-07T18:55:44.065Z [DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+2026-03-07T18:55:44.065Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:55:44.065Z [DEBUG] Matched 1 unique hooks for query "TodoWrite" (1 before deduplication)
+2026-03-07T18:55:44.074Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-07T18:55:44.075Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:55:44.075Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:55:44.075Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:55:44.075Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:55:44.076Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:55:44.076Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:55:44.076Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:55:44.076Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:55:44.076Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:55:44.076Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:55:44.076Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:55:44.077Z [DEBUG] autocompact: tokens=132121 threshold=167000 effectiveWindow=180000
+2026-03-07T18:55:44.078Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:55:44.082Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.464; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:55:44.082Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:55:44.082Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:55:44.082Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:55:44.083Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:55:44.083Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:55:44.083Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:55:44.876Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:55:47.012Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:55:59.782Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__write_file
+2026-03-07T18:55:59.782Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__write_file
+2026-03-07T18:55:59.782Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:55:59.782Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__write_file" (0 before deduplication)
+2026-03-07T18:55:59.783Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: write_file
+2026-03-07T18:56:00.021Z [DEBUG] MCP server "Desktop Commander": Tool 'write_file' completed successfully in 238ms
+2026-03-07T18:56:00.022Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__write_file
+2026-03-07T18:56:00.022Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:56:00.022Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__write_file" (1 before deduplication)
+2026-03-07T18:56:00.034Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-07T18:56:00.034Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:56:00.034Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:56:00.034Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:56:00.034Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:56:00.034Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:56:00.035Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:00.035Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:56:00.035Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:56:00.035Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:00.035Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:56:00.035Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:00.036Z [DEBUG] autocompact: tokens=133198 threshold=167000 effectiveWindow=180000
+2026-03-07T18:56:00.037Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:56:00.042Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.464; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:56:00.042Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:00.042Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:56:00.042Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:56:00.042Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:00.042Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:56:00.042Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:00.771Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:56:02.275Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:56:05.651Z [DEBUG] executePreToolHooks called for tool: TodoWrite
+2026-03-07T18:56:05.652Z [DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+2026-03-07T18:56:05.652Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:56:05.652Z [DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+2026-03-07T18:56:05.653Z [DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+2026-03-07T18:56:05.653Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:56:05.653Z [DEBUG] Matched 1 unique hooks for query "TodoWrite" (1 before deduplication)
+2026-03-07T18:56:05.665Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-07T18:56:05.665Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:56:05.665Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:56:05.665Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:56:05.665Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:56:05.665Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:56:05.666Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:05.666Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:56:05.666Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:56:05.666Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:05.666Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:56:05.666Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:05.667Z [DEBUG] autocompact: tokens=133553 threshold=167000 effectiveWindow=180000
+2026-03-07T18:56:05.667Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:56:05.670Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.464; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:56:05.670Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:05.670Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:56:05.670Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:56:05.670Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:05.670Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:56:05.670Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:06.660Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:56:09.129Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:56:25.162Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__write_file
+2026-03-07T18:56:25.162Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__write_file
+2026-03-07T18:56:25.162Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:56:25.162Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__write_file" (0 before deduplication)
+2026-03-07T18:56:25.163Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: write_file
+2026-03-07T18:56:25.404Z [DEBUG] MCP server "Desktop Commander": Tool 'write_file' completed successfully in 241ms
+2026-03-07T18:56:25.405Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__write_file
+2026-03-07T18:56:25.405Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:56:25.405Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__write_file" (1 before deduplication)
+2026-03-07T18:56:25.414Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-07T18:56:25.414Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:56:25.414Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:56:25.414Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:56:25.414Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:56:25.414Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:56:25.414Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:25.414Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:56:25.414Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:56:25.414Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:25.414Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:56:25.415Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:25.415Z [DEBUG] autocompact: tokens=134875 threshold=167000 effectiveWindow=180000
+2026-03-07T18:56:25.415Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:56:25.423Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.464; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:56:25.423Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:25.423Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:56:25.423Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:56:25.423Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:25.423Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:56:25.424Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:26.272Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:56:32.954Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:56:33.047Z [DEBUG] executePreToolHooks called for tool: TodoWrite
+2026-03-07T18:56:33.047Z [DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+2026-03-07T18:56:33.047Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:56:33.048Z [DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+2026-03-07T18:56:33.049Z [DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+2026-03-07T18:56:33.049Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:56:33.049Z [DEBUG] Matched 1 unique hooks for query "TodoWrite" (1 before deduplication)
+2026-03-07T18:56:33.060Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-07T18:56:33.060Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:56:33.061Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:56:33.061Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:56:33.061Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:56:33.061Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:56:33.061Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:33.061Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:56:33.061Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:56:33.061Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:33.062Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:56:33.062Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:33.063Z [DEBUG] autocompact: tokens=135229 threshold=167000 effectiveWindow=180000
+2026-03-07T18:56:33.063Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:56:33.067Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.464; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:56:33.067Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:33.068Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:56:33.068Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:56:33.068Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:33.068Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:56:33.068Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:34.188Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:56:36.642Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:56:48.701Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__write_file
+2026-03-07T18:56:48.702Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__write_file
+2026-03-07T18:56:48.702Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:56:48.702Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__write_file" (0 before deduplication)
+2026-03-07T18:56:48.702Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: write_file
+2026-03-07T18:56:48.930Z [DEBUG] MCP server "Desktop Commander": Tool 'write_file' completed successfully in 228ms
+2026-03-07T18:56:48.931Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__write_file
+2026-03-07T18:56:48.931Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:56:48.931Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__write_file" (1 before deduplication)
+2026-03-07T18:56:48.933Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-07T18:56:48.933Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:56:48.933Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:56:48.933Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:56:48.933Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:56:48.933Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:56:48.933Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:48.933Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:56:48.933Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:56:48.933Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:48.933Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:56:48.934Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:48.934Z [DEBUG] autocompact: tokens=136283 threshold=167000 effectiveWindow=180000
+2026-03-07T18:56:48.935Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:56:48.938Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.464; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:56:48.938Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:48.938Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:56:48.938Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:56:48.938Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:48.938Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:56:48.938Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:49.362Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:56:52.309Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:56:56.766Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__write_file
+2026-03-07T18:56:56.767Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__write_file
+2026-03-07T18:56:56.767Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:56:56.767Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__write_file" (0 before deduplication)
+2026-03-07T18:56:56.768Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: write_file
+2026-03-07T18:56:56.808Z [DEBUG] Writing to temp file: C:\Users\MQ420_OL\.claude.json.tmp.17768.1772909816808
+2026-03-07T18:56:56.808Z [DEBUG] Preserving file permissions: 100666
+2026-03-07T18:56:56.811Z [DEBUG] Temp file written successfully, size: 16171 bytes
+2026-03-07T18:56:56.811Z [DEBUG] Applied original permissions to temp file
+2026-03-07T18:56:56.811Z [DEBUG] Renaming C:\Users\MQ420_OL\.claude.json.tmp.17768.1772909816808 to C:\Users\MQ420_OL\.claude.json
+2026-03-07T18:56:56.811Z [DEBUG] File C:\Users\MQ420_OL\.claude.json written atomically
+2026-03-07T18:56:57.023Z [DEBUG] MCP server "Desktop Commander": Tool 'write_file' completed successfully in 255ms
+2026-03-07T18:56:57.024Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__write_file
+2026-03-07T18:56:57.024Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:56:57.024Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__write_file" (1 before deduplication)
+2026-03-07T18:56:57.026Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-07T18:56:57.026Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:56:57.026Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:56:57.026Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:56:57.026Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:56:57.027Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:56:57.027Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:57.027Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:56:57.027Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:56:57.027Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:57.027Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:56:57.027Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:57.028Z [DEBUG] autocompact: tokens=136864 threshold=167000 effectiveWindow=180000
+2026-03-07T18:56:57.028Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:56:57.033Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.464; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:56:57.033Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:57.033Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:56:57.033Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:56:57.033Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:57.033Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:56:57.033Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:56:58.510Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:57:03.918Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:57:07.129Z [DEBUG] executePreToolHooks called for tool: TodoWrite
+2026-03-07T18:57:07.129Z [DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+2026-03-07T18:57:07.129Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:57:07.129Z [DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+2026-03-07T18:57:07.130Z [DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+2026-03-07T18:57:07.130Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:57:07.130Z [DEBUG] Matched 1 unique hooks for query "TodoWrite" (1 before deduplication)
+2026-03-07T18:57:07.138Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-07T18:57:07.138Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:57:07.138Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:57:07.138Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:57:07.138Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:57:07.138Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:57:07.138Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:57:07.138Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:57:07.138Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:57:07.139Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:57:07.139Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:57:07.139Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:57:07.139Z [DEBUG] autocompact: tokens=137217 threshold=167000 effectiveWindow=180000
+2026-03-07T18:57:07.139Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:57:07.143Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.464; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:57:07.143Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:57:07.143Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:57:07.143Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:57:07.143Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:57:07.143Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:57:07.143Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:57:08.059Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:57:10.839Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:57:24.980Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__write_file
+2026-03-07T18:57:24.980Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__write_file
+2026-03-07T18:57:24.980Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:57:24.980Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__write_file" (0 before deduplication)
+2026-03-07T18:57:24.981Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: write_file
+2026-03-07T18:57:25.484Z [DEBUG] MCP server "Desktop Commander": Tool 'write_file' completed successfully in 503ms
+2026-03-07T18:57:25.486Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__write_file
+2026-03-07T18:57:25.486Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:57:25.486Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__write_file" (1 before deduplication)
+2026-03-07T18:57:25.488Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-07T18:57:25.488Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:57:25.488Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:57:25.488Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:57:25.488Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:57:25.489Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:57:25.489Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:57:25.489Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:57:25.489Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:57:25.489Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:57:25.489Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:57:25.489Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:57:25.490Z [DEBUG] autocompact: tokens=138234 threshold=167000 effectiveWindow=180000
+2026-03-07T18:57:25.490Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:57:25.497Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.464; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:57:25.497Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:57:25.498Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:57:25.498Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:57:25.498Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:57:25.498Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:57:25.498Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:57:26.341Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:57:26.384Z [DEBUG] Writing to temp file: C:\Users\MQ420_OL\.claude.json.tmp.17768.1772909846384
+2026-03-07T18:57:26.384Z [DEBUG] Preserving file permissions: 100666
+2026-03-07T18:57:26.386Z [DEBUG] Temp file written successfully, size: 16171 bytes
+2026-03-07T18:57:26.386Z [DEBUG] Applied original permissions to temp file
+2026-03-07T18:57:26.386Z [DEBUG] Renaming C:\Users\MQ420_OL\.claude.json.tmp.17768.1772909846384 to C:\Users\MQ420_OL\.claude.json
+2026-03-07T18:57:26.386Z [DEBUG] File C:\Users\MQ420_OL\.claude.json written atomically
+2026-03-07T18:57:28.501Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:57:31.275Z [DEBUG] executePreToolHooks called for tool: TodoWrite
+2026-03-07T18:57:31.276Z [DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+2026-03-07T18:57:31.276Z [DEBUG] Found 0 hook matchers in settings
+2026-03-07T18:57:31.276Z [DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+2026-03-07T18:57:31.277Z [DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+2026-03-07T18:57:31.277Z [DEBUG] Found 6 hook matchers in settings
+2026-03-07T18:57:31.277Z [DEBUG] Matched 1 unique hooks for query "TodoWrite" (1 before deduplication)
+2026-03-07T18:57:31.285Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-07T18:57:31.285Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-07T18:57:31.285Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-07T18:57:31.285Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-07T18:57:31.285Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-07T18:57:31.285Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:57:31.285Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:57:31.285Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:57:31.285Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:57:31.285Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:57:31.286Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:57:31.286Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:57:31.286Z [DEBUG] autocompact: tokens=138583 threshold=167000 effectiveWindow=180000
+2026-03-07T18:57:31.287Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-03-07T18:57:31.290Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.464; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-07T18:57:31.290Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:57:31.290Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-07T18:57:31.290Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-07T18:57:31.290Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:57:31.290Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-07T18:57:31.290Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-07T18:57:32.149Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:57:34.555Z [DEBUG] Stream started - received first chunk
+2026-03-07T18:57:43.171Z [DEBUG] Writing to temp file: C:\Users\MQ420_OL\.claude.json.tmp.17768.1772909863171
+2026-03-07T18:57:43.171Z [DEBUG] Preserving file permissions: 100666
+2026-03-07T18:57:43.173Z [DEBUG] Temp file written successfully, size: 16171 bytes
+2026-03-07T18:57:43.173Z [DEBUG] Applied original permissions to temp file
+2026-03-07T18:57:43.173Z [DEBUG] Renaming C:\Users\MQ420_OL\.claude.json.tmp.17768.1772909863171 to C:\Users\MQ420_OL\.claude.json
+2026-03-07T18:57:43.174Z [DEBUG] File C:\Users\MQ420_OL\.claude.json written atomically
+2026-03-07T18:57:43.188Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-03-07T18:57:43.188Z [DEBUG] Found 2 hook matchers in settings
+2026-03-07T18:57:43.188Z [DEBUG] Matched 2 unique hooks for query "no match query" (2 before deduplication)
+2026-03-07T18:57:43.190Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-08T08:07:24.848Z [DEBUG] detectFileEncoding failed for expected reason: ENOENT
+2026-03-08T08:07:24.849Z [DEBUG] MDM settings load completed in 36ms
+2026-03-08T08:07:24.887Z [DEBUG] [init] configureGlobalMTLS starting
+2026-03-08T08:07:24.887Z [DEBUG] [init] configureGlobalMTLS complete
+2026-03-08T08:07:24.887Z [DEBUG] [init] configureGlobalAgents starting
+2026-03-08T08:07:24.887Z [DEBUG] [init] configureGlobalAgents complete
+2026-03-08T08:07:24.941Z [DEBUG] Using bash path: "C:\Program Files\Git\bin\bash.exe"
+2026-03-08T08:07:24.961Z [DEBUG] Applying permission update: Adding 18 allow rule(s) to destination 'localSettings': ["Bash(powershell -Command:*)","Bash(wmic logicaldisk:*)","Bash(dir:*)","Bash(reg query:*)","Bash(findstr:*)","Bash(powershell -File:*)","Bash(ls:*)","Bash(cmd /c dir:*)","Bash(for dir in \"C:\\\\Users\\\\Public\"/*/)","Bash(done)","Bash(cmd /c \"dir /b C:\\\\Users\\\\Public\")","Bash(cmd /c \"dir /b C:\\\\Users\")","Bash(cmd /c \"dir /b C:\"\")","Bash(powershell:*)","mcp__Desktop_Commander__start_process","mcp__Desktop_Commander__read_process_output","mcp__Desktop_Commander__read_file","mcp__Desktop_Commander__write_file"]
+2026-03-08T08:07:24.963Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-03-08T08:07:24.965Z [DEBUG] [ToolSearch:optimistic] mode=standard, ENABLE_TOOL_SEARCH=false, result=false
+2026-03-08T08:07:24.965Z [DEBUG] [STARTUP] Running setup()...
+2026-03-08T08:07:24.967Z [DEBUG] Git remote URL: null
+2026-03-08T08:07:24.967Z [DEBUG] No git remote URL found
+2026-03-08T08:07:24.969Z [DEBUG] Loading skills from: managed=C:\ProgramData\ClaudeCode\.claude\skills, user=C:\Users\MQ420_OL\.claude\skills, project=[]
+2026-03-08T08:07:24.969Z [DEBUG] Error log sink initialized
+2026-03-08T08:07:25.008Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-03-08T08:07:25.010Z [DEBUG] Loaded 0 unique skills (0 unconditional, 0 conditional, managed: 0, user: 0, project: 0, additional: 0, legacy commands: 0)
+2026-03-08T08:07:25.032Z [DEBUG] Loaded inline plugin from path: anthropic-skills
+2026-03-08T08:07:25.032Z [DEBUG] Loaded 1 session-only plugins from --plugin-dir
+2026-03-08T08:07:25.032Z [DEBUG] Found 1 plugins (1 enabled, 0 disabled)
+2026-03-08T08:07:25.032Z [DEBUG] getPluginSkills: Processing 1 enabled plugins
+2026-03-08T08:07:25.032Z [DEBUG] Checking plugin anthropic-skills: skillsPath=exists, skillsPaths=0 paths
+2026-03-08T08:07:25.032Z [DEBUG] Attempting to load skills from plugin anthropic-skills default skillsPath: C:\Users\MQ420_OL\AppData\Roaming\Claude\local-agent-mode-sessions\skills-plugin\54b56db1-cf39-4c06-9546-28457803660e\7f21ad0f-1a75-4050-ad77-50d9aa6e65ce\skills
+2026-03-08T08:07:25.032Z [DEBUG] Total plugin commands loaded: 0
+2026-03-08T08:07:25.032Z [DEBUG] Registered 0 hooks from 1 plugins
+2026-03-08T08:07:25.032Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-03-08T08:07:25.032Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-03-08T08:07:25.032Z [DEBUG] [claudeai-mcp] Missing user:mcp_servers scope (scopes=user:inference)
+2026-03-08T08:07:25.081Z [DEBUG] Loaded 15 skills from plugin anthropic-skills default directory
+2026-03-08T08:07:25.081Z [DEBUG] Total plugin skills loaded: 15
+2026-03-08T08:07:25.081Z [DEBUG] getSkills returning: 0 skill dir commands, 15 plugin skills, 5 bundled skills
+2026-03-08T08:07:25.256Z [DEBUG] [STARTUP] setup() completed in 291ms
+2026-03-08T08:07:25.256Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-03-08T08:07:25.269Z [DEBUG] Total plugin agents loaded: 0
+2026-03-08T08:07:25.269Z [DEBUG] [STARTUP] Commands and agents loaded in 13ms
+2026-03-08T08:07:25.269Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-03-08T08:07:25.270Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-03-08T08:07:25.270Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-03-08T08:07:25.275Z [DEBUG] [STARTUP] MCP configs loaded in 312ms
+2026-03-08T08:07:25.295Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-03-08T08:07:25.296Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-08T08:07:25.397Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-03-08T08:07:25.397Z [DEBUG] [3P telemetry] isTelemetryEnabled=false (CLAUDE_CODE_ENABLE_TELEMETRY=undefined)
+2026-03-08T08:07:25.401Z [DEBUG] Plugin autoupdate: skipped (auto-updater disabled)
+2026-03-08T08:07:25.418Z [DEBUG] Total LSP servers loaded: 0
+2026-03-08T08:07:25.418Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-03-08T08:07:25.418Z [DEBUG] LSP manager initialized with 0 servers
+2026-03-08T08:07:25.418Z [DEBUG] LSP server manager initialized successfully
+2026-03-08T08:07:25.418Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-03-08T08:07:25.425Z [DEBUG] Getting matching hook commands for SessionStart with query: resume
+2026-03-08T08:07:25.425Z [DEBUG] Found 0 hook matchers in settings
+2026-03-08T08:07:25.425Z [DEBUG] Matched 0 unique hooks for query "resume" (0 before deduplication)
+2026-03-08T08:07:25.451Z [DEBUG] installPluginsForHeadless: starting
+2026-03-08T08:07:25.452Z [DEBUG] Found 0 installed plugins
+2026-03-08T08:07:25.452Z [DEBUG] installPluginsForHeadless: no missing plugins or marketplaces configured
+2026-03-08T08:07:25.464Z [ERROR] Failed to fetch org fast mode status, defaulting to disabled: AxiosError: Request failed with status code 403
+2026-03-08T08:07:25.465Z [DEBUG] Watching for changes in setting files C:\Users\MQ420_OL\.claude\settings.json, C:\.claude\settings.json, C:\.claude\settings.local.json...
+2026-03-08T08:07:25.466Z [DEBUG] Fetching plugin security messages from https://raw.githubusercontent.com/anthropics/claude-plugins-official/refs/heads/security/security.json
+2026-03-08T08:07:25.473Z [DEBUG] Total plugin output styles loaded: 0
+2026-03-08T08:07:25.473Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-08T08:07:25.571Z [DEBUG] Security messages saved successfully
+2026-03-08T08:07:25.850Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=C:\Users\MQ420_OL\AppData\Roaming\Claude\claude-code\2.1.63\claude.exe)
+2026-03-08T08:07:26.697Z [DEBUG] "rg error (signal=undefined, code=ERR_CHILD_PROCESS_STDIO_MAXBUFFER, stderr: rg: C:\\System Volume Information: Access is denied. (os error 5)\nrg: C:\\Config.Msi: Access is denied. (os error 5)\nrg: C:\\Windows\\WUModels: Access is denied. (os error 5)\nrg: C:\\ProgramData\\WindowsHolographicDevices: Access is denied. (os error 5)\nrg: C:\\ProgramData\\Windows Master Store\\ServiceData: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-Win10-Win11-Oct4\\Packages: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-Win10-Win11-Oct4\\Config: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-MinimalSetup-221003_web\\Config: Access is denied. (os error 5)\nrg: C:\\AMD\\AMD-Software-Adrenalin-Edition-22.10.1-MinimalSetup-221003_web\\Bin64: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1064: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1061: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1059: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1049: Access is denied. (os error 5)\nrg: C:\\Recovery: Access is denied. (os error 5)\nrg: C:\\Windows\\ModemLogs: Access is denied. (os error 5)\nrg: C:\\Windows\\Minidump: Access is denied. (os error 5)\nrg: C:\\Windows\\appcompat\\Programs: Access is denied. (os error 5)\nrg: C:\\Windows\\appcompat\\Backup: Access is denied. (os error 5)\nrg: C:\\Windows\\appcompat\\appraiser: Access is denied. (os error 5)\nrg: C:\\Users\\Public\\_Personal\\desktop-items\\desktop-items\\3I1c8ee49zMlEV9qza: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1045: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1044: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1038: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1035: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-21-1067785876-3014793013-136133255-1031: Access is denied. (os error 5)\nrg: C:\\$Recycle.Bin\\S-1-5-18: Access is denied. (os error 5)\n), 215559 results"
+2026-03-08T08:07:26.698Z [ERROR] "RangeError: RangeError: stdout maxBuffer length exceeded\n    at unknown\n    at onData (node:child_process:153:110)\n    at emit (node:events:95:22)\n    at addChunk (internal:streams/readable:264:47)\n    at readableAddChunkPushByteMode (internal:streams/readable:242:18)\n    at handleNumberResult (internal:streams/native-readable:79:18)\n    at <anonymous> (internal:streams/native-readable:53:68)\n    at processTicksAndRejections (native:7:39)"
+2026-03-08T08:37:25.462Z [DEBUG] detectFileEncoding failed for expected reason: ENOENT
+2026-03-08T09:07:25.382Z [DEBUG] detectFileEncoding failed for expected reason: ENOENT
+2026-03-08T09:37:25.401Z [DEBUG] detectFileEncoding failed for expected reason: ENOENT
+2026-03-08T10:07:25.416Z [DEBUG] detectFileEncoding failed for expected reason: ENOENT
+2026-03-08T10:37:25.406Z [DEBUG] detectFileEncoding failed for expected reason: ENOENT
+2026-03-08T11:07:25.416Z [DEBUG] detectFileEncoding failed for expected reason: ENOENT
+2026-03-08T11:37:25.425Z [DEBUG] detectFileEncoding failed for expected reason: ENOENT
+2026-03-08T12:07:25.425Z [DEBUG] detectFileEncoding failed for expected reason: ENOENT
+2026-03-08T12:37:25.434Z [DEBUG] detectFileEncoding failed for expected reason: ENOENT
+2026-03-08T13:07:25.427Z [DEBUG] detectFileEncoding failed for expected reason: ENOENT
+2026-03-08T13:37:25.434Z [DEBUG] detectFileEncoding failed for expected reason: ENOENT
+2026-03-08T14:07:25.367Z [DEBUG] Writing to temp file: C:\Users\MQ420_OL\.claude.json.tmp.36196.1772978845367
+2026-03-08T14:07:25.368Z [DEBUG] Preserving file permissions: 100666
+2026-03-08T14:07:25.369Z [DEBUG] Temp file written successfully, size: 16177 bytes
+2026-03-08T14:07:25.369Z [DEBUG] Applied original permissions to temp file
+2026-03-08T14:07:25.369Z [DEBUG] Renaming C:\Users\MQ420_OL\.claude.json.tmp.36196.1772978845367 to C:\Users\MQ420_OL\.claude.json
+2026-03-08T14:07:25.370Z [DEBUG] File C:\Users\MQ420_OL\.claude.json written atomically
+2026-03-08T14:07:25.430Z [DEBUG] detectFileEncoding failed for expected reason: ENOENT

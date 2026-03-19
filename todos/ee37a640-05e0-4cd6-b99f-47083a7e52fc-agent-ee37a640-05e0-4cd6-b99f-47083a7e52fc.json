@@ -1,0 +1,37 @@
+[
+  {
+    "content": "Create organized folder structure with categories",
+    "status": "completed",
+    "activeForm": "Creating organized folder structure"
+  },
+  {
+    "content": "Move active projects to appropriate categories",
+    "status": "completed",
+    "activeForm": "Moving active projects"
+  },
+  {
+    "content": "Consolidate duplicates and clean up archives",
+    "status": "in_progress",
+    "activeForm": "Consolidating duplicates and archives"
+  },
+  {
+    "content": "Move downloaded/cloned projects to proper location",
+    "status": "pending",
+    "activeForm": "Moving downloaded projects"
+  },
+  {
+    "content": "Clean up empty directories, DEV duplicates, and misc items",
+    "status": "pending",
+    "activeForm": "Cleaning up empty directories and duplicates"
+  },
+  {
+    "content": "Create project-dump directory with AI agent instructions",
+    "status": "pending",
+    "activeForm": "Creating project-dump with AI instructions"
+  },
+  {
+    "content": "Create an index/README for the organized structure",
+    "status": "pending",
+    "activeForm": "Creating project index"
+  }
+]

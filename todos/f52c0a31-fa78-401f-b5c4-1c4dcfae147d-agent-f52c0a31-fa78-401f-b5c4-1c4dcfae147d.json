@@ -1,0 +1,17 @@
+[
+  {
+    "content": "List all user accounts on the system",
+    "status": "completed",
+    "activeForm": "Listing all user accounts on the system"
+  },
+  {
+    "content": "Analyze each user directory for important files",
+    "status": "in_progress",
+    "activeForm": "Analyzing each user directory for important files"
+  },
+  {
+    "content": "Generate assessment report for each account",
+    "status": "pending",
+    "activeForm": "Generating assessment report for each account"
+  }
+]

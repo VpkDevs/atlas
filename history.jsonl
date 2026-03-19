@@ -1,0 +1,36 @@
+{"display":"create new project directory. I want to create an app that automatically gambles for you on gambling sites and always gives you the best possible chance of winning","pastedContents":{},"timestamp":1759016414392,"project":"C:\\users\\public\\dev"}
+{"display":"then brainstorm automated money making apps","pastedContents":{},"timestamp":1759016441546,"project":"C:\\users\\public\\dev"}
+{"display":"number each one and brainstorm 5x more","pastedContents":{},"timestamp":1759016506900,"project":"C:\\users\\public\\dev"}
+{"display":"what interests me most is the idea of putting all (or most, or many) of these (as modules) into one single app that's just for me, and it would also automate selling each service on sites like upwork, fiverr, etc. That sounds like one of the most profoundly lucrative, powerful apps ever. It would centralize all of my analytics, tell me which modules a performing best, which need reworks, omg there's so much it could do...","pastedContents":{},"timestamp":1759016689489,"project":"C:\\users\\public\\dev"}
+{"display":"Let's really do this right. Let's flesh out all the details, craft a PRD and other docs, so we can measure twice and cut once, as they say. I want docs, wireframes/mockups, automation workflows nailed down, finalized list of modules we'll start with, what MVP looks like since this tool is not for public release, etc.","pastedContents":{},"timestamp":1759016823024,"project":"C:\\users\\public\\dev"}
+{"display":"/status ","pastedContents":{},"timestamp":1759787433266,"project":"C:\\users\\public\\dev"}
+{"display":"/status ","pastedContents":{},"timestamp":1759787433272,"project":"C:\\users\\public\\dev"}
+{"display":"/status ","pastedContents":{},"timestamp":1759787433273,"project":"C:\\users\\public\\dev"}
+{"display":"/model ","pastedContents":{},"timestamp":1759787442390,"project":"C:\\users\\public\\dev"}
+{"display":"/model ","pastedContents":{},"timestamp":1759787442398,"project":"C:\\users\\public\\dev"}
+{"display":"/model ","pastedContents":{},"timestamp":1759787442399,"project":"C:\\users\\public\\dev"}
+{"display":"cd c:\\users\\public","pastedContents":{},"timestamp":1759787489994,"project":"C:\\users\\public\\dev"}
+{"display":"I desperately need to organize this dir without creating backups. Creating endless backups via AI is why I'm in this wreck of a directory atm","pastedContents":{},"timestamp":1759787516322,"project":"C:\\users\\public\\dev"}
+{"display":"first recurse through entire public dir, to be absolutely sure you have an appropriate organizational schema and that you know what is deeply nested. So your moves are appropriate. You are welcome to flatten things before moving.","pastedContents":{},"timestamp":1759788196199,"project":"C:\\users\\public\\dev"}
+{"display":"Just so you are aware, I want all software projects to end up in the \"dev\" dir","pastedContents":{},"timestamp":1759788306422,"project":"C:\\users\\public\\dev"}
+{"display":"I just want to be sure you know; I only want software projects to end up in \"dev\". Everything that is not a software project belongs in other top level directories, one level up from dev,in \"public\". Such as the Documentation dir. Also please note the 200gb \"dump\" directory where I just dump random shit, and the 13+gb \"MEDIA\" dir, as well as \"downloads\" which is a consolidation of the downloads directories of several windows user accounts. Beyond that, important directories to worry about are Public Documents, desktop-items, and that's mostly it for the large nesting dirs.","pastedContents":{},"timestamp":1759788536751,"project":"C:\\users\\public\\dev"}
+{"display":"No, what I just told you about dump, MEDIA, downloads, public documents, and desktop-items is NOT how the structure *should* be, it's simply how it currently IS. I want it changed. I just want you be sure that you are, in fact, recursing through each of those before you make decisions on what to move where. I'm fine with you utterly replacing the current directory structure in public.","pastedContents":{},"timestamp":1759788648502,"project":"C:\\users\\public\\dev"}
+{"display":"go through each user account on my system and assess whether it has been properly cleared out in preparation for deletion/consolidation, or whether there yet remain files I might want to save first","pastedContents":{},"timestamp":1759876717689,"project":"C:\\Users\\MQ420_OL\\Downloads"}
+{"display":"cd c:\\users\\public\\dev","pastedContents":{},"timestamp":1759989907064,"project":"C:\\Users\\MQ420_OL"}
+{"display":"/init ","pastedContents":{},"timestamp":1760259414093,"project":"C:\\Users\\MQ420_OL\\Documents\\trae_projects\\no-code-platforms"}
+{"display":"/init ","pastedContents":{},"timestamp":1760259414100,"project":"C:\\Users\\MQ420_OL\\Documents\\trae_projects\\no-code-platforms"}
+{"display":"What do you think of this project? Assess it from as many useful angles and perspectives as you can. Reason and think deeply, but do not be verbose.","pastedContents":{},"timestamp":1760259596230,"project":"C:\\Users\\MQ420_OL\\Documents\\trae_projects\\no-code-platforms"}
+{"display":"Begin drafting a comprehensive plan toget every one of those scores to a 9/10","pastedContents":{},"timestamp":1760263417491,"project":"C:\\Users\\MQ420_OL\\Documents\\trae_projects\\no-code-platforms"}
+{"display":"continue","pastedContents":{},"timestamp":1760273540698,"project":"C:\\Users\\MQ420_OL\\Documents\\trae_projects\\no-code-platforms"}
+{"display":"continue","pastedContents":{},"timestamp":1760273885854,"project":"C:\\Users\\MQ420_OL\\Documents\\trae_projects\\no-code-platforms"}
+{"display":"Continue, on to phase 2","pastedContents":{},"timestamp":1760275669929,"project":"C:\\Users\\MQ420_OL\\Documents\\trae_projects\\no-code-platforms"}
+{"display":" begin phase 3","pastedContents":{},"timestamp":1760297336748,"project":"C:\\Users\\MQ420_OL\\Documents\\trae_projects\\no-code-platforms"}
+{"display":"Add this to our global mcp config: npx claude-historian\n\nInstall this mcp: https://github.com/Vvkmnn/claude-historian","pastedContents":{},"timestamp":1760418750012,"project":"C:\\users\\public\\dev"}
+{"display":"claude-historian","pastedContents":{},"timestamp":1760418791180,"project":"C:\\users\\public\\dev"}
+{"display":"how to use mcp server claude-historian","pastedContents":{},"timestamp":1760418845795,"project":"C:\\users\\public\\dev"}
+{"display":"it's custom,and I had you install it a moment ago before I restarted","pastedContents":{},"timestamp":1760418903727,"project":"C:\\users\\public\\dev"}
+{"display":"show me recent sessions","pastedContents":{},"timestamp":1760418957648,"project":"C:\\users\\public\\dev"}
+{"display":"show me recent sessions","pastedContents":{},"timestamp":1760419056251,"project":"C:\\users\\public\\dev"}
+{"display":"do you remember the sessions where I was having you go through each project in my dev directory and doing something?","pastedContents":{},"timestamp":1760419164937,"project":"C:\\users\\public\\dev"}
+{"display":"but you have the claude-historian mcp server!","pastedContents":{},"timestamp":1760419186556,"project":"C:\\users\\public\\dev"}
+{"display":"can you check? I had you configure it","pastedContents":{},"timestamp":1760419337430,"project":"C:\\users\\public\\dev"}

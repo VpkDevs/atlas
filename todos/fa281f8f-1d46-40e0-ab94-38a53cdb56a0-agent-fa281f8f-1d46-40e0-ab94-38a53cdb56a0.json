@@ -1,0 +1,72 @@
+[
+  {
+    "content": "Create backup of current directory structure",
+    "status": "completed",
+    "activeForm": "Creating backup of current directory structure"
+  },
+  {
+    "content": "Delete direct duplicates (clones, github versions)",
+    "status": "completed",
+    "activeForm": "Deleting direct duplicates"
+  },
+  {
+    "content": "Consolidate Dyad templates (21 → 1)",
+    "status": "completed",
+    "activeForm": "Consolidating Dyad templates"
+  },
+  {
+    "content": "Merge empty scaffolds (9 → 1)",
+    "status": "completed",
+    "activeForm": "Merging empty scaffolds"
+  },
+  {
+    "content": "Create AI prompt management suite (8 → 1)",
+    "status": "completed",
+    "activeForm": "Creating AI prompt management suite"
+  },
+  {
+    "content": "Consolidate knowledge base projects (6 → 1)",
+    "status": "completed",
+    "activeForm": "Consolidating knowledge base projects"
+  },
+  {
+    "content": "Merge file management tools (4 → 1)",
+    "status": "completed",
+    "activeForm": "Merging file management tools"
+  },
+  {
+    "content": "Create browser tools suite (5 → 1)",
+    "status": "completed",
+    "activeForm": "Creating browser tools suite"
+  },
+  {
+    "content": "Organize game development collection (11 → 1)",
+    "status": "completed",
+    "activeForm": "Organizing game development collection"
+  },
+  {
+    "content": "Consolidate no-code platforms (7 → 1)",
+    "status": "completed",
+    "activeForm": "Consolidating no-code platforms"
+  },
+  {
+    "content": "Create productivity automation platform (8 → 1)",
+    "status": "completed",
+    "activeForm": "Creating productivity automation platform"
+  },
+  {
+    "content": "Merge remaining functional groups",
+    "status": "completed",
+    "activeForm": "Merging remaining functional groups"
+  },
+  {
+    "content": "Clean up configuration and documentation directories",
+    "status": "completed",
+    "activeForm": "Cleaning up configuration and documentation directories"
+  },
+  {
+    "content": "Verify consolidation results",
+    "status": "in_progress",
+    "activeForm": "Verifying consolidation results"
+  }
+]

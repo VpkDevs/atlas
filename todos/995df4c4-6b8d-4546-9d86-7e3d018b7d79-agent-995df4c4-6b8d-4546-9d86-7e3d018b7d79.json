@@ -1,0 +1,42 @@
+[
+  {
+    "content": "PHASE 0: Free disk space (delete configs, node_modules, trash)",
+    "status": "in_progress",
+    "activeForm": "Freeing disk space - Phase 0"
+  },
+  {
+    "content": "PHASE 1: Create new directory structure",
+    "status": "pending",
+    "activeForm": "Creating new directory structure"
+  },
+  {
+    "content": "PHASE 2: Extract files from other user profiles",
+    "status": "pending",
+    "activeForm": "Extracting files from user profiles"
+  },
+  {
+    "content": "PHASE 3: Sort _Personal, _Archives, dump into new structure",
+    "status": "pending",
+    "activeForm": "Sorting existing Public mess"
+  },
+  {
+    "content": "PHASE 4: Sort MQ420_OL static files into Public",
+    "status": "pending",
+    "activeForm": "Sorting MQ420_OL static files"
+  },
+  {
+    "content": "PHASE 5: Remove old Public directories",
+    "status": "pending",
+    "activeForm": "Removing old directories"
+  },
+  {
+    "content": "PHASE 6: Delete emptied user profiles",
+    "status": "pending",
+    "activeForm": "Deleting empty user profiles"
+  },
+  {
+    "content": "PHASE 7: Verification and reporting",
+    "status": "pending",
+    "activeForm": "Verifying and reporting"
+  }
+]

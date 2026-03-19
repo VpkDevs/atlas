@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Recursively scan ALL directories (dump, MEDIA, downloads, Public Documents, desktop-items, etc.)",
+    "status": "in_progress",
+    "activeForm": "Recursively scanning ALL directories (dump, MEDIA, downloads, Public Documents, desktop-items, etc.)"
+  },
+  {
+    "content": "Extract all software projects from nested locations",
+    "status": "pending",
+    "activeForm": "Extracting all software projects from nested locations"
+  },
+  {
+    "content": "Move all software projects to dev with proper organization",
+    "status": "pending",
+    "activeForm": "Moving all software projects to dev with proper organization"
+  },
+  {
+    "content": "Create new top-level organization for non-software content",
+    "status": "pending",
+    "activeForm": "Creating new top-level organization for non-software content"
+  },
+  {
+    "content": "Flatten and organize dev directory properly",
+    "status": "pending",
+    "activeForm": "Flattening and organizing dev directory properly"
+  }
+]

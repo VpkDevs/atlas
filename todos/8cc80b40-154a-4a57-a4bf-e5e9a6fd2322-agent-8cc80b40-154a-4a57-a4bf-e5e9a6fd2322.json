@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Audit and catalog all local projects",
+    "status": "completed",
+    "activeForm": "Auditing and cataloging all local projects"
+  },
+  {
+    "content": "Create project readiness assessment framework",
+    "status": "completed",
+    "activeForm": "Creating project readiness assessment framework"
+  },
+  {
+    "content": "Develop deployment strategy and roadmap",
+    "status": "pending",
+    "activeForm": "Developing deployment strategy and roadmap"
+  },
+  {
+    "content": "Build project inventory management system",
+    "status": "in_progress",
+    "activeForm": "Building project inventory management system"
+  }
+]

@@ -1,0 +1,752 @@
+2026-03-09T06:01:55.776Z [DEBUG] detectFileEncoding failed for expected reason: ENOENT
+2026-03-09T06:01:55.776Z [DEBUG] MDM settings load completed in 67ms
+2026-03-09T06:01:55.830Z [DEBUG] [init] configureGlobalMTLS starting
+2026-03-09T06:01:55.830Z [DEBUG] [init] configureGlobalMTLS complete
+2026-03-09T06:01:55.830Z [DEBUG] [init] configureGlobalAgents starting
+2026-03-09T06:01:55.831Z [DEBUG] [init] configureGlobalAgents complete
+2026-03-09T06:01:55.944Z [DEBUG] Using bash path: "C:\Program Files\Git\bin\bash.exe"
+2026-03-09T06:01:55.974Z [DEBUG] Applying permission update: Adding 13 allow rule(s) to destination 'localSettings': ["Bash(npx create-next-app:*)","Bash(bun create:*)","Bash(bun install:*)","Bash(bun run build:*)","Bash(git init:*)","Bash(git add:*)","Bash(git commit:*)","Bash(ls:*)","Bash(npx tsc:*)","Bash(bunx tsc:*)","Bash(git push:*)","Bash(gh pr create:*)","Bash(git checkout:*)"]
+2026-03-09T06:01:55.978Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-03-09T06:01:55.981Z [DEBUG] [ToolSearch:optimistic] mode=standard, ENABLE_TOOL_SEARCH=false, result=false
+2026-03-09T06:01:55.982Z [DEBUG] [STARTUP] Running setup()...
+2026-03-09T06:01:55.996Z [DEBUG] Loading skills from: managed=C:\ProgramData\ClaudeCode\.claude\skills, user=C:\Users\MQ420_OL\.claude\skills, project=[]
+2026-03-09T06:01:55.997Z [DEBUG] Error log sink initialized
+2026-03-09T06:01:56.072Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-03-09T06:01:56.076Z [DEBUG] Loaded 0 unique skills (0 unconditional, 0 conditional, managed: 0, user: 0, project: 0, additional: 0, legacy commands: 0)
+2026-03-09T06:01:56.095Z [DEBUG] Git remote URL: https://github.com/VpkDevs/Shipwright.git
+2026-03-09T06:01:56.095Z [DEBUG] Parsed repository: github.com/VpkDevs/Shipwright from URL: https://github.com/VpkDevs/Shipwright.git
+2026-03-09T06:01:56.115Z [DEBUG] Loaded inline plugin from path: anthropic-skills
+2026-03-09T06:01:56.115Z [DEBUG] Loaded 1 session-only plugins from --plugin-dir
+2026-03-09T06:01:56.115Z [DEBUG] Found 1 plugins (1 enabled, 0 disabled)
+2026-03-09T06:01:56.115Z [DEBUG] getPluginSkills: Processing 1 enabled plugins
+2026-03-09T06:01:56.115Z [DEBUG] Checking plugin anthropic-skills: skillsPath=exists, skillsPaths=0 paths
+2026-03-09T06:01:56.115Z [DEBUG] Attempting to load skills from plugin anthropic-skills default skillsPath: C:\Users\MQ420_OL\AppData\Roaming\Claude\local-agent-mode-sessions\skills-plugin\54b56db1-cf39-4c06-9546-28457803660e\7f21ad0f-1a75-4050-ad77-50d9aa6e65ce\skills
+2026-03-09T06:01:56.116Z [DEBUG] Total plugin commands loaded: 0
+2026-03-09T06:01:56.116Z [DEBUG] Registered 0 hooks from 1 plugins
+2026-03-09T06:01:56.116Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-03-09T06:01:56.116Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-03-09T06:01:56.116Z [DEBUG] [claudeai-mcp] Missing user:mcp_servers scope (scopes=user:inference)
+2026-03-09T06:01:56.188Z [DEBUG] Loaded 15 skills from plugin anthropic-skills default directory
+2026-03-09T06:01:56.188Z [DEBUG] Total plugin skills loaded: 15
+2026-03-09T06:01:56.188Z [DEBUG] getSkills returning: 0 skill dir commands, 15 plugin skills, 5 bundled skills
+2026-03-09T06:01:56.356Z [DEBUG] [STARTUP] setup() completed in 374ms
+2026-03-09T06:01:56.356Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-03-09T06:01:56.375Z [DEBUG] Total plugin agents loaded: 0
+2026-03-09T06:01:56.376Z [DEBUG] [STARTUP] Commands and agents loaded in 20ms
+2026-03-09T06:01:56.376Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-03-09T06:01:56.377Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-03-09T06:01:56.377Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-03-09T06:01:56.388Z [DEBUG] [STARTUP] MCP configs loaded in 410ms
+2026-03-09T06:01:56.444Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-03-09T06:01:56.447Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:01:56.644Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-03-09T06:01:56.644Z [DEBUG] [3P telemetry] isTelemetryEnabled=false (CLAUDE_CODE_ENABLE_TELEMETRY=undefined)
+2026-03-09T06:01:56.651Z [DEBUG] Plugin autoupdate: skipped (auto-updater disabled)
+2026-03-09T06:01:56.674Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-03-09T06:01:56.674Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:01:56.674Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2026-03-09T06:01:56.716Z [DEBUG] installPluginsForHeadless: starting
+2026-03-09T06:01:56.717Z [DEBUG] Found 0 installed plugins
+2026-03-09T06:01:56.717Z [DEBUG] installPluginsForHeadless: no missing plugins or marketplaces configured
+2026-03-09T06:01:56.718Z [DEBUG] Total LSP servers loaded: 0
+2026-03-09T06:01:56.718Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-03-09T06:01:56.718Z [DEBUG] LSP manager initialized with 0 servers
+2026-03-09T06:01:56.718Z [DEBUG] LSP server manager initialized successfully
+2026-03-09T06:01:56.719Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-03-09T06:01:56.742Z [DEBUG] Fetching plugin security messages from https://raw.githubusercontent.com/anthropics/claude-plugins-official/refs/heads/security/security.json
+2026-03-09T06:01:56.745Z [ERROR] Failed to fetch org fast mode status, defaulting to disabled: AxiosError: Request failed with status code 403
+2026-03-09T06:01:56.746Z [DEBUG] Watching for changes in setting files C:\Users\MQ420_OL\.claude\settings.json, C:\Users\MQ420_OL\DEV\web\Shipwright\.claude\settings.json, C:\Users\MQ420_OL\DEV\web\Shipwright\.claude\settings.local.json...
+2026-03-09T06:01:56.753Z [DEBUG] Total plugin output styles loaded: 0
+2026-03-09T06:01:56.754Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:01:56.968Z [DEBUG] Security messages saved successfully
+2026-03-09T06:01:57.065Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:01:57.066Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:01:57.066Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:01:57.066Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:01:57.067Z [DEBUG] Sending 18 skills via attachment (initial, 18 total sent)
+2026-03-09T06:01:57.067Z [DEBUG] Skill prompt: showing "anthropic-skills:algorithmic-art" (userFacingName="algorithmic-art")
+2026-03-09T06:01:57.067Z [DEBUG] Skill prompt: showing "anthropic-skills:pptx" (userFacingName="pptx")
+2026-03-09T06:01:57.067Z [DEBUG] Skill prompt: showing "anthropic-skills:docx" (userFacingName="docx")
+2026-03-09T06:01:57.067Z [DEBUG] Skill prompt: showing "anthropic-skills:canvas-design" (userFacingName="canvas-design")
+2026-03-09T06:01:57.067Z [DEBUG] Skill prompt: showing "anthropic-skills:xlsx" (userFacingName="xlsx")
+2026-03-09T06:01:57.067Z [DEBUG] Skill prompt: showing "anthropic-skills:slack-gif-creator" (userFacingName="slack-gif-creator")
+2026-03-09T06:01:57.067Z [DEBUG] Skill prompt: showing "anthropic-skills:schedule" (userFacingName="schedule")
+2026-03-09T06:01:57.067Z [DEBUG] Skill prompt: showing "anthropic-skills:doc-coauthoring" (userFacingName="doc-coauthoring")
+2026-03-09T06:01:57.067Z [DEBUG] Skill prompt: showing "anthropic-skills:brand-guidelines" (userFacingName="brand-guidelines")
+2026-03-09T06:01:57.067Z [DEBUG] Skill prompt: showing "anthropic-skills:internal-comms" (userFacingName="internal-comms")
+2026-03-09T06:01:57.067Z [DEBUG] Skill prompt: showing "anthropic-skills:web-artifacts-builder" (userFacingName="web-artifacts-builder")
+2026-03-09T06:01:57.067Z [DEBUG] Skill prompt: showing "anthropic-skills:skill-creator" (userFacingName="skill-creator")
+2026-03-09T06:01:57.067Z [DEBUG] Skill prompt: showing "anthropic-skills:mcp-builder" (userFacingName="mcp-builder")
+2026-03-09T06:01:57.067Z [DEBUG] Skill prompt: showing "anthropic-skills:theme-factory" (userFacingName="theme-factory")
+2026-03-09T06:01:57.067Z [DEBUG] Skill prompt: showing "anthropic-skills:pdf" (userFacingName="pdf")
+2026-03-09T06:01:57.068Z [WARN] [3P telemetry] Event dropped (no event logger initialized): user_prompt
+2026-03-09T06:01:57.070Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-03-09T06:01:57.070Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:01:57.070Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-03-09T06:01:57.071Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:01:57.078Z [DEBUG] autocompact: tokens=1801 threshold=167000 effectiveWindow=180000
+2026-03-09T06:01:57.081Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:01:57.153Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:01:57.154Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:01:57.156Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:01:57.156Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:01:57.157Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:01:57.157Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:01:57.158Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:01:57.243Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=C:\Users\MQ420_OL\AppData\Roaming\Claude\claude-code\2.1.63\claude.exe)
+2026-03-09T06:02:01.929Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:02:07.728Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__read_file
+2026-03-09T06:02:07.729Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__read_file
+2026-03-09T06:02:07.729Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:02:07.729Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__read_file" (0 before deduplication)
+2026-03-09T06:02:07.733Z [DEBUG] "Permission suggestions for mcp__Desktop_Commander__read_file: [\n  {\n    \"type\": \"addRules\",\n    \"rules\": [\n      {\n        \"toolName\": \"mcp__Desktop_Commander__read_file\"\n      }\n    ],\n    \"behavior\": \"allow\",\n    \"destination\": \"localSettings\"\n  }\n]"
+2026-03-09T06:02:07.735Z [DEBUG] executePermissionRequestHooks called for tool: mcp__Desktop_Commander__read_file
+2026-03-09T06:02:07.736Z [DEBUG] Getting matching hook commands for PermissionRequest with query: mcp__Desktop_Commander__read_file
+2026-03-09T06:02:07.736Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:02:07.736Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__read_file" (0 before deduplication)
+2026-03-09T06:02:07.844Z [DEBUG] Writing to temp file: C:\Users\MQ420_OL\.claude.json.tmp.39700.1773036127844
+2026-03-09T06:02:07.844Z [DEBUG] Preserving file permissions: 100666
+2026-03-09T06:02:07.845Z [DEBUG] Temp file written successfully, size: 16173 bytes
+2026-03-09T06:02:07.846Z [DEBUG] Applied original permissions to temp file
+2026-03-09T06:02:07.846Z [DEBUG] Renaming C:\Users\MQ420_OL\.claude.json.tmp.39700.1773036127844 to C:\Users\MQ420_OL\.claude.json
+2026-03-09T06:02:07.958Z [DEBUG] File C:\Users\MQ420_OL\.claude.json written atomically
+2026-03-09T06:07:27.338Z [DEBUG] Applying permission update: Adding 1 allow rule(s) to destination 'localSettings': ["mcp__Desktop_Commander__read_file"]
+2026-03-09T06:07:27.338Z [DEBUG] Persisting permission update: addRules to source 'localSettings'
+2026-03-09T06:07:27.338Z [DEBUG] Persisting 1 allow rule(s) to localSettings
+2026-03-09T06:07:27.345Z [DEBUG] Writing to temp file: C:\Users\MQ420_OL\DEV\web\Shipwright\.claude\settings.local.json.tmp.39700.1773036447345
+2026-03-09T06:07:27.345Z [DEBUG] Preserving file permissions: 100666
+2026-03-09T06:07:27.347Z [DEBUG] Temp file written successfully, size: 451 bytes
+2026-03-09T06:07:27.347Z [DEBUG] Applied original permissions to temp file
+2026-03-09T06:07:27.347Z [DEBUG] Renaming C:\Users\MQ420_OL\DEV\web\Shipwright\.claude\settings.local.json.tmp.39700.1773036447345 to C:\Users\MQ420_OL\DEV\web\Shipwright\.claude\settings.local.json
+2026-03-09T06:07:27.348Z [DEBUG] File C:\Users\MQ420_OL\DEV\web\Shipwright\.claude\settings.local.json written atomically
+2026-03-09T06:07:27.386Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: read_file
+2026-03-09T06:07:27.794Z [ERROR] MCP server "Desktop Commander" Error: ENOENT: no such file or directory, stat 'C:\Users\MQ420_OL\.claude\projects\C--Users-MQ420-OL-DEV-web-Shipwright\memory\MEMORY.md'
+2026-03-09T06:07:27.795Z [DEBUG] MCP server "Desktop Commander": Tool 'read_file' failed after 0s: Error: ENOENT: no such file or directory, stat 'C:\Users\MQ420_OL\.claude\projects\C--Users-MQ420-OL-DEV-web-Shipwright\memory\MEMORY.md'
+2026-03-09T06:07:27.797Z [DEBUG] mcp__Desktop_Commander__read_file tool error (414ms): Error: ENOENT: no such file or directory, stat 'C:\Users\MQ420_OL\.claude\projects\C--Users-MQ420-OL-DEV-web-Shipwright\memory\MEMORY.md'
+2026-03-09T06:07:27.798Z [ERROR] "TelemetrySafeError: TelemetrySafeError: Error: ENOENT: no such file or directory, stat 'C:\\Users\\MQ420_OL\\.claude\\projects\\C--Users-MQ420-OL-DEV-web-Shipwright\\memory\\MEMORY.md'\n    at HDf (B:/~BUN/root/claude.exe:1843:18551)\n    at async Ap1 (B:/~BUN/root/claude.exe:1843:15646)\n    at async call (B:/~BUN/root/claude.exe:1843:35335)\n    at async sJE (B:/~BUN/root/claude.exe:3521:15122)\n    at processTicksAndRejections (native:7:39)"
+2026-03-09T06:07:27.800Z [DEBUG] Getting matching hook commands for PostToolUseFailure with query: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:27.800Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:07:27.800Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__read_file" (0 before deduplication)
+2026-03-09T06:07:27.802Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:07:27.803Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:07:27.803Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:07:27.803Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:07:27.803Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:07:27.803Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:07:27.803Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:27.803Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:07:27.803Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:07:27.803Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:27.804Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:07:27.804Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:27.805Z [DEBUG] autocompact: tokens=119420 threshold=167000 effectiveWindow=180000
+2026-03-09T06:07:27.806Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:07:27.812Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:07:27.812Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:27.812Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:07:27.812Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:07:27.812Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:27.812Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:07:27.812Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:28.402Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:07:29.965Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:07:31.124Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:31.124Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:31.124Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:07:31.124Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__read_file" (0 before deduplication)
+2026-03-09T06:07:31.125Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: read_file
+2026-03-09T06:07:31.352Z [ERROR] MCP server "Desktop Commander" Error: EISDIR: illegal operation on a directory, read
+2026-03-09T06:07:31.352Z [DEBUG] MCP server "Desktop Commander": Tool 'read_file' failed after 0s: Error: EISDIR: illegal operation on a directory, read
+2026-03-09T06:07:31.352Z [DEBUG] mcp__Desktop_Commander__read_file tool error (227ms): Error: EISDIR: illegal operation on a directory, read
+2026-03-09T06:07:31.353Z [ERROR] "TelemetrySafeError: TelemetrySafeError: Error: EISDIR: illegal operation on a directory, read\n    at HDf (B:/~BUN/root/claude.exe:1843:18551)\n    at async Ap1 (B:/~BUN/root/claude.exe:1843:15646)\n    at async call (B:/~BUN/root/claude.exe:1843:35335)\n    at async sJE (B:/~BUN/root/claude.exe:3521:15122)\n    at processTicksAndRejections (native:7:39)"
+2026-03-09T06:07:31.354Z [DEBUG] Getting matching hook commands for PostToolUseFailure with query: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:31.354Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:07:31.354Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__read_file" (0 before deduplication)
+2026-03-09T06:07:31.355Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:07:31.355Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:07:31.355Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:07:31.355Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:07:31.355Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:07:31.355Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:07:31.355Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:31.356Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:07:31.356Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:07:31.356Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:31.356Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:07:31.356Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:31.357Z [DEBUG] autocompact: tokens=119694 threshold=167000 effectiveWindow=180000
+2026-03-09T06:07:31.358Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:07:31.361Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:07:31.361Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:31.361Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:07:31.361Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:07:31.361Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:31.361Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:07:31.361Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:31.915Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:07:32.902Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:07:33.355Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__list_directory
+2026-03-09T06:07:33.355Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__list_directory
+2026-03-09T06:07:33.355Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:07:33.355Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__list_directory" (0 before deduplication)
+2026-03-09T06:07:33.356Z [DEBUG] "Permission suggestions for mcp__Desktop_Commander__list_directory: [\n  {\n    \"type\": \"addRules\",\n    \"rules\": [\n      {\n        \"toolName\": \"mcp__Desktop_Commander__list_directory\"\n      }\n    ],\n    \"behavior\": \"allow\",\n    \"destination\": \"localSettings\"\n  }\n]"
+2026-03-09T06:07:33.356Z [DEBUG] executePermissionRequestHooks called for tool: mcp__Desktop_Commander__list_directory
+2026-03-09T06:07:33.356Z [DEBUG] Getting matching hook commands for PermissionRequest with query: mcp__Desktop_Commander__list_directory
+2026-03-09T06:07:33.356Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:07:33.356Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__list_directory" (0 before deduplication)
+2026-03-09T06:07:33.694Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: list_directory
+2026-03-09T06:07:33.845Z [DEBUG] MCP server "Desktop Commander": Tool 'list_directory' completed successfully in 151ms
+2026-03-09T06:07:33.848Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__list_directory
+2026-03-09T06:07:33.848Z [DEBUG] Found 6 hook matchers in settings
+2026-03-09T06:07:33.849Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__list_directory" (1 before deduplication)
+2026-03-09T06:07:33.858Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:33.859Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:33.859Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:07:33.859Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__read_file" (0 before deduplication)
+2026-03-09T06:07:33.860Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: read_file
+2026-03-09T06:07:34.142Z [DEBUG] MCP server "Desktop Commander": Tool 'read_file' completed successfully in 282ms
+2026-03-09T06:07:34.143Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:34.143Z [DEBUG] Found 6 hook matchers in settings
+2026-03-09T06:07:34.144Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__read_file" (1 before deduplication)
+2026-03-09T06:07:34.149Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:34.149Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:34.149Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:07:34.149Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__read_file" (0 before deduplication)
+2026-03-09T06:07:34.150Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: read_file
+2026-03-09T06:07:34.423Z [DEBUG] MCP server "Desktop Commander": Tool 'read_file' completed successfully in 273ms
+2026-03-09T06:07:34.425Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:34.425Z [DEBUG] Found 6 hook matchers in settings
+2026-03-09T06:07:34.425Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__read_file" (1 before deduplication)
+2026-03-09T06:07:34.426Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:07:34.427Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:07:34.427Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:07:34.427Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:07:34.427Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:07:34.427Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:07:34.427Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:34.427Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:07:34.427Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:07:34.427Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:34.427Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:07:34.427Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:34.428Z [DEBUG] autocompact: tokens=121212 threshold=167000 effectiveWindow=180000
+2026-03-09T06:07:34.428Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:07:34.432Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:07:34.432Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:34.432Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:07:34.432Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:07:34.432Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:34.432Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:07:34.432Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:35.079Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:07:36.526Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:07:37.398Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:37.399Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:37.399Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:07:37.399Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__read_file" (0 before deduplication)
+2026-03-09T06:07:37.400Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: read_file
+2026-03-09T06:07:37.704Z [DEBUG] MCP server "Desktop Commander": Tool 'read_file' completed successfully in 304ms
+2026-03-09T06:07:37.706Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:37.706Z [DEBUG] Found 6 hook matchers in settings
+2026-03-09T06:07:37.706Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__read_file" (1 before deduplication)
+2026-03-09T06:07:37.710Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:37.710Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:37.710Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:07:37.710Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__read_file" (0 before deduplication)
+2026-03-09T06:07:37.711Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: read_file
+2026-03-09T06:07:37.996Z [DEBUG] MCP server "Desktop Commander": Tool 'read_file' completed successfully in 285ms
+2026-03-09T06:07:37.997Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:37.997Z [DEBUG] Found 6 hook matchers in settings
+2026-03-09T06:07:37.997Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__read_file" (1 before deduplication)
+2026-03-09T06:07:38.000Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:07:38.000Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:07:38.000Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:07:38.000Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:07:38.000Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:07:38.000Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:07:38.000Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:38.001Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:07:38.001Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:07:38.001Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:38.001Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:07:38.002Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:38.004Z [DEBUG] autocompact: tokens=122404 threshold=167000 effectiveWindow=180000
+2026-03-09T06:07:38.004Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:07:38.014Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:07:38.014Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:38.014Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:07:38.014Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:07:38.014Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:38.014Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:07:38.014Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:38.818Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:07:39.987Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:07:41.832Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:41.832Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:41.832Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:07:41.832Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__read_file" (0 before deduplication)
+2026-03-09T06:07:41.832Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: read_file
+2026-03-09T06:07:42.073Z [DEBUG] MCP server "Desktop Commander": Tool 'read_file' completed successfully in 241ms
+2026-03-09T06:07:42.074Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:42.074Z [DEBUG] Found 6 hook matchers in settings
+2026-03-09T06:07:42.074Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__read_file" (1 before deduplication)
+2026-03-09T06:07:42.542Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:42.543Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:42.543Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:07:42.543Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__read_file" (0 before deduplication)
+2026-03-09T06:07:42.543Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: read_file
+2026-03-09T06:07:42.775Z [DEBUG] MCP server "Desktop Commander": Tool 'read_file' completed successfully in 232ms
+2026-03-09T06:07:42.776Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:42.776Z [DEBUG] Found 6 hook matchers in settings
+2026-03-09T06:07:42.776Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__read_file" (1 before deduplication)
+2026-03-09T06:07:42.778Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:07:42.778Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:07:42.778Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:07:42.779Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:07:42.779Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:07:42.780Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:07:42.780Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:42.780Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:07:42.780Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:07:42.780Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:42.780Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:07:42.781Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:42.782Z [DEBUG] autocompact: tokens=122825 threshold=167000 effectiveWindow=180000
+2026-03-09T06:07:42.782Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:07:42.785Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:07:42.785Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:42.786Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:07:42.786Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:07:42.786Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:42.786Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:07:42.786Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:43.197Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:07:44.008Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:07:44.951Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:44.951Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:44.951Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:07:44.951Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__read_file" (0 before deduplication)
+2026-03-09T06:07:44.952Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: read_file
+2026-03-09T06:07:45.178Z [DEBUG] MCP server "Desktop Commander": Tool 'read_file' completed successfully in 226ms
+2026-03-09T06:07:45.180Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__read_file
+2026-03-09T06:07:45.180Z [DEBUG] Found 6 hook matchers in settings
+2026-03-09T06:07:45.180Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__read_file" (1 before deduplication)
+2026-03-09T06:07:45.186Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:07:45.186Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:07:45.186Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:07:45.186Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:07:45.186Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:07:45.186Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:07:45.186Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:45.186Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:07:45.186Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:07:45.186Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:45.186Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:07:45.186Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:45.187Z [DEBUG] autocompact: tokens=123101 threshold=167000 effectiveWindow=180000
+2026-03-09T06:07:45.187Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:07:45.190Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:07:45.190Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:45.190Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:07:45.190Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:07:45.190Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:45.190Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:07:45.190Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:07:45.801Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:07:46.411Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:07:51.457Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-03-09T06:07:51.457Z [DEBUG] Found 2 hook matchers in settings
+2026-03-09T06:07:51.457Z [DEBUG] Matched 2 unique hooks for query "no match query" (2 before deduplication)
+2026-03-09T06:07:51.460Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:22.025Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:08:22.025Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:08:22.025Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:08:22.025Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:08:22.025Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-03-09T06:08:22.025Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:08:22.025Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-03-09T06:08:22.028Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:22.029Z [DEBUG] autocompact: tokens=123640 threshold=167000 effectiveWindow=180000
+2026-03-09T06:08:22.029Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:08:22.033Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:08:22.033Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:22.033Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:08:22.033Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:08:22.034Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:22.034Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:08:22.035Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:23.458Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:08:25.630Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:25.631Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:25.631Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:08:25.631Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__start_process" (0 before deduplication)
+2026-03-09T06:08:25.631Z [DEBUG] "Permission suggestions for mcp__Desktop_Commander__start_process: [\n  {\n    \"type\": \"addRules\",\n    \"rules\": [\n      {\n        \"toolName\": \"mcp__Desktop_Commander__start_process\"\n      }\n    ],\n    \"behavior\": \"allow\",\n    \"destination\": \"localSettings\"\n  }\n]"
+2026-03-09T06:08:25.631Z [DEBUG] executePermissionRequestHooks called for tool: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:25.631Z [DEBUG] Getting matching hook commands for PermissionRequest with query: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:25.631Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:08:25.631Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__start_process" (0 before deduplication)
+2026-03-09T06:08:25.883Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: start_process
+2026-03-09T06:08:26.512Z [DEBUG] MCP server "Desktop Commander": Tool 'start_process' completed successfully in 629ms
+2026-03-09T06:08:26.514Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:26.514Z [DEBUG] Found 6 hook matchers in settings
+2026-03-09T06:08:26.514Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__start_process" (1 before deduplication)
+2026-03-09T06:08:26.520Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:08:26.520Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:08:26.520Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:08:26.520Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:08:26.520Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:08:26.520Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:08:26.520Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:26.521Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:08:26.521Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:08:26.521Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:26.521Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:08:26.521Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:26.524Z [DEBUG] autocompact: tokens=124008 threshold=167000 effectiveWindow=180000
+2026-03-09T06:08:26.525Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:08:26.530Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:08:26.531Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:26.531Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:08:26.531Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:08:26.531Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:26.531Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:08:26.531Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:27.121Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:08:27.876Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:08:28.344Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:28.345Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:28.345Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:08:28.345Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__start_process" (0 before deduplication)
+2026-03-09T06:08:28.345Z [DEBUG] "Permission suggestions for mcp__Desktop_Commander__start_process: [\n  {\n    \"type\": \"addRules\",\n    \"rules\": [\n      {\n        \"toolName\": \"mcp__Desktop_Commander__start_process\"\n      }\n    ],\n    \"behavior\": \"allow\",\n    \"destination\": \"localSettings\"\n  }\n]"
+2026-03-09T06:08:28.345Z [DEBUG] executePermissionRequestHooks called for tool: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:28.345Z [DEBUG] Getting matching hook commands for PermissionRequest with query: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:28.345Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:08:28.345Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__start_process" (0 before deduplication)
+2026-03-09T06:08:28.794Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: start_process
+2026-03-09T06:08:29.304Z [DEBUG] MCP server "Desktop Commander": Tool 'start_process' completed successfully in 510ms
+2026-03-09T06:08:29.306Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:29.306Z [DEBUG] Found 6 hook matchers in settings
+2026-03-09T06:08:29.306Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__start_process" (1 before deduplication)
+2026-03-09T06:08:29.312Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:08:29.313Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:08:29.313Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:08:29.313Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:08:29.313Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:08:29.313Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:08:29.313Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:29.313Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:08:29.313Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:08:29.314Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:29.314Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:08:29.314Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:29.316Z [DEBUG] autocompact: tokens=124304 threshold=167000 effectiveWindow=180000
+2026-03-09T06:08:29.316Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:08:29.320Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:08:29.321Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:29.321Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:08:29.321Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:08:29.321Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:29.321Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:08:29.321Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:30.064Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:08:30.329Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:08:31.369Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:31.370Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:31.370Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:08:31.370Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__start_process" (0 before deduplication)
+2026-03-09T06:08:31.370Z [DEBUG] "Permission suggestions for mcp__Desktop_Commander__start_process: [\n  {\n    \"type\": \"addRules\",\n    \"rules\": [\n      {\n        \"toolName\": \"mcp__Desktop_Commander__start_process\"\n      }\n    ],\n    \"behavior\": \"allow\",\n    \"destination\": \"localSettings\"\n  }\n]"
+2026-03-09T06:08:31.370Z [DEBUG] executePermissionRequestHooks called for tool: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:31.370Z [DEBUG] Getting matching hook commands for PermissionRequest with query: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:31.370Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:08:31.370Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__start_process" (0 before deduplication)
+2026-03-09T06:08:31.914Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: start_process
+2026-03-09T06:08:32.187Z [DEBUG] MCP server "Desktop Commander": Tool 'start_process' completed successfully in 273ms
+2026-03-09T06:08:32.188Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:32.188Z [DEBUG] Found 6 hook matchers in settings
+2026-03-09T06:08:32.188Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__start_process" (1 before deduplication)
+2026-03-09T06:08:32.190Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:08:32.191Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:08:32.191Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:08:32.191Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:08:32.191Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:08:32.191Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:08:32.191Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:32.191Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:08:32.191Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:08:32.191Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:32.191Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:08:32.191Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:32.192Z [DEBUG] autocompact: tokens=124539 threshold=167000 effectiveWindow=180000
+2026-03-09T06:08:32.192Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:08:32.198Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:08:32.198Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:32.198Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:08:32.198Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:08:32.198Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:32.198Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:08:32.198Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:32.660Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:08:34.715Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:08:35.519Z [DEBUG] executePreToolHooks called for tool: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:35.520Z [DEBUG] Getting matching hook commands for PreToolUse with query: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:35.520Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:08:35.520Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__start_process" (0 before deduplication)
+2026-03-09T06:08:35.520Z [DEBUG] "Permission suggestions for mcp__Desktop_Commander__start_process: [\n  {\n    \"type\": \"addRules\",\n    \"rules\": [\n      {\n        \"toolName\": \"mcp__Desktop_Commander__start_process\"\n      }\n    ],\n    \"behavior\": \"allow\",\n    \"destination\": \"localSettings\"\n  }\n]"
+2026-03-09T06:08:35.520Z [DEBUG] executePermissionRequestHooks called for tool: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:35.521Z [DEBUG] Getting matching hook commands for PermissionRequest with query: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:35.521Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:08:35.521Z [DEBUG] Matched 0 unique hooks for query "mcp__Desktop_Commander__start_process" (0 before deduplication)
+2026-03-09T06:08:36.080Z [DEBUG] MCP server "Desktop Commander": Calling MCP tool: start_process
+2026-03-09T06:08:36.336Z [DEBUG] MCP server "Desktop Commander": Tool 'start_process' completed successfully in 256ms
+2026-03-09T06:08:36.337Z [DEBUG] Getting matching hook commands for PostToolUse with query: mcp__Desktop_Commander__start_process
+2026-03-09T06:08:36.337Z [DEBUG] Found 6 hook matchers in settings
+2026-03-09T06:08:36.337Z [DEBUG] Matched 1 unique hooks for query "mcp__Desktop_Commander__start_process" (1 before deduplication)
+2026-03-09T06:08:36.339Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:08:36.339Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:08:36.339Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:08:36.339Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:08:36.339Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:08:36.340Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:08:36.340Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:36.340Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:08:36.340Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:08:36.340Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:36.340Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:08:36.340Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:36.341Z [DEBUG] autocompact: tokens=124866 threshold=167000 effectiveWindow=180000
+2026-03-09T06:08:36.341Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:08:36.344Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:08:36.344Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:36.345Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:08:36.345Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:08:36.345Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:36.345Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:08:36.345Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:37.106Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:08:37.749Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:08:38.543Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-03-09T06:08:38.543Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-03-09T06:08:38.543Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:08:38.543Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-03-09T06:08:38.624Z [DEBUG] tree-sitter: loaded from embedded
+2026-03-09T06:08:38.628Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-03-09T06:08:38.628Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-03-09T06:08:38.628Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:08:38.628Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-03-09T06:08:40.627Z [DEBUG] Creating shell snapshot for bash (C:\Program Files\Git\bin\bash.exe)
+2026-03-09T06:08:40.627Z [DEBUG] Looking for shell config file: C:\Users\MQ420_OL\.bashrc
+2026-03-09T06:08:40.628Z [DEBUG] Shell config file not found: C:\Users\MQ420_OL\.bashrc, creating snapshot with Claude Code defaults only
+2026-03-09T06:08:40.628Z [DEBUG] Snapshots directory: C:\Users\MQ420_OL\.claude\shell-snapshots
+2026-03-09T06:08:40.682Z [DEBUG] Creating snapshot at: C:\Users\MQ420_OL\.claude\shell-snapshots\snapshot-bash-1773036520628-yyq8re.sh
+2026-03-09T06:08:40.682Z [DEBUG] Execution timeout: 10000ms
+2026-03-09T06:08:41.743Z [DEBUG] Shell snapshot created successfully (343 bytes)
+2026-03-09T06:08:41.744Z [DEBUG] Session environment not yet supported on Windows
+2026-03-09T06:08:41.744Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-03-09T06:08:41.943Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-03-09T06:08:41.943Z [DEBUG] Found 6 hook matchers in settings
+2026-03-09T06:08:41.943Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-03-09T06:08:41.945Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:08:41.946Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:08:41.946Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:08:41.946Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:08:41.946Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:08:41.946Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:08:41.946Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:41.946Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:08:41.946Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:08:41.946Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:41.946Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:08:41.946Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:41.947Z [DEBUG] autocompact: tokens=125110 threshold=167000 effectiveWindow=180000
+2026-03-09T06:08:41.948Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:08:41.951Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:08:41.951Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:41.951Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:08:41.951Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:08:41.951Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:41.951Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:08:41.951Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:43.130Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:08:43.517Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:08:45.880Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-03-09T06:08:45.880Z [DEBUG] Found 2 hook matchers in settings
+2026-03-09T06:08:45.880Z [DEBUG] Matched 2 unique hooks for query "no match query" (2 before deduplication)
+2026-03-09T06:08:45.882Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:50.919Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:08:50.919Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:08:50.919Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:08:50.919Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:08:50.919Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-03-09T06:08:50.919Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:08:50.919Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-03-09T06:08:50.920Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:50.921Z [DEBUG] autocompact: tokens=125584 threshold=167000 effectiveWindow=180000
+2026-03-09T06:08:50.921Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:08:50.923Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:08:50.924Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:50.924Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:08:50.924Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:08:50.924Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:50.924Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:08:50.924Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:52.671Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:08:53.689Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-03-09T06:08:53.689Z [DEBUG] Found 2 hook matchers in settings
+2026-03-09T06:08:53.689Z [DEBUG] Matched 2 unique hooks for query "no match query" (2 before deduplication)
+2026-03-09T06:08:53.691Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:58.627Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:08:58.627Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:08:58.627Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:08:58.627Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:08:58.628Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-03-09T06:08:58.628Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:08:58.628Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-03-09T06:08:58.628Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:58.629Z [DEBUG] autocompact: tokens=125715 threshold=167000 effectiveWindow=180000
+2026-03-09T06:08:58.629Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:08:58.633Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:08:58.633Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:58.633Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:08:58.633Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:08:58.633Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:08:58.633Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:08:58.633Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:00.004Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:09:01.003Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-03-09T06:09:01.003Z [DEBUG] Found 2 hook matchers in settings
+2026-03-09T06:09:01.003Z [DEBUG] Matched 2 unique hooks for query "no match query" (2 before deduplication)
+2026-03-09T06:09:01.005Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:07.463Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:09:07.463Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:09:07.463Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:09:07.463Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:09:07.464Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-03-09T06:09:07.464Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:09:07.464Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-03-09T06:09:07.464Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:07.465Z [DEBUG] autocompact: tokens=125834 threshold=167000 effectiveWindow=180000
+2026-03-09T06:09:07.466Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:09:07.469Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:09:07.469Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:07.469Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:09:07.469Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:09:07.469Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:07.469Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:09:07.470Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:08.921Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:09:10.671Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-03-09T06:09:10.672Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-03-09T06:09:10.672Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:09:10.672Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-03-09T06:09:10.682Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-03-09T06:09:10.683Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-03-09T06:09:10.683Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:09:10.683Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-03-09T06:09:14.344Z [DEBUG] Session environment not yet supported on Windows
+2026-03-09T06:09:14.345Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-03-09T06:09:16.441Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-03-09T06:09:16.441Z [DEBUG] Found 6 hook matchers in settings
+2026-03-09T06:09:16.441Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-03-09T06:09:16.443Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:09:16.443Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:09:16.443Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:09:16.443Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:09:16.443Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:09:16.443Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:09:16.443Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:16.443Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:09:16.443Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:09:16.443Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:16.443Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:09:16.443Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:16.444Z [DEBUG] autocompact: tokens=126286 threshold=167000 effectiveWindow=180000
+2026-03-09T06:09:16.444Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:09:16.447Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:09:16.447Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:16.447Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:09:16.447Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:09:16.447Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:16.447Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:09:16.447Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:17.188Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:09:17.585Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:09:18.704Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-03-09T06:09:18.704Z [DEBUG] Found 2 hook matchers in settings
+2026-03-09T06:09:18.704Z [DEBUG] Matched 2 unique hooks for query "no match query" (2 before deduplication)
+2026-03-09T06:09:18.706Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:24.971Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:09:24.971Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:09:24.971Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:09:24.971Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:09:24.972Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-03-09T06:09:24.972Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:09:24.972Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-03-09T06:09:24.972Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:24.972Z [DEBUG] autocompact: tokens=126499 threshold=167000 effectiveWindow=180000
+2026-03-09T06:09:24.972Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:09:24.975Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:09:24.975Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:24.975Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:09:24.975Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:09:24.975Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:24.975Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:09:24.975Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:26.799Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:09:28.112Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-03-09T06:09:28.112Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-03-09T06:09:28.112Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:09:28.112Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-03-09T06:09:28.127Z [DEBUG] Session environment not yet supported on Windows
+2026-03-09T06:09:28.128Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-03-09T06:09:28.375Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-03-09T06:09:28.375Z [DEBUG] Found 6 hook matchers in settings
+2026-03-09T06:09:28.375Z [DEBUG] Matched 1 unique hooks for query "Bash" (1 before deduplication)
+2026-03-09T06:09:28.377Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:09:28.377Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:09:28.377Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:09:28.377Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:09:28.377Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:09:28.377Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.2f2; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:09:28.377Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:28.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:09:28.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:09:28.377Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:28.378Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:09:28.378Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:28.379Z [DEBUG] autocompact: tokens=127587 threshold=167000 effectiveWindow=180000
+2026-03-09T06:09:28.379Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:09:28.382Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:09:28.382Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:28.382Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:09:28.382Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:09:28.382Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:28.382Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:09:28.383Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:29.240Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:09:29.695Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:09:33.347Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-03-09T06:09:33.347Z [DEBUG] Found 2 hook matchers in settings
+2026-03-09T06:09:33.347Z [DEBUG] Matched 2 unique hooks for query "no match query" (2 before deduplication)
+2026-03-09T06:09:33.348Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:53.377Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-03-09T06:09:53.377Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-03-09T06:09:53.377Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-03-09T06:09:53.377Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-03-09T06:09:53.378Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-03-09T06:09:53.378Z [DEBUG] Found 0 hook matchers in settings
+2026-03-09T06:09:53.378Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-03-09T06:09:53.378Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:53.379Z [DEBUG] autocompact: tokens=128242 threshold=167000 effectiveWindow=180000
+2026-03-09T06:09:53.379Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-03-09T06:09:53.382Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.63.a43; cc_entrypoint=claude-desktop; cch=00000;
+2026-03-09T06:09:53.382Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:53.382Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-03-09T06:09:53.382Z [DEBUG] [API:auth] OAuth token check starting
+2026-03-09T06:09:53.384Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:53.385Z [DEBUG] [API:auth] OAuth token check complete
+2026-03-09T06:09:53.385Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-03-09T06:09:54.589Z [DEBUG] Stream started - received first chunk
+2026-03-09T06:09:59.696Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-03-09T06:09:59.696Z [DEBUG] Found 2 hook matchers in settings
+2026-03-09T06:09:59.696Z [DEBUG] Matched 2 unique hooks for query "no match query" (2 before deduplication)
+2026-03-09T06:09:59.698Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK

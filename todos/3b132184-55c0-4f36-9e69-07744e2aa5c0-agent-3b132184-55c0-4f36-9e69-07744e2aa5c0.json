@@ -1,0 +1,57 @@
+[
+  {
+    "content": "Fix webhooks.ts: YEARLY → ANNUAL env vars + Stripe API version",
+    "status": "completed",
+    "activeForm": "Fixing webhooks.ts env vars and Stripe version"
+  },
+  {
+    "content": "Fix user.ts: Stripe API version date",
+    "status": "completed",
+    "activeForm": "Fixing user.ts Stripe API version"
+  },
+  {
+    "content": "Fix server.ts: unknown error type assertions",
+    "status": "completed",
+    "activeForm": "Fixing server.ts error type assertions"
+  },
+  {
+    "content": "Fix jackpots.ts: comment out websocket route (no @fastify/websocket)",
+    "status": "completed",
+    "activeForm": "Fixing jackpots.ts websocket types"
+  },
+  {
+    "content": "Fix trust.ts: ADMIN_SECRET bracket notation",
+    "status": "completed",
+    "activeForm": "Fixing trust.ts bracket notation"
+  },
+  {
+    "content": "Fix flows.ts: argument count mismatch",
+    "status": "completed",
+    "activeForm": "Fixing flows.ts argument count"
+  },
+  {
+    "content": "Fix validation.ts: string | undefined param",
+    "status": "completed",
+    "activeForm": "Fixing validation.ts param type"
+  },
+  {
+    "content": "Create vite-env.d.ts + fix web tsconfig",
+    "status": "completed",
+    "activeForm": "Creating vite-env.d.ts for web app"
+  },
+  {
+    "content": "Fix web app page TypeScript errors (~48 remaining)",
+    "status": "in_progress",
+    "activeForm": "Fixing web app page TypeScript errors"
+  },
+  {
+    "content": "Fix extension TypeScript errors (if any remain)",
+    "status": "pending",
+    "activeForm": "Fixing extension TypeScript errors"
+  },
+  {
+    "content": "Commit all fixes and push to main",
+    "status": "pending",
+    "activeForm": "Committing and pushing fixes"
+  }
+]

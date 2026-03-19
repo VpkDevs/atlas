@@ -1,0 +1,37 @@
+[
+  {
+    "content": "Install dependencies with pnpm install",
+    "status": "completed",
+    "activeForm": "Installing dependencies"
+  },
+  {
+    "content": "Fix extension WXT build issues",
+    "status": "completed",
+    "activeForm": "Fixing extension WXT build"
+  },
+  {
+    "content": "Initialize git repo and make initial commit",
+    "status": "completed",
+    "activeForm": "Initializing git repo"
+  },
+  {
+    "content": "Run TypeScript checks across all workspaces",
+    "status": "in_progress",
+    "activeForm": "Running TypeScript checks"
+  },
+  {
+    "content": "Create drizzle.config.ts for db:migrate support",
+    "status": "pending",
+    "activeForm": "Creating drizzle config"
+  },
+  {
+    "content": "Create SETUP.md with step-by-step deployment guide",
+    "status": "pending",
+    "activeForm": "Creating deployment guide"
+  },
+  {
+    "content": "Save project context to memory",
+    "status": "pending",
+    "activeForm": "Saving to memory"
+  }
+]

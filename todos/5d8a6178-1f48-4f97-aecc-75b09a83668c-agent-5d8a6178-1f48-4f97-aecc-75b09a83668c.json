@@ -1,0 +1,37 @@
+[
+  {
+    "content": "Run Group A deletion script in admin PowerShell (user action)",
+    "status": "completed",
+    "activeForm": "Running Group A deletion in admin PowerShell"
+  },
+  {
+    "content": "Triage _INBOX: move Aethelgard-rpg-planning and CareerForge-AI",
+    "status": "completed",
+    "activeForm": "Triaging _INBOX remaining items"
+  },
+  {
+    "content": "Verify Group C accounts and migrate remaining content",
+    "status": "in_progress",
+    "activeForm": "Verifying Group C accounts"
+  },
+  {
+    "content": "Migrate MASTER ACCOUNT GoCodeo/mystical_journey project",
+    "status": "completed",
+    "activeForm": "Migrating mystical_journey project"
+  },
+  {
+    "content": "Delete all remaining accounts (admin required)",
+    "status": "pending",
+    "activeForm": "Deleting remaining accounts"
+  },
+  {
+    "content": "Handle TEMP accounts and CodingSpace (admin required or reboot)",
+    "status": "pending",
+    "activeForm": "Handling TEMP accounts and CodingSpace"
+  },
+  {
+    "content": "Update plan file with session 3 results",
+    "status": "pending",
+    "activeForm": "Updating plan file"
+  }
+]

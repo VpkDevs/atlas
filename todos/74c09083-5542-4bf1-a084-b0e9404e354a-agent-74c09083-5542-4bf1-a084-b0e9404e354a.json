@@ -1,0 +1,37 @@
+[
+  {
+    "content": "Create organized folder structure on desktop",
+    "status": "completed",
+    "activeForm": "Creating organized folder structure"
+  },
+  {
+    "content": "Move app shortcuts (.lnk) into Apps subfolders",
+    "status": "completed",
+    "activeForm": "Moving app shortcuts into Apps subfolders"
+  },
+  {
+    "content": "Consolidate Shortcuts folder into Apps structure",
+    "status": "completed",
+    "activeForm": "Consolidating Shortcuts into Apps"
+  },
+  {
+    "content": "Move project/code directories into Projects folder",
+    "status": "completed",
+    "activeForm": "Moving project directories into Projects folder"
+  },
+  {
+    "content": "Move documents, media, downloads, and remaining files",
+    "status": "in_progress",
+    "activeForm": "Moving documents, media, downloads, and remaining files"
+  },
+  {
+    "content": "Clean up misc junk files and duplicates",
+    "status": "pending",
+    "activeForm": "Cleaning up junk and duplicates"
+  },
+  {
+    "content": "Provide summary of final organization",
+    "status": "pending",
+    "activeForm": "Providing organization summary"
+  }
+]

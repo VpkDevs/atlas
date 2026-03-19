@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "claude-historian": {
+      "command": "npx",
+      "args": ["claude-historian"]
+    }
+  }
+}

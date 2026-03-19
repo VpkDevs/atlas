@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Build @sweepbot/types package",
+    "status": "in_progress",
+    "activeForm": "Building types package"
+  },
+  {
+    "content": "Fix remaining API TypeScript errors",
+    "status": "pending",
+    "activeForm": "Fixing API TypeScript errors"
+  },
+  {
+    "content": "Create drizzle.config.ts for db:migrate support",
+    "status": "pending",
+    "activeForm": "Creating drizzle config"
+  },
+  {
+    "content": "Create SETUP.md with step-by-step deployment guide",
+    "status": "pending",
+    "activeForm": "Creating deployment guide"
+  },
+  {
+    "content": "Save project context to memory",
+    "status": "pending",
+    "activeForm": "Saving to memory"
+  }
+]

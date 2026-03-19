@@ -1,0 +1,42 @@
+[
+  {
+    "content": "Scaffold Next.js project with TypeScript, Tailwind, App Router",
+    "status": "in_progress",
+    "activeForm": "Scaffolding Next.js project"
+  },
+  {
+    "content": "Install dependencies: next-auth, octokit, anthropic, zod",
+    "status": "pending",
+    "activeForm": "Installing dependencies"
+  },
+  {
+    "content": "GitHub OAuth with NextAuth.js",
+    "status": "pending",
+    "activeForm": "Setting up GitHub OAuth"
+  },
+  {
+    "content": "Repo listing UI + API route",
+    "status": "pending",
+    "activeForm": "Building repo listing"
+  },
+  {
+    "content": "Repo analysis engine (framework detection, env vars, build scripts)",
+    "status": "pending",
+    "activeForm": "Building analysis engine"
+  },
+  {
+    "content": "Config generators (vercel.json, .env.example, README, landing page)",
+    "status": "pending",
+    "activeForm": "Building generators"
+  },
+  {
+    "content": "PR automation service",
+    "status": "pending",
+    "activeForm": "Building PR automation"
+  },
+  {
+    "content": "Dashboard UI: analysis panel, status tracker, deploy button",
+    "status": "pending",
+    "activeForm": "Building dashboard UI"
+  }
+]

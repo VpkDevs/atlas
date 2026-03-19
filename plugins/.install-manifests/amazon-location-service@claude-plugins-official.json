@@ -1,0 +1,15 @@
+{
+  "pluginId": "amazon-location-service@claude-plugins-official",
+  "createdAt": "2026-03-14T01:17:33.900Z",
+  "files": {
+    ".claude-plugin\\plugin.json": "39359556c86c9a9387ae63678e91e3fb32fe8efc45a04c4a23287f48162b5cb4",
+    ".mcp.json": "b0667f8ae8ca23bb48ea27abf0e62ae5774cec0e5ffab7a5f6f432910e1512ab",
+    "skills\\amazon-location-service\\references\\address-input.md": "d27c5eeb276dc15dce6d0b6ce9b83049ae8c916a917977b6ce762df0e154581a",
+    "skills\\amazon-location-service\\references\\address-verification.md": "5cabaaf7771cd729aa12510d4fcd0ec1f1635f4ceb18404ba29e62569b1c55b8",
+    "skills\\amazon-location-service\\references\\calculate-routes.md": "b8c4ca48e557dddf009f8995d69762583bc71121ed296479c32f7963da315402",
+    "skills\\amazon-location-service\\references\\dynamic-map.md": "8caad17f64afa6898d370cc26f7727185e5d7a0d1c5d54b3f04ea80024e35fa6",
+    "skills\\amazon-location-service\\references\\places-search.md": "7228513efbcaf145db809df0223e40951ec7048e94a031633cfceca96b957a2c",
+    "skills\\amazon-location-service\\references\\web-javascript.md": "3b5b39b2c4e93aa51756d5c422583f1bbb86a486900e3f1f13fa51d039330dbc",
+    "skills\\amazon-location-service\\SKILL.md": "f45159e614dfa88d13b02eeef3c109ad09b9cb4bd6e4e5bd9fe95f7b0994b994"
+  }
+}

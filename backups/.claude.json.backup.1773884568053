@@ -1,0 +1,636 @@
+{
+  "numStartups": 17,
+  "theme": "light-daltonized",
+  "installMethod": "native",
+  "autoUpdates": false,
+  "preferredNotifChannel": "terminal_bell",
+  "customApiKeyResponses": {
+    "approved": [],
+    "rejected": [
+      "BhXtdnH-HdQ-ETRONgAA"
+    ]
+  },
+  "tipsHistory": {
+    "new-user-warmup": 10,
+    "plan-mode-for-complex-tasks": 10,
+    "terminal-setup": 15,
+    "memory-command": 3,
+    "theme-command": 3,
+    "status-line": 3,
+    "prompt-queue": 3,
+    "enter-to-steer-in-relatime": 4,
+    "todo-list": 5,
+    "ide-upsell-external-terminal": 11,
+    "# for memory": 16,
+    "install-github-app": 16,
+    "drag-and-drop-images": 17,
+    "double-esc": 6,
+    "continue": 17,
+    "shift-tab": 17,
+    "image-paste": 6,
+    "double-esc-code-restore": 7,
+    "custom-agents": 7,
+    "tab-toggle-thinking": 9,
+    "ultrathink-keyword": 10,
+    "permissions": 14,
+    "custom-commands": 14
+  },
+  "promptQueueUseCount": 5,
+  "showExpandedTodos": true,
+  "cachedStatsigGates": {
+    "tengu_disable_bypass_permissions_mode": false,
+    "tengu_use_file_checkpoints": true,
+    "tengu_tool_pear": false,
+    "tengu_prompt_suggestion": false
+  },
+  "cachedDynamicConfigs": {
+    "tengu-top-of-feed-tip": {
+      "tip": "",
+      "color": ""
+    }
+  },
+  "cachedGrowthBookFeatures": {
+    "tengu_1p_event_batch_config": {
+      "scheduledDelayMillis": 10000,
+      "maxExportBatchSize": 400,
+      "maxQueueSize": 8192,
+      "path": "/api/event_logging/v2/batch"
+    },
+    "tengu_mcp_tool_search": true,
+    "tengu_scratch": false,
+    "tengu_brass_pebble": false,
+    "tengu_event_sampling_config": {},
+    "tengu_tool_pear": false,
+    "tengu_log_segment_events": false,
+    "tengu_log_datadog_events": true,
+    "tengu_keybinding_customization": false,
+    "tengu_c4w_usage_limit_notifications_enabled": true,
+    "tengu_thinkback": false,
+    "tengu_disable_bypass_permissions_mode": false,
+    "tengu_claudeai_mcp_connectors": true,
+    "tengu_pid_based_version_locking": true,
+    "enhanced_telemetry_beta": false,
+    "tengu_streaming_tool_execution2": true,
+    "tengu_tool_search_unsupported_models": [
+      "haiku"
+    ],
+    "tengu_plan_mode_interview_phase": false,
+    "tengu_attribution_header": true,
+    "tengu_marble_anvil": true,
+    "tengu_scarf_coffee": false,
+    "tengu_keybinding_customization_release": true,
+    "tengu_vscode_review_upsell": false,
+    "tengu_vscode_onboarding": false,
+    "tengu_quiet_fern": true,
+    "tengu_marble_kite": false,
+    "tengu_system_prompt_global_cache": true,
+    "tengu_coral_fern": false,
+    "tengu_cache_plum_violet": true,
+    "tengu_workout": false,
+    "tengu_cork_m4q": true,
+    "tengu_session_memory": false,
+    "tengu_sm_compact": false,
+    "tengu_compact_cache_prefix": true,
+    "tengu_compact_streaming_retry": false,
+    "tengu_file_write_optimization": true,
+    "tengu_tst_kx7": false,
+    "tengu_vinteuil_phrase": true,
+    "tengu_oboe": true,
+    "tengu_tst_names_in_messages": false,
+    "tengu_kv7_prompt_sort": false,
+    "tengu_bash_haiku_prefetch": true,
+    "tengu_chomp_inflection": false,
+    "tengu_copper_lantern": false,
+    "tengu_marble_lantern_disabled": false,
+    "tengu_workout2": true,
+    "tengu_penguins_enabled": true,
+    "tengu_penguins_off": null,
+    "tengu_bergotte_lantern": false,
+    "tengu_fgts": false,
+    "tengu_prompt_cache_1h_config": {
+      "allowlist": [
+        "repl_main_thread*",
+        "sdk",
+        "auto_mode"
+      ]
+    },
+    "tengu_plum_vx3": true,
+    "tengu_mcp_elicitation": true,
+    "tengu_slate_nexus": true,
+    "tengu_marble_sandcastle": false,
+    "tengu_pebble_leaf_prune": false,
+    "tengu_swann_brevity": "focused",
+    "tengu_tool_input_aliasing": false,
+    "tengu_oak_drum": false,
+    "tengu_mulberry_fog": false,
+    "tengu_moth_copse": false,
+    "tengu_ccr_bridge": false,
+    "tengu_coral_whistle": false,
+    "tengu_auto_background_agents": false,
+    "tengu_disable_streaming_to_non_streaming_fallback": false,
+    "tengu_crystal_beam": {
+      "budgetTokens": 0
+    },
+    "tengu_amber_quartz": true,
+    "tengu_summarize_tool_results": true,
+    "tengu_frond_boric": {},
+    "tengu_marble_whisper": true,
+    "tengu_cicada_nap_ms": 0,
+    "tengu_miraculo_the_bard": false,
+    "tengu_miraculo_the_bard2": false,
+    "tengu_desktop_upsell": {
+      "enable_shortcut_tip": false,
+      "enable_startup_dialog": false
+    },
+    "tengu_quartz_falcon": null,
+    "tengu_slate_ridge": true,
+    "tengu_swinburne_dune": true,
+    "tengu_basalt_3kr": false,
+    "tengu_sotto_voce": true,
+    "tengu_turtle_carbon": true,
+    "tengu_glacier_2xr": false,
+    "tengu_defer_all_bn4": false,
+    "tengu_tst_hint_m7r": false,
+    "tengu_tangerine_ladder_boost": true,
+    "tengu_kairos_cron": true,
+    "tengu_herring_clock": false,
+    "tengu_paper_halyard": false,
+    "tengu_satin_quoll": {},
+    "tengu_kairos_brief_config": {
+      "enable_slash_command": false
+    },
+    "tengu_toolref_defer_j8m": false,
+    "tengu_copper_wren": false,
+    "tengu_lean_cast": false,
+    "tengu_orchid_trellis": false,
+    "tengu_marble_whisper2": true,
+    "tengu_tight_weave": true,
+    "tengu_chair_sermon": false,
+    "tengu_auto_mode_config": {
+      "enabled": "disabled"
+    },
+    "tengu_grey_wool": true,
+    "tengu_passport_quail": false,
+    "tengu_pewter_ledger": "OFF",
+    "tengu_grey_step2": {
+      "enabled": true,
+      "dialogTitle": "We recommend medium effort for Opus",
+      "dialogDescription": "Effort determines how long Claude thinks for when completing your task. We recommend medium effort for most tasks to balance speed and intelligence and maximize rate limits. Use ultrathink to trigger high effort when needed."
+    },
+    "tengu_cobalt_compass": true,
+    "tengu_amber_wren": {
+      "targetedRangeNudge": false
+    },
+    "tengu_pewter_gull": false,
+    "tengu_amber_prism": false
+  },
+  "firstStartTime": "2025-09-18T01:23:45.611Z",
+  "userID": "5a489725ad6f10aea28945c4d4055a4c371e2fd1385aa170d400e1f18ee08df7",
+  "projects": {
+    "C:\\users\\public\\dev": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 4,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "lastCost": 0.00012800000000000002,
+      "lastAPIDuration": 6226,
+      "lastToolDuration": 0,
+      "lastDuration": 63007416,
+      "lastLinesAdded": 0,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 105,
+      "lastTotalOutputTokens": 11,
+      "lastTotalCacheCreationInputTokens": 0,
+      "lastTotalCacheReadInputTokens": 0,
+      "lastTotalWebSearchRequests": 0,
+      "lastSessionId": "3690dd5a-5332-44e2-9516-4dcb3119d241"
+    },
+    "C:\\Users\\Public\\dev": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 1,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\Desktop\\birthday": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 1,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\Public\\dev\\Ultimate-AI": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": false,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "c:\\Users\\Public\\dev": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": false,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\Downloads": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "ignorePatterns": [],
+      "projectOnboardingSeenCount": 1,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": []
+    },
+    "C:\\Users\\MQ420_OL": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": false,
+      "ignorePatterns": [],
+      "projectOnboardingSeenCount": 1,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": []
+    },
+    "C:\\Users\\MQ420_OL\\Documents\\trae_projects\\no-code-platforms": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "ignorePatterns": [],
+      "projectOnboardingSeenCount": 2,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [],
+      "hasCompletedProjectOnboarding": true
+    },
+    "C:\\": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\Desktop\\Ember": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\Downloads\\_Projects": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\DEV\\web\\Shipwright": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\DEV\\web\\Sweepbot": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\DEV\\web\\Sweepbot\\.claude\\worktrees\\interesting-faraday": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\DEV\\web\\Sweepbot\\.claude\\worktrees\\strange-kilby": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\DEV\\web\\Sweepbot\\.claude\\worktrees\\objective-diffie": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\DEV\\web\\Sweepbot\\.claude\\worktrees\\hungry-merkle": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\DEV\\web\\Sweepbot\\.claude\\worktrees\\competent-shamir": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\DEV\\web\\Sweepbot\\.claude\\worktrees\\great-gauss": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\DEV\\web\\Sweepbot\\.claude\\worktrees\\angry-gauss": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\DEV\\web\\Sweepbot\\.claude\\worktrees\\nifty-tereshkova": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\DEV\\web\\Sweepbot\\.claude\\worktrees\\nervous-shaw": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\DEV\\web\\Sweepbot\\.claude\\worktrees\\frosty-kowalevski": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\DEV\\web\\Sweepbot\\.claude\\worktrees\\epic-gates": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\DEV\\web\\Sweepbot\\.claude\\worktrees\\festive-jones": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\DEV\\web\\Sweepbot\\.claude\\worktrees\\thirsty-volhard": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "C:\\Users\\MQ420_OL\\DEV\\web\\Sweepbot\\.claude\\worktrees\\great-shannon": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    }
+  },
+  "fallbackAvailableWarningThreshold": 0.5,
+  "oauthAccount": {
+    "accountUuid": "7f21ad0f-1a75-4050-ad77-50d9aa6e65ce",
+    "emailAddress": "vincekinney1991@gmail.com",
+    "organizationUuid": "54b56db1-cf39-4c06-9546-28457803660e",
+    "organizationRole": "admin",
+    "workspaceRole": null,
+    "organizationName": "vincekinney1991@gmail.com's Organization",
+    "displayName": "Vincent",
+    "organizationBillingType": "none",
+    "hasExtraUsageEnabled": false,
+    "billingType": "stripe_subscription",
+    "accountCreatedAt": "2026-03-03T23:10:01.808826Z",
+    "subscriptionCreatedAt": "2026-03-03T23:18:52.429118Z"
+  },
+  "claudeCodeFirstTokenDate": "2025-08-02T07:07:59.676407Z",
+  "hasCompletedOnboarding": true,
+  "lastOnboardingVersion": "1.0.110",
+  "hasOpusPlanDefault": false,
+  "subscriptionNoticeCount": 0,
+  "hasAvailableSubscription": false,
+  "s1mAccessCache": {
+    "54b56db1-cf39-4c06-9546-28457803660e": {
+      "hasAccess": false,
+      "hasAccessNotAsDefault": false,
+      "timestamp": 1771443849865
+    }
+  },
+  "isQualifiedForDataSharing": false,
+  "changelogLastFetched": 1772908949416,
+  "lastReleaseNotesSeen": "2.0.14",
+  "sonnet45MigrationComplete": true,
+  "feedbackSurveyState": {
+    "lastShownTime": 1759788199969
+  },
+  "lastPlanModeUse": 1760297340500,
+  "opus45MigrationComplete": true,
+  "opusProMigrationComplete": true,
+  "thinkingMigrationComplete": true,
+  "cachedChromeExtensionInstalled": true,
+  "autoUpdatesProtectedForNative": true,
+  "groveConfigCache": {
+    "7f21ad0f-1a75-4050-ad77-50d9aa6e65ce": {
+      "grove_enabled": true,
+      "timestamp": 1772901582183
+    }
+  },
+  "clientDataCache": {
+    "data": null,
+    "timestamp": 1773303740803
+  },
+  "penguinModeOrgEnabled": false,
+  "sonnet1m45MigrationComplete": true,
+  "cachedExtraUsageDisabledReason": "out_of_credits",
+  "toolUsage": {
+    "mcp__Desktop_Commander__start_process": {
+      "usageCount": 19,
+      "lastUsedAt": 1772014336622
+    },
+    "mcp__Desktop_Commander__read_file": {
+      "usageCount": 32,
+      "lastUsedAt": 1772048094451
+    },
+    "mcp__Desktop_Commander__read_process_output": {
+      "usageCount": 1,
+      "lastUsedAt": 1772014339045
+    },
+    "mcp__Desktop_Commander__write_file": {
+      "usageCount": 1,
+      "lastUsedAt": 1772014462945
+    },
+    "WebSearch": {
+      "usageCount": 48,
+      "lastUsedAt": 1772073855158
+    },
+    "Task": {
+      "usageCount": 6,
+      "lastUsedAt": 1772073855615
+    },
+    "WebFetch": {
+      "usageCount": 17,
+      "lastUsedAt": 1772073849495
+    },
+    "AskUserQuestion": {
+      "usageCount": 1,
+      "lastUsedAt": 1772047115256
+    },
+    "Write": {
+      "usageCount": 117,
+      "lastUsedAt": 1772067211493
+    },
+    "ExitPlanMode": {
+      "usageCount": 2,
+      "lastUsedAt": 1772048737886
+    },
+    "TodoWrite": {
+      "usageCount": 19,
+      "lastUsedAt": 1772073625597
+    },
+    "Bash": {
+      "usageCount": 21,
+      "lastUsedAt": 1772140594175
+    },
+    "mcp__Desktop_Commander__list_directory": {
+      "usageCount": 3,
+      "lastUsedAt": 1772066467821
+    },
+    "Read": {
+      "usageCount": 56,
+      "lastUsedAt": 1772073692922
+    },
+    "Glob": {
+      "usageCount": 1,
+      "lastUsedAt": 1772066441145
+    },
+    "Edit": {
+      "usageCount": 5,
+      "lastUsedAt": 1772066744316
+    }
+  },
+  "officialMarketplaceAutoInstallAttempted": true,
+  "officialMarketplaceAutoInstalled": true,
+  "skillUsage": {
+    "superpowers:brainstorming": {
+      "usageCount": 4,
+      "lastUsedAt": 1773790743552
+    },
+    "superpowers:dispatching-parallel-agents": {
+      "usageCount": 3,
+      "lastUsedAt": 1773656617613
+    },
+    "code-review:code-review": {
+      "usageCount": 1,
+      "lastUsedAt": 1773548725302
+    },
+    "superpowers:verification-before-completion": {
+      "usageCount": 1,
+      "lastUsedAt": 1773559265204
+    },
+    "superpowers:finishing-a-development-branch": {
+      "usageCount": 3,
+      "lastUsedAt": 1773780957117
+    },
+    "superpowers:writing-skills": {
+      "usageCount": 1,
+      "lastUsedAt": 1773843774108
+    }
+  }
+}
