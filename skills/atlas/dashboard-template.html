@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atlas Dashboard</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #09090b;
+      --surface: #18181b;
+      --surface-2: #27272a;
+      --border: #3f3f46;
+      --border-light: #52525b;
+      --text: #fafafa;
+      --text-muted: #a1a1aa;
+      --text-dim: #71717a;
+      --indigo: #818cf8;
+      --indigo-bg: rgba(99,102,241,0.10);
+      --indigo-border: rgba(99,102,241,0.30);
+      --green: #4ade80;
+      --green-bg: rgba(34,197,94,0.08);
+      --green-border: rgba(34,197,94,0.22);
+      --amber: #fbbf24;
+      --amber-bg: rgba(245,158,11,0.10);
+      --amber-border: rgba(245,158,11,0.28);
+      --red: #f87171;
+      --red-bg: rgba(239,68,68,0.10);
+      --red-border: rgba(239,68,68,0.28);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 13px;
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+
+    /* ── Header ─────────────────────────────────────── */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 60px;
+      background: rgba(9,9,11,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      gap: 14px;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--indigo);
+      letter-spacing: -0.3px;
+      flex-shrink: 0;
+    }
+
+    .hdivider {
+      width: 1px; height: 22px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    .header-project { flex: 1; min-width: 0; }
+
+    .header-project-name {
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .header-project-meta {
+      font-size: 11px;
+      color: var(--text-dim);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Score ring */
+    .score-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .score-info { text-align: right; }
+
+    .score-label-text {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .score-target-text {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    .score-target-text strong { color: var(--amber); font-weight: 700; }
+
+    .score-ring {
+      position: relative;
+      width: 50px; height: 50px;
+      flex-shrink: 0;
+    }
+
+    .score-ring svg { transform: rotate(-90deg); }
+
+    .ring-track {
+      fill: none;
+      stroke: var(--surface-2);
+      stroke-width: 4;
+    }
+
+    .ring-fill {
+      fill: none;
+      stroke: var(--indigo);
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-dasharray: 131.9;
+      stroke-dashoffset: 131.9;
+      transition: stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .ring-fill.green { stroke: var(--green); }
+    .ring-fill.amber { stroke: var(--amber); }
+
+    .score-center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .score-number {
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .score-denom {
+      font-size: 8px;
+      color: var(--text-muted);
+    }
+
+    /* Refresh btn */
+    .refresh-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 10px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-muted);
+      font-size: 11px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+
+    .refresh-btn:hover {
+      border-color: var(--border-light);
+      color: var(--text);
+    }
+
+    /* ── Layout ─────────────────────────────────────── */
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      margin-top: 60px;
+      min-height: calc(100vh - 60px);
+    }
+
+    /* ── Module panel ───────────────────────────────── */
+    .modules-panel {
+      padding: 20px;
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .panel-title {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-dim);
+    }
+
+    .complete-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+    }
+
+    .dot-green { background: var(--green); }
+    .dot-amber { background: var(--amber); }
+    .dot-dim { background: var(--border-light); }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    /* ── Module card ────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card.status-complete {
+      border-color: var(--green-border);
+    }
+
+    .card.status-active {
+      border-color: var(--indigo-border);
+      box-shadow: 0 0 0 1px rgba(99,102,241,0.15), 0 4px 18px rgba(99,102,241,0.08);
+    }
+
+    .card.status-blocked {
+      border-color: var(--red-border);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+    }
+
+    .card-header:hover {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .mod-num {
+      width: 22px; height: 22px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 800;
+      flex-shrink: 0;
+      background: var(--surface-2);
+      color: var(--text-dim);
+    }
+
+    .status-complete .mod-num {
+      background: var(--green-bg);
+      color: var(--green);
+    }
+
+    .status-active .mod-num {
+      background: var(--indigo-bg);
+      color: var(--indigo);
+    }
+
+    .status-blocked .mod-num {
+      background: var(--red-bg);
+      color: var(--red);
+    }
+
+    .mod-name {
+      flex: 1;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .status-pending .mod-name { color: var(--text-muted); }
+
+    .status-badge {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      flex-shrink: 0;
+    }
+
+    .badge-complete { background: var(--green-bg); color: var(--green); }
+    .badge-active { background: var(--indigo-bg); color: var(--indigo); }
+    .badge-pending { background: var(--surface-2); color: var(--text-dim); }
+    .badge-blocked { background: var(--red-bg); color: var(--red); }
+
+    .chevron {
+      color: var(--text-dim);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .card.expanded .chevron { transform: rotate(180deg); }
+
+    /* Card body */
+    .card-body {
+      display: none;
+      padding: 0 12px 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .card.expanded .card-body { display: block; }
+
+    .sec-label {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-dim);
+      margin: 10px 0 6px;
+    }
+
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .atlas-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .atlas-item::before {
+      content: '✓';
+      color: var(--green);
+      font-size: 10px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* User checkboxes */
+    .user-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .cb {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 13px; height: 13px;
+      min-width: 13px;
+      border: 1.5px solid var(--border-light);
+      border-radius: 3px;
+      background: var(--surface-2);
+      cursor: pointer;
+      margin-top: 1px;
+      position: relative;
+      transition: all 0.15s;
+    }
+
+    .cb:checked {
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    .cb:checked::after {
+      content: '';
+      position: absolute;
+      left: 3px; top: 0px;
+      width: 4px; height: 7px;
+      border: 1.5px solid #09090b;
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg);
+    }
+
+    .cb-label {
+      cursor: pointer;
+      flex: 1;
+    }
+
+    .cb-label.done {
+      text-decoration: line-through;
+      color: var(--text-dim);
+    }
+
+    .cb-label.req::after {
+      content: ' ✱';
+      color: var(--amber);
+      font-size: 9px;
+    }
+
+    .pending-note {
+      font-size: 11px;
+      color: var(--text-dim);
+      font-style: italic;
+      padding-top: 8px;
+    }
+
+    /* Active pulse */
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(99,102,241,0.45); }
+      70%  { box-shadow: 0 0 0 7px rgba(99,102,241,0); }
+      100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
+    }
+
+    .status-active .mod-num { animation: pulse 2.2s infinite; }
+
+    /* ── Actions sidebar ────────────────────────────── */
+    .actions-panel {
+      position: sticky;
+      top: 60px;
+      height: calc(100vh - 60px);
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .actions-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .actions-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 6px;
+      border-radius: 100px;
+      font-size: 10px;
+      font-weight: 800;
+      background: var(--red-bg);
+      color: var(--red);
+      border: 1px solid var(--red-border);
+      transition: all 0.3s;
+    }
+
+    .actions-count.clear {
+      background: var(--green-bg);
+      color: var(--green);
+      border-color: var(--green-border);
+    }
+
+    .action-group { display: flex; flex-direction: column; gap: 4px; }
+
+    .ag-label {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-dim);
+      margin-bottom: 4px;
+    }
+
+    .action-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      padding: 7px 9px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .action-item:hover {
+      border-color: var(--border-light);
+      background: var(--surface-2);
+    }
+
+    .action-item.urgent {
+      border-color: var(--amber-border);
+      background: var(--amber-bg);
+      color: var(--text);
+    }
+
+    .action-tag {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: var(--surface-2);
+      color: var(--text-dim);
+      flex-shrink: 0;
+      margin-top: 1px;
+      white-space: nowrap;
+    }
+
+    .action-item.urgent .action-tag {
+      background: rgba(245,158,11,0.2);
+      color: var(--amber);
+    }
+
+    .all-clear {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+      padding: 32px 16px;
+      color: var(--text-dim);
+    }
+
+    .all-clear-icon { font-size: 28px; }
+
+    .all-clear-text {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    .sidebar-footer {
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      font-size: 10px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .sidebar-footer code {
+      font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
+      font-size: 9px;
+      background: var(--surface-2);
+      padding: 1px 4px;
+      border-radius: 3px;
+      color: var(--indigo);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 100px; }
+
+    /* Legend */
+    .legend {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+
+    .legend-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+// ── ATLAS STATE ── Atlas replaces ONLY this block on every run ──────────────
+// Replace from "const ATLAS_STATE = {" through the closing "};" below.
+const ATLAS_STATE = {
+  project: {
+    name: "SweepBot",
+    slug: "sweepbot",
+    lastUpdated: "2026-03-19 09:00",
+    tagline: "We give players what the house never wants them to have.",
+    runsItselfScore: 36,
+    targetScore: 70,
+    previousScore: 22
+  },
+  currentModule: "marketing",
+  founder: "Vincent",
+  modules: [
+    {
+      id: "onboarding", number: 1, name: "Onboarding",
+      status: "complete",
+      atlasDid: [
+        "Read 147 files across the codebase",
+        "Built complete Business Context (confirmed by founder)",
+        "Identified 4 remaining infrastructure blockers",
+        "Flagged 2 legal gaps (resolved in Module 3)"
+      ],
+      userMust: [
+        { id: "a", label: "Confirmed Business Context was accurate", required: false },
+        { id: "b", label: "Provided location, runway, and success definition", required: false }
+      ]
+    },
+    {
+      id: "code-sprint", number: 2, name: "Code Sprint",
+      status: "complete",
+      atlasDid: [
+        "Fixed 6 missing database tables",
+        "Resolved 4 routing bugs (protected routes, 404 handling)",
+        "Scaffolded Vercel + Railway config files",
+        "Wrote docs/founder/RUNBOOK.md",
+        "Generated API documentation from route files"
+      ],
+      userMust: [
+        { id: "a", label: "Review the committed changes: git log --oneline -10", required: false },
+        { id: "b", label: "Run pnpm db:migrate once production database is live", required: true },
+        { id: "c", label: "Set STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, and remaining .env vars", required: true }
+      ]
+    },
+    {
+      id: "legal", number: 3, name: "Legal & Compliance",
+      status: "complete",
+      atlasDid: [
+        "Drafted Terms of Service (specific to SweepBot data practices)",
+        "Drafted Privacy Policy (specific to actual data collected)",
+        "Added 18+ age gate checkbox to SignUpPage.tsx",
+        "Added automation ToS disclosure to signup flow",
+        "Wrote docs/legal/COMPLIANCE_CHECKLIST.md"
+      ],
+      userMust: [
+        { id: "a", label: "Deploy web app so /privacy and /terms are live at sweepbot.app", required: true },
+        { id: "b", label: "Register privacy URL in Chrome Web Store developer console", required: true },
+        { id: "c", label: "Add visible affiliate link labels in extension popup at runtime", required: true },
+        { id: "d", label: "Optional: Have a lawyer review ToS before $10K+ MRR", required: false }
+      ]
+    },
+    {
+      id: "launch-strategy", number: 4, name: "Launch Strategy",
+      status: "complete",
+      atlasDid: [
+        "Ranked launch channels by ROI for sweepstakes audience",
+        "Wrote Product Hunt: tagline, description, first comment, maker story",
+        "Wrote Show HN post in authentic HN voice",
+        "Wrote Reddit posts for r/sweepstakescasinos, r/beermoney, r/Sweepstakes",
+        "Built 30-day day-by-day launch timeline (LAUNCH_TIMELINE.md)",
+        "Generated building-in-public thread draft",
+        "Wrote 5 affiliate outreach emails (Stake.us, McLuck, Pulsz, WOW Vegas, Fortune Coins)"
+      ],
+      userMust: [
+        { id: "a", label: "Create Product Hunt account if not exists: producthunt.com/auth/sign-up", required: true },
+        { id: "b", label: "Choose launch date (Day 1 = infrastructure done — see LAUNCH_TIMELINE.md)", required: true },
+        { id: "c", label: "Review and approve all launch copy before posting", required: true },
+        { id: "d", label: "Take 3 extension screenshots at 1280×800 — exact instructions in LAUNCH_STRATEGY.md", required: true }
+      ]
+    },
+    {
+      id: "marketing", number: 5, name: "Marketing",
+      status: "active",
+      atlasDid: [],
+      userMust: [
+        { id: "a", label: "Create Buffer account and connect social profiles: buffer.com/signup", required: true },
+        { id: "b", label: "Create business Twitter/X account for @SweepBot (or your handle)", required: true },
+        { id: "c", label: "Set up Google Search Console (requires domain ownership): search.google.com/search-console", required: true },
+        { id: "d", label: "Import 30-day content calendar to Buffer after Atlas generates it", required: true },
+        { id: "e", label: "Create business LinkedIn page (optional — low ROI for this audience)", required: false }
+      ]
+    },
+    {
+      id: "business-setup", number: 6, name: "Business Setup",
+      status: "pending",
+      atlasDid: [],
+      userMust: [
+        { id: "a", label: "File LLC with your state (Atlas will provide exact steps + direct link)", required: true },
+        { id: "b", label: "Open business bank account (Atlas will recommend + provide application link)", required: true },
+        { id: "c", label: "Connect Stripe payouts to business bank account", required: true },
+        { id: "d", label: "Set up accounting software — Wave is free: waveapps.com", required: false }
+      ]
+    },
+    {
+      id: "automation", number: 7, name: "Automation Handoff",
+      status: "pending",
+      atlasDid: [],
+      userMust: [
+        { id: "a", label: "Create Better Uptime account and add BETTER_UPTIME_API_KEY to .env: betteruptime.com", required: true },
+        { id: "b", label: "Create Sentry account and add SENTRY_DSN to .env: sentry.io", required: true },
+        { id: "c", label: "Configure Stripe webhook endpoint in Stripe Dashboard → Developers → Webhooks", required: true },
+        { id: "d", label: "Approve n8n/Make workflows before activating (Atlas will show you each one)", required: false }
+      ]
+    },
+    {
+      id: "operations", number: 8, name: "Operations",
+      status: "pending",
+      atlasDid: [],
+      userMust: [
+        { id: "a", label: "Add POSTHOG_API_KEY to .env for product analytics: app.posthog.com", required: true },
+        { id: "b", label: "Schedule recurring 15-minute weekly review — Atlas will specify what to review", required: false },
+        { id: "c", label: "Configure Stripe automatic weekly payouts in Stripe Dashboard → Payouts", required: false }
+      ]
+    }
+  ]
+};
+// ── END ATLAS STATE ────────────────────────────────────────────────────────
+</script>
+
+<header class="header">
+  <div class="logo">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="12" cy="12" r="2.5" fill="currentColor"/>
+    </svg>
+    Atlas
+  </div>
+  <div class="hdivider"></div>
+  <div class="header-project">
+    <div class="header-project-name" id="hdr-name">—</div>
+    <div class="header-project-meta" id="hdr-meta">—</div>
+  </div>
+  <div class="score-wrap">
+    <div class="score-info">
+      <div class="score-label-text">Runs-Itself Score</div>
+      <div class="score-target-text">Target: <strong id="hdr-target">70</strong></div>
+    </div>
+    <div class="score-ring">
+      <svg width="50" height="50" viewBox="0 0 50 50">
+        <circle class="ring-track" cx="25" cy="25" r="21"/>
+        <circle class="ring-fill" id="ring-fill" cx="25" cy="25" r="21"/>
+      </svg>
+      <div class="score-center">
+        <span class="score-number" id="score-num">0</span>
+        <span class="score-denom">/ 100</span>
+      </div>
+    </div>
+  </div>
+  <button class="refresh-btn" onclick="location.reload()">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3"/>
+    </svg>
+    Refresh
+  </button>
+</header>
+
+<div class="layout">
+  <!-- Module grid -->
+  <div class="modules-panel">
+    <div class="panel-header">
+      <div class="panel-title">Pipeline Modules</div>
+      <div class="complete-badge">
+        <span class="dot dot-green"></span>
+        <span id="complete-count">—</span>
+      </div>
+    </div>
+    <div class="module-grid" id="module-grid"></div>
+
+    <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border)">
+      <div class="legend">
+        <div class="legend-item"><span class="legend-dot" style="background:var(--green)"></span> Complete</div>
+        <div class="legend-item"><span class="legend-dot" style="background:var(--indigo)"></span> In Progress</div>
+        <div class="legend-item"><span class="legend-dot" style="background:var(--border-light)"></span> Pending</div>
+        <div class="legend-item"><span class="legend-dot" style="background:var(--red)"></span> Blocked</div>
+        <div class="legend-item" style="margin-left:8px;color:var(--amber)">✱ Launch blocker</div>
+        <div class="legend-item">☐ Check off as you complete</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Actions sidebar -->
+  <div class="actions-panel">
+    <div class="actions-header-row">
+      <div class="panel-title">Outstanding Actions</div>
+      <span class="actions-count" id="act-count">0</span>
+    </div>
+    <div id="actions-list"></div>
+    <div class="sidebar-footer">
+      <p>Refresh this page after each Atlas module completes. Your checkboxes survive refreshes automatically.</p>
+      <br>
+      <p>Resume Atlas at any time: <code>/atlas</code></p>
+      <br>
+      <p>✱ = Launch blocker (required before going live)</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const S = ATLAS_STATE;
+  const slug = S.project.slug;
+
+  // ── localStorage helpers ──────────────────────────────────────────────────
+  const key = (mid, iid) => `atlas-${slug}-${mid}-${iid}`;
+  const save = (mid, iid, v) => localStorage.setItem(key(mid, iid), v ? '1' : '0');
+  const load = (mid, iid) => localStorage.getItem(key(mid, iid)) === '1';
+
+  // ── Header / score ring ───────────────────────────────────────────────────
+  function initHeader() {
+    const sc = S.project.runsItselfScore;
+    const tg = S.project.targetScore;
+    document.getElementById('hdr-name').textContent = S.project.name;
+    document.getElementById('hdr-meta').textContent =
+      `Updated ${S.project.lastUpdated}  ·  Active: ${S.currentModule.replace(/-/g,' ')}`;
+    document.getElementById('hdr-target').textContent = tg;
+    document.getElementById('score-num').textContent = sc;
+
+    const circ = 131.9;
+    const fill = document.getElementById('ring-fill');
+    if (sc >= tg) fill.classList.add('green');
+    else if (sc >= tg * 0.55) fill.classList.add('amber');
+
+    requestAnimationFrame(() => setTimeout(() => {
+      fill.style.strokeDashoffset = circ * (1 - Math.min(sc / 100, 1));
+    }, 80));
+  }
+
+  // ── Module grid ───────────────────────────────────────────────────────────
+  const BADGE = {
+    complete: ['badge-complete','Complete'],
+    active:   ['badge-active','In Progress'],
+    pending:  ['badge-pending','Pending'],
+    blocked:  ['badge-blocked','Blocked'],
+  };
+
+  function buildModules() {
+    const grid = document.getElementById('module-grid');
+    let done = 0;
+
+    S.modules.forEach(m => {
+      if (m.status === 'complete') done++;
+      const [bClass, bLabel] = BADGE[m.status] || BADGE.pending;
+
+      const atlasList = m.atlasDid.length
+        ? `<div class="sec-label">Atlas completed</div>
+           <ul class="check-list">${m.atlasDid.map(t =>
+             `<li class="atlas-item">${t}</li>`).join('')}</ul>`
+        : m.status !== 'pending'
+          ? ''
+          : `<p class="pending-note">Module has not run yet.</p>`;
+
+      const userList = m.userMust.length
+        ? `<div class="sec-label" style="margin-top:${m.atlasDid.length?'10px':'4px'}">
+             You must do
+             <span style="font-size:9px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-dim)">
+               — check off as you complete each
+             </span>
+           </div>
+           <ul class="check-list">${m.userMust.map(it => {
+             const checked = load(m.id, it.id);
+             return `<li class="user-item">
+               <input type="checkbox" class="cb"
+                 id="cb-${m.id}-${it.id}"
+                 data-mod="${m.id}" data-item="${it.id}"
+                 ${checked ? 'checked' : ''}>
+               <label class="cb-label${checked?' done':''}${it.required?' req':''}"
+                 for="cb-${m.id}-${it.id}">${it.label}</label>
+             </li>`;
+           }).join('')}</ul>`
+        : '';
+
+      const card = document.createElement('div');
+      card.className = `card status-${m.status}${m.status==='active'?' expanded':''}`;
+      card.id = `card-${m.id}`;
+      card.innerHTML = `
+        <div class="card-header" onclick="toggle('${m.id}')">
+          <div class="mod-num">${m.number}</div>
+          <div class="mod-name">${m.name}</div>
+          <span class="status-badge ${bClass}">${bLabel}</span>
+          <svg class="chevron" width="13" height="13" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2.5">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="card-body">${atlasList}${userList}</div>`;
+      grid.appendChild(card);
+    });
+
+    document.getElementById('complete-count').textContent =
+      `${done} of ${S.modules.length} complete`;
+
+    // Checkbox listeners
+    document.querySelectorAll('.cb').forEach(cb => {
+      cb.addEventListener('change', function() {
+        save(this.dataset.mod, this.dataset.item, this.checked);
+        const lbl = document.querySelector(`label[for="cb-${this.dataset.mod}-${this.dataset.item}"]`);
+        if (lbl) lbl.classList.toggle('done', this.checked);
+        buildActions();
+      });
+    });
+  }
+
+  function toggle(id) {
+    document.getElementById(`card-${id}`).classList.toggle('expanded');
+  }
+
+  // ── Outstanding actions ───────────────────────────────────────────────────
+  function buildActions() {
+    const list = document.getElementById('actions-list');
+    list.innerHTML = '';
+    let total = 0;
+    const groups = [];
+
+    S.modules.forEach(m => {
+      if (m.status === 'pending') return;
+      const unchecked = m.userMust.filter(it => !load(m.id, it.id));
+      if (!unchecked.length) return;
+      total += unchecked.length;
+      groups.push({ m, unchecked });
+    });
+
+    const badge = document.getElementById('act-count');
+    badge.textContent = total;
+    badge.className = `actions-count${total === 0 ? ' clear' : ''}`;
+
+    if (!total) {
+      list.innerHTML = `
+        <div class="all-clear">
+          <div class="all-clear-icon">✦</div>
+          <div class="all-clear-text">All completed modules clear.<br>No outstanding actions from you.</div>
+        </div>`;
+      return;
+    }
+
+    groups.forEach(({ m, unchecked }) => {
+      const g = document.createElement('div');
+      g.className = 'action-group';
+      g.innerHTML = `<div class="ag-label">Module ${m.number} — ${m.name}</div>`;
+
+      unchecked.forEach(it => {
+        const urgent = it.required && (m.status === 'active' || m.status === 'complete');
+        const el = document.createElement('div');
+        el.className = `action-item${urgent ? ' urgent' : ''}`;
+        el.innerHTML = `<span class="action-tag">${m.number}</span><span>${it.label}</span>`;
+        el.addEventListener('click', () => {
+          const card = document.getElementById(`card-${m.id}`);
+          if (!card.classList.contains('expanded')) card.classList.add('expanded');
+          const cb = document.getElementById(`cb-${m.id}-${it.id}`);
+          if (cb) cb.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+        g.appendChild(el);
+      });
+      list.appendChild(g);
+    });
+  }
+
+  // ── Init ──────────────────────────────────────────────────────────────────
+  initHeader();
+  buildModules();
+  buildActions();
+</script>
+</body>
+</html>
