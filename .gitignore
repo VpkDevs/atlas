@@ -1,0 +1,45 @@
+# Atlas runtime state — never committed
+# These live at ~/.atlas/ during operation, not in this repo
+# But if someone tests Atlas from this directory, these patterns catch strays
+
+# Runtime state
+.atlas/
+context.json
+context.json.bak
+credentials_index.json
+mission.json
+growth_log.md
+incidents/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test artifacts
+test-output/
+tmp/
+*.tmp
+
+# Secrets (should never be here, but just in case)
+.env
+.env.local
+.env*.local
+*.pem
+*.key
+
+# Node (for any future tooling in this repo)
+node_modules/
+dist/
+.next/
+
+# Python (for any future tooling)
+__pycache__/
+*.pyc
+.venv/
