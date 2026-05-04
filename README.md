@@ -69,7 +69,7 @@ Atlas runs inside [Claude Code](https://claude.ai/code). You need an active Clau
 ### Option 1 — Clone (recommended)
 
 ```bash
-git clone https://github.com/vincekinney1991/atlas ~/.claude/skills/atlas
+git clone https://github.com/VpkDevs/atlas ~/.claude/skills/atlas
 ```
 
 ### Option 2 — Direct copy
@@ -215,4 +215,4 @@ See [CHANGELOG.md](CHANGELOG.md) for version history.
 
 MIT
 
-Built by [Vince Kinney](https://github.com/vincekinney1991) in San Antonio, Texas.
+Built by [VpkDevs](https://github.com/VpkDevs) in San Antonio, Texas.

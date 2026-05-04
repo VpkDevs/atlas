@@ -1,3 +1,8 @@
+---
+name: atlas-hands-off-gaps
+description: Living reference of what each Atlas module currently delegates to humans vs. what it could do itself. When Atlas generates a userMust, check here first — can Atlas handle it instead?
+---
+
 # Atlas Hands-Off Gap Analysis
 
 *What each module currently delegates to humans that Atlas could do itself.*

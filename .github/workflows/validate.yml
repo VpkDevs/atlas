@@ -1,0 +1,30 @@
+name: Atlas Schema Validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Validate skill integrity
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run schema validator
+        run: node scripts/validate.js
+
+      - name: Check for broken Markdown links (informational)
+        continue-on-error: true
+        run: |
+          npx --yes markdown-link-check README.md CHANGELOG.md \
+            --config '{"ignorePatterns": [{"pattern": "^https://github.com/VpkDevs"}]}'
