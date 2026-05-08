@@ -1,184 +1,347 @@
 ---
 name: atlas-operations
-description: Use during Atlas Module 7 — builds the permanent operating system for the product. Defines the 5 North Star metrics specific to this product, writes the 15-minute weekly review ritual, sets monitoring thresholds, writes the support playbook, and calculates wealth trajectory.
+description: Use during Atlas Module 11 — builds the permanent operating system: 5 product-specific North Star metrics with live queries committed, a 15-minute weekly review ritual as an actual runnable script, alert webhooks configured via API, investor update template, and a wealth trajectory. Atlas commits the monitoring infrastructure — it does not describe it.
 ---
 
 # Atlas Operations
 
-**Input:** Business Context + metrics data (Stripe, PostHog, database — if accessible)
-**Purpose:** Build the permanent operating system for this product. Not reports. A system.
+**Input:** Business Context + metrics data (Stripe, PostHog/Plausible/Mixpanel, DB, Sentry)
+**Purpose:** Build the permanent operating system for this product. Not reports. A system that runs.
 
 **Pre-revenue mode:** If `monetization_status: pre-revenue` in Business Context:
-- Replace MRR as a North Star metric with **user growth rate** and **activation rate**
-- Weekly Review Step 1 becomes: "User growth pulse" (signups this week, activation rate) — not revenue pulse
-- Wealth trajectory shows $0 MRR with a note: "Trajectory activates once first payment is received"
-- Do not show acquisition multiple projections ($0 × multiple = $0)
-- Focus Operations output on the path to first dollar, not ongoing MRR management
+- Replace MRR North Star with **user growth rate** and **activation rate**
+- Weekly Review Step 1 becomes "User growth pulse" not revenue pulse
+- Wealth trajectory shows $0 with note: "Trajectory activates on first payment"
+- Skip acquisition multiple projections
+- Focus output on path to first dollar, not ongoing MRR management
+
+---
 
 ## Process
 
-### Step 1: Define the 5 North Star Metrics
+### Step 1: Define the 5 North Star Metrics (Product-Specific)
 
-Not AARRR framework. The 5 numbers that actually matter for THIS product.
+Not AARRR. The 5 numbers that actually matter for THIS product specifically.
 
-**How to select them:**
-- What is the activation moment for this product? (metric: activation rate)
-- What does retention look like for this product? (metric: [X]-day retention)
-- What drives revenue for this product? (metric: MRR / ARR / LTV)
-- What signals growth for this product? (metric: new signups / MAU / referrals)
-- What signals product health? (metric: error rate / support volume / NPS)
+**Selection heuristics by product type:**
 
-**Output format:**
+| Product Type | Typical North Stars |
+|-------------|---------------------|
+| SaaS subscription | MRR, Activation rate, D30 retention, Churn, CAC payback |
+| Freemium | Free→Paid conversion, Activation, DAU/MAU, MRR, Churn |
+| API/developer tool | API calls/day, Active integrations, Error rate, MRR, Time-to-first-call |
+| Marketplace | GMV, Take rate, Buyer/seller retention, Liquidity, CAC |
+| Content/SEO | Organic sessions, Email subscribers, Conversion rate, MRR, DAU |
+| Consumer app | DAU, D7/D30 retention, Session length, Activation, Revenue/user |
+
+**Output format — every metric with a live query:**
 ```
 North Star Metrics for [Product Name]:
-1. [Metric]: [Current value] → [Target] → [How to measure]
-2. [Metric]: [Current value] → [Target] → [How to measure]
-3. [Metric]: [Current value] → [Target] → [How to measure]
-4. [Metric]: [Current value] → [Target] → [How to measure]
-5. [Metric]: [Current value] → [Target] → [How to measure]
+
+1. [Metric name]: [current value]
+   Target: [specific number + timeframe]
+   Live query: [exact Stripe API call / PostHog query / SQL / dashboard URL]
+   Alert if: [drops below X or doesn't grow Y%/week]
+
+2. [Metric name]: [current value]
+   ...
 ```
 
-### Step 2: Weekly Review Ritual
+**Atlas commits the queries.** Not just the metrics — the saved queries.
 
-Write the 15-minute weekly review. Not a description of it. The actual ritual:
+For PostHog (if `POSTHOG_API_KEY` present):
+```bash
+# Create saved insight via API
+curl -X POST "https://app.posthog.com/api/projects/@current/insights/" \
+  -H "Authorization: Bearer $POSTHOG_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Weekly Active Users", "filters": {...}}'
+```
+
+For Stripe (if `STRIPE_SECRET_KEY` present):
+- MRR: `stripe.subscriptions.list({status: 'active'})` summed
+- New MRR: filter by `created` in last 7 days
+- Churned MRR: filter `canceled_at` in last 7 days
+
+---
+
+### Step 2: Weekly Review Ritual (Runnable, Not Described)
+
+Atlas commits `.github/workflows/weekly-review.yml` — a GitHub Action that:
+1. Pulls all 5 North Star metrics from their APIs
+2. Computes week-over-week deltas
+3. Opens a GitHub issue titled "Weekly Review — [Date]" with the data pre-populated
+4. Sends a Slack/Discord digest (if webhook configured)
+
+```yaml
+# .github/workflows/weekly-review.yml
+name: Weekly Review
+on:
+  schedule:
+    - cron: '0 14 * * 1'  # Mondays 9am EST / 14:00 UTC
+  workflow_dispatch:
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pull metrics & open issue
+        env:
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: node scripts/weekly-review.js
+```
+
+Atlas also writes the human ritual (15 min) as the issue template:
 
 ```
-WEEKLY REVIEW — [Product Name]
-Total time target: 15 minutes
-Day/time: [specific recommendation, e.g., "Every Monday 9 AM"]
+WEEKLY REVIEW — [Product Name] — {{date}}
+Target: 15 minutes
 
 STEP 1 (3 min): Revenue pulse
-  Open: [specific dashboard URL or Stripe link]
-  Check: MRR vs. last week, new MRR, churned MRR
-  Question: "Is the trend up, down, or flat?"
+  Stripe: [direct link to MRR dashboard]
+  → MRR this week: $___  | vs. last week: $___  | trend: ↑ ↓ →
+  → New customers: ___ | Churned: ___ | Net: ___
 
 STEP 2 (3 min): Activation health
-  Open: [specific PostHog/Mixpanel query or DB query]
-  Check: [specific metric] vs. [threshold]
-  Question: "Are new users hitting the activation moment?"
+  PostHog/dashboard: [direct link to activation funnel]
+  → Activation rate: ___% | vs. target: ___% | vs. last week: ___%
+  → Drop-off point: ___
 
 STEP 3 (3 min): Error & uptime check
-  Open: [Sentry URL] + [Better Uptime URL]
-  Check: New errors this week, uptime percentage
-  Question: "Anything that needs fixing this week?"
+  Sentry: [direct link] | Better Uptime: [direct link]
+  → New errors this week: ___ | Top error: ___
+  → Uptime: ___% | Any incidents: Y/N
 
 STEP 4 (3 min): Support inbox
-  Open: [support email / Intercom / Crisp]
-  Check: Unresolved threads, common themes
-  Question: "What are users struggling with?"
+  [support channel direct link]
+  → Open tickets: ___ | Common theme: ___
 
-STEP 5 (3 min): One decision
-  Based on the above: what is the single most important thing to work on this week?
-  Write it to: docs/founder/YOUR_NEXT_ACTION.md
+STEP 5 (3 min): ONE decision
+  Based on above, the single most important action this week:
+  → [write it here]
+  → Saved to: docs/founder/YOUR_NEXT_ACTION.md
 ```
 
-### Step 3: Alert Thresholds
+---
 
-Define specific numbers that trigger action:
+### Step 3: Alert Configuration (Atlas Configures — Does Not Describe)
 
-| Metric | Warning Threshold | Action Threshold | Response |
-|--------|-----------------|-----------------|----------|
-| MRR drop | >10% week-over-week | >25% week-over-week | Investigate churn |
-| Error rate | >0.5% of requests | >2% of requests | Hotfix |
-| Uptime | <99.5% | <99% | Incident response |
-| Activation rate | <[X]% | <[Y]% | Fix onboarding |
-| Support volume | >10 tickets/day | >25 tickets/day | FAQ update |
+**Threshold matrix — personalized to product stage:**
+
+| Stage | MRR drop warning | MRR drop action | Error rate | Uptime action |
+|-------|-----------------|-----------------|------------|---------------|
+| Pre-revenue | N/A | N/A | >1% | <99% |
+| $0–$1K MRR | >20% WoW | >40% WoW | >0.5% | <99.5% |
+| $1K–$10K MRR | >10% WoW | >25% WoW | >0.5% | <99.5% |
+| $10K+ MRR | >5% WoW | >15% WoW | >0.1% | <99.9% |
+
+**Alert channel configuration:**
+
+If `DISCORD_WEBHOOK` or `SLACK_WEBHOOK_URL` in `.env`:
+```bash
+# Test the webhook now
+curl -X POST "$DISCORD_WEBHOOK" \
+  -H "Content-Type: application/json" \
+  -d '{"content": "✅ Atlas alert channel configured. MRR drops, error spikes, and uptime incidents will appear here."}'
+```
+
+If Sentry `SENTRY_AUTH_TOKEN` present — configure alert rules via API:
+```bash
+# Create error-rate alert
+curl -X POST "https://sentry.io/api/0/projects/$SENTRY_ORG/$SENTRY_PROJECT/alert-rules/" \
+  -H "Authorization: Bearer $SENTRY_AUTH_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Error rate spike",
+    "aggregate": "count()",
+    "timeWindow": 60,
+    "threshold": 10,
+    "triggers": [{"label": "critical", "alertThreshold": 10}],
+    "actions": [{"type": "discord", "integrationId": "[id]"}]
+  }'
+```
+
+If no webhook configured: generate a `userMust` with exact setup URL and estimated 5 minutes.
+
+---
 
 ### Step 4: Support Playbook
 
-Write the 20 most likely support questions for this product, with scripted responses:
+Write the 20 most likely support questions for THIS product specifically.
+
+Source them from:
+1. Error messages in the codebase (likely confusing error = likely support ticket)
+2. README "common issues" or "troubleshooting" sections
+3. Product type patterns (auth issues, billing issues, onboarding confusion)
 
 For each question:
-- **Question:** [exact phrasing users will use]
-- **Root cause:** [why this happens]
-- **Response:** [exact response to send — friendly, specific, complete]
-- **Permanent fix:** [code/doc change that would eliminate this question]
 
-### Step 5: Milestone Triggers
-
-Define the signals that indicate major decision points:
-
-**Hire signal:**
-```
-When: [time bottleneck metric] AND MRR > $[X] AND [acquisition channel] is clear
-What to hire: [specific role]
-Where to find: [specific platform]
+```markdown
+**Q: [exact phrasing users will type]**
+Root cause: [why this happens — specific to this codebase]
+Response: [exact response — friendly, specific, resolves the issue completely]
+Permanent fix: [code/doc change that would eliminate this question]
+Automate: [can this be handled by auto-responder? if yes, exact trigger phrase]
 ```
 
-**Fundraise signal:**
+Identify the top 5 by frequency potential → configure auto-responses in Crisp/Intercom/HelpScout if API key present.
+
+---
+
+### Step 5: Milestone Triggers (Calibrated to This Product)
+
+Do not use generic thresholds. Calibrate from Business Context.
+
 ```
-When: growth rate > [X]%/month AND market size > $[Y]M AND burn rate < [Z] months
-What to do: [specific next step — YC, angels, Sequoia, etc.]
+HIRE SIGNAL:
+  Trigger when: founder is spending > [X] hrs/week on [bottleneck task]
+               AND MRR > $[calculate: 3x monthly cost of that role]
+               AND same acquisition channel is producing signups reliably
+  First hire: [specific role based on actual bottleneck]
+  Where to find: [Contra / Toptal / X / specific community]
+  Estimated cost: $[range]
+  Decision framework: hire replaces founder time → founder focuses on higher-leverage
+
+FUNDRAISE SIGNAL (if VC track):
+  Trigger when: MRR growth > 15%/month for 3+ months
+               AND market size > $100M (confirmed)
+               AND burn rate < 18 months at current pace
+  Action: YC application (deadline tracking) OR angel outreach via [specific network]
+  Note: If definition_of_success = lifestyle → skip this section
+
+SELL SIGNAL:
+  Trigger when: MRR growth < 3%/month for 3 consecutive months
+               AND founder interest declining
+               AND MRR > $2,000 (below this: shut down is faster)
+  Estimated multiple: [product-type multiple]x MRR = $[calculated range]
+  List at: Acquire.com (primary), Flippa (secondary)
+  Timeline: 60-90 days from listing to close typical
+
+DOUBLE-DOWN SIGNAL:
+  Trigger when: [specific acquisition channel] producing > [X] signups/week
+               AND activation rate > [Y]%
+               AND churn < [Z]%
+  Action: 10x investment in that channel; cut underperformers
+
 ```
 
-**Sell signal:**
-```
-When: growth plateau (< [X]%/month for 3+ months) AND MRR > $[Y]
-Estimated multiple: [X]x MRR = $[Z]
-Where to list: Acquire.com, Flippa, MicroAcquire
+---
+
+### Step 6: Investor Update Template
+
+Even if the founder isn't raising — writing this monthly builds the discipline and creates a paper trail that's invaluable at acquisition time.
+
+```markdown
+# [Product Name] — Monthly Update — [Month Year]
+
+**One sentence:** [What the product does, current MRR, stage]
+
+## Key Metrics
+- MRR: $[X] ([+/-Y%] vs. last month)
+- Customers: [N] ([+/-N] vs. last month)
+- Activation rate: [X]%
+- Churn: [X]%
+- Traffic: [X] unique visitors
+
+## What We Did
+- [3–5 bullet points: shipped, launched, fixed]
+
+## What We Learned
+- [1–2 honest learnings — what surprised us]
+
+## Next 30 Days
+- [Top 3 priorities]
+
+## Ask (if any)
+- [Intro to X / Advice on Y / Nothing this month]
 ```
 
-**Double-down signal:**
-```
-When: [specific growth metric] exceeds [threshold]
-What to do: Increase [specific investment]
-```
+Atlas commits this as `docs/founder/INVESTOR_UPDATE_TEMPLATE.md` and creates a cron to remind the founder monthly.
 
-### Step 6: Acquisition Readiness Score (Updated)
-
-After operations module, recalculate the Acquisition Readiness Score with operations improvements factored in.
-
-Show delta from Business Setup module.
+---
 
 ### Step 7: Personal Wealth Trajectory
 
-Calculate at current growth rate:
+Calculate at current growth rate. Show the math, not just the numbers.
 
 ```
+WEALTH TRAJECTORY — [Product Name]
+
 Current MRR: $[X]
-Growth rate: [X]%/month (or estimated from comparable products)
+Monthly growth rate: [X]% (estimated from [source: onboarding input / Stripe data])
+Current cost structure: $[Y]/month
 
-Milestones:
-  $1K MRR:   [date estimate] — $[annualized] salary equivalent
-  $5K MRR:   [date estimate] — $[annualized]
-  $10K MRR:  [date estimate] — $[annualized]
-  $50K MRR:  [date estimate] — $[annualized]
+At [X]%/month growth from $[current MRR]:
+  $1K MRR:   [date] — annualized $12K → freelance income equivalent
+  $5K MRR:   [date] — annualized $60K → full replacement income (if TX-based)
+  $10K MRR:  [date] — annualized $120K → strong solo income
+  $50K MRR:  [date] — annualized $600K → empire tier
 
-Asset value (at 3x ARR):
+Asset value at these milestones (3x ARR for SaaS):
+  At $5K MRR:  $180K
   At $10K MRR: $360K
   At $50K MRR: $1.8M
 
-Note: These are projections, not guarantees. Based on [assumptions stated].
+Assumptions: [growth rate, churn, cost structure stated explicitly]
+These are projections, not guarantees.
+
+Ramen-profitable date: [when MRR > $3K — covers basic living + expenses for solo TX founder]
 ```
+
+---
 
 ### Step 8: ROADMAP.md
 
-Write the product roadmap with entry/exit criteria per phase:
+Write with entry/exit criteria per phase. Make it decision-ready, not aspirational.
 
 ```
-PHASE 1: [Current Phase Name]
-  Status: [current]
-  Entry criteria: [already met]
-  Exit criteria: [what defines success here]
-  Focus: [2-3 specific priorities]
+PHASE 1: [Current] — [Status: ACTIVE]
+  Entry: [already met — list what got us here]
+  Exit: [specific measurable criteria — "500 active users AND MRR > $2K"]
+  Focus: [2–3 specific priorities, not vague themes]
+  Timeline estimate: [X weeks based on current velocity]
 
-PHASE 2: [Next Phase]
-  Entry: [what must be true to enter this phase]
-  Exit: [what defines completion]
+PHASE 2: [Growth] — [Status: PENDING]
+  Entry: [exact criteria from Phase 1 exit]
+  Exit: ["$10K MRR AND churn < 5% AND team of 2"]
   Focus: [priorities]
+  What changes: [new hires, new channels, new pricing]
 
-PHASE 3: [Scale / Exit / etc.]
-  Entry: [criteria]
-  Exit: [criteria]
-  Focus: [priorities]
+PHASE 3: [Scale/Exit/Lifestyle] — [Status: FUTURE]
+  Entry: [Phase 2 exit criteria]
+  Focus: [determined by definition_of_success: lifestyle | grow | acquire | vc]
 ```
+
+---
 
 ## Output
 
 - `docs/founder/OPERATIONS_HANDBOOK.md`
 - `docs/founder/SUPPORT_PLAYBOOK.md`
 - `docs/founder/ROADMAP.md`
-- `docs/founder/YOUR_NEXT_ACTION.md` — exactly one thing, current as of today
+- `docs/founder/INVESTOR_UPDATE_TEMPLATE.md`
+- `docs/founder/YOUR_NEXT_ACTION.md` — exactly one thing
+- `.github/workflows/weekly-review.yml` — committed and active
+- Alert webhooks configured (or userMust if keys missing)
+- 5 North Star queries saved in analytics platform (or as saved SQL)
+
+---
+
+## Acceptance Test
+
+- [ ] 5 North Star metrics defined with product-specific live queries
+- [ ] Weekly review workflow committed to `.github/workflows/`
+- [ ] Alert channel tested (webhook fires successfully) OR userMust logged
+- [ ] Support playbook: ≥ 20 questions with scripted responses
+- [ ] Milestone triggers calibrated to this product's stage and definition_of_success
+- [ ] ROADMAP.md has measurable exit criteria per phase
+- [ ] YOUR_NEXT_ACTION.md has exactly one specific action
+
+---
 
 ## Checkpoint
 
@@ -186,23 +349,30 @@ PHASE 3: [Scale / Exit / etc.]
 ─────────────────────────────────────────────────────
 OPERATIONS COMPLETE
 
-Done:
-  ✓ 5 North Star metrics defined for this product
-  ✓ 15-minute weekly review ritual written
-  ✓ [N] alert thresholds set
-  ✓ Support playbook: [N] questions with scripted responses
-  ✓ Milestone triggers defined (hire/fundraise/sell/double-down)
-  ✓ Wealth trajectory calculated
-  ✓ ROADMAP.md written
-  ✓ YOUR_NEXT_ACTION.md — [one specific thing]
+Atlas did:
+  ✓ 5 North Star metrics: [list with current values]
+  ✓ Weekly review workflow committed: .github/workflows/weekly-review.yml
+  ✓ Alert channel [configured via webhook / userMust logged]
+  ✓ Support playbook: [N] questions, [N] auto-responses configured
+  ✓ Milestone triggers calibrated to [product stage + goal]
+  ✓ Wealth trajectory: ramen-profitable by [date] at current growth
+  ✓ ROADMAP.md: [N] phases with measurable exit criteria
+  ✓ YOUR_NEXT_ACTION.md: [the one specific thing]
+  ✓ INVESTOR_UPDATE_TEMPLATE.md: monthly reminder scheduled
 
-Runs-itself score: [X] → [Y]
+Sovereign Score: [X] → [Y]
 
-Atlas single-project run COMPLETE.
-[If score < 70:] Score is [Y] — below 70. See Automation Handoff for remaining gap.
-[If score >= 70:] Product is running itself. Atlas is done here.
-
-Type 'portfolio' to run Portfolio Mode (empire intelligence)
-Type 'pause' to end this session
+── PROCEEDING TO REVENUE INTELLIGENCE ───────────────
 ─────────────────────────────────────────────────────
 ```
+
+## Red Flags
+
+- ❌ Defining North Star metrics without committing the live queries
+- ❌ Writing the weekly review ritual as prose instead of a runnable workflow
+- ❌ Alert thresholds that don't match the product's current stage
+- ❌ Support playbook that lists generic SaaS questions instead of THIS product's error messages
+- ❌ Milestone triggers with generic numbers instead of calibrated-to-this-product numbers
+- ❌ Wealth trajectory without stating the growth rate assumption explicitly
+- ❌ ROADMAP.md phases with vague goals ("improve retention") instead of measurable exit criteria
+- ❌ Score still references 70 — the target is 90 in v6

@@ -1,12 +1,12 @@
 ---
 name: atlas-automation-handoff
-description: Use during Atlas Module 7 — gets the product to runs-itself score 70+. Configures uptime monitoring, error alerting, email sequences, and social scheduling via API calls (not descriptions). Implements n8n/Make workflows as importable JSON. Does not complete until score reaches 70.
+description: Use during Atlas Phase 8 — gets the product to Sovereign Score 60+ (launch floor) before Phase 9. Configures uptime monitoring, error alerting, email sequences, and social scheduling via API calls (not descriptions). Implements n8n/Make workflows as importable JSON. Does not complete until score reaches 60. Target is 90.
 ---
 
 # Atlas Automation Handoff
 
 **Input:** Business Context + current runs-itself score + `~/.atlas/automation-library/`
-**Purpose:** Get the product to runs-itself score ≥ 70 by actually configuring automations, not describing them.
+**Purpose:** Get the product to runs-itself score ≥ 60 (launch floor) and pushing toward 90 (sovereign) by actually configuring automations, not describing them.
 
 ## The Automation Doctrine
 
@@ -31,7 +31,9 @@ For every automation in this module, the protocol is:
 | Deployment pipeline | 10 | Auto-deploy on push, no manual steps |
 | Payment/billing automation | 10 | Dunning, failed payment recovery, receipts |
 
-**Target: 70+**
+**Launch floor: 60. Sovereign target: 90. This module must reach 60 before Phase 9 launches.**
+
+Note: The score table above sums to 80. Additional points come from Operations (weekly review cron, alert channels) and Growth Engine (content engine, iteration loop). Full 90 is achieved across the pipeline — not this module alone.
 
 ---
 
@@ -228,15 +230,17 @@ SOW templates:
 ```
 New runs-itself score: [X]/100
 
-If X >= 70: Module complete → proceed to Operations
-If X < 70: List remaining gap + exactly what would close it
+If X >= 60: ✅ Launch floor reached → proceed to Phase 9
+If X >= 80: ✅ Sustained operation level
+If X >= 90: ✅ Sovereign
+If X < 60: ❌ BLOCKED — cannot launch. List gap + exactly what would close it.
 ```
 
-**If 70 is not reachable without human action:**
+**If 60 is not reachable without human action:**
 ```
 Current score: [X]
 Achievable without human: [Y]
-Blocked on: [specific human actions needed with URLs]
+Blocked on: [specific human actions needed with URLs + estimated time each]
 After human actions: score will reach [Z]
 ```
 
@@ -249,7 +253,7 @@ After human actions: score will reach [Z]
 - Support automations configured
 - n8n workflow JSONs committed to `~/.atlas/automation-library/`
 - `docs/founder/CONTRACTOR_ONBOARDING.md`
-- Updated runs-itself score (target: 70+)
+- Updated runs-itself score (launch floor: 60, target: 90)
 - Git commit + push
 
 ---
@@ -274,20 +278,21 @@ Atlas did:
 
 Runs-itself score: [X] → [Y]
 
-[If Y >= 70:]
-── PROCEEDING TO OPERATIONS ──────────────────────────
+[If Y >= 60:]
+── PROCEEDING TO PHASE 9: LAUNCH ────────────────────
 
-[If Y < 70:]
-NOT DONE: Score is [Y]. Need [N] more points.
-Gap: [specific items]
-Blocked on human: [list with URLs]
-Implementing what I can now...
+[If Y < 60:]
+❌ LAUNCH BLOCKED: Score is [Y]. Need [N] more points to reach launch floor (60).
+Gap: [specific items with point values]
+Blocked on human actions: [list with direct URLs + estimated time each]
+Continuing to implement what I can now...
+Will re-score and check again before declaring blocked.
 ─────────────────────────────────────────────────────
 ```
 
 ## Red Flags
 
-- ❌ Declaring this module complete when score is below 70
+- ❌ Declaring this module complete when score is below 60
 - ❌ API key exists and Atlas described the setup instead of calling the API
 - ❌ Writing contractor docs as an afterthought
 - ❌ Not saving automation blocks to `~/.atlas/automation-library/`

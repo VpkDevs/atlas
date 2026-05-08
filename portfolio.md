@@ -46,59 +46,108 @@ For each product, build the status snapshot:
 
 ### Step 2: Portfolio Segmentation
 
-**Running themselves (score ≥ 70, stable MRR):**
-- Review quarterly, not weekly
-- Flag if score drops below 60
+**Running themselves (score ≥ 80, stable or growing MRR):**
+- Review monthly, not weekly
+- Auto-tick via Growth Engine cron
+- Flag for attention if score drops below 70
 
-**Need attention (score 40-70 or declining MRR):**
-- Weekly check-in
-- Atlas sprint recommended
+**Need attention (score 50-80 or declining MRR > 10%/month):**
+- Weekly Atlas Growth Engine tick
+- Consider targeted sprint on lowest-score category
 
 **In sprint (currently being worked on):**
 - Track progress against sprint targets
-- Surface blockers
+- Surface blockers daily
 
-**Sunset candidates (declining MRR + score below 40 + not improving):**
-- Calculate: is it worth selling vs. maintaining vs. shutting down?
-- Provide sell recommendation with timing
+**Sunset candidates (ALL THREE conditions must be true):**
+1. MRR growth < 2%/month for 3 consecutive months
+2. Sovereign Score < 50 and not improving
+3. Founder time investment > revenue generated / 50 (i.e., paying yourself less than $50/hour)
 
-### Step 3: Attention Allocation
+→ Calculate: sell vs. maintain vs. shut down (see Step 5)
+→ Sunset is a business decision, not a failure. Surface it clearly.
 
-This week, rank every product by:
+### Step 3: Attention Allocation (Executable Formula)
 
+```python
+# Attention Priority Score — run this calculation for each product
+# Higher score = more deserving of founder time this week
+
+def attention_score(product):
+    mrr = product.current_mrr
+    mrr_growth = product.mrr_growth_weekly  # decimal, e.g., 0.05 for 5%
+    sovereign_score = product.sovereign_score  # 0-100
+    hours_per_week = product.founder_hours_last_week
+    
+    # Revenue impact: normalized to $10K MRR = 1.0
+    revenue_impact = min(mrr / 10000, 2.0)
+    
+    # Growth rate: weekly compound growth
+    growth_factor = max(mrr_growth, 0) * 10  # 5%/week = 0.5
+    
+    # Leverage: how much would 2 hours of Atlas sprint improve score?
+    leverage = (90 - sovereign_score) / 90  # closer to 0 = already sovereign
+    
+    # Denominator: time already being spent
+    time_cost = max(hours_per_week, 0.1)
+    
+    return (revenue_impact * (1 + growth_factor) * leverage) / time_cost
 ```
-Attention Priority Score = (Revenue Impact × Growth Rate × Leverage) / Current Runs-Itself Score
-```
 
-High revenue impact + high growth rate + low runs-itself score = needs your time most.
-
-**Output:**
+**Output — computed, not estimated:**
 ```
 THIS WEEK'S ATTENTION ALLOCATION
 
-Your most valuable hour: [Product X]
-  Why: [MRR $X, growing X%/mo, runs-itself score only 45 — one sprint would free this]
-  Recommended action: [specific]
+Product scores (highest = most deserving of your time):
+  [Product X]: score 0.84 — MRR $2,400 (+8%/wk), Sovereign 42, 1hr/wk currently
+    → Action: Run Atlas sprint on automation gap (+22 score points)
+    → Expected outcome: free up this product within 2 weeks
+    
+  [Product Y]: score 0.31 — MRR $800 (+2%/wk), Sovereign 71, 3hrs/wk
+    → Action: Reduce time investment; Growth Engine can handle this
+    
+  [Product Z]: score 0.08 — MRR $5,200, Sovereign 88, 0hrs/wk
+    → Leave alone. Running itself.
 
-Second priority: [Product Y]
-  Why: [specific reasoning]
-  Recommended action: [specific]
-
-Leave alone this week: [Products Z, A, B]
+Leave alone this week: [Products where score < 0.15]
   Why: Score ≥ 70, stable
 ```
 
-### Step 4: Cross-Promotion Opportunities
+### Step 4: Shared Infrastructure Audit
+
+Before cross-promotion, check for shared infrastructure opportunities:
+
+```
+SHARED INFRASTRUCTURE SCAN:
+
+For each pair of products, check:
+  - Same Stripe account? → Can bundle pricing, share subscription management
+  - Same auth provider? → Can offer SSO/single login across products
+  - Same email list tool? → Can cross-promote to shared list
+  - Same component library/design system? → Can share UI code, reduce maintenance
+  - Same database/Supabase project? → Data sharing possible (check privacy implications)
+  - Same deployment platform/team? → Shared env vars, shared logs
+
+If same Stripe account AND complementary products:
+  → Draft a "Bundle" pricing tier combining both products at discount
+  → Atlas Wealth calculates: bundle LTV vs. individual LTV
+
+If overlapping email lists (users of Product A who haven't tried Product B):
+  → Atlas Growth segments and drafts cross-promo email sequence
+```
+
+### Step 4b: Cross-Promotion Opportunities
 
 Identify products with overlapping audiences:
-- Shared target customer profiles
+- Shared target customer profiles (read from each product's `context.json`)
 - Complementary (not competing) use cases
 - Integration opportunities
 
-For each opportunity:
+For each opportunity, produce a specific playbook:
 - Which products + why their audiences overlap
 - Specific cross-promotion mechanics (email mention, in-app referral, bundle)
-- Revenue impact estimate
+- Estimated revenue impact: [X]% of Product A users convert to Product B = $[Y] additional MRR
+- Commit: cross-promo email template + in-app referral component (if applicable)
 
 ### Step 5: Sell Signal Detection
 

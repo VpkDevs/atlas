@@ -109,19 +109,136 @@ What's the activation rate by signup source?
 
 ---
 
+## Step 2b: Competitive Intelligence (Runs Every Tick in Operator Mode)
+
+The Oracle monitors the competitive landscape continuously — not just at launch.
+
+### Competitor Signal Sources
+
+**F5Bot (Reddit monitoring — free, set up once):**
+```
+Keywords to monitor (set up at f5bot.com):
+  - [product name]
+  - [main competitor names from business context]
+  - "[problem domain] tool" (e.g., "email automation tool")
+  - "[product category] alternative"
+
+Atlas reads F5Bot email digest → extracts signal → classifies as opportunity/threat/noise
+```
+
+**Google Alerts (set up in launch module, read here):**
+```
+Alerts configured for:
+  - [product name]
+  - [competitor names]
+  - [key industry keywords]
+```
+
+**GitHub competitor monitoring:**
+```bash
+# Monitor competitor repos for major releases
+for repo in [competitor_repos]; do
+  gh api repos/$repo/releases/latest --jq '.tag_name + " " + .published_at + " " + .name'
+done
+```
+
+**HN + Reddit search (runs weekly):**
+```
+site:news.ycombinator.com "[competitor name]" last 7 days
+site:reddit.com "[competitor name]" last 7 days
+→ Flag: any post with 50+ points discussing competitor = potential threat or opportunity
+```
+
+### Competitive Response Protocol
+
+```
+COMPETITOR LAUNCHES MAJOR FEATURE:
+  1. Read feature announcement
+  2. Assess: overlap with our core value prop? (high/medium/low)
+  3. If HIGH overlap:
+     → Immediate: draft differentiation narrative for Atlas Growth to publish
+     → 7 days: evaluate roadmap to address capability gap
+     → Flag in decisions.md
+  4. If MEDIUM:
+     → Note in growth_log.md
+     → Add to product backlog consideration
+  5. If LOW:
+     → Log and ignore
+
+COMPETITOR LAUNCHES / GOES VIRAL:
+  1. Identify what's resonating (read comments, upvotes, shares)
+  2. Is there an angle we can ride? (commentary, comparison, alternative positioning)
+  3. If yes: Atlas Growth drafts "how we differ" content immediately
+```
+
+---
+
 ## Step 3: PREDICT — Forward Projection
 
-### Revenue Trajectory
+### Revenue Trajectory (Actual Math)
+
+```python
+# Linear regression model (simple, honest)
+# Input: MRR data points from last 30-90 days
+# Output: projected MRR at 30/90/365 days with confidence interval
+
+def project_mrr(mrr_history: list[float]) -> dict:
+    """
+    mrr_history: list of weekly MRR snapshots, most recent last
+    Uses linear regression on log(MRR) to model compound growth
+    """
+    if len(mrr_history) < 4:
+        return {"confidence": "low", "note": "insufficient history for projection"}
+    
+    # Calculate week-over-week growth rates
+    growth_rates = [(mrr_history[i] / mrr_history[i-1]) - 1 
+                    for i in range(1, len(mrr_history))]
+    avg_growth = sum(growth_rates) / len(growth_rates)
+    std_growth = (sum((r - avg_growth)**2 for r in growth_rates) / len(growth_rates))**0.5
+    
+    current_mrr = mrr_history[-1]
+    
+    return {
+        "30_days": current_mrr * (1 + avg_growth)**4.3,   # ~4.3 weeks
+        "90_days": current_mrr * (1 + avg_growth)**13,
+        "365_days": current_mrr * (1 + avg_growth)**52,
+        "confidence_band": f"±{std_growth * 100:.0f}%",
+        "growth_rate_weekly": f"{avg_growth * 100:.1f}%",
+        "trend": "accelerating" if growth_rates[-1] > avg_growth else "decelerating" if growth_rates[-1] < avg_growth else "stable"
+    }
 ```
-At current growth rate ([X]%/month):
-  30 days: $[MRR]
-  90 days: $[MRR]
-  365 days: $[MRR] ($[ARR])
+
+Atlas runs this model and reports:
+```
+Revenue Trajectory (linear regression on [N] weeks of data):
+  Weekly growth rate: [X]% (trend: [accelerating/stable/decelerating])
   
-Confidence band: ±[Y]% based on 30-day variance
+  30 days:  $[MRR] (±[Y]%)
+  90 days:  $[MRR] (±[Y]%)
+  365 days: $[MRR] (±[Y]%) = $[ARR] ARR
   
-Break-even date: [date] (at current cost structure)
-Ramen-profitable date: [date] ($3K MRR for solo founder)
+Break-even: [date] (at current cost structure of $[monthly_cost]/mo)
+Ramen-profitable: [date] ($3K MRR)
+S-Corp-threshold: [date] ($80K ARR — when S-Corp election saves money)
+
+Confidence: [High (>12 data points) / Medium (6-12) / Low (<6)]
+Note: [any factors that make this projection unreliable]
+```
+
+### Churn Prediction Signal
+
+The Oracle watches for churn precursors:
+```
+High-risk user signals (check weekly):
+  - User hasn't logged in for 14+ days AND was previously active daily → at-risk
+  - User viewed pricing/cancellation page in last 7 days → high-risk
+  - User opened "billing" support thread → high-risk
+  - User's feature usage dropped >50% week-over-week → at-risk
+
+Response:
+  high-risk (pricing page viewed) → Atlas Growth sends "can we help?" email immediately
+  at-risk (usage drop) → Atlas Growth queues re-engagement email in 3 days
+  Logged to growth_log.md for measurement
 ```
 
 ### Risk Forecast

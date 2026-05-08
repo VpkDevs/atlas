@@ -133,7 +133,110 @@ If the product uses analytics or tracking cookies:
 
 For Next.js, scaffold with `react-cookie-consent` or equivalent.
 
-### Step 8: Risk Radar
+### Step 8: AI/LLM-Specific Compliance (Run if Product Uses AI)
+
+**Detection:** If `anthropic`, `openai`, `@google-ai`, `replicate`, `huggingface` found in dependencies.
+
+This product uses AI. Additional compliance obligations apply.
+
+#### FTC AI Guidance (US) — ✅ High confidence
+```
+Required disclosures:
+1. If AI generates content users might mistake for human-created:
+   → Add "AI-generated" or "Created with AI assistance" label
+   → Commit: add disclosure component to AI-generated output sections
+
+2. If AI makes recommendations (products, prices, medical, financial):
+   → Add "This is AI-generated and may be inaccurate. Verify important decisions."
+   → Commit: add disclaimer adjacent to AI recommendations
+
+3. If the product claims AI capabilities:
+   → Claims must be accurate — no "100% accurate" or "guaranteed" language
+   → Review marketing copy for inflated AI capability claims
+```
+
+#### EU AI Act (Applies if any EU users) — ⚠️ Medium confidence
+```
+Risk classification check:
+  High-risk AI (requires conformity assessment):
+  - Biometric identification
+  - Critical infrastructure management
+  - Employment decisions
+  - Credit scoring
+  - Law enforcement
+  - Educational assessment
+  
+  If product falls in high-risk category:
+  → Flag for lawyer review — ❌ Low confidence in self-assessment
+  → Surface userMust: "EU AI Act high-risk classification may apply"
+  
+  Minimal/no risk (most SaaS products):
+  - Productivity tools, content generation, customer service → minimal requirements
+  - Transparency obligation: disclose when users interact with AI
+  → Add: "Powered by AI" disclosure in footer or relevant UI
+```
+
+#### AI Output Liability Disclaimer (All Products)
+Add to Terms of Service under appropriate section:
+```
+"AI-Generated Content: [Product Name] uses artificial intelligence to generate 
+content/recommendations/analysis. AI output may contain errors, inaccuracies, or 
+outdated information. Do not rely on AI-generated content for medical, legal, 
+financial, or other professional decisions without independent verification. 
+[Company] is not liable for actions taken based on AI-generated output."
+```
+
+#### Model and Data Transparency
+Add to Privacy Policy:
+```
+"AI Processing: We use [model provider(s)] to process [specific data types] for 
+the purpose of [specific feature]. Your inputs may be used to improve AI models 
+per [provider's] policies. See [provider privacy policy URL]. 
+You may opt out of AI processing by [specific method or contact]."
+```
+
+#### DMCA Agent Registration (US products with user-generated content)
+```
+If product allows user content uploads (images, text, files, code):
+
+1. Register a DMCA Designated Agent at:
+   https://www.copyright.gov/dmca-directory/
+   Cost: $6 (one-time)
+   Time: ~15 minutes
+
+2. Add DMCA notice + takedown procedure to Terms of Service:
+   "To report copyright infringement, contact: dmca@[yourdomain.com]
+   Include: [required DMCA elements listed]"
+
+3. Commit: POST /api/dmca-notice endpoint that receives reports
+   Store reports in DB for 3-year retention (required)
+
+Atlas surfaces this as a userMust if user-generated content detected,
+with the exact copyright.gov URL and 15-minute time estimate.
+```
+
+#### Accessibility (ADA + Section 508, US Products)
+```
+If product has a web interface accessible to the public:
+
+WCAG 2.1 AA is the legal standard for ADA compliance.
+
+Atlas runs a quick accessibility audit:
+  - Check for alt text on all images (grep for <img without alt)
+  - Check for form labels (grep for <input without associated <label)
+  - Check color contrast (requires visual inspection — surface as userMust)
+  - Check keyboard navigation (requires manual testing — surface as userMust)
+
+For commits:
+  - Add alt text to any img elements found without it
+  - Add labels to form inputs found without them
+  - Add aria-label to icon buttons
+
+Surface as ⚠️ Medium: "Full WCAG 2.1 AA audit recommended before significant growth.
+Automated fix committed for found issues. Manual review needed for contrast + keyboard nav."
+```
+
+### Step 9: Risk Radar
 
 Flag specific risks with:
 - **Severity:** 🔴 High / 🟡 Medium / 🟢 Low
@@ -141,7 +244,7 @@ Flag specific risks with:
 - **Specific fix:** What to do about it
 - **Who fixes it:** Atlas already fixed | Needs lawyer | Needs human action
 
-### Step 9: Ongoing Obligations
+### Step 10: Ongoing Obligations
 
 Document what must happen repeatedly:
 - GDPR data deletion requests (respond within 30 days)

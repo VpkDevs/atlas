@@ -186,9 +186,84 @@ WHEN /atlas invoked:
 | `/atlas growth` | Run only Growth Engine tick |
 | `/atlas warroom` | Re-enter War Room (post-launch hotfix) |
 | `/atlas fix [phase]` | Re-run a specific phase |
-| `/atlas diag` | Run all health checks, report only |
+| `/atlas diag` | Run all health checks, report only — see Diagnostic Protocol below |
+| `/atlas security` | Run security audit pass only (OWASP top 10, secrets scan, deps) — loads `atlas:security` |
+| `/atlas brand` | Run brand engine pass only — loads `atlas:brand-engine` |
 | `/atlas portfolio` | Force Portfolio Mode |
 | `/atlas fleet --agent [name] --task [desc]` | Direct sub-agent invocation |
+
+---
+
+## Diagnostic Protocol (`/atlas diag`)
+
+When `/atlas diag` is invoked, run ALL of the following health checks. Report only — do not fix, deploy, or change state.
+
+```
+PROCEDURE atlas_diag:
+  1. INFRASTRUCTURE
+     [ ] curl <production_url> — record HTTP status + latency
+     [ ] curl <production_url>/health — record JSON response
+     [ ] git remote -v — confirm remote exists
+     [ ] git status — count uncommitted changes
+     [ ] Check .github/workflows/ — list workflows, last run status via gh CLI
+
+  2. MONITORING
+     [ ] credentials_index.json — list which monitoring keys present
+     [ ] If BETTER_UPTIME_API_KEY: call API, list monitors + statuses
+     [ ] If SENTRY_DSN: verify config files exist (sentry.client.config.*, sentry.server.config.*)
+     [ ] If DISCORD_WEBHOOK or SLACK_WEBHOOK_URL: send test ping, confirm delivery
+
+  3. EMAIL AUTOMATION
+     [ ] If RESEND_API_KEY or SENDGRID_API_KEY: list configured email sequences
+     [ ] Check for welcome email, activation email, retention email
+     [ ] Report which sequences exist / missing
+
+  4. REVENUE
+     [ ] If STRIPE_SECRET_KEY: report current MRR (sum active subscriptions)
+     [ ] Report last payment date
+     [ ] Report failed payment count
+
+  5. ANALYTICS
+     [ ] If POSTHOG_API_KEY: confirm project accessible, report event count last 7 days
+     [ ] Check Google Search Console (if configured): impressions last 7 days
+
+  6. CONTENT ENGINE
+     [ ] If BUFFER_ACCESS_TOKEN: list scheduled posts + count
+     [ ] Check CONTENT_CALENDAR_30.md exists
+     [ ] Report posts scheduled vs. needed
+
+  7. LEGAL
+     [ ] curl <production_url>/terms — HTTP status
+     [ ] curl <production_url>/privacy — HTTP status
+     [ ] Check docs/legal/ — list present documents
+
+  8. SECURITY (quick scan)
+     [ ] grep -r "process.env\." src/ | count unreferenced env vars
+     [ ] Check for hardcoded secrets (grep for sk_, pk_, api_key, password=)
+     [ ] npm audit --audit-level=high (if Node project) — count high/critical vulns
+
+  9. SOVEREIGN SCORE
+     [ ] Calculate current score from all above data
+     [ ] Show: score now, score since last run (delta), distance to 60/80/90 thresholds
+
+OUTPUT FORMAT:
+  ✅ [check] — [specific value / "ok"]
+  ⚠️ [check] — [specific issue, non-critical]
+  ❌ [check] — [specific failure, needs attention]
+
+  DIAG SUMMARY
+  Score: [X]/100 | Δ [+/-N] since last diag
+  Critical (❌): [N] issues
+  Warnings (⚠️): [N] issues
+  Healthy (✅): [N] checks
+  
+  Top 3 actions to improve score:
+  1. [action] → +[N] points — [estimated time]
+  2. [action] → +[N] points
+  3. [action] → +[N] points
+```
+
+`/atlas diag` never modifies state. It reads and reports. The founder decides what to act on.
 
 ---
 
@@ -196,15 +271,19 @@ WHEN /atlas invoked:
 
 **Runs BEFORE anything else. Before reading the codebase. Before thinking.**
 
+**Context Window Protocol:** Load `atlas:context-window` alongside this module. The context window protocol governs all phase transitions, prevents context drift, and maintains state integrity across long multi-phase runs. It is mandatory for any run spanning more than 3 phases.
+
 ```
 PROCEDURE context_load:
   1. Ensure ~/.atlas/ directory tree exists
+     mkdir -p ~/.atlas/portfolio/[slug]/phase_summaries/
   2. Detect project slug from git root basename (or cwd basename)
   3. IF ~/.atlas/portfolio/[slug]/context.json exists:
        a. Read it (JSON parse fail → restore from .bak)
        b. Read credentials_index.json
        c. Read mission.json (if exists)
-       d. Determine mode per state machine
+       d. Read last 3 phase_summaries (for context continuity)
+       e. Determine mode per state machine
   4. IF context.json missing:
        a. Initialize from skeleton schema
        b. Set mode = FIRST-RUN
@@ -230,20 +309,26 @@ Every write to `context.json`, `mission.json`, or `credentials_index.json`:
 | 0 | Context Load | (this file) | `context.json` parsed; mode determined |
 | 1 | **Onboarding** | `onboarding.md` | Business Context confirmed; `context.json` + `credentials_index.json` written |
 | 2 | **Code Sprint** | `code-sprint.md` | Zero P0s; deployed; `curl <prod>/ → 200`; CI green; RUNBOOK committed |
-| 3 | **Legal** | `legal-compliance.md` | ToS + Privacy live at served routes; GDPR endpoints if PII |
+| 2b | **Security Hardening** | `security.md` | OWASP top 10 checked; 0 HIGH/CRITICAL vulns; no secrets in git; rate limiting confirmed |
+| 3 | **Legal** | `legal-compliance.md` | ToS + Privacy live at served routes; GDPR/AI Act compliance; DMCA agent registered |
 | 4 | **Pre-Flight** | `pre-flight.md` | All 11 checks GREEN (or <3 YELLOW with incident log) |
-| 5 | Launch Strategy | `launch-strategy.md` | `LAUNCH_SEQUENCE.md` generated; 0 `[TODO]` placeholders |
-| 6 | Marketing | `marketing-playbook.md` | Content scheduled; communities mapped; press kit committed |
-| 7 | Business Setup | `business-setup.md` | Entity decided; credits APPLIED; banking path ready |
-| 8 | Automation | `automation-handoff.md` | Score ≥ 60; monitoring/email/support LIVE |
+| 5 | **Launch Strategy** | `launch-strategy.md` | `LAUNCH_SEQUENCE.md` generated; 0 `[TODO]` placeholders |
+| 6 | **Marketing + Brand** | `marketing-playbook.md` + `brand-engine.md` | Content scheduled; brand system applied; press kit committed; visual QA passed |
+| 7 | **Business Setup** | `business-setup.md` | Entity decided; credits APPLIED; banking path ready |
+| 8 | **Automation** | `automation-handoff.md` | Score ≥ 60; monitoring/email/support LIVE |
 | 9 | **LAUNCH** | `launch-day.md` | Product URL returns 200; broadcast posted |
-| 10 | War Room | `war-room.md` | T+72h retro complete; fires patched |
-| 11 | Operations | `operations.md` | North Star dashboard live; weekly review automated |
-| 12 | Revenue Intel | `revenue-intelligence.md` | First-dollar sprint OR pricing audit complete |
-| 13 | Growth Engine | `growth-engine.md` | Self-running weekly cycle producing measurable output |
-| 14 | Exit Readiness | `exit-readiness.md` | Data room complete; marketplace listing drafted |
-| — | Portfolio | `portfolio.md` | Cross-project intelligence updated |
+| 10 | **War Room** | `war-room.md` | T+72h retro complete; fires patched |
+| 11 | **Operations** | `operations.md` | North Star dashboard live; weekly review cron committed; alert webhooks configured |
+| 12 | **Revenue Intel** | `revenue-intelligence.md` | First-dollar sprint OR pricing audit complete; funnel fixes committed |
+| 13 | **Growth Engine** | `growth-engine.md` | Self-running weekly cycle; cron committed; permissions.yml signed |
+| 14 | **Exit Readiness** | `exit-readiness.md` | Data room complete; marketplace listing drafted; Sovereign Score ≥ 90 |
+| — | Portfolio | `portfolio.md` | Cross-project intelligence updated; attention allocation run |
 | — | Edge Cases | `edge-cases.md` | Loaded by Onboarding when non-standard scenario detected |
+| — | Fleet | `fleet-subagents.md` | Loaded when Phase 9 complete; agents activated |
+| — | Oracle | `mission-intelligence.md` | Loaded in Operator Mode; runs every tick |
+| — | Context Window | `context-window.md` | Loaded in Phase 0; governs all phase transitions |
+| — | Security | `security.md` | Phase 2b; also loadable via `/atlas security` |
+| — | Brand Engine | `brand-engine.md` | Phase 6 companion; also loadable via `/atlas brand` |
 
 **The loop never ends.** After Phase 14, Atlas re-enters Growth Engine on every invocation.
 
@@ -498,7 +583,11 @@ docs/
 - ❌ Stopped after Phase 9 (Launch)
 - ❌ Wrote a `userMust` without `layers_attempted`
 - ❌ Hit a tool error without engaging self-healing
-- ❌ Stopped at score 70 — target is 90
+- ❌ Stopped at score 70 or 80 — sovereign target is 90
+- ❌ Proceeded to Phase 9 without score ≥ 60 (launch floor)
+- ❌ Skipped Phase 2b (Security) — security is not optional
+- ❌ Generated visual assets without running Visual QA loop (brand-engine.md)
+- ❌ Wrote product-specific facts (URL, name, price) from memory instead of reading context.json
 - ❌ Produced strategy docs instead of executable artifacts
 - ❌ Forgot to read/write `~/.atlas/` state
 - ❌ Did not state the score after a phase
