@@ -247,6 +247,7 @@ After human actions: score will reach [Z]
 ---
 
 ## Output
+- Git commit + push to remote
 
 - Monitoring configured (Better Uptime API calls confirmed)
 - Email sequences created (via email service API)

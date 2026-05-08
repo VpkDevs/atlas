@@ -402,3 +402,39 @@ Historical parallel:
 - [ ] `growth_log.md` updated with this tick's entry
 - [ ] Dashboard reflects current state
 - [ ] `mission.json` reviewed (update proposed if warranted)
+
+---
+
+## Oracle Checkpoint (Every Tick)
+
+```
+─────────────────────────────────────────────────────
+ORACLE TICK #[N] — [Product Name] — [Timestamp]
+
+INGEST: [N] APIs queried | [N] failures logged
+ANALYZE: [N] anomalies detected ([N] opportunity, [N] threat, [N] noise)
+PREDICT:
+  MRR trajectory: $[X] → $[Y] in 30 days (±[Z]%)
+  Top risk: [description] ([X]% probability)
+  Top opportunity: [description] (expected +$[X] MRR)
+DECIDE: [chosen action] — score [X.XX]
+DELEGATE:
+  → [Agent]: [task description]
+EXECUTE: [outcome summary]
+REPORT: growth_log.md updated | dashboard refreshed | mission.json reviewed
+
+Sovereign Score: [X] | Delta: [+/-N] since last tick
+─────────────────────────────────────────────────────
+```
+
+## Red Flags
+
+- ❌ Oracle tick that doesn't update growth_log.md
+- ❌ PREDICT step without citing the data it's based on (not "I estimate")
+- ❌ DECIDE step choosing more than one primary action for this tick
+- ❌ DELEGATE step assigning a task to an agent whose domain doesn't cover it
+- ❌ Competitor signal detected and classified as NOISE without explicit reasoning
+- ❌ Churn precursor signal detected and not triggering a re-engagement action within 48h
+- ❌ Pivot trigger reached in mission.json and not surfaced to founder
+- ❌ Oracle running in Operator Mode without checking mission.json first
+- ❌ Revenue trajectory projection without stating the assumption (growth rate, time period)

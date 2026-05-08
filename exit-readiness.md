@@ -216,22 +216,40 @@ Human must do (non-blocking):
   → Review RISKS.md for accuracy before sharing with any buyer
 
 ─────────────────────────────────────────────────────
-ATLAS SINGLE-PROJECT RUN COMPLETE
+ATLAS SINGLE-PROJECT PIPELINE COMPLETE
 
-Runs-itself score: [FINAL]/100
-[If ≥ 70:] ✅ Product runs itself. Atlas mandate fulfilled.
-[If < 70:] Score is [X] — below 70. Return to Automation Handoff for remaining gap.
+Sovereign Score: [FINAL]/100
 
-Type 'portfolio' to run Portfolio Mode (empire intelligence across all products)
-Type 'pause' to end this session and save state
+[If < 60:] ❌ Score [X] — below launch floor. Return to Phase 8: Automation Handoff.
+[If 60-79:] ⚠️ Launched but not sovereign. Growth Engine running — keep going.
+[If 80-89:] ✅ Sustained operation. Growth Engine will reach 90.
+[If ≥ 90:] 🏆 SOVEREIGN. Atlas mandate fulfilled. This product runs itself.
+           Revenue > expenses ✓ | 0 human commits ✓ | Payout received ✓
+
+Type '/atlas portfolio' to run Portfolio Mode (empire intelligence across all products)
+Type '/atlas growth' to run next Growth Engine tick on this product
+Type '/atlas status' to view dashboard without running anything
+Type 'pause' to save state and end this session
 ─────────────────────────────────────────────────────
 ```
 
+## Acceptance Test (Phase 14)
+
+- [ ] `docs/founder/DATA_ROOM/` committed with all required documents
+- [ ] Acquisition Readiness Score calculated with specific improvement actions listed
+- [ ] At least 3 specific named acquirers identified (not just categories)
+- [ ] `docs/founder/ACQUIRE_LISTING.md` committed with paste-ready listing text
+- [ ] Valuation range calculated with explicit multiple basis
+- [ ] `~/.atlas/portfolio/[slug]/context.json` updated with exit data
+- [ ] All data room docs pushed to remote
+
 ## Red Flags
 
-- ❌ Skipping this module because "we're not selling"
-- ❌ Exit readiness docs that reference Business Context without writing actual content
-- ❌ Not calculating the specific actions that increase the valuation multiple
-- ❌ Not identifying specific acquirers (just categories of buyers)
-- ❌ Not committing the data room to the codebase
+- ❌ Skipping this module because "we're not selling" — exit readiness makes the product better
+- ❌ Data room with placeholder content (`[revenue here]`, `[tech stack here]`)
+- ❌ Not calculating specific actions that raise the valuation multiple
+- ❌ Identifying "PE firms" as acquirers instead of specific named companies
+- ❌ Not committing the data room — a data room that exists only in the chat is useless
+- ❌ Not updating portfolio context.json with exit metrics
+- ❌ Declaring the run complete without checking the Sovereign Score against all 6 criteria
 - ❌ Not updating portfolio context.json with exit data

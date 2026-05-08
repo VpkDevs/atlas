@@ -258,7 +258,7 @@ Score now: 58/100
   Remaining gap after human actions: 26 (low priority, no deadline)
 ```
 
-This is the actionable version. "Score is 58, need 70" is not.
+This is the actionable version. "Score is 58, need 60 (launch floor) → 90 (sovereign)" is not.
 
 **The achievable score calculation:** Add the point value of every blocked automation where the only blocker is a listed `pending_human_action`. If the human does those actions, what score results?
 
@@ -310,7 +310,7 @@ When Atlas hits something it cannot do (phone verification, missing API key, fin
 2. **Determine scope:** Does this block the *entire current module*, or just *this step*? Most blockers only block one step.
 3. **Continue** with everything in the module that doesn't depend on the blocked step.
 4. **Continue to subsequent modules** — most modules don't depend on prior human actions.
-5. **At the natural stopping point** (score ≥ 70 or end of pipeline), surface all pending human actions in a single consolidated list.
+5. **At the natural stopping point** (score ≥ 60 minimum, targeting 90 or end of pipeline), surface all pending human actions in a single consolidated list.
 
 **Consolidated pending actions format:**
 ```

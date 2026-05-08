@@ -49,7 +49,7 @@ For each product, build the status snapshot:
 **Running themselves (score ≥ 80, stable or growing MRR):**
 - Review monthly, not weekly
 - Auto-tick via Growth Engine cron
-- Flag for attention if score drops below 70
+- Flag for attention if score drops below 70 (investigate immediately if below 60)
 
 **Need attention (score 50-80 or declining MRR > 10%/month):**
 - Weekly Atlas Growth Engine tick
@@ -110,7 +110,7 @@ Product scores (highest = most deserving of your time):
     → Leave alone. Running itself.
 
 Leave alone this week: [Products where score < 0.15]
-  Why: Score ≥ 70, stable
+  Why: Score ≥ 80, stable
 ```
 
 ### Step 4: Shared Infrastructure Audit
@@ -197,7 +197,7 @@ Products: [N] total | [N] running themselves | [N] in sprint
 
 Revenue:
   Total MRR: $[X]
-  Passive MRR (score ≥70): $[X] ([X]% of total)
+  Passive MRR (score ≥80): $[X] ([X]% of total)
   Growth this month: +$[X] (+[X]%)
 
 Asset value (3x ARR):
@@ -256,11 +256,24 @@ Update `~/.atlas/portfolio/index.md` with current state.
 - `YOUR_NEXT_MOVE.md` — single most important action across the empire
 - Updated `~/.atlas/memory.md` with new cross-project patterns
 
+## Acceptance Test (Portfolio Mode)
+
+- [ ] All `context.json` files in `~/.atlas/portfolio/*/` read successfully
+- [ ] Attention allocation scores computed for every project (not estimated — calculated)
+- [ ] `YOUR_NEXT_MOVE.md` contains exactly ONE action with specific reasoning
+- [ ] `~/.atlas/portfolio/index.md` updated with current state
+- [ ] `~/.atlas/memory.md` appended with new cross-project learning (if any)
+- [ ] Any sunset candidate surfaced with explicit keep/sell/shutdown recommendation
+- [ ] Empire financial model uses actual Stripe MRR data (not placeholder values)
+
 ## Red Flags
 
-- Recommending work on a "running itself" product that needs no attention
-- Missing a sell signal in a plateaued product
-- Not pulling patterns from `~/.atlas/memory.md`
-- Generating empire financial model without reading actual metrics
-- Opportunity scanner that suggests building instead of buying when acquisition is faster
-- Not updating `~/.atlas/memory.md` with new learnings from this portfolio review
+- ❌ Recommending work on a product with score ≥ 80 and stable MRR
+- ❌ Missing a sell signal in a product with 3+ months of < 2% MRR growth
+- ❌ Not reading `~/.atlas/memory.md` before generating recommendations
+- ❌ Empire financial model using `[X]` placeholders instead of actual numbers
+- ❌ Opportunity scanner suggesting build-vs-buy without a cost/timeline comparison
+- ❌ Not updating `~/.atlas/memory.md` — this is how Atlas compounds intelligence
+- ❌ YOUR_NEXT_MOVE.md containing more than one action
+- ❌ Treating "I don't have metrics" as acceptable — pull them via API if credentials exist
+- ❌ Sunset recommendation without the 3-condition threshold check

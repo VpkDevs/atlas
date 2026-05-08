@@ -302,9 +302,20 @@ Runs-itself score: [X] → [Y]
 Human must do (non-blocking):
   → Have a lawyer review Section 4 (liability cap) — LOW confidence flagged
 
-── PROCEEDING TO LAUNCH STRATEGY ────────────────────
+── PROCEEDING TO PHASE 4: PRE-FLIGHT ────────────────
 ─────────────────────────────────────────────────────
 ```
+
+## Acceptance Test (Phase 3)
+
+- [ ] `curl <prod>/terms` returns 200 with body > 500 bytes
+- [ ] `curl <prod>/privacy` returns 200 with body > 500 bytes  
+- [ ] Privacy Policy names all actual third parties (no generic "service providers")
+- [ ] ToS has governing law clause with founder's jurisdiction
+- [ ] If PII collected: `DELETE /api/user/account` endpoint exists and is tested
+- [ ] If EU audience possible: cookie consent component committed
+- [ ] If AI/LLM used: AI output disclaimer in ToS, AI processing disclosure in Privacy Policy
+- [ ] All docs and routes committed and pushed to remote
 
 ## Red Flags
 

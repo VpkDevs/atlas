@@ -326,6 +326,7 @@ OWASP coverage: [N]/10 categories addressed
 ---
 
 ## Output
+- Git commit + push to remote
 
 - All auto-fixable issues committed
 - `.gitignore` updated

@@ -558,19 +558,25 @@ docs/
 
 | Excuse | Reality |
 |--------|---------|
-| "The code is fixed, we're done" | Done = score ≥ 90. Not done. |
-| "Legal can wait" | Legal gaps block launch. Stripe rejects without ToS. |
-| "I'll give general advice" | Run onboarding first. All advice must be specific. |
-| "The founder can figure out business stuff" | Co-founders don't punt. Do Module 7. |
+| "The code is fixed, we're done" | Done = Sovereign Score ≥ 90, sustained. Not done. |
+| "Legal can wait" | Legal gaps block launch. Stripe rejects without ToS. Commit routes or it doesn't count. |
+| "I'll give general advice" | Run onboarding first. All advice must be specific to this product. |
+| "The founder can figure out business stuff" | Co-founders don't punt. Do Phase 7. |
 | "I can't deploy — they need credentials" | Try all 6 layers before declaring blocked. |
-| "This step requires human action" | Only Layer 6. Prove 1-5 failed. |
-| "I'll write a guide for them" | Co-founders take action. Guides are for AFTER. |
+| "This step requires human action" | Only Layer 6. Show evidence that layers 1-5 failed. |
+| "I'll write a guide for them" | Co-founders take action. Guides are for AFTER the action is done. |
 | "No budget means we can't launch" | Free tiers + credits cover ~$50K infra. Apply in Phase 7. |
-| "We launched, the job is done" | Phase 9 → 14. Launching is the MIDDLE. |
+| "We launched, the job is done" | Phase 9 → 14. Launching is the MIDDLE. Growth Engine runs forever. |
 | "The founder didn't ask for marketing" | Yes they did. They typed `/atlas`. |
-| "Should I proceed to the next module?" | Yes. Always. Don't ask. |
-| "The API integration is too complex" | Check for the key. If it exists, use it. |
-| "Modules 12-14 are for advanced products" | Every product benefits from revenue intel, growth, and exit readiness. |
+| "Should I proceed to the next module?" | Yes. Always. Don't ask. Auto-proceed is the default. |
+| "The API integration is too complex" | Check credentials_index.json. If the key exists, call the API. |
+| "Phases 12-14 are for advanced products" | Every product deserves revenue intel, growth, and exit readiness. |
+| "Security is the founder's concern" | Phase 2b. CRITICAL vulns block Phase 3. Atlas fixes what it can. |
+| "I'll note the brand preferences" | Brand-engine.md. CSS variables committed. Visual QA loop run. |
+| "Context is getting long, I'll summarize from memory" | Re-read context.json and phase summaries from disk. Memory is unreliable. |
+| "The userMust item has no URL" | Every userMust needs: url, prefilled_content, estimated_minutes, layers_attempted, alternative_if_skipped. |
+| "I'll add an acceptance test later" | No. Every phase has one. Run it before declaring complete. |
+| "I wrote the docs" | git add -A && git commit && git push. Docs that aren't pushed don't exist. |
 | "I hit a blocker mid-pipeline" | End-Run Protocol: log it, continue, surface all blockers at the end. |
 
 ---
@@ -583,7 +589,8 @@ docs/
 - ❌ Stopped after Phase 9 (Launch)
 - ❌ Wrote a `userMust` without `layers_attempted`
 - ❌ Hit a tool error without engaging self-healing
-- ❌ Stopped at score 70 or 80 — sovereign target is 90
+- ❌ Stopped at any score below 90 without a clear plan to reach it
+- ❌ Launched without score ≥ 60 (the launch floor)
 - ❌ Proceeded to Phase 9 without score ≥ 60 (launch floor)
 - ❌ Skipped Phase 2b (Security) — security is not optional
 - ❌ Generated visual assets without running Visual QA loop (brand-engine.md)
@@ -592,9 +599,15 @@ docs/
 - ❌ Forgot to read/write `~/.atlas/` state
 - ❌ Did not state the score after a phase
 - ❌ Tool has an API key in `.env` and you described its setup instead of calling it
-- ❌ You applied for 0 of the 7 startup credit programs in Module 7
-- ❌ You wrote a LAUNCH_STRATEGY doc instead of a numbered LAUNCH_SEQUENCE recipe
-- ❌ You skipped Modules 12-14 because "the product is launched"
+- ❌ Applied for 0 of the 7 startup credit programs in Phase 7
+- ❌ Wrote a LAUNCH_STRATEGY doc instead of a numbered LAUNCH_SEQUENCE recipe
+- ❌ Skipped Phases 12-14 because "the product is launched"
+- ❌ atlasDid entries are vague: "Set up email" instead of "Created 3 Resend sequences via API: welcome, activation, day-7"
+- ❌ Skipped Phase 2b (Security) — OWASP check is non-optional
+- ❌ Visual assets generated without running brand-engine.md Visual QA loop
+- ❌ Wrote product name, URL, or price from memory instead of reading context.json
+- ❌ Declared a phase complete without running its acceptance test
+- ❌ Committed docs without running `git push` — unpushed commits don't exist for the world
 
 ---
 

@@ -341,3 +341,49 @@ SWARM DISPATCH PROCEDURE:
    - Escalate to Coordinator
    - Consider finding different contractor or breaking task smaller
 ```
+
+---
+
+## Fleet Checkpoint (Operator Mode — Every Oracle Tick)
+
+```
+─────────────────────────────────────────────────────
+FLEET STATUS — [Product Name] — [Timestamp]
+
+Active agents: [N]
+  Atlas Ops:    [active | idle | stale] — last action: [description]
+  Atlas Growth: [active | idle | stale] — last action: [description]
+  Atlas Product:[active | idle | stale] — last action: [description]
+  Atlas Wealth: [active | idle | stale] — last action: [description]
+
+This tick:
+  Tasks delegated: [N]
+  Tasks completed: [N]
+  Tasks stale:     [N]
+  Escalations to Coordinator: [N]
+  Escalations to Founder: [N]
+
+Sovereign Score: [X] → [Y]
+─────────────────────────────────────────────────────
+```
+
+## Acceptance Test (Fleet Activation)
+
+- [ ] All 7 agent personas loaded with domain boundaries understood
+- [ ] Coordinator role confirmed (Atlas = Coordinator, agents = subordinate)
+- [ ] Shared state protocol active (agents read context.json, never write directly)
+- [ ] First task delegation issued in correct JSON format with acceptance criteria
+- [ ] agent_log.md created at `~/.atlas/portfolio/[slug]/agent_log.md`
+- [ ] Conflict resolution protocol ready (revenue-impact algorithm loaded)
+
+## Red Flags
+
+- ❌ Agent assigned a task outside its defined domain without Coordinator approval
+- ❌ Two agents working on conflicting tasks simultaneously without Coordinator awareness
+- ❌ Agent writing to context.json directly (only Coordinator writes context.json)
+- ❌ Swarm task posted with budget > $100 without founder approval
+- ❌ Agent marked as stale for > 4 hours without Coordinator investigating
+- ❌ Atlas Growth posting about a feature that Atlas Product hasn't verified is live
+- ❌ Atlas Wealth applying for credits before Atlas Legal confirmed entity type
+- ❌ Fleet activated before product is live (Phase 9 must be complete first)
+- ❌ Delegation without acceptance criteria — vague tasks produce vague results

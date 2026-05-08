@@ -319,6 +319,7 @@ PHASE 3: [Scale/Exit/Lifestyle] — [Status: FUTURE]
 ---
 
 ## Output
+- Git commit + push to remote
 
 - `docs/founder/OPERATIONS_HANDBOOK.md`
 - `docs/founder/SUPPORT_PLAYBOOK.md`

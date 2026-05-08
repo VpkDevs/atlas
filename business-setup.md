@@ -235,6 +235,26 @@ Human must do (non-blocking):
   → Open Mercury account — mercury.com (~15 min, phone verification needed)
   → Submit 7 startup credit applications — STARTUP_CREDITS.md
 
-── PROCEEDING TO AUTOMATION HANDOFF ─────────────────
+── PROCEEDING TO PHASE 8: AUTOMATION HANDOFF ────────
 ─────────────────────────────────────────────────────
 ```
+
+## Acceptance Test (Phase 7)
+
+- [ ] Entity type recommendation made with explicit reasoning
+- [ ] Formation guide written with exact state SOS URL + fee + timeline
+- [ ] Banking recommendation includes specific account link (not generic "find a bank")
+- [ ] `docs/founder/TAX_CALENDAR.md` committed with all applicable deadlines
+- [ ] `docs/founder/STARTUP_CREDITS.md` committed with ≥ 5 program applications (complete text)
+- [ ] Acquisition Readiness Score calculated and shown
+- [ ] All docs committed and pushed to remote
+
+## Red Flags
+
+- ❌ Recommending "consult a lawyer" without also providing a specific entity recommendation
+- ❌ Not applying for all 7 credit programs — each takes 5-15 min and can save thousands
+- ❌ Generic "open a bank account" without recommending Mercury specifically for indie founders
+- ❌ Tax calendar without actual deadlines — "[Q1 estimated taxes]" is not a date
+- ❌ Acquisition Readiness Score without showing which specific improvements would raise it
+- ❌ Not committing docs to the repo — STARTUP_CREDITS.md sitting in chat is worthless
+- ❌ Non-US founder receiving US-only advice — check location from Business Context

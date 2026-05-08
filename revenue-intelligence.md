@@ -276,11 +276,21 @@ Human must do (non-blocking):
 ─────────────────────────────────────────────────────
 ```
 
+## Acceptance Test (Phase 12)
+
+- [ ] MRR read from Stripe API (or confirmed $0 with clear reasoning)
+- [ ] If MRR = $0: `docs/founder/FIRST_DOLLAR_SPRINT.md` exists with ≥ 10 personalized messages, each referencing the lead's specific post/complaint
+- [ ] Pricing audit complete: competitor prices researched, recommendation stated with specific reasoning
+- [ ] Funnel fixes committed (not described) — `git log` shows actual commits
+- [ ] All work pushed to remote
+
 ## Red Flags
 
 - ❌ Skipping this module because "we're not ready to think about revenue"
-- ❌ Writing generic cold outreach templates instead of personalized messages
-- ❌ Not searching for actual leads before writing outreach
-- ❌ Pricing recommendation without researching competitor prices
-- ❌ Not committing funnel fixes — describing them instead
+- ❌ Writing generic cold outreach templates instead of personalized messages referencing specific posts
+- ❌ Not actually searching for leads before writing outreach — search must happen first
+- ❌ Pricing recommendation without citing actual competitor prices
+- ❌ Describing funnel fixes instead of committing them
 - ❌ Skipping the referral analysis
+- ❌ Using placeholders in FIRST_DOLLAR_SPRINT.md — every message must be send-ready
+- ❌ Not pushing commits — docs in the chat without being in the repo are worthless
