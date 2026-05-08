@@ -615,8 +615,8 @@ const ATLAS_STATE = {
     slug: "sweepbot",
     lastUpdated: "2026-03-19 09:00",
     tagline: "We give players what the house never wants them to have.",
-    runsItselfScore: 36,
-    targetScore: 70,
+    sovereignScore: 36,
+    targetScore: 90,
     previousScore: 22
   },
   currentModule: "marketing",
@@ -753,8 +753,8 @@ const ATLAS_STATE = {
   </div>
   <div class="score-wrap">
     <div class="score-info">
-      <div class="score-label-text">Runs-Itself Score</div>
-      <div class="score-target-text">Target: <strong id="hdr-target">70</strong></div>
+      <div class="score-label-text">Sovereign Score</div>
+      <div class="score-target-text">Target: <strong id="hdr-target">90</strong></div>
     </div>
     <div class="score-ring">
       <svg width="50" height="50" viewBox="0 0 50 50">
@@ -827,7 +827,7 @@ const ATLAS_STATE = {
 
   // ── Header / score ring ───────────────────────────────────────────────────
   function initHeader() {
-    const sc = S.project.runsItselfScore;
+    const sc = S.project.sovereignScore ?? S.project.runsItselfScore;
     const tg = S.project.targetScore;
     document.getElementById('hdr-name').textContent = S.project.name;
     document.getElementById('hdr-meta').textContent =

@@ -407,7 +407,7 @@ const ATLAS_STATE = {
   project: {
     name: "[Product Name]", slug: "[slug]",
     lastUpdated: "[YYYY-MM-DD HH:MM]", tagline: "[tagline]",
-    runsItselfScore: [current], targetScore: 90,
+    sovereignScore: [current], targetScore: 90,
     previousScore: [score at start]
   },
   currentModule: "[module-id]",

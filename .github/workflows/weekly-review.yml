@@ -1,0 +1,38 @@
+name: Atlas Weekly Growth Engine
+
+on:
+  schedule:
+    - cron: '0 14 * * 1'   # Mondays 09:00 EST / 14:00 UTC
+  workflow_dispatch:         # Manual trigger: gh workflow run weekly-review.yml
+
+jobs:
+  growth-tick:
+    name: Weekly metrics → decision → issue → notify
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Atlas weekly review pipeline
+        env:
+          STRIPE_SECRET_KEY:     ${{ secrets.STRIPE_SECRET_KEY }}
+          POSTHOG_API_KEY:       ${{ secrets.POSTHOG_API_KEY }}
+          POSTHOG_PROJECT_ID:    ${{ secrets.POSTHOG_PROJECT_ID }}
+          BETTER_UPTIME_API_KEY: ${{ secrets.BETTER_UPTIME_API_KEY }}
+          SENTRY_AUTH_TOKEN:     ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG:            ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT:        ${{ secrets.SENTRY_PROJECT }}
+          DISCORD_WEBHOOK:       ${{ secrets.DISCORD_WEBHOOK }}
+          SLACK_WEBHOOK_URL:     ${{ secrets.SLACK_WEBHOOK_URL }}
+          GITHUB_TOKEN:          ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY:     ${{ github.repository }}
+        run: node scripts/atlas/weekly-review.js
+
+      - name: Schema validation (keep skill integrity)
+        run: node scripts/validate.js
