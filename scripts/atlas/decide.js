@@ -12,14 +12,18 @@
 
 const fs = require('fs');
 
-const pulse = JSON.parse(fs.readFileSync('/dev/stdin', 'utf8'));
+const input = fs.readFileSync(0, 'utf8').trim();
+if (!input) {
+  process.stderr.write('[decide] No pulse JSON received on stdin\n');
+  process.exit(1);
+}
+
+const pulse = JSON.parse(input);
 
 // ─── Decision tree (mirrors growth-engine.md logic) ───────────────────────────
 
 function decide(pulse) {
   const s = pulse.metrics?.stripe;
-  const u = pulse.metrics?.uptime;
-  const e = pulse.metrics?.sentry;
   const anomalies = pulse.anomalies || [];
   const gaps = pulse.data_gaps || [];
 

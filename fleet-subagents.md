@@ -178,11 +178,63 @@ This prevents conflicting actions (e.g., Growth posting about a feature Product 
 
 ### Conflict Resolution
 
-When two agents propose conflicting actions:
-1. Coordinator identifies the conflict
-2. Revenue-impact analysis determines winner
-3. Losing agent adjusts its plan
-4. Decision logged to `~/.atlas/portfolio/[slug]/decisions.md`
+When two agents propose conflicting actions, execute `resolve_conflict()`:
+
+```
+PROCEDURE resolve_conflict(action_A, agent_A, action_B, agent_B):
+
+  # 1. Domain precedence — lower number wins when domains collide
+  DOMAIN_RANK = {
+    "ops":     1,   # infrastructure > everything (prevents outages)
+    "legal":   2,   # compliance blocker > revenue
+    "product": 3,   # shipping gates growth
+    "growth":  4,
+    "wealth":  5,
+    "hr":      6,
+    "ma":      7,
+  }
+
+  # 2. Compute revenue-impact score for each action (0–100)
+  score_A = estimate_revenue_impact(action_A)  # from scoring.md rubric
+  score_B = estimate_revenue_impact(action_B)
+
+  # 3. Check reversibility — prefer reversible action if scores within 15 pts
+  rev_A = is_reversible(action_A)   # bool
+  rev_B = is_reversible(action_B)
+
+  # 4. Resolution logic
+  IF action_A blocks a P0/P1 incident OR action_B blocks a P0/P1 incident:
+    WINNER = whichever action unblocks the incident
+    REASON = "incident unblock override"
+
+  ELSE IF abs(score_A - score_B) >= 15:
+    WINNER = action with higher revenue-impact score
+    REASON = f"revenue-impact delta: {abs(score_A - score_B)} pts"
+
+  ELSE IF rev_A != rev_B:
+    WINNER = reversible action
+    REASON = "reversibility tiebreaker (scores within 15 pts)"
+
+  ELSE:
+    WINNER = action from agent with lower DOMAIN_RANK
+    REASON = f"domain precedence: {agent with lower rank} > {other agent}"
+
+  # 5. Adjust and log
+  losing_agent.adjust_plan(exclude=WINNER_action)
+  decisions.append({
+    "conflict": [action_A, action_B],
+    "winner": WINNER,
+    "reason": REASON,
+    "revenue_scores": [score_A, score_B],
+    "timestamp": now()
+  })
+  RETURN WINNER
+```
+
+**Tiebreaker chain** (applies when scores within 15 pts and both same reversibility):
+1. Ops > Legal > Product > Growth > Wealth > HR > M&A (domain precedence)
+2. If same agent type: later-queued action wins (agent already in motion)
+3. If deadlock: escalate to Coordinator + pause both tasks; log `conflict_escalation` flag
 
 ---
 

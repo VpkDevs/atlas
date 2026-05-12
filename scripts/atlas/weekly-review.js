@@ -14,17 +14,18 @@
  * Usage: node scripts/atlas/weekly-review.js
  */
 
-const { execSync, spawnSync } = require('child_process');
+const { spawnSync } = require('child_process');
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
 
-const PULSE_PATH = '/tmp/atlas_pulse.json';
-const DECISION_PATH = '/tmp/atlas_decision.json';
+const PULSE_PATH = path.join(os.tmpdir(), 'atlas_pulse.json');
+const DECISION_PATH = path.join(os.tmpdir(), 'atlas_decision.json');
 const SCRIPT_DIR = path.join(__dirname);
 
 function run(label, cmd, args = [], input = null) {
   process.stderr.write(`\n[weekly-review] ── ${label} ──\n`);
-  const opts = { stdio: ['pipe', 'pipe', 'inherit'] };
+  const opts = { input, stdio: ['pipe', 'pipe', 'inherit'] };
   const result = spawnSync(process.execPath, [path.join(SCRIPT_DIR, cmd), ...args], opts);
 
   if (result.error) {
@@ -62,18 +63,9 @@ async function main() {
     const decideResult = run('DECIDE', 'decide.js', [], fs.readFileSync(PULSE_PATH));
     if (decideResult.output) {
       try {
-        // decide.js reads from stdin — re-run with stdin piped
-        const { spawnSync } = require('child_process');
-        const result = spawnSync(process.execPath, [path.join(SCRIPT_DIR, 'decide.js')], {
-          input: fs.readFileSync(PULSE_PATH),
-          stdio: ['pipe', 'pipe', 'inherit'],
-        });
-        const output = result.stdout?.toString();
-        if (output) {
-          fs.writeFileSync(DECISION_PATH, output);
-          process.stderr.write(`[weekly-review] Decision saved to ${DECISION_PATH}\n`);
-          decisionResult = { success: true, output };
-        }
+        fs.writeFileSync(DECISION_PATH, decideResult.output);
+        process.stderr.write(`[weekly-review] Decision saved to ${DECISION_PATH}\n`);
+        decisionResult = { success: decideResult.success, output: decideResult.output };
       } catch (e) {
         process.stderr.write(`[weekly-review] Decision error: ${e.message}\n`);
       }
