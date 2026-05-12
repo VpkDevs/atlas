@@ -9,7 +9,7 @@
  * 4. LICENSE, README.md, CHANGELOG.md, .gitignore all present
  * 5. No stale username references (vincekinney1991 → VpkDevs)
  * 6. docs/legal/ contains the three required documents
- * 7. CHANGELOG.md contains a section matching the latest git tag
+ * 7. CHANGELOG.md contains the current major version section
  */
 
 const fs = require('fs');
@@ -120,11 +120,11 @@ for (const f of [
   check(f + ' exists', () => fileExists(f) || `Missing: ${f}`);
 }
 
-// ─── CHECK 7: CHANGELOG has a v6 section ──────────────────────────────────
+// ─── CHECK 7: CHANGELOG has a current version section ─────────────────────
 console.log('\n── CHANGELOG version coverage');
-check('CHANGELOG.md contains v6 section', () => {
+check('CHANGELOG.md contains v7.2 section', () => {
   const changelog = readFile('CHANGELOG.md');
-  return changelog.includes('[6.0.0]') || 'No [6.0.0] section found';
+  return changelog.includes('[7.2.0]') || 'No [7.2.0] section found';
 });
 
 // ─── SUMMARY ──────────────────────────────────────────────────────────────
