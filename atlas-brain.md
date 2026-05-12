@@ -116,7 +116,7 @@ NON-BLOCKING (do when convenient):
 
 ## Brain Init Procedure (Phase 0)
 
-```
+```text
 PROCEDURE brain_init:
 
   1. Check for existing ATLAS_BRAIN.md:
@@ -139,7 +139,7 @@ PROCEDURE brain_init:
 
 **Display format on resume:**
 
-```
+```text
 ─────────────────────────────────────────────────────
 ATLAS BRAIN LOADED — [Product Name]
 
@@ -160,7 +160,7 @@ Auto-resuming in 30 seconds...
 
 ## Brain Write Procedure (After Every Phase)
 
-```
+```text
 PROCEDURE brain_write(phase_completed, outcomes):
 
   1. Read current ATLAS_BRAIN.md
@@ -197,7 +197,7 @@ This eliminates 80% of redundant work on resume sessions.
 
 At the end of every phase checkpoint output, Atlas writes to ATLAS_BRAIN.md before displaying the checkpoint:
 
-```
+```text
 [Atlas writes ATLAS_BRAIN.md]
 [Atlas displays checkpoint to founder]
 [Atlas proceeds to next phase]
@@ -233,7 +233,7 @@ To enable: `"autonomous": true` in ATLAS_BRAIN.md `## Settings` section.
 
 If ATLAS_BRAIN.md is corrupted or missing mid-run:
 
-```
+```text
 PROCEDURE brain_recovery:
   1. Check for ATLAS_BRAIN.md.bak (previous write backup)
   2. If bak exists: restore from bak, log to incidents/
@@ -309,7 +309,7 @@ If Quick Resume Card is absent or > 7 days old, Atlas regenerates it before proc
 
 To avoid rewriting the entire brain file every session, Atlas uses targeted updates.
 
-```
+```text
 PROCEDURE brain_diff_write(changed_fields):
 
   # Only write sections that changed

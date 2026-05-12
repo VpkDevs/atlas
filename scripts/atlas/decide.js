@@ -18,7 +18,13 @@ if (!input) {
   process.exit(1);
 }
 
-const pulse = JSON.parse(input);
+let pulse;
+try {
+  pulse = JSON.parse(input);
+} catch (error) {
+  process.stderr.write(`[decide] Failed to parse pulse JSON: ${error.message}\n`);
+  process.exit(1);
+}
 
 // ─── Decision tree (mirrors growth-engine.md logic) ───────────────────────────
 

@@ -39,7 +39,7 @@ No capability is excluded by default. The matrix below is a starting assignment 
 
 ## 2. Dispatch Decision Tree
 
-```
+```text
 FUNCTION route_task(task):
 
   # Step 1: Classify the task
@@ -105,24 +105,29 @@ Independent tasks may run in parallel. Use this matrix to determine parallelism 
 
 When two specialists produce conflicting recommendations:
 
-```
+```text
 FUNCTION resolve_conflicts(proposals, scores):
 
   # Rule 1: Hard gate — legal/compliance risk eliminates any proposal
-  proposals = [p for p in proposals if p.compliance_risk != "HIGH"]
+  pairs     = [(p, s) for p, s in zip(proposals, scores) if p.compliance_risk != "HIGH"]
+  proposals = [p for p, s in pairs]
+  scores    = [s for p, s in pairs]
 
-  # Rule 2: If only one proposal remains after gate, it wins
+  # Rule 2: If no proposal remains after gate, return no-action with reason
+  if len(proposals) == 0: return None
+
+  # Rule 3: If only one proposal remains after gate, it wins
   if len(proposals) == 1:  return proposals[0]
 
-  # Rule 3: Score-based selection
+  # Rule 4: Score-based selection
   ranked = sorted(zip(proposals, scores), key=lambda x: x[1], reverse=True)
   top, runner_up = ranked[0], ranked[1]
 
-  # Rule 4: If scores within 5 points, prefer higher reversibility
+  # Rule 5: If scores within 5 points, prefer higher reversibility
   if abs(top[1] - runner_up[1]) <= 5:
     return max([top, runner_up], key=lambda x: x[0].reversibility_rank)
 
-  # Rule 5: Top score wins
+  # Rule 6: Top score wins
   return top[0]
 ```
 
@@ -137,7 +142,7 @@ FUNCTION resolve_conflicts(proposals, scores):
 
 ## 5. Fusion Sprint Procedure (Full)
 
-```
+```text
 PROCEDURE fusion_sprint(goals, blockers):
 
   # Phase A: Inventory
@@ -150,7 +155,11 @@ PROCEDURE fusion_sprint(goals, blockers):
   for goal in active_goals:
     domain  = classify_domain(goal)
     primary = ROUTING_MATRIX[domain].primary
-    routing_plan.append({goal, domain, primary})
+    routing_plan.append({
+      "goal": goal,
+      "domain": domain,
+      "primary": primary
+    })
 
   # Phase C: Dispatch
   parallel_groups = group_parallel_safe(routing_plan)
@@ -162,7 +171,10 @@ PROCEDURE fusion_sprint(goals, blockers):
   intervention_backlog = []
   for output in all_outputs:
     score = score_fusion_intervention(output)
-    intervention_backlog.append({output, score})
+    intervention_backlog.append({
+      "output": output,
+      "score": score
+    })
 
   # Phase E: Rank and select
   ranked  = sort_by_score_descending(intervention_backlog)

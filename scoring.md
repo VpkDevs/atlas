@@ -15,7 +15,7 @@ The Sovereign Score measures how close the business is to running itself.
 
 ### Computation Algorithm
 
-```
+```text
 FUNCTION compute_sovereign_score(state):
 
   s = 0
@@ -88,7 +88,7 @@ FUNCTION compute_sovereign_score(state):
 
 After every module, output exactly:
 
-```
+```text
 ═══════════════════════════════
  SOVEREIGN SCORE: [N]/100
   ├── Achievable now:          [N]
@@ -113,7 +113,7 @@ After every module, output exactly:
 
 Controls lane assignment. Computed weekly or on-demand.
 
-```
+```text
 FUNCTION compute_priority_score(project):
 
   w = {
@@ -140,7 +140,7 @@ FUNCTION compute_priority_score(project):
 ### Sub-Score Formulas
 
 #### time_to_cash (0–100)
-```
+```text
 days_to_first_dollar = estimate_days_to_revenue(project)
 
 if days_to_first_dollar <= 7:   return 100
@@ -152,7 +152,7 @@ else:                           return 10
 ```
 
 #### launch_readiness (0–100)
-```
+```text
 checklist = [
   ("core_feature_works",        20),
   ("payment_integration_done",  20),
@@ -165,7 +165,7 @@ return sum(pts for (item, pts) in checklist if item is True)
 ```
 
 #### distribution_readiness (0–100)
-```
+```text
 channels_ready = 0
 if organic_seo_content_exists:          channels_ready += 25
 if social_profile_setup:                channels_ready += 20
@@ -176,7 +176,7 @@ return channels_ready
 ```
 
 #### monetization_clarity (0–100)
-```
+```text
 if pricing_page_live and stripe_configured:   base = 60
 elif pricing_decided but not live:            base = 35
 else:                                         base = 10
@@ -188,7 +188,7 @@ return min(base, 100)
 ```
 
 #### confidence (0–100)
-```
+```text
 # How confident is Atlas that this project will succeed?
 signals = [
   has_paying_customer_validation,      # 30 pts
@@ -201,7 +201,7 @@ return sum(30 if signals[0] else 0, 20 if signals[1] else 0, ...)
 ```
 
 #### capital_efficiency (0–100)
-```
+```text
 monthly_burn = estimate_monthly_costs(project)
 if monthly_burn == 0:      return 100  # pure digital, free tier
 if monthly_burn <= 50:     return 90
@@ -213,7 +213,7 @@ else:                      return 10
 
 ### Lane Assignment Rules
 
-```
+```text
 IF priority_score >= 70: primary_candidate = True
 IF priority_score >= 40: secondary_candidate = True
 IF priority_score < 40:  parked = True
@@ -230,7 +230,7 @@ AND current_primary.sovereign_score < 60
 
 Measures the quality and acceleration of revenue growth.
 
-```
+```text
 FUNCTION compute_revenue_velocity_score(mrr_history):
 
   if len(mrr_history) < 4:  return 50  # insufficient data — neutral
@@ -255,7 +255,7 @@ FUNCTION compute_revenue_velocity_score(mrr_history):
 
 ## 4. Retention Health Score (0–100)
 
-```
+```text
 FUNCTION compute_retention_health_score(logo_churn_rate_monthly, revenue_churn_rate_monthly):
 
   # logo churn: % of customers who cancel each month
@@ -276,7 +276,7 @@ FUNCTION compute_retention_health_score(logo_churn_rate_monthly, revenue_churn_r
 
 ## 5. Monetization Confidence Score (0–100)
 
-```
+```text
 FUNCTION compute_monetization_confidence(experiment_log):
 
   n_experiments = len(experiment_log)
@@ -296,7 +296,7 @@ FUNCTION compute_monetization_confidence(experiment_log):
 
 ## 6. Cash Discipline Score (0–100)
 
-```
+```text
 FUNCTION compute_cash_discipline_score(runway_days, failed_charge_trend, burn_volatility):
 
   runway_score = min(runway_days / 2.5, 40)  # 100 days runway = 40 pts; 250d = max 40
@@ -323,7 +323,7 @@ FUNCTION compute_cash_discipline_score(runway_days, failed_charge_trend, burn_vo
 
 Used by the Fusion Router to rank competing interventions.
 
-```
+```text
 FUNCTION score_fusion_intervention(intervention):
 
   # Impact: how much will this move a key KPI?
@@ -374,7 +374,7 @@ FUNCTION score_fusion_intervention(intervention):
 
 Atlas never calls a test significant without reaching minimum sample size.
 
-```
+```text
 FUNCTION minimum_sample_size(baseline_rate, minimum_detectable_effect, power=0.80, alpha=0.05):
 
   # Simplified two-proportion z-test

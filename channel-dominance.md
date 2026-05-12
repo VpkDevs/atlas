@@ -25,7 +25,7 @@ Complete **only** if ALL of:
 
 ## Step 0: Capital Mode Constraints
 
-```
+```text
 Read capital_mode from ATLAS_BRAIN.md
 
 IF capital_mode == "SURVIVE":
@@ -73,17 +73,18 @@ stripe customers list --limit=100 \
 
 **Channel data schema (compute for each):**
 
-```
+```text
 channel_metrics = {
   "name": "HN / Reddit / Twitter / SEO / Email / Referral / Direct / ...",
   "visits_28d": N,
+  "visits_prior_28d": N,
   "signups_28d": N,
   "paid_conversions_28d": N,
   "mrr_attributed_28d": $N,       # best estimate or null
   "visit_to_signup_rate": N/N,
   "signup_to_paid_rate": N/N,
   "overall_conversion_rate": N/N, # visits → paid
-  "cac_proxy": spend_28d / paid_conversions,  # $0 for organic
+  "cac_proxy": paid_conversions_28d > 0 ? spend_28d / paid_conversions_28d : null,
   "effort_hours_28d": N,          # time Atlas / founder spent on this channel
 }
 ```
@@ -116,10 +117,11 @@ def compute_marginal_roi(channel):
     # Growth trajectory bonus: is this channel accelerating?
     # Compare this 28d window to prior 28d window
     trajectory_multiplier = 1.0
-    if channel.visits_28d > channel.visits_prior_28d * 1.1:  # > 10% growth
-        trajectory_multiplier = 1.3
-    elif channel.visits_28d < channel.visits_prior_28d * 0.9:  # > 10% decline
-        trajectory_multiplier = 0.7
+    if channel.visits_prior_28d and channel.visits_prior_28d > 0:
+        if channel.visits_28d > channel.visits_prior_28d * 1.1:  # > 10% growth
+            trajectory_multiplier = 1.3
+        elif channel.visits_28d < channel.visits_prior_28d * 0.9:  # > 10% decline
+            trajectory_multiplier = 0.7
     
     # CAC penalty: paid channels need to beat organic equivalent
     cac_penalty = 1.0
@@ -138,7 +140,7 @@ def compute_marginal_roi(channel):
 
 ## Step 3: Apply 70/20/10 Effort Allocation
 
-```
+```text
 FUNCTION allocate_effort(channels_ranked, total_effort_hours_next_cycle):
 
   # Remove channels with insufficient data
@@ -176,7 +178,7 @@ FUNCTION allocate_effort(channels_ranked, total_effort_hours_next_cycle):
 
 Apply these rules deterministically:
 
-```
+```text
 FREEZE rule (3-strike):
   A channel that scores below 3/100 marginal ROI for 3 consecutive cycles
   is FROZEN. It receives 0 effort allocation. It is not deleted — it may
@@ -206,7 +208,7 @@ CHALLENGER GRADUATION THRESHOLD:
 
 For the winner channel, Atlas ships exactly one specific asset this cycle:
 
-```
+```text
 WINNER ASSET SELECTION:
 
 For each channel type, the highest-leverage default asset is:

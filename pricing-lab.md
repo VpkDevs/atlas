@@ -25,7 +25,7 @@ A Pricing Lab tick is complete **only** if ALL of:
 
 ## Step 0: Capital Mode Check
 
-```
+```text
 Read capital_mode from ATLAS_BRAIN.md → current_capital_mode
 
 IF capital_mode == "SURVIVE":
@@ -95,7 +95,7 @@ stripe subscriptions list --status=active --limit=100 \
 
 Use this priority order — the first applicable test is the one to run:
 
-```
+```text
 FUNCTION select_experiment(baseline):
 
   # 1. Highest-leverage test by funnel position
@@ -193,7 +193,8 @@ from scipy.stats import chi2_contingency
 import numpy as np
 
 def significance_test(control_visitors, control_conversions,
-                      test_visitors, test_conversions):
+                      test_visitors, test_conversions,
+                      minimum_n):
     """
     Returns: (is_significant, p_value, lift_pct, confidence_interval)
     """
@@ -234,7 +235,7 @@ def significance_test(control_visitors, control_conversions,
 
 This is the most impactful and most dangerous test. Specific rules:
 
-```
+```text
 PRICE POINT TEST PROCEDURE:
 
 1. Only test on NEW signups (never change price for existing customers mid-term)
@@ -290,7 +291,7 @@ After every experiment concludes (statistically significant result or timeout):
 
 ## Step 7: Update Scores and Brain
 
-```
+```text
 1. Recompute compute_monetization_confidence() from scoring.md
    → Inputs: n_experiments, statistically_significant count, conclusive count
    → Log delta

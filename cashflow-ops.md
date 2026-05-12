@@ -19,7 +19,7 @@ Collect the latest available:
 - Recurring expenses, committed annual contracts, payroll/contractor obligations, and infrastructure costs.
 - Active capital mode from `capital-governor.md`.
 - Latest `survival_score()` and `cash_discipline_score()` from `scoring.md`.
-- Open incidents from `~/.atlas/incidents/`.
+- Open incidents from `~/.atlas/portfolio/[slug]/incidents/`.
 
 If an account cannot be queried, mark it as stale and use the last known value with a confidence penalty. Do not treat unknown cash as available.
 

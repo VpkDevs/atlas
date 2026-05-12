@@ -76,7 +76,7 @@ SELF_HEAL log:
   2. FIX APPLIED: [exact command or change]
   3. RETRY: [N attempts, outcome]
   4. RESULT: [resolved / escalated / routed around]
-```
+```text
 
 ## 6. Resolution
 
@@ -91,7 +91,7 @@ If yes: `[exact rollback command]`
 curl [prod_url] → [HTTP status + latency]
 curl [prod_url]/health → [JSON response]
 [KPI metric] → [value confirming resolution]
-```
+```text
 
 ## 8. Contributing Factors
 
@@ -147,7 +147,7 @@ curl [prod_url]/health → [JSON response]
 
 ### P0 Response (max 30 min to resolve)
 
-```
+```text
 PROCEDURE p0_response(incident):
 
   T+0: DETECT
@@ -181,7 +181,7 @@ PROCEDURE p0_response(incident):
 
 ### P1 Response (max 2h to resolve)
 
-```
+```text
 PROCEDURE p1_response(incident):
 
   T+0-15: DIAGNOSE
@@ -209,7 +209,7 @@ PROCEDURE p1_response(incident):
 
 ### P2 Response (max 24h)
 
-```
+```text
 PROCEDURE p2_response(incident):
 
   Current cycle: Log to incidents/, add to tomorrow's critical queue
@@ -240,7 +240,7 @@ PROCEDURE p2_response(incident):
 
 ## 5. Incident Metrics (Track Weekly)
 
-```
+```text
 Weekly incident report (appended to WEEKLY_OPERATOR_REVIEW.md):
 
   P0 incidents this week: [N] (target: 0)

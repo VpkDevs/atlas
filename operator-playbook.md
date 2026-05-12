@@ -13,7 +13,7 @@ Atlas operates on cadence. Every number below is a specific threshold, not an ap
 
 ### PROCEDURE daily_ops_tick:
 
-```
+```text
 1. INFRASTRUCTURE SWEEP
    curl <prod_url>                         → expect 200; latency < 1500ms
    curl <prod_url>/health                  → expect {"status":"ok"}
@@ -53,7 +53,7 @@ Atlas operates on cadence. Every number below is a specific threshold, not an ap
 
 ### PROCEDURE weekly_ops_tick:
 
-```
+```text
 1. FLYWHEEL REVIEW (20 min)
    Pull metrics: MRR, conversion_rate, churn_rate, CAC_proxy, ARPU
    
@@ -109,7 +109,10 @@ Atlas operates on cadence. Every number below is a specific threshold, not an ap
      Log mode transition to ATLAS_BRAIN.md
      Apply mode constraints immediately (see §4 below)
    
-   failed_charge_trend = (failed_this_week - failed_last_week) / failed_last_week
+   IF failed_last_week == 0:
+     failed_charge_trend = 1.0 IF failed_this_week > 0 ELSE 0.0
+   ELSE:
+     failed_charge_trend = (failed_this_week - failed_last_week) / failed_last_week
    IF failed_charge_trend > 0.25:
      → Run dunning recovery protocol immediately (see §5 below)
 
@@ -149,7 +152,7 @@ When Atlas is in each mode, these are the ONLY allowed classes of work:
 
 ## 4. Escalation Decision Tree (Exact Thresholds)
 
-```
+```text
 PROCEDURE escalation_check():
 
   # Check 1: Uptime
@@ -191,7 +194,7 @@ PROCEDURE escalate(severity, reason):
 
 ## 5. Kill-Switch Protocol
 
-```
+```text
 PROCEDURE kill_switch_check():
 
   trigger = False
@@ -235,7 +238,7 @@ PROCEDURE kill_switch_check():
 
 ## 6. Dunning Recovery Protocol
 
-```
+```text
 PROCEDURE dunning_recovery():
   # Runs when failed_charge_trend > 0.25 OR kill-switch is active
 
@@ -324,7 +327,7 @@ Every incident written to `~/.atlas/portfolio/[slug]/incidents/[ISO-date]-[P0/P1
 
 Every decision Atlas makes that changes business state must be logged in ATLAS_BRAIN.md:
 
-```
+```text
 Decision: [one-sentence description of what was decided]
 Hypothesis: [what Atlas expects to happen as a result]
 Expected metric impact: [which KPI, by how much, by when]

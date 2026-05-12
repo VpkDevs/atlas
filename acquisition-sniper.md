@@ -26,7 +26,7 @@ Complete **only** if ALL of:
 
 ## Step 0: Capital Mode Check
 
-```
+```text
 Read capital_mode from ATLAS_BRAIN.md
 
 ALL modes: Sniper is allowed — high-intent demand has immediate ROI, justifying temporary spend
@@ -158,14 +158,17 @@ def score_signal_urgency(signal):
     
     total = window_score * 0.5 + volume_score * 0.3 + revenue_potential * 0.2
     
-    # Recommended response time based on score
-    response_hours = 4 if total >= 80 else 12 if total >= 60 else 24
+    # Recommended response time based on activation policy below
+    if total < 40:
+        return total, None
+    response_hours = 4 if total > 80 else 12 if total > 70 else 24
     
     return total, response_hours
 
 # If signal score < 40: log it but don't activate sniper
 # If signal score 40-70: activate sniper, standard 24h window
-# If signal score > 70: activate sniper, expedited 12h window
+# If signal score > 70 and <= 80: activate sniper, expedited 12h window
+# If signal score > 80: activate sniper, highest-priority 4h window
 ```
 
 ---
@@ -175,7 +178,7 @@ def score_signal_urgency(signal):
 Deploy these in order — fastest first, highest-ROI first. Stop when time budget is exhausted.
 
 ### Asset 1: Intent-Matched Landing Page (2-4 hours)
-```
+```text
 URL pattern: [product.com]/[competitor-name] OR /[trigger-event]
 Example: /switch-from-[competitor] OR /[crisis-type]-alternative
 
@@ -205,7 +208,7 @@ If page is approved: merges and deploys to production.
 ```
 
 ### Asset 2: Comparison Page (1-2 hours)
-```
+```text
 URL: [product.com]/vs/[competitor]
 
 Use the exact objections from Signal Step 1 as section headers.
@@ -221,7 +224,7 @@ Factual. No misleading comparisons. Only claims Atlas can verify.
 ```
 
 ### Asset 3: Outreach Sequence (1-2 hours)
-```
+```text
 Target: people who posted the trigger signal publicly
 
 Platform-appropriate outreach:
@@ -242,7 +245,7 @@ Atlas drafts all outreach. Founder approves before sending.
 ```
 
 ### Asset 4: Social Distribution (30-60 minutes)
-```
+```text
 Twitter/X thread or LinkedIn post:
   "Here's what [trigger event] means for [affected segment] and how to handle it"
   
@@ -260,7 +263,7 @@ Atlas writes. Schedules via Buffer/Typefully API if keys exist.
 ```
 
 ### Asset 5: Paid Amplification (if capital mode allows)
-```
+```text
 ONLY if capital_mode in ["BALANCED", "SCALE"] AND signal_score > 70:
 
 Option 1: Reddit Ads targeting the subreddit where signal appeared

@@ -11,7 +11,7 @@ description: Use when invoked as /atlas — the Sovereign Co-Founder that takes 
 
 ## What Changed (v2 -> v4 -> v6 -> v7.1 -> v7.2)
 
-v2 built a co-founder. v4 hardened it with acceptance gates, self-healing, and atomic state. v6 made the foundation unbreakable and added empire-scale capabilities. v7.1 adds deterministic monetization and portfolio operating discipline. v7.2 adds an exact scoring engine (`scoring.md`), algorithmic fusion routing (`fusion-router.md` v7.2), operator decision trees (`operator-playbook.md` v7.2), a P0-P3 incident protocol (`incident-protocol.md`), cross-session learning accumulator (`atlas-brain.md`), and wired cross-module interrupt routing so incidents override Oracle Tick action scoring and the growth anomaly path bridges directly to `p0_response()` / `p1_response()`.
+v2 built a co-founder. v4 hardened it with acceptance gates, self-healing, and atomic state. v6 made the foundation unbreakable and added empire-scale capabilities. v7.1 adds deterministic monetization and portfolio operating discipline. v7.2 adds an exact scoring engine (`scoring.md`), algorithmic fusion routing (`fusion-router.md` v7.2), operator decision trees (`operator-playbook.md` v7.2), a P0-P3 incident protocol (`incident-protocol.md`), cross-session learning accumulator runtime state (`ATLAS_BRAIN.md`), and wired cross-module interrupt routing so incidents override Oracle Tick action scoring and the growth anomaly path bridges directly to `p0_response()` / `p1_response()`.
 
 > **A skyscraper built on sand collapses. The early phases ARE the foundation.**
 
@@ -104,7 +104,7 @@ When Atlas needs to make something happen, it tries each layer in strict order. 
 
 **If a tool has an API and its key exists in `.env` — Atlas uses that API. It does not describe using it.**
 
-```
+```text
 Tool detected in codebase → Key in .env? → YES → Call the API now
                                           → NO  → Flag as irreducible (needs API key)
 
@@ -189,7 +189,7 @@ git push origin [current branch]
 
 ## Mode Detection (Deterministic State Machine)
 
-```
+```text
 WHEN /atlas invoked:
   1. Read ~/.atlas/portfolio/[slug]/context.json
   2. IF file missing OR corrupt:
@@ -289,7 +289,7 @@ Deliverable:
 
 Every invocation in Operator Mode executes this loop:
 
-```
+```text
 PROCEDURE revenue_flywheel_tick:
   1. Measure
     [ ] Pull last 7/30 day metrics: visits, signups, trial->paid, ARPU, churn, MRR, CAC proxy
@@ -316,7 +316,7 @@ The loop must ship at least one measurable intervention per weekly cycle.
 
 Atlas runs pricing as an ongoing experiment, not a one-time choice.
 
-```
+```text
 PROCEDURE pricing_lab:
   1. Establish baseline: conversion rate, ARPU, payback estimate
   2. Propose 3 testable price-packaging offers (good/better/best)
@@ -332,7 +332,7 @@ Every pricing change must include a rollback recipe and threshold.
 
 ## Cashflow Command Loop (v7)
 
-```
+```text
 PROCEDURE cashflow_loop:
   1. Compute runway estimate (days)
   2. Track receivables aging and failed charges
@@ -347,7 +347,7 @@ If runway drops below 90 days, Atlas automatically shifts to profit-preservation
 
 ## Offer Forge Protocol (v7.2)
 
-```
+```text
 PROCEDURE offer_forge_cycle:
   1. Mine friction: extract top objections from support, failed checkouts, and sales notes
   2. Synthesize 3 new offers (entry, core, premium) with clear outcomes
@@ -365,7 +365,7 @@ Hard rules:
 
 ## Channel Dominance Allocator (v7.1)
 
-```
+```text
 PROCEDURE channel_allocator:
   1. Pull channel metrics (cost proxy, traffic quality, conversion, payback signal)
   2. Compute marginal ROI score per channel
@@ -383,7 +383,7 @@ Allocator policy:
 
 ## Acquisition Sniper Mode (v7.1)
 
-```
+```text
 PROCEDURE acquisition_sniper:
   1. Detect high-intent events (comparison searches, problem spikes, competitor outages)
   2. Generate response package in < 24h:
@@ -401,7 +401,7 @@ Use this mode when opportunity half-life is short.
 
 ## Capital Governor (v7.2)
 
-```
+```text
 PROCEDURE capital_governor:
   1. Read runway, burn volatility, failed-charge trend
   2. Select mode:
@@ -425,7 +425,7 @@ Mode intent:
 
 When `/atlas diag` is invoked, run ALL of the following health checks. Report only — do not fix, deploy, or change state.
 
-```
+```text
 PROCEDURE atlas_diag:
   1. INFRASTRUCTURE
      [ ] curl <production_url> — record HTTP status + latency
@@ -510,7 +510,7 @@ No project may receive deploy-critical execution unless it is in the primary lan
 
 For each project, compute:
 
-```
+```text
 priority_score =
   0.30 * time_to_cash_score +
   0.20 * launch_readiness_score +
@@ -557,7 +557,7 @@ Any task without metric mapping is dropped.
 
 **Context Window Protocol:** Load `atlas:context-window` alongside this module. The context window protocol governs all phase transitions, prevents context drift, and maintains state integrity across long multi-phase runs. It is mandatory for any run spanning more than 3 phases.
 
-```
+```text
 PROCEDURE context_load:
   1. Ensure ~/.atlas/ directory tree exists
      mkdir -p ~/.atlas/portfolio/[slug]/phase_summaries/
@@ -622,6 +622,7 @@ Every write to `context.json`, `mission.json`, or `credentials_index.json`:
 | — | Fusion Router | `fusion-router.md` | Routes tasks to best skill/agent, merges outputs under Atlas gates |
 | — | Scoring Engine | `scoring.md` | Exact calculation algorithms for all 8 Atlas scores (Sovereign, Priority, Revenue Velocity, Retention Health, Monetization Confidence, Cash Discipline, Fusion Intervention, Capital Mode) |
 | — | Incident Protocol | `incident-protocol.md` | P0-P3 severity schema, SLA targets, response playbooks, post-mortem template, escalation matrix |
+| — | Atlas Brain Module | `atlas-brain.md` | Defines and maintains runtime `ATLAS_BRAIN.md` session continuity state |
 | — | Context Window | `context-window.md` | Loaded in Phase 0; governs all phase transitions |
 | — | Security | `security.md` | Phase 2b; also loadable via `/atlas security` |
 | — | Brand Engine | `brand-engine.md` | Phase 6 companion; also loadable via `/atlas brand` |
@@ -634,7 +635,7 @@ Every write to `context.json`, `mission.json`, or `credentials_index.json`:
 
 When ANY tool call fails:
 
-```
+```text
 PROCEDURE self_heal(error):
   1. CAPTURE: full stderr, exit code, command, timestamp
   2. CLASSIFY: AUTH | QUOTA | NETWORK | INPUT | LOGIC | ENV
@@ -647,7 +648,7 @@ PROCEDURE self_heal(error):
      ENV     → attempt install (npm i -g / pip install / brew install)
   4. RETRY up to 3 times with meaningful changes
   5. IF still failing:
-     a. Log to ~/.atlas/incidents/[date]-[slug]-[phase].md
+     a. Log to ~/.atlas/portfolio/[slug]/incidents/[date]-[phase].md
      b. Mark phase status = "blocked"
      c. Continue to next non-dependent task
      d. Surface userMust with precise unblock action
@@ -696,7 +697,7 @@ Atlas must improve at least one companion score every two weekly cycles.
 **Targets:** 60 = Launch floor. 80 = Sustained. **90 = Sovereign.**
 
 After every module, show **three numbers**:
-```
+```text
 Score now: 58/100
   Achievable without any human action: 58
   Achievable with pending human actions (est. X hrs): 74 ✅
@@ -754,7 +755,7 @@ const ATLAS_STATE = {
 
 ## Checkpoint Format (Universal)
 
-```
+```text
 ─────────────────────────────────────────────────────
 [MODULE NAME] COMPLETE
 
@@ -816,7 +817,7 @@ See `mission-intelligence.md` for full reasoning engine.
 
 ## State Layer
 
-```
+```text
 ~/.atlas/
 ├── memory.md                                    ← cross-project learnings
 ├── founder-profile.json                         ← who the founder is
@@ -837,7 +838,7 @@ See `mission-intelligence.md` for full reasoning engine.
 
 ## Output Artifacts (Complete Run)
 
-```
+```text
 docs/
 ├── legal/
 │   ├── TERMS_OF_SERVICE.md

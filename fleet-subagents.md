@@ -57,7 +57,7 @@ Atlas (Coordinator) runs the Oracle Tick (see `mission-intelligence.md`) and del
 - Auto-rollback on error rate spike >2%
 - Rotate secrets approaching expiry (if vault API available)
 - Upgrade dependencies monthly (minor/patch only; major = escalate)
-- Maintain incident log in `~/.atlas/incidents/`
+- Maintain incident log in `~/.atlas/portfolio/[slug]/incidents/`
 
 ### Atlas Growth — Distribution Commander
 
@@ -169,7 +169,7 @@ Atlas (Coordinator) runs the Oracle Tick (see `mission-intelligence.md`) and del
 
 All inter-agent communication goes through the Coordinator:
 
-```
+```text
 Agent A → Coordinator → Agent B
 Never: Agent A → Agent B directly
 ```
@@ -180,7 +180,7 @@ This prevents conflicting actions (e.g., Growth posting about a feature Product 
 
 When two agents propose conflicting actions, execute `resolve_conflict()`:
 
-```
+```text
 PROCEDURE resolve_conflict(action_A, agent_A, action_B, agent_B):
 
   # 1. Domain precedence — lower number wins when domains collide
@@ -282,7 +282,7 @@ Escalations: [if any]
 The Coordinator writes to `context.json` after each tick — agents NEVER write to `context.json` directly.
 
 ### Lock Protocol
-```
+```text
 Coordinator lock acquisition:
   1. Write context.json.lock with timestamp
   2. Complete write to context.json.tmp
@@ -301,7 +301,7 @@ Agent detects stale lock (> 30 sec old):
 
 When a Fleet agent is invoked for the first time (or after a long dormant period):
 
-```
+```text
 COLD START PROCEDURE:
 
 1. READ context.json completely
@@ -321,7 +321,7 @@ An agent never self-assigns work. It always receives a delegated task from Coord
 
 The Coordinator monitors all active Fleet agents:
 
-```
+```text
 HEALTH CHECK (every Oracle tick):
   For each agent with an active task:
   - Has it reported progress in the last 2 hours?
@@ -342,7 +342,7 @@ AGENT STATUS STATES:
 
 Some tasks have cross-agent dependencies. The Coordinator enforces order:
 
-```
+```text
 Atlas Growth posting about a feature
   → requires: Atlas Product has verified feature is live (deps: Atlas Ops deployed it)
   → blocks: nothing
@@ -368,7 +368,7 @@ The Coordinator checks this dependency graph before delegating. If a dependency 
 
 When Atlas HR determines a task needs The Swarm:
 
-```
+```text
 SWARM DISPATCH PROCEDURE:
 
 1. Generate SOW from template (see Agent Roster above)
@@ -398,7 +398,7 @@ SWARM DISPATCH PROCEDURE:
 
 ## Fleet Checkpoint (Operator Mode — Every Oracle Tick)
 
-```
+```text
 ─────────────────────────────────────────────────────
 FLEET STATUS — [Product Name] — [Timestamp]
 
