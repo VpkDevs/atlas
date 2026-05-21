@@ -46,8 +46,13 @@ param(
     [switch]$Force
 )
 
-# Force overrides DryRun
-if ($Force) { $DryRun = $false }
+# Force is the only supported path to live mode.
+if ($Force) {
+    $DryRun = $false
+} elseif (-not $DryRun) {
+    Write-Host "ERROR: Live triage requires explicit -Force. Re-run with -Force after reviewing dry-run output." -ForegroundColor Red
+    exit 1
+}
 
 # Validate path
 if (-not (Test-Path -Path $SkillPath -PathType Container)) {
@@ -74,7 +79,7 @@ if (-not (Test-Path $skillMd)) {
 }
 
 $skillContent = Get-Content $skillMd -Raw
-if ($skillContent -notmatch "name:\s*atlas") {
+if ($skillContent -notmatch "(?m)^\s*name\s*:\s*atlas\s*$") {
     Write-Host "ERROR: SKILL.md at $SkillPath does not have 'name: atlas' frontmatter." -ForegroundColor Red
     exit 1
 }
@@ -124,17 +129,17 @@ $bloatFiles = @(
     "how-to-run-atlas-on-atlas.md"
 )
 
-# Uppercase-pair files: archive the uppercase, keep the lowercase
-# (only if both exist; otherwise rename or leave)
+# Uppercase-pair files: archive the uppercase when the lowercase exists;
+# rename uppercase-only files to the lowercase canonical name.
 $uppercasePairs = @(
     @{ Upper = "ADVANCED_FEATURES.md";        Lower = "advanced-features.md" },
     @{ Upper = "ADVERSARIAL_AND_EPISTEMIC.md"; Lower = "adversarial-and-epistemic.md" },
     @{ Upper = "ATLAS_KERNEL.md";              Lower = "atlas-kernel.md" }
 )
 
-# Old-version modules (canonical name exists; -vN.md gets archived)
+# Old-version modules (canonical must exist before -vN.md gets archived)
 $oldVersionModules = @(
-    "fusion-router-v2.md"  # canonical is fusion-router.md
+    @{ Old = "fusion-router-v2.md"; Canonical = "fusion-router.md" }
 )
 
 # Top-level bloat that doesn't belong in a Claude skill at all
@@ -176,16 +181,24 @@ foreach ($pair in $uppercasePairs) {
             Target = Join-Path $archiveDir $pair.Upper
             Reason = "Uppercase duplicate of $($pair.Lower) — kebab-case is v8.0 canonical"
         }
+    } elseif ((Test-Path $upperPath -PathType Leaf) -and (-not (Test-Path $lowerPath -PathType Leaf))) {
+        $operations += [PSCustomObject]@{
+            Type   = "RENAME"
+            Source = $upperPath
+            Target = $lowerPath
+            Reason = "Uppercase-only file renamed to v8.0 lowercase-kebab canonical name"
+        }
     }
 }
 
-foreach ($file in $oldVersionModules) {
-    $fullPath = Join-Path $SkillPath $file
-    if (Test-Path $fullPath -PathType Leaf) {
+foreach ($module in $oldVersionModules) {
+    $fullPath = Join-Path $SkillPath $module.Old
+    $canonicalPath = Join-Path $SkillPath $module.Canonical
+    if ((Test-Path $fullPath -PathType Leaf) -and (Test-Path $canonicalPath -PathType Leaf)) {
         $operations += [PSCustomObject]@{
             Type   = "OLDVERSION"
             Source = $fullPath
-            Target = Join-Path $archiveDir $file
+            Target = Join-Path $archiveDir $module.Old
             Reason = "Old-version variant; canonical name supersedes"
         }
     }
@@ -205,10 +218,20 @@ foreach ($item in $rootBloat) {
 }
 
 # Handle recursive skill nesting separately (most important)
-foreach ($nestedRel in $nestedSkillPaths) {
+foreach ($nestedRel in ($nestedSkillPaths | Sort-Object { $_.Length })) {
     $nestedFull = Join-Path $SkillPath $nestedRel
     $nestedSkill = Join-Path $nestedFull "SKILL.md"
     if (Test-Path $nestedSkill -PathType Leaf) {
+        $alreadyCovered = $false
+        foreach ($op in ($operations | Where-Object { $_.Type -eq "RECURSION" })) {
+            $prefix = $op.Source.TrimEnd('\','/') + [System.IO.Path]::DirectorySeparatorChar
+            if ($nestedFull.StartsWith($prefix, [System.StringComparison]::OrdinalIgnoreCase)) {
+                $alreadyCovered = $true
+                break
+            }
+        }
+        if ($alreadyCovered) { continue }
+
         # The directory itself is the problem (it contains a SKILL.md)
         # Move the entire nested directory to archive
         $safeName = $nestedRel -replace "\\", "-"
@@ -232,6 +255,7 @@ if ($operations.Count -eq 0) {
 # Summarize
 $bloatCount      = ($operations | Where-Object { $_.Type -eq "BLOAT" }).Count
 $dupCount        = ($operations | Where-Object { $_.Type -eq "DUPLICATE" }).Count
+$renameCount     = ($operations | Where-Object { $_.Type -eq "RENAME" }).Count
 $oldVerCount     = ($operations | Where-Object { $_.Type -eq "OLDVERSION" }).Count
 $rootBloatCount  = ($operations | Where-Object { $_.Type -eq "ROOT-BLOAT" }).Count
 $recursionCount  = ($operations | Where-Object { $_.Type -eq "RECURSION" }).Count
@@ -239,6 +263,7 @@ $recursionCount  = ($operations | Where-Object { $_.Type -eq "RECURSION" }).Coun
 Write-Host "Summary of operations:" -ForegroundColor Cyan
 Write-Host "  Meta/summary bloat files:    $bloatCount" -ForegroundColor White
 Write-Host "  Uppercase duplicate files:   $dupCount" -ForegroundColor White
+Write-Host "  Uppercase canonical renames: $renameCount" -ForegroundColor White
 Write-Host "  Old-version modules:         $oldVerCount" -ForegroundColor White
 Write-Host "  Root-level non-skill bloat:  $rootBloatCount" -ForegroundColor White
 Write-Host "  Recursive skill copies:      $recursionCount" -ForegroundColor $(if ($recursionCount -gt 0) { 'Yellow' } else { 'White' })

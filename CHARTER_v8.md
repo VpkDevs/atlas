@@ -66,7 +66,7 @@ rationalization-table.md   ← full catalog (SKILL.md keeps top 10)
 
 **Preserved from v7.2 (canonical names — see Renames below):**
 ```
-atlas-kernel.md            ← routing table (existing)
+SKILL.md                   ← kernel and routing table
 onboarding.md
 code-sprint.md
 security.md
@@ -130,7 +130,6 @@ The following files were retired in v8.0. They are not deleted — they live in 
 ```
 _archive/v7_pre_triage/ADVANCED_FEATURES.md
 _archive/v7_pre_triage/ADVERSARIAL_AND_EPISTEMIC.md
-_archive/v7_pre_triage/ALL_FIXES_COMPLETE.md
 _archive/v7_pre_triage/ATLAS_KERNEL.md
 _archive/v7_pre_triage/CONTINUATION_SUMMARY.md
 _archive/v7_pre_triage/FINAL_SUMMARY.md
@@ -179,7 +178,7 @@ _archive/v7_pre_triage/package-lock.json     (only relevant inside scoring-engin
 
 | Old name (v7.x) | New canonical (v8.0) | Reason |
 |---|---|---|
-| `ATLAS_KERNEL.md` + `atlas-kernel.md` | `atlas-kernel.md` | One of the duplicate pair retained; lowercase-kebab is the v8.0 convention |
+| `ATLAS_KERNEL.md` | `SKILL.md` routing table | v8.0 folds the loadable routing table into the kernel; ATLAS_KERNEL.md remains reference material only |
 | `ADVANCED_FEATURES.md` + `advanced-features.md` | `advanced-features.md` | Same |
 | `ADVERSARIAL_AND_EPISTEMIC.md` + `adversarial-and-epistemic.md` | `adversarial-and-epistemic.md` | Same |
 | `fusion-router.md` + `fusion-router-v2.md` | `fusion-router.md` | v2 content merged into canonical name |
@@ -233,7 +232,7 @@ The full surface of `/atlas X` commands. Doctor verifies the routing table in SK
 /atlas retire                Mark project retired
 ```
 
-Twenty-eight commands. The previous v7.2 surface had twenty-seven; v8.0 adds `/atlas doctor` and `/atlas ship`.
+Twenty-eight commands are canonical in v8.0, including the new `/atlas doctor` and `/atlas ship` commands.
 
 ---
 
@@ -243,7 +242,7 @@ Out of ~40 module files in the canonical inventory, a typical `/atlas` invocatio
 
 - SKILL.md (always)
 - atlas-doctor.md (always, before anything else)
-- atlas-kernel.md (always, for the routing table)
+- SKILL.md (always, for the routing table)
 - One mode-specific module (e.g., `first-ship.md` OR `onboarding.md` OR `growth-engine.md` depending on mode)
 - 2–4 phase-specific modules as the pipeline progresses
 

@@ -11,7 +11,7 @@ description: Atlas v8.0 upgrade pack installation and surgery notes.
 
 ## What you're getting
 
-Seven new files. They drop into your existing Atlas skill directory and replace/add a small number of things while leaving the bulk of your work (30+ existing module files, scoring engine, dashboard, automation library) untouched.
+Eight new files. They drop into your existing Atlas skill directory and replace/add a small number of things while leaving the bulk of your work (30+ existing module files, scoring engine, dashboard, automation library) untouched.
 
 ```
 SKILL.md                  ← replaces your current SKILL.md (944 lines → ~380)
@@ -19,11 +19,12 @@ CHARTER_v8.md             ← new, single source of version truth
 first-ship.md             ← new module, the 7-day on-ramp
 atlas-doctor.md           ← new module, the integrity check
 skill-hygiene.md          ← new module, the anti-bloat doctrine
+rationalization-table.md  ← new module, the anti-rationalization rebuttal table
 atlas-triage.ps1          ← Windows PowerShell cleanup script (safe, dry-run by default)
 UPGRADE_GUIDE.md          ← this file
 ```
 
-That's it. No new dependencies. No new sub-projects. No `node_modules` to install.
+Before triage or Doctor, verify all eight files above are present at the skill root. That's it. No new dependencies. No new sub-projects. No `node_modules` to install.
 
 ---
 

@@ -112,7 +112,7 @@ After every code change: `git add -A && git commit -m "[Atlas] [phase]: [descrip
 WHEN /atlas invoked:
   1. Run /atlas doctor                         (load atlas-doctor.md)
        If integrity check FAILS → halt; report; do not proceed.
-  2. Load atlas-kernel.md routing table.
+  2. Read the routing table in this kernel (SKILL.md: Modes and Subcommands).
   3. Read ~/.atlas/portfolio/[slug]/context.json
   4. Determine mode:
 
@@ -178,12 +178,19 @@ After First Ship's $1 gate passes, Atlas automatically promotes to STANDARD mode
 | `/atlas sniper` | High-intent acquisition (`acquisition-sniper.md`) |
 | `/atlas governor` | Capital governance (`capital-governor.md`) |
 | `/atlas ops` | Operator discipline pass (`operator-playbook.md`) |
+| `/atlas funnel` | Acquisition funnel audit (`growth-engine.md`) |
+| `/atlas retention` | Churn/reactivation pass (`revenue-intelligence.md`) |
 | `/atlas warroom` | Re-enter War Room (`war-room.md`) |
 | `/atlas fix [phase]` | Re-run a specific phase |
 | `/atlas security` | Security audit (`security.md`) |
 | `/atlas brand` | Brand engine pass (`brand-engine.md`) |
 | `/atlas portfolio` | Force Portfolio Mode (`portfolio.md`) |
+| `/atlas portfolio-scan` | Recompute portfolio scores (`portfolio-os.md`) |
+| `/atlas portfolio-rebalance` | Reassign portfolio lanes (`portfolio-os.md`) |
+| `/atlas portfolio-execute` | Execute primary portfolio lane only (`portfolio-os.md`) |
 | `/atlas fusion` | Federated skill+agent sprint (`fusion-router.md`) |
+| `/atlas fusion-report` | Merged intervention report (`fusion-router.md`) |
+| `/atlas fleet --agent --task` | Direct sub-agent invocation (`fleet-subagents.md`) |
 | `/atlas retire` | Mark project retired; leave automations running |
 
 ---

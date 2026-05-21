@@ -56,7 +56,7 @@ What is not fine:
 
 - **Adding a feature** that was not in the Day 0 product definition. Adding scope during First Ship is a violation. Log the idea to `backlog.md` and move on.
 - **Skipping payment integration.** Stripe checkout exists by Day 5 or First Ship has failed. A product no one can buy is not shipped.
-- **Skipping legal.** ToS and Privacy must be live by Day 5 — Stripe rejects without them. They can be generic templates; Phase 3 will harden them later.
+- **Skipping legal.** ToS and Privacy must be live by Day 5 for compliance and buyer trust. They can be generic templates; Phase 3 will harden them later.
 
 ---
 
