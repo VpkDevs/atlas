@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "name": "Documentation Quality",
+  "description": "Reviews README and documentation files for completeness, clarity, and helpful examples",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "readme.md",
+      ".github/CONTRIBUTING.md",
+      "changelog.md",
+      "docs/*.md",
+      "*.mdx"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Documentation was modified. Check for: 1) Clear setup/installation instructions, 2) Working code examples, 3) Common troubleshooting scenarios, 4) Links to related resources, 5) Up-to-date information (no outdated versions/commands), 6) Proper formatting and structure, 7) Beginner-friendly explanations. Suggest improvements for clarity."
+  }
+}

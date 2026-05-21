@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "name": "Permission Management Review",
+  "description": "Analyzes OAuth scope and permission management",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*scope*.js",
+      "*scope*.ts",
+      "*permission*.js",
+      "*permission*.ts",
+      "*rbac*.js",
+      "*acl*.js"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Permission management code was modified. Review for: 1) Principle of least privilege, 2) Role hierarchy and inheritance, 3) Permission caching strategy, 4) Audit logging of permission changes, 5) Dynamic permission evaluation, 6) Permission revocation handling, 7) Testing of permission boundaries. Flag security issues."
+  }
+}

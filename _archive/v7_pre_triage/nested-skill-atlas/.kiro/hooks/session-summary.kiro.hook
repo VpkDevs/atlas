@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Session Summary",
+  "description": "Generates a summary of all changes and decisions made during the agent session when execution stops",
+  "version": "1",
+  "when": {
+    "type": "agentStop"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Generate a concise summary of this session including: 1) Files modified and key changes made, 2) Important decisions or tradeoffs, 3) Any warnings or issues encountered, 4) Recommended next steps or follow-up tasks, 5) Testing or verification needed. Keep it brief and actionable."
+  }
+}

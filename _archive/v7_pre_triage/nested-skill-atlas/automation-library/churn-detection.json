@@ -1,0 +1,150 @@
+{
+  "name": "Atlas: Churn Detection & Prevention",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": { "interval": [{ "field": "hours", "hoursInterval": 24 }] }
+      },
+      "id": "daily-trigger",
+      "name": "Daily Check",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.stripe.com/v1/subscriptions?status=active&limit=100",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "Basic [STRIPE_SECRET_KEY_BASE64]" }
+          ]
+        }
+      },
+      "id": "get-active-subs",
+      "name": "Get Active Subscriptions",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [450, 300],
+      "notes": "STRIPE_SECRET_KEY_BASE64 = base64(STRIPE_SECRET_KEY + ':')"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "include": "noOtherFields"
+      },
+      "id": "split-subs",
+      "name": "Split Subscriptions",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.posthog.com/api/projects/[POSTHOG_PROJECT_ID]/persons/?email={{$json[\"customer\"][\"email\"]}}&properties=last_active_at",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "Bearer [POSTHOG_API_KEY]" }
+          ]
+        }
+      },
+      "id": "check-last-active",
+      "name": "Check Last Active Date",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [850, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{Math.floor((Date.now() - new Date($json[\"results\"][0][\"properties\"][\"last_active_at\"]).getTime()) / (1000 * 60 * 60 * 24))}}",
+              "operation": "largerEqual",
+              "value2": 14
+            }
+          ]
+        }
+      },
+      "id": "inactive-14-days",
+      "name": "Inactive 14+ Days?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [1050, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.resend.com/emails",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "Bearer [RESEND_API_KEY]" }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "from", "value": "founder@[PRODUCT_URL]" },
+            { "name": "to", "value": "={{$node[\"Get Active Subscriptions\"].json[\"customer\"][\"email\"]}}" },
+            { "name": "subject", "value": "Are you getting value from [PRODUCT_NAME]?" },
+            { "name": "html", "value": "<p>Hey — I noticed you haven't been active in [PRODUCT_NAME] recently.</p><p>Is there something I can help with? Even knowing what's not working helps me make it better.</p><p>Just hit reply — I read every response personally.</p><p>— [FOUNDER_NAME]</p>" }
+          ]
+        }
+      },
+      "id": "send-reactivation",
+      "name": "Send Re-engagement Email",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [1250, 200]
+    },
+    {
+      "parameters": {
+        "url": "[SLACK_WEBHOOK_URL]",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "⚠️ At-risk customer: {{$node[\"Get Active Subscriptions\"].json[\"customer\"][\"email\"]}} hasn't been active in 14+ days. Re-engagement email sent."
+            }
+          ]
+        }
+      },
+      "id": "alert-founder",
+      "name": "Alert Founder (Slack)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [1250, 380]
+    }
+  ],
+  "connections": {
+    "Daily Check": {
+      "main": [[{ "node": "Get Active Subscriptions", "type": "main", "index": 0 }]]
+    },
+    "Get Active Subscriptions": {
+      "main": [[{ "node": "Split Subscriptions", "type": "main", "index": 0 }]]
+    },
+    "Split Subscriptions": {
+      "main": [[{ "node": "Check Last Active Date", "type": "main", "index": 0 }]]
+    },
+    "Check Last Active Date": {
+      "main": [[{ "node": "Inactive 14+ Days?", "type": "main", "index": 0 }]]
+    },
+    "Inactive 14+ Days?": {
+      "main": [
+        [
+          { "node": "Send Re-engagement Email", "type": "main", "index": 0 },
+          { "node": "Alert Founder (Slack)", "type": "main", "index": 0 }
+        ],
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "tags": [{ "name": "atlas" }, { "name": "churn-prevention" }],
+  "_comment": "Atlas automation template. Replace all [PLACEHOLDER] values. Requires PostHog tracking of last_active_at property."
+}

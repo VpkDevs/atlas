@@ -121,8 +121,7 @@ $bloatFiles = @(
     "WEAKEST_ASPECTS_FIXED.md",
     "weakest-aspects-fixed.md",
     "HOW_TO_RUN_ATLAS_ON_ATLAS.md",
-    "how-to-run-atlas-on-atlas.md",
-    "IMPROVEMENTS_DELIVERED.txt"
+    "how-to-run-atlas-on-atlas.md"
 )
 
 # Uppercase-pair files: archive the uppercase, keep the lowercase

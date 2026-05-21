@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "name": "Streaming Optimization",
+  "description": "Analyzes streaming and video processing code",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*stream*.js",
+      "*stream*.ts",
+      "*video*.js",
+      "*video*.ts",
+      "*ffmpeg*.js",
+      "*transcod*.js"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Streaming/video code was modified. Review for: 1) Adaptive bitrate streaming (HLS, DASH), 2) Memory management for large streams, 3) Buffering and backpressure handling, 4) Format compatibility and codecs, 5) CDN integration, 6) DRM and content protection, 7) Thumbnail generation. Suggest optimizations."
+  }
+}

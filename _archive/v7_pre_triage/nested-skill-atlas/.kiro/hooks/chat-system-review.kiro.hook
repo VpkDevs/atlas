@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "name": "Chat System Review",
+  "description": "Reviews chat and messaging system code",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*chat*.js",
+      "*chat*.ts",
+      "*message*.js",
+      "*message*.ts",
+      "*conversation*.js"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Chat/messaging code was modified. Check for: 1) Message delivery guarantees, 2) Read receipts and typing indicators, 3) Message history pagination, 4) File attachment handling, 5) Moderation and spam prevention, 6) End-to-end encryption considerations, 7) Offline message queuing. Suggest improvements."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "name": "ML Model Review",
+  "description": "Analyzes machine learning model code for best practices",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*model*.py",
+      "*train*.py",
+      "*inference*.py",
+      "*predict*.py"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "ML model code was modified. Review for: 1) Data preprocessing and normalization, 2) Train/validation/test split, 3) Model versioning and reproducibility, 4) Hyperparameter tracking, 5) Overfitting prevention, 6) Model evaluation metrics, 7) Inference performance optimization. Suggest improvements."
+  }
+}

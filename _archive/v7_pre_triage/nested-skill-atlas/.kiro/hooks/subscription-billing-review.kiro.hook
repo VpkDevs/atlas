@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "name": "Subscription Billing Review",
+  "description": "Reviews subscription and billing logic",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*subscription*.js",
+      "*subscription*.ts",
+      "*recurring*.js",
+      "*invoice*.js",
+      "*billing*.js"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Subscription billing code was modified. Review for: 1) Proration logic correctness, 2) Trial period handling, 3) Upgrade/downgrade flows, 4) Failed payment retry logic, 5) Cancellation and refund handling, 6) Invoice generation accuracy, 7) Dunning management. Flag billing logic errors."
+  }
+}

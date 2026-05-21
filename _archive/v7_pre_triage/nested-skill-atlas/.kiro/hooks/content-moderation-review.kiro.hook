@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "name": "Content Moderation Review",
+  "description": "Reviews content moderation and filtering code",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*moderation*.js",
+      "*moderation*.ts",
+      "*filter*.js",
+      "*profanity*.js",
+      "*content*.js"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Content moderation code was modified. Check for: 1) Multi-language support, 2) Context-aware filtering, 3) False positive handling, 4) Appeal process, 5) Human review escalation, 6) Performance for high-volume content, 7) Compliance with platform policies. Suggest improvements."
+  }
+}

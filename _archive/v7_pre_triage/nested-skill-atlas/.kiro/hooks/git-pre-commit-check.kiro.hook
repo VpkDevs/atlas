@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Git Pre-Commit Check",
+  "description": "Checks for common Git issues like trailing whitespace and merge conflicts before committing",
+  "version": "1",
+  "when": {
+    "type": "promptSubmit"
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "git diff --check"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "name": "atlas-skill",
+  "version": "8.3.0",
+  "description": "Atlas v8.3 — Sovereign Money Engine: Claude Code skill with executable tooling, deterministic scoring engine, and orchestration.",
+  "private": true,
+  "scripts": {
+    "validate": "node scripts/validate.js",
+    "validate-v2": "node scripts/validate-v2.js",
+    "validate:all": "node scripts/validate.js && node scripts/validate-v2.js",
+    "test:scoring": "npm install --silent --prefix scoring-engine && npm test --prefix scoring-engine",
+    "pulse": "node scripts/atlas/pulse.js",
+    "decide": "node scripts/atlas/decide.js",
+    "weekly-review": "node scripts/atlas/weekly-review.js",
+    "diag": "node scripts/atlas/pulse.js | node scripts/atlas/decide.js",
+    "cli": "node scripts/atlas/cli.js",
+    "monitor": "node scripts/atlas/monitor.js",
+    "predict": "node scripts/atlas/predictive-scoring.js",
+    "analytics": "node scripts/atlas/analytics.js",
+    "optimize": "node scripts/atlas/optimizer.js",
+    "compress": "node scripts/atlas/context-compressor.js",
+    "validate-context": "node scripts/atlas/anti-hallucination-validator.js",
+    "first-dollar": "node scripts/atlas/zero-to-first-dollar.js",
+    "credits": "node scripts/atlas/startup-credits-generator.js",
+    "start": "node scripts/atlas/monitor.js --tui",
+    "dashboard": "node scripts/atlas/cli.js dashboard"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VpkDevs/atlas.git"
+  },
+  "keywords": [
+    "atlas",
+    "claude-code",
+    "claude-skill",
+    "ai-cofounder",
+    "autonomous-founder",
+    "sovereign",
+    "automation",
+    "business-intelligence",
+    "agent-orchestration"
+  ],
+  "author": "VpkDevs",
+  "license": "MIT",
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^4.11.0",
+    "body-parser": "^2.2.2",
+    "boxen": "^5.1.2",
+    "chalk": "^4.1.2",
+    "commander": "^10.0.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "figlet": "^1.6.0",
+    "inquirer": "^8.2.5",
+    "ora": "^5.4.1",
+    "ws": "^8.13.0"
+  },
+  "bin": {
+    "atlas": "./scripts/atlas/cli.js",
+    "atlas-monitor": "./scripts/atlas/monitor.js"
+  }
+}

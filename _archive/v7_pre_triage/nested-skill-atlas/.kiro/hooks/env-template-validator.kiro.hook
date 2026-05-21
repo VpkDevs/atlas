@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "name": "Env Template Validator",
+  "description": "Reviews environment and secrets files for exposed credentials, proper formatting, and completeness",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      ".env.example",
+      ".env.template",
+      ".env.sample",
+      "config.example.json",
+      "secrets.example.yaml"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "An environment template was modified. Check for: 1) No actual secrets or credentials (should be placeholders), 2) Clear descriptions/comments for each variable, 3) Example values that show expected format, 4) All required variables documented, 5) Grouping and organization of related vars, 6) Corresponding documentation in README. Ensure it's safe and helpful."
+  }
+}

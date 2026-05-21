@@ -1,0 +1,23 @@
+{
+  "enabled": true,
+  "name": "Payment Security Review",
+  "description": "Analyzes payment and financial transaction code for security and compliance",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*payment*.js",
+      "*payment*.ts",
+      "*checkout*.js",
+      "*checkout*.ts",
+      "*billing*.js",
+      "*billing*.ts",
+      "*stripe*.js",
+      "*stripe*.ts"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Payment code was modified. Review for: 1) PCI DSS compliance (no card data storage), 2) Idempotency for duplicate charges, 3) Webhook signature verification, 4) Amount validation and currency handling, 5) Refund and chargeback handling, 6) Audit logging of all transactions, 7) Test mode vs production safeguards. Flag critical security and compliance issues."
+  }
+}

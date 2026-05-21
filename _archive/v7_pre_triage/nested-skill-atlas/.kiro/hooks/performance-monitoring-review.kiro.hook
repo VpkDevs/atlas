@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "name": "Performance Monitoring Review",
+  "description": "Analyzes performance monitoring and profiling code",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*performance*.js",
+      "*performance*.ts",
+      "*profil*.js",
+      "*profil*.ts",
+      "*metric*.js",
+      "*metric*.ts"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Performance monitoring code was modified. Review for: 1) Key metrics tracked (response time, throughput, errors), 2) Sampling strategy for high-traffic systems, 3) Performance budget alerts, 4) User-centric metrics (LCP, FID, CLS), 5) Database query performance tracking, 6) Memory and CPU profiling, 7) Distributed tracing setup. Suggest monitoring improvements."
+  }
+}

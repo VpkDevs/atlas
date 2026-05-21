@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "name": "Serialization Security",
+  "description": "Reviews data serialization code for security and compatibility issues",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*serializ*.js",
+      "*serializ*.ts",
+      "*marshal*.js",
+      "*marshal*.ts",
+      "*pickle*.py",
+      "*protobuf*.js"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Serialization code was modified. Analyze for: 1) Deserialization vulnerabilities (arbitrary code execution), 2) Schema versioning and backward compatibility, 3) Size limits to prevent DoS, 4) Type validation after deserialization, 5) Sensitive data in serialized output, 6) Circular reference handling, 7) Performance of serialization format. Flag security issues."
+  }
+}

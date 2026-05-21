@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "name": "Search Optimization",
+  "description": "Reviews search and filtering code for performance and user experience",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*search*.js",
+      "*search*.ts",
+      "*filter*.js",
+      "*filter*.ts",
+      "*elasticsearch*.js",
+      "*algolia*.js"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Search code was modified. Analyze for: 1) Full-text search indexing strategy, 2) Fuzzy matching and typo tolerance, 3) Search result ranking and relevance, 4) Faceted filtering performance, 5) Pagination and result limits, 6) Search query sanitization, 7) Autocomplete and suggestions. Suggest UX and performance improvements."
+  }
+}

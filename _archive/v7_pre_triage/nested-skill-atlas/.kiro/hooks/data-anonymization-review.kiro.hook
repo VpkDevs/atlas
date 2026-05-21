@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "name": "Data Anonymization Review",
+  "description": "Analyzes data anonymization and pseudonymization code",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*anonymiz*.js",
+      "*anonymiz*.ts",
+      "*pseudonym*.js",
+      "*mask*.js",
+      "*redact*.js"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Data anonymization code was modified. Review for: 1) Irreversibility of anonymization, 2) Consistent pseudonymization (same input = same output), 3) K-anonymity and l-diversity, 4) Re-identification risks, 5) Utility preservation, 6) Compliance with regulations, 7) Testing with real data patterns. Flag privacy risks."
+  }
+}

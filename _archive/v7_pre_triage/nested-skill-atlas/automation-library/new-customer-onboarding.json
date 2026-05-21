@@ -1,0 +1,203 @@
+{
+  "name": "Atlas: New Customer Onboarding",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "stripe-webhook",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Stripe Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "webhookId": "stripe-new-customer"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"type\"]}}",
+              "operation": "equals",
+              "value2": "customer.subscription.created"
+            }
+          ]
+        }
+      },
+      "id": "check-event-type",
+      "name": "Is New Subscription?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.resend.com/emails",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer [RESEND_API_KEY]"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "from",
+              "value": "welcome@[PRODUCT_URL]"
+            },
+            {
+              "name": "to",
+              "value": "={{$node[\"Stripe Webhook\"].json[\"data\"][\"object\"][\"customer_email\"]}}"
+            },
+            {
+              "name": "subject",
+              "value": "Welcome to [PRODUCT_NAME] — here's what's next"
+            },
+            {
+              "name": "html",
+              "value": "<h1>Welcome aboard!</h1><p>You're now on [PRODUCT_NAME]. Here's how to get the most out of it in the next 5 minutes...</p><p><a href='[PRODUCT_URL]/onboarding'>Get started →</a></p>"
+            }
+          ]
+        }
+      },
+      "id": "send-welcome-email",
+      "name": "Send Welcome Email",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [650, 200]
+    },
+    {
+      "parameters": {
+        "url": "[SLACK_WEBHOOK_URL]",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "🎉 New customer: {{$node[\"Stripe Webhook\"].json[\"data\"][\"object\"][\"customer_email\"]}} just subscribed to [PRODUCT_NAME]!"
+            }
+          ]
+        }
+      },
+      "id": "notify-slack",
+      "name": "Notify Slack",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [650, 380]
+    },
+    {
+      "parameters": {
+        "amount": 1,
+        "unit": "days"
+      },
+      "id": "wait-1-day",
+      "name": "Wait 1 Day",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [850, 200]
+    },
+    {
+      "parameters": {
+        "url": "https://api.posthog.com/api/projects/[POSTHOG_PROJECT_ID]/persons/?email={{$node[\"Stripe Webhook\"].json[\"data\"][\"object\"][\"customer_email\"]}}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "Bearer [POSTHOG_API_KEY]" }
+          ]
+        }
+      },
+      "id": "check-activation",
+      "name": "Check Activation (PostHog)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [1050, 200],
+      "notes": "Replace with your actual activation event check"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json[\"results\"][0][\"properties\"][\"activated\"]}}",
+              "operation": "notEqual",
+              "value2": 1
+            }
+          ]
+        }
+      },
+      "id": "did-activate",
+      "name": "Did They Activate?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [1250, 200]
+    },
+    {
+      "parameters": {
+        "url": "https://api.resend.com/emails",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "Bearer [RESEND_API_KEY]" }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "from", "value": "help@[PRODUCT_URL]" },
+            { "name": "to", "value": "={{$node[\"Stripe Webhook\"].json[\"data\"][\"object\"][\"customer_email\"]}}" },
+            { "name": "subject", "value": "Still getting started with [PRODUCT_NAME]?" },
+            { "name": "html", "value": "<p>Hey! I noticed you signed up but haven't completed setup yet. Most people get stuck at [COMMON_BLOCKER]. Here's a 2-min guide: [PRODUCT_URL]/quick-start</p><p>Reply if you're running into anything — I read every email.</p>" }
+          ]
+        }
+      },
+      "id": "send-activation-nudge",
+      "name": "Send Activation Nudge",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [1450, 120]
+    }
+  ],
+  "connections": {
+    "Stripe Webhook": {
+      "main": [[{ "node": "Is New Subscription?", "type": "main", "index": 0 }]]
+    },
+    "Is New Subscription?": {
+      "main": [
+        [
+          { "node": "Send Welcome Email", "type": "main", "index": 0 },
+          { "node": "Notify Slack", "type": "main", "index": 0 }
+        ],
+        []
+      ]
+    },
+    "Send Welcome Email": {
+      "main": [[{ "node": "Wait 1 Day", "type": "main", "index": 0 }]]
+    },
+    "Wait 1 Day": {
+      "main": [[{ "node": "Check Activation (PostHog)", "type": "main", "index": 0 }]]
+    },
+    "Check Activation (PostHog)": {
+      "main": [[{ "node": "Did They Activate?", "type": "main", "index": 0 }]]
+    },
+    "Did They Activate?": {
+      "main": [
+        [{ "node": "Send Activation Nudge", "type": "main", "index": 0 }],
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "tags": [{ "name": "atlas" }, { "name": "onboarding" }],
+  "_comment": "Atlas automation template. Replace all [PLACEHOLDER] values before activating. Import at app.n8n.cloud > Workflows > Import."
+}

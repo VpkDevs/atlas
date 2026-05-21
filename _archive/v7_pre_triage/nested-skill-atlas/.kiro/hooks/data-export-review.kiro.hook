@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "name": "Data Export Review",
+  "description": "Reviews data export and reporting code for performance and security",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*export*.js",
+      "*export*.ts",
+      "*report*.js",
+      "*report*.ts",
+      "*csv*.js",
+      "*pdf*.js"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Data export code was modified. Check for: 1) Memory-efficient streaming for large datasets, 2) Authorization checks on exported data, 3) PII handling and redaction, 4) Format validation (CSV injection), 5) Async processing for large exports, 6) Progress tracking and cancellation, 7) Temporary file cleanup. Flag security and performance issues."
+  }
+}

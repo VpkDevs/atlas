@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "name": "Kubernetes Review",
+  "description": "Reviews Kubernetes manifests for best practices and security",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*.k8s.yaml",
+      "k8s/*",
+      "kubernetes/*",
+      "*deployment.yaml",
+      "*service.yaml"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Kubernetes manifest was modified. Review for: 1) Resource limits and requests, 2) Security contexts (non-root, read-only filesystem), 3) Health checks (liveness, readiness), 4) Pod disruption budgets, 5) Network policies, 6) Secret management, 7) Rolling update strategy. Flag security and reliability issues."
+  }
+}

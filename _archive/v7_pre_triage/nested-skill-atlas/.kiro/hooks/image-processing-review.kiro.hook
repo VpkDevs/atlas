@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "name": "Image Processing Review",
+  "description": "Analyzes image processing code for performance, security, and quality",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*image*.js",
+      "*image*.ts",
+      "*photo*.js",
+      "*photo*.ts",
+      "*thumbnail*.js",
+      "*resize*.js"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Image processing code was modified. Review for: 1) Memory limits for large images, 2) Format validation (prevent malicious files), 3) Compression and quality settings, 4) Responsive image generation (multiple sizes), 5) EXIF data stripping (privacy), 6) CDN integration and caching, 7) Async processing for heavy operations. Suggest optimizations."
+  }
+}

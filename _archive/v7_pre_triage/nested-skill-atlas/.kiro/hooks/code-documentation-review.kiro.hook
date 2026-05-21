@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Code Documentation Review",
+  "description": "Reviews comment and documentation in code for clarity",
+  "version": "1",
+  "when": {
+    "type": "postToolUse",
+    "toolTypes": [
+      "write"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "After writing code, review documentation for: 1) Complex logic explained with comments, 2) Function/method documentation (JSDoc, docstrings), 3) TODO/FIXME comments tracked, 4) Assumptions and constraints documented, 5) Examples for non-obvious usage, 6) No outdated comments, 7) Public API documentation complete. Suggest documentation improvements."
+  }
+}

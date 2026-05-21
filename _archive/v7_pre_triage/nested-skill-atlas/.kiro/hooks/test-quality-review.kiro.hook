@@ -1,0 +1,22 @@
+{
+  "enabled": true,
+  "name": "Test Quality Review",
+  "description": "Reviews test files for coverage, edge cases, mocking best practices, and test quality",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*.test.js",
+      "*.test.ts",
+      "*.spec.js",
+      "*.spec.ts",
+      "*_test.py",
+      "*_test.go",
+      "*Test.java"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A test file was modified. Analyze for: 1) Coverage of edge cases and error paths, 2) Proper use of mocks/stubs/spies, 3) Test isolation and independence, 4) Clear test descriptions and assertions, 5) Missing test scenarios (boundary conditions, null/undefined, async errors), 6) Test performance and flakiness risks. Suggest additional test cases."
+  }
+}

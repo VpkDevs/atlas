@@ -1,0 +1,23 @@
+{
+  "enabled": true,
+  "name": "Auth Security Review",
+  "description": "Reviews authentication and authorization code for security vulnerabilities and best practices",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*auth*.js",
+      "*auth*.ts",
+      "*login*.js",
+      "*login*.ts",
+      "*session*.js",
+      "*session*.ts",
+      "*jwt*.js",
+      "*jwt*.ts"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Authentication code was modified. Review for: 1) Password hashing with proper algorithms (bcrypt, argon2), 2) JWT secret management and expiration, 3) Session fixation vulnerabilities, 4) CSRF protection, 5) Rate limiting on auth endpoints, 6) Secure cookie flags (httpOnly, secure, sameSite), 7) Multi-factor authentication support. Flag critical security issues."
+  }
+}

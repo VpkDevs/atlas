@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "name": "Docker Optimization",
+  "description": "Checks Docker and container configurations for security issues, optimization opportunities, and best practices",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "Dockerfile",
+      "docker-compose.yml",
+      "docker-compose.yaml",
+      ".dockerignore",
+      "*.dockerfile"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A Docker file was modified. Review for: 1) Multi-stage builds for smaller images, 2) Security issues (running as root, exposed secrets), 3) Layer caching optimization, 4) Use of specific version tags vs 'latest', 5) Proper .dockerignore usage, 6) Health checks and resource limits. Suggest optimizations."
+  }
+}

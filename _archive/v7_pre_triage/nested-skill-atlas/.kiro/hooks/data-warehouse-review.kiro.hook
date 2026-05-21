@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "name": "Data Warehouse Review",
+  "description": "Reviews data warehouse and analytics schema design",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*warehouse*.sql",
+      "*dim_*.sql",
+      "*fact_*.sql",
+      "*dbt*.sql",
+      "*analytics*.sql"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Data warehouse schema was modified. Review for: 1) Star vs snowflake schema appropriateness, 2) Slowly changing dimensions (SCD) handling, 3) Grain consistency, 4) Partitioning strategy, 5) Aggregation tables for performance, 6) Data freshness requirements, 7) Query performance optimization. Suggest improvements."
+  }
+}

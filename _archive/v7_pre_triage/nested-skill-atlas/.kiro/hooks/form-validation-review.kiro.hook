@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "name": "Form Validation Review",
+  "description": "Analyzes form validation code for security and user experience",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*form*.js",
+      "*form*.ts",
+      "*validation*.js",
+      "*validation*.ts",
+      "*validator*.js",
+      "*validator*.ts"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Form validation code was modified. Review for: 1) Client-side AND server-side validation, 2) Clear, helpful error messages, 3) Input sanitization for XSS prevention, 4) Email, phone, and format validation, 5) Password strength requirements, 6) CSRF token validation, 7) Accessibility (ARIA labels, error announcements). Suggest improvements."
+  }
+}

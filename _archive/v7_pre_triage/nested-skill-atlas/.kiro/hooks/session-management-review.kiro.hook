@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "name": "Session Management Review",
+  "description": "Analyzes session management code for security and scalability",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*session*.js",
+      "*session*.ts",
+      "*cookie*.js",
+      "*cookie*.ts"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Session management code was modified. Review for: 1) Secure session ID generation (cryptographically random), 2) Session fixation prevention, 3) Proper expiration and renewal, 4) Distributed session storage (Redis, DB), 5) Session hijacking protection, 6) Logout and session invalidation, 7) Concurrent session limits. Flag security issues."
+  }
+}

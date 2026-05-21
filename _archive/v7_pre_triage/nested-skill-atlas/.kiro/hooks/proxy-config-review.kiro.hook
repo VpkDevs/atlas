@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "name": "Proxy Config Review",
+  "description": "Reviews load balancer and proxy configurations",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "nginx.conf",
+      "haproxy.cfg",
+      "*proxy*.conf",
+      "traefik.yml",
+      "envoy.yaml"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Proxy/load balancer config was modified. Review for: 1) SSL/TLS configuration and cipher suites, 2) Load balancing algorithm, 3) Health check configuration, 4) Timeout settings, 5) Rate limiting and DDoS protection, 6) Header forwarding (X-Forwarded-For), 7) Connection pooling. Suggest optimizations."
+  }
+}

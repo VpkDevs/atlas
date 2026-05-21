@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "name": "Frontend Component Review",
+  "description": "Reviews React/Vue/Angular components for performance issues, accessibility, and best practices",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*.jsx",
+      "*.tsx",
+      "*.vue",
+      "*component*.js",
+      "*component*.ts"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A frontend component was modified. Analyze for: 1) Accessibility (ARIA labels, keyboard navigation, semantic HTML), 2) Performance issues (unnecessary re-renders, missing memoization), 3) Prop validation and TypeScript types, 4) Error boundaries and loading states, 5) Responsive design considerations, 6) Component size and single responsibility. Suggest improvements."
+  }
+}
