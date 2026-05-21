@@ -1,0 +1,275 @@
+---
+name: skill-hygiene
+description: Atlas module — doctrine that prevents the skill from accumulating the meta-bloat that produced v7.x's 923 files.
+---
+
+# Skill Hygiene — The Anti-Bloat Doctrine
+
+*This module exists because the v7.2 Atlas skill, at the moment of v8.0 audit, contained 923 markdown files, 14 duplicate uppercase/lowercase filename pairs, three nested copies of SKILL.md (one recursively inside itself), a committed `node_modules/` at the skill root, and a SKILL.md body declaring v7.2 while the directory contained references to v8.3. None of those problems came from a single bad decision. They came from a thousand tiny "let me add a quick summary file" decisions. This is the doctrine that catches the thousand decisions.*
+
+---
+
+## The Hygiene Rule
+
+**The Atlas skill directory contains ONLY:**
+
+1. `SKILL.md` — the kernel
+2. Module files referenced by the kernel
+3. `CHARTER_v[N].md` — the single version-of-record document
+4. `README.md` — outward-facing intro for humans
+5. `LICENSE`
+6. `automation-library/` — reusable workflow JSON
+7. `scoring-engine/` (or equivalent) — compiled scoring code
+8. `dashboard-template.html` — UI template
+9. `_archive/` — historical material, not loaded
+
+**The skill directory does NOT contain:**
+
+- `node_modules/` at the skill root
+- A nested `atlas/` directory
+- Any file whose name starts with `IMPROVEMENT`, `FIX`, `SUMMARY`, `FINAL`, `MASTER`, `CONTINUATION`, `TREMENDOUS`, `WEAKEST`, `ALL_FIXES`, `IDEAL_VS_ACTUAL`, `INCONSISTENCIES`, `MODULE_AUDIT`, `STRATEGIC_ARCHITECTURE`, `WHATSNEW`
+- Multiple version-tagged copies of the same document (`foo-v7.md`, `foo-v8.md`)
+- Both uppercase and lowercase variants of the same file
+- Compiled artifacts (`dist/`, `build/`) outside their sub-project
+- `.bak` files older than 7 days
+
+---
+
+## Why These Rules Exist
+
+Each rule above corresponds to a specific failure observed in the v7.2 audit. Each is non-arbitrary.
+
+| Rule | Failure It Prevents |
+|---|---|
+| One SKILL.md per skill | Triple-nested SKILL.md at `/SKILL.md`, `/atlas/SKILL.md`, `/atlas/atlas/SKILL.md` |
+| No `IMPROVEMENT*` / `FIX*` / `SUMMARY*` files | 15+ such files accumulated in v7.x, none of which Claude reads when running Atlas |
+| No uppercase+lowercase pairs | 14 such pairs in v7.x, the result of incomplete rename passes |
+| No `node_modules/` at root | v7.x had 164 subdirectories of node_modules in the skill, bloating loading and confusing scanning |
+| No `v[N]` suffixed copies | v7.x had `fusion-router.md` AND `fusion-router-v2.md` AND `MODULE_AUDIT_v8.3.md` AND `STRATEGIC_ARCHITECTURE_v8.3.md` — Claude cannot tell which is canonical |
+| No nested `atlas/` directory | The recursion bug |
+| `.bak` files time-bounded | Atomic writes leave temporary `.bak` files; they should not become permanent |
+
+---
+
+## The "Quick Summary File" Antipattern
+
+The single most common driver of skill bloat is the moment when, after a session of refactoring, the urge arises to summarize what was done. The urge feels productive. It is not.
+
+| When you feel like writing... | Write instead... |
+|---|---|
+| `IMPROVEMENTS_INDEX.md` | One new line in `CHANGELOG.md` |
+| `FIXES_COMPLETE.md` | Nothing; the git log already records this |
+| `MASTER_SUMMARY.md` | Either it belongs in SKILL.md or it doesn't belong in the skill |
+| `INCONSISTENCIES_FIXED.md` | A test case in `atlas-doctor-tests/` that catches the inconsistency |
+| `STRATEGIC_ARCHITECTURE_v8.3.md` | An edit to SKILL.md and a `CHARTER_v8.md` line item |
+| `WEAKEST_ASPECTS_FIXED.md` | The fix itself; no second document needed |
+| `IDEAL_VS_ACTUAL.md` | Nothing; this is a working document, not a deliverable |
+| `TREMENDOUS_IMPROVEMENTS_V8.1.md` | One `CHANGELOG.md` entry under "v8.1" |
+
+**Rule of thumb:** If the document's title is a self-assessment, it does not belong in the skill. The skill is for Claude. Claude does not need to be told the work is "tremendous."
+
+---
+
+## The CHANGELOG Discipline
+
+Atlas v8.0 has exactly one changelog file: `CHANGELOG.md`. Format:
+
+```markdown
+# Atlas Changelog
+
+## v8.0 — 2026-05-21
+- New: First Ship mode (`first-ship.md`)
+- New: `/atlas doctor` integrity check (`atlas-doctor.md`)
+- New: Skill Hygiene doctrine (`skill-hygiene.md`)
+- New: `CHARTER_v8.md` as single source of version truth
+- Triage: 923 markdown files → ~50 canonical modules + archive
+- Removed from skill root: 14 duplicate-pair files, 15 summary/audit/fix files, nested atlas/atlas/ directory, node_modules/
+- Kernel: SKILL.md 944 lines → 380 lines
+
+## v7.2 — 2025-05-15
+- New: Scoring engine, fusion router v7.2, operator playbook, incident protocol
+- (see _archive/v7_pre_triage/STRATEGIC_ARCHITECTURE_v8.3.md for the verbose version that v8.0 retired)
+
+## v7.1
+...
+```
+
+If you want to add a CHANGELOG entry, edit `CHANGELOG.md`. Do not create a new document.
+
+---
+
+## Module File Conventions
+
+Every module file (`*.md` in skill root, not SKILL.md or README.md):
+
+```yaml
+---
+name: [module-id, must match filename without .md]
+description: Atlas module — [one sentence purpose].
+---
+
+# [Module Title] — [Tagline]
+
+*[Optional epigraph]*
+
+---
+
+## [Section]
+
+[Content]
+
+---
+
+## [Section]
+
+[Content]
+```
+
+**Constraints:**
+- Frontmatter `name` MUST equal filename without `.md` extension
+- First H1 MUST be the module's name (not "Atlas v8.0 — ..."; just "Module Name — ...")
+- File length ideal: 200–400 lines. Over 600 is a warning. Over 1000 is a violation.
+- No nested H1s — only one `#` per file
+- Code blocks in fenced markdown (` ``` `) only — never indent-coded
+
+---
+
+## Archive Discipline
+
+When a file is retired (no longer referenced from SKILL.md or another active module):
+
+1. **Do not delete.** Atlas's history is valuable. Future audits depend on it.
+2. **Move to `_archive/v[N]_pre_[reason]/`** where `[N]` is the version after which it was retired and `[reason]` is e.g. `triage`, `consolidation`, `redesign`.
+3. **Add to `_archive/INDEX.md`** with one line: `[filename] — [reason] — [date]`.
+4. **Update SKILL.md or relevant module** to remove any reference to the retired file.
+5. **Run `/atlas doctor`** to verify no dangling references.
+
+Example archive structure after v8.0 triage:
+
+```
+_archive/
+├── INDEX.md
+├── v7_pre_triage/
+│   ├── IMPROVEMENTS_INDEX.md
+│   ├── improvements-index.md
+│   ├── MASTER_SUMMARY.md
+│   ├── master-summary.md
+│   ├── FINAL_SUMMARY.md
+│   ├── CONTINUATION_SUMMARY.md
+│   ├── TREMENDOUS_IMPROVEMENTS_V8.1.md
+│   ├── WEAKEST_ASPECTS_FIXED.md
+│   ├── INCONSISTENCIES_FIXED.md
+│   ├── IDEAL_VS_ACTUAL.md
+│   ├── MODULE_AUDIT_v8.3.md
+│   ├── STRATEGIC_ARCHITECTURE_v8.3.md
+│   ├── (... ~30 files total)
+│   └── atlas-atlas-recursive-copy/   (the nested skill that contained itself)
+└── v6_pre_v7_consolidation/
+    └── ...
+```
+
+---
+
+## The Recursion Bug — Specific Prevention
+
+In v7.x, the skill directory at one point contained:
+- `/SKILL.md`
+- `/atlas/SKILL.md`
+- `/atlas/atlas/SKILL.md`
+- `/atlas/atlas/atlas/...` (it's unclear how deep this went)
+
+This happened because some tool (probably during a backup, restore, or import) wrote the skill inside itself. The recursion went unnoticed because no check existed for it.
+
+**v8.0 Doctor Check 4 specifically catches this.** Additionally:
+
+- The `.gitignore` for the skill should include `**/atlas/SKILL.md` *inside the atlas skill itself* — meaning if a nested copy ever appears, git will not track it, surfacing the bug.
+- Any backup tooling that touches the skill directory should write to `~/atlas-backup/` (outside the skill root), not into a subdirectory.
+- The `atlas-triage.ps1` script's first action is to check for this and report it.
+
+---
+
+## When New Modules Are Permitted
+
+A new module file may be added to the skill when **all** of:
+
+1. It is referenced from SKILL.md or another active module
+2. It has a single, clear purpose expressible in one sentence
+3. It does not duplicate content in an existing module
+4. The total module count after adding stays under 60
+5. `/atlas doctor` PASSES after the addition
+
+A new module may **not** be added when:
+
+- Its purpose is to summarize, audit, or describe other modules (that's CHANGELOG.md or the README)
+- It is "for completeness" or "to be safe" or "in case someone needs it"
+- It exists only to record a session's work output
+
+---
+
+## When Existing Modules Get Edited Instead of Added
+
+In v7.x, the response to "we should add anti-pattern detection" was to create a new file (`adversarial-and-epistemic.md`). In v8.0, the response is to add a section to an existing module:
+
+| Urge | Better Move |
+|---|---|
+| New file: `error-handling-patterns.md` | Section in `code-sprint.md` |
+| New file: `prompt-injection-defense.md` | Section in `security.md` |
+| New file: `pricing-mistakes.md` | Section in `pricing-lab.md` |
+| New file: `growth-anti-patterns.md` | Section in `growth-engine.md` |
+| New file: `founder-burnout-signals.md` | Section in `operator-playbook.md` |
+
+If a section in an existing module exceeds 200 lines and the module exceeds 600 lines, *then* a split may be justified. Until then, sections inside existing modules are the default.
+
+---
+
+## The 60-Module Soft Ceiling
+
+Atlas v8.0 ships with ~30 module files. The soft ceiling is 60. At 60, the kernel pattern starts to break down — Claude cannot route between 60+ modules effectively, and human maintainers cannot hold the structure in mind.
+
+If you find yourself approaching 60 modules:
+
+1. Look for modules that have not been referenced from SKILL.md in 90 days → candidates for archive
+2. Look for module clusters (3+ modules covering one domain) → candidates for consolidation
+3. Look at SKILL.md routing table: any row that triggers loading of 4+ modules suggests the modules should be merged
+4. Run `/atlas doctor` — it includes a module count check above 50
+
+The ceiling is soft because some skills genuinely need more modules. The ceiling is *enforced socially*: every module above 50 requires a CHANGELOG entry justifying its addition.
+
+---
+
+## Skill Hygiene Rationalization Table
+
+| Excuse | Reality |
+|---|---|
+| "I'll just leave the old file for reference" | Move it to `_archive/`. Reference is a directory, not a top-level concern. |
+| "Lowercase version is a backup of the uppercase one" | One is wrong. Pick one. Archive the other. |
+| "This summary file documents what I did" | Edit CHANGELOG.md. That IS the documentation. |
+| "node_modules is needed for the scoring engine" | Then it lives in `scoring-engine/node_modules/`, not at skill root. |
+| "I'll add this module 'just in case' someone needs it" | They won't. Modules that aren't referenced are noise. |
+| "The skill works fine with the extra files" | Until it doesn't. v7.x worked fine until the audit. |
+| "Cleaning up isn't the highest leverage thing right now" | The skill that automates a founder's life cannot itself be a hairball. |
+| "I'll do a hygiene pass after this big feature lands" | Do it before. Bloat compounds. |
+
+---
+
+## Hygiene Red Flags
+
+- ❌ Created a `*_SUMMARY.md` or `*_FIXES_COMPLETE.md` at the skill root
+- ❌ Renamed a file from UPPER_CASE.md to lower-case.md without deleting/archiving the original
+- ❌ Saved a new version as `[name]-v[N].md` instead of editing in place + CHANGELOG entry
+- ❌ Added a new module without a corresponding SKILL.md routing table entry
+- ❌ Allowed `node_modules/` to appear in the skill root
+- ❌ Did not run `/atlas doctor` after structural changes
+- ❌ The skill directory exceeded 100 files (excluding `_archive/` and committed sub-projects)
+
+---
+
+## The Single Sentence
+
+**The skill that ships products must itself ship as a skill — small, coherent, testable, and free of the meta-debris that proves its author got lost in process.**
+
+If Atlas violates this sentence, repair Atlas before continuing to run Atlas on user projects. There is no path to user success that runs through skill-level chaos.
+
+---
+
+**Hygiene is not a polish phase. It is a precondition.**
