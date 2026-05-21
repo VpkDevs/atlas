@@ -40,7 +40,8 @@ PROCEDURE atlas_doctor:
   5. Verify state directory health
   6. Verify version coherence
   7. Verify scoring engine reachable
-  8. Report
+  8. Verify node_modules hygiene
+  9. Report
 ```
 
 Run in order. Each check produces ✅ / ⚠️ / ❌.
@@ -50,7 +51,7 @@ Run in order. Each check produces ✅ / ⚠️ / ❌.
 ```
 [ ] Exactly ONE SKILL.md exists in the skill root
 [ ] SKILL.md frontmatter has `name: atlas`
-[ ] SKILL.md body line count ≤ 500
+[ ] SKILL.md body line count ≤ 500 for PASS, 501–700 for WARN, >700 for WARN
 [ ] SKILL.md references "v8.0" in body header
 [ ] No `SKILL.md.bak`, `SKILL.OLD.md`, `SKILL_v7.md`, or similar legacy copies at skill root
 ```
@@ -58,6 +59,7 @@ Run in order. Each check produces ✅ / ⚠️ / ❌.
 **FAIL conditions:**
 - Multiple SKILL.md files anywhere under skill root → ❌ — Atlas halts
 - Version header in body does not match charter version → ❌ — Atlas halts
+- SKILL.md 501–700 lines → ⚠️ — Atlas warns, proceeds (the kernel principle is being strained)
 - SKILL.md > 700 lines → ⚠️ — Atlas warns, proceeds (the kernel principle is being violated)
 
 ### Check 2 — Module References Resolve
@@ -66,7 +68,7 @@ Parse SKILL.md for every reference of the form `` `[name].md` `` or `(name.md)`.
 
 ```
 Expected core modules (referenced in v8.0 SKILL.md):
-  atlas-doctor.md, atlas-kernel.md, first-ship.md, skill-hygiene.md,
+  atlas-doctor.md, first-ship.md, skill-hygiene.md,
   rationalization-table.md,
   onboarding.md, code-sprint.md, security.md, legal-compliance.md,
   pre-flight.md, launch-strategy.md, marketing-playbook.md,
