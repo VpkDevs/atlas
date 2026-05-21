@@ -1,3 +1,8 @@
+---
+name: advanced-features
+description: Advanced Atlas analytics, optimization, and automation features.
+---
+
 # Atlas v8.0 Advanced Features Guide
 
 ## Overview

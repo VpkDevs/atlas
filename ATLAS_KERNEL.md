@@ -1,3 +1,8 @@
+---
+name: atlas-kernel
+description: Loadable Atlas boot layer and context routing kernel.
+---
+
 # ATLAS KERNEL v1.0 — The Loadable Boot Layer
 
 **Purpose:** Single-source-of-truth entry point. Replaces "load all of Atlas" with "load 200 lines, route to needed modules."

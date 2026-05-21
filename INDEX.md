@@ -1,3 +1,8 @@
+---
+name: index
+description: Atlas documentation index and module inventory.
+---
+
 # Atlas — Complete Documentation Index (current version: see [VERSION.md](VERSION.md))
 
 ## 📚 Documentation Overview
