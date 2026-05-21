@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "name": "CORS Security Review",
+  "description": "Reviews CORS configuration for security and functionality",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*cors*.js",
+      "*cors*.ts",
+      "*middleware*.js",
+      "*middleware*.ts"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "CORS configuration was modified. Analyze for: 1) Overly permissive origins (avoid *), 2) Credentials handling (Access-Control-Allow-Credentials), 3) Allowed methods and headers, 4) Preflight caching, 5) Environment-specific origins, 6) Security implications of configuration, 7) Error handling for CORS failures. Flag security risks."
+  }
+}

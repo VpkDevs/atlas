@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Security Review Gate",
+  "description": "Reviews security implications before any write operations are performed, checking for potential vulnerabilities, data exposure, or unsafe practices",
+  "version": "1",
+  "when": {
+    "type": "preToolUse",
+    "toolTypes": [
+      "write"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Before writing, review this operation for security implications: 1) Check for hardcoded secrets or credentials, 2) Verify input validation and sanitization, 3) Look for potential injection vulnerabilities, 4) Ensure proper error handling that doesn't leak sensitive info, 5) Check for insecure dependencies or configurations. Flag any security concerns."
+  }
+}

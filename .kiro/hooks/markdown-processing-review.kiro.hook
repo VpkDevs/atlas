@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "name": "Markdown Processing Review",
+  "description": "Analyzes markdown and rich text processing",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*markdown*.js",
+      "*markdown*.ts",
+      "*richtext*.js",
+      "*editor*.js",
+      "*wysiwyg*.js"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Markdown/rich text code was modified. Review for: 1) XSS prevention (sanitization), 2) Markdown flavor consistency, 3) Code syntax highlighting, 4) Image and link handling, 5) Performance for large documents, 6) Collaborative editing conflicts, 7) Export format support. Flag security issues."
+  }
+}

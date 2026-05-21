@@ -1,14 +1,26 @@
 {
   "name": "atlas-skill",
-  "version": "7.2.0",
-  "description": "Atlas v7.2 - The Sovereign Money Engine. AI co-founder Claude Code skill.",
+  "version": "8.1.0",
+  "description": "Atlas v8.1 - The Sovereign Money Engine. AI co-founder Claude Code skill with executable implementations, enhanced automation, intelligence, and orchestration.",
   "private": true,
   "scripts": {
     "validate": "node scripts/validate.js",
+    "validate-v2": "node scripts/validate-v2.js",
     "pulse": "node scripts/atlas/pulse.js",
     "decide": "node scripts/atlas/decide.js",
     "weekly-review": "node scripts/atlas/weekly-review.js",
-    "diag": "node scripts/atlas/pulse.js | node scripts/atlas/decide.js"
+    "diag": "node scripts/atlas/pulse.js | node scripts/atlas/decide.js",
+    "cli": "node scripts/atlas/cli.js",
+    "monitor": "node scripts/atlas/monitor.js",
+    "predict": "node scripts/atlas/predictive-scoring.js",
+    "analytics": "node scripts/atlas/analytics.js",
+    "optimize": "node scripts/atlas/optimizer.js",
+    "compress": "node scripts/atlas/context-compressor.js",
+    "validate-context": "node scripts/atlas/anti-hallucination-validator.js",
+    "first-dollar": "node scripts/atlas/zero-to-first-dollar.js",
+    "credits": "node scripts/atlas/startup-credits-generator.js",
+    "start": "node scripts/atlas/monitor.js --tui",
+    "dashboard": "node scripts/atlas/cli.js dashboard"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -23,8 +35,26 @@
     "claude-skill",
     "ai-cofounder",
     "autonomous-founder",
-    "sovereign"
+    "sovereign",
+    "automation",
+    "business-intelligence",
+    "agent-orchestration"
   ],
   "author": "VpkDevs",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^10.0.0",
+    "figlet": "^1.6.0",
+    "inquirer": "^8.2.5",
+    "ora": "^5.4.1",
+    "boxen": "^5.1.2",
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^4.11.0",
+    "ws": "^8.13.0"
+  },
+  "bin": {
+    "atlas": "./scripts/atlas/cli.js",
+    "atlas-monitor": "./scripts/atlas/monitor.js"
+  }
 }

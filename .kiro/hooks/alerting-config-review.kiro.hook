@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "name": "Alerting Config Review",
+  "description": "Analyzes monitoring and alerting configurations",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*alert*.yml",
+      "*alert*.yaml",
+      "prometheus.yml",
+      "grafana/*",
+      "datadog.yml"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Alerting configuration was modified. Review for: 1) Appropriate alert thresholds, 2) Alert fatigue prevention (grouping, deduplication), 3) Severity levels and escalation, 4) Runbook links in alerts, 5) On-call rotation coverage, 6) Alert testing and validation, 7) SLO-based alerting. Suggest improvements."
+  }
+}

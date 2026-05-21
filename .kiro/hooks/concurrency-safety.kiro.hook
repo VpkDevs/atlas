@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "name": "Concurrency Safety",
+  "description": "Analyzes async/concurrent code for race conditions, deadlocks, and proper error handling",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*async*.js",
+      "*async*.ts",
+      "*concurrent*.py",
+      "*thread*.java",
+      "*goroutine*.go"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Async/concurrent code was modified. Analyze for: 1) Race conditions and shared state issues, 2) Deadlock potential, 3) Proper error handling in async contexts, 4) Resource cleanup (connections, file handles), 5) Timeout and cancellation handling, 6) Promise/Future chaining and error propagation, 7) Thread safety and synchronization. Flag potential concurrency bugs."
+  }
+}

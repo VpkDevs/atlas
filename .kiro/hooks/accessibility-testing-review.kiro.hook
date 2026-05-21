@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "name": "Accessibility Testing Review",
+  "description": "Reviews accessibility testing and automation",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*a11y*.test.js",
+      "*accessibility*.test.ts",
+      "*axe*.js",
+      "*pa11y*.js"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Accessibility testing code was modified. Check for: 1) Automated testing coverage (axe, pa11y), 2) Keyboard navigation tests, 3) Screen reader compatibility tests, 4) Color contrast validation, 5) ARIA attribute testing, 6) Focus management tests, 7) Manual testing checklist. Suggest testing improvements."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "enabled": true,
+  "name": "API Endpoint Review",
+  "description": "Analyzes API endpoint changes for proper error handling, status codes, validation, rate limiting, and documentation",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*routes*.js",
+      "*routes*.ts",
+      "*controller*.js",
+      "*controller*.ts",
+      "*api*.js",
+      "*api*.ts",
+      "*handler*.js",
+      "*handler*.ts"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "An API file was modified. Review for: 1) Proper HTTP status codes (200, 201, 400, 401, 404, 500), 2) Input validation and sanitization, 3) Error handling and meaningful error messages, 4) Rate limiting considerations, 5) API documentation/comments, 6) Authentication/authorization checks. Suggest improvements for robustness."
+  }
+}

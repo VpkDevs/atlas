@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "name": "A/B Testing Review",
+  "description": "Analyzes A/B testing and experimentation code",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*experiment*.js",
+      "*experiment*.ts",
+      "*ab*.js",
+      "*abtest*.js",
+      "*variant*.js"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A/B testing code was modified. Review for: 1) Consistent user bucketing, 2) Statistical significance calculation, 3) Sample size requirements, 4) Experiment isolation (no cross-contamination), 5) Metrics tracking accuracy, 6) Ramp-up and rollback strategies, 7) Documentation of hypothesis and results. Suggest improvements."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "name": "Dependency Audit",
+  "description": "Analyzes dependencies when package files are modified, checking for security vulnerabilities, outdated packages, and license compatibility",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "package.json",
+      "requirements.txt",
+      "Cargo.toml",
+      "go.mod",
+      "pom.xml",
+      "build.gradle"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A dependency file was modified. Analyze the changes for: 1) Known security vulnerabilities in added/updated packages, 2) Outdated or deprecated dependencies, 3) License compatibility issues, 4) Potential conflicts or breaking changes, 5) Unnecessary or duplicate dependencies. Provide recommendations for safer alternatives if issues are found."
+  }
+}

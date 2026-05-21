@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "name": "License Compliance",
+  "description": "Reviews license files and headers for compliance",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "LICENSE",
+      "LICENSE.md",
+      "COPYING",
+      "*.license"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "License file was modified. Check for: 1) License compatibility with dependencies, 2) Copyright year and holder accuracy, 3) License header requirements in source files, 4) Third-party attribution requirements, 5) Dual licensing clarity, 6) Commercial vs open source terms. Flag compliance issues."
+  }
+}

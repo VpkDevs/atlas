@@ -1,0 +1,116 @@
+{
+  "evaluatedAt": "2026-05-16T03:53:25.998Z",
+  "atlasVersion": "v8.3",
+  "sophisticationScore": 10,
+  "uncertainty": 3.6666666666666665,
+  "epistemic": 0.6666666666666665,
+  "aleatoric": 3,
+  "decisionCount": 25,
+  "successRate": 1,
+  "avgROI": 1.1833305860805858,
+  "paretoOptimalCount": 3,
+  "dominatedCount": 22,
+  "topActions": [
+    {
+      "action": "bootstrap_atlas_on_atlas",
+      "avgImpact": 32,
+      "count": 1
+    },
+    {
+      "action": "create_atlas_kernel",
+      "avgImpact": 28,
+      "count": 1
+    },
+    {
+      "action": "build_atlas_router",
+      "avgImpact": 28,
+      "count": 1
+    },
+    {
+      "action": "archive_fusion_router_v1",
+      "avgImpact": 24,
+      "count": 1
+    },
+    {
+      "action": "archive_fusion_router_v2",
+      "avgImpact": 24,
+      "count": 1
+    }
+  ],
+  "voiRanked": [
+    {
+      "id": "transfer_learning",
+      "desc": "Transfer learning across businesses",
+      "expectedImpact": 25,
+      "priorConfidence": 0.5,
+      "testCost": 40,
+      "voi": 6.25,
+      "netValue": 2.25
+    },
+    {
+      "id": "causal_dag",
+      "desc": "Causal DAG discovery (confounders, mediators)",
+      "expectedImpact": 22,
+      "priorConfidence": 0.65,
+      "testCost": 16,
+      "voi": 3.8499999999999988,
+      "netValue": 2.2499999999999987
+    },
+    {
+      "id": "counterfactual",
+      "desc": "Counterfactual estimation (synthetic control)",
+      "expectedImpact": 20,
+      "priorConfidence": 0.6,
+      "testCost": 24,
+      "voi": 4.000000000000002,
+      "netValue": 1.6000000000000014
+    },
+    {
+      "id": "contextual_bandit",
+      "desc": "Contextual bandits (segment-aware allocation)",
+      "expectedImpact": 15,
+      "priorConfidence": 0.7,
+      "testCost": 8,
+      "voi": 2.2500000000000004,
+      "netValue": 1.4500000000000004
+    },
+    {
+      "id": "state_persistence",
+      "desc": ".atlas-state JSONL writer + auto-compression",
+      "expectedImpact": 18,
+      "priorConfidence": 0.85,
+      "testCost": 4,
+      "voi": 1.3500000000000012,
+      "netValue": 0.9500000000000012
+    },
+    {
+      "id": "auto_report",
+      "desc": "Automated LLM report generation",
+      "expectedImpact": 12,
+      "priorConfidence": 0.8,
+      "testCost": 8,
+      "voi": 1.1999999999999997,
+      "netValue": 0.3999999999999997
+    },
+    {
+      "id": "openclaw_adapter",
+      "desc": "OpenClaw/Hermes adapter (Option C)",
+      "expectedImpact": 18,
+      "priorConfidence": 0.7,
+      "testCost": 40,
+      "voi": 2.7,
+      "netValue": -1.2999999999999998
+    }
+  ],
+  "nextThreeRecommendations": [
+    "Transfer learning across businesses",
+    "Causal DAG discovery (confounders, mediators)",
+    "Counterfactual estimation (synthetic control)"
+  ],
+  "scoreBreakdown": {
+    "base": 8,
+    "roiBonus": 0.36666117216117167,
+    "successBonus": 0.6000000000000001,
+    "sophisticationBonus": 1.5
+  }
+}

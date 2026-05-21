@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "name": "Build Config Review",
+  "description": "Reviews build configuration for optimization and correctness",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "webpack.config.js",
+      "rollup.config.js",
+      "vite.config.js",
+      "vite.config.ts",
+      "tsconfig.json",
+      "babel.config.js"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Build configuration was modified. Review for: 1) Production optimizations (minification, tree-shaking), 2) Source map configuration, 3) Code splitting strategy, 4) Bundle size budgets, 5) Development vs production settings, 6) Module resolution and aliases, 7) Build performance optimizations. Suggest improvements."
+  }
+}

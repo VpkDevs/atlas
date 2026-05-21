@@ -1,0 +1,25 @@
+{
+  "enabled": true,
+  "name": "Large File Warning",
+  "description": "Monitors for large file additions that could bloat the repository",
+  "version": "1",
+  "when": {
+    "type": "fileCreated",
+    "patterns": [
+      "*.zip",
+      "*.tar",
+      "*.gz",
+      "*.mp4",
+      "*.mov",
+      "*.avi",
+      "*.psd",
+      "*.ai",
+      "*.sketch",
+      "*.fig"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A potentially large file was created. Consider: 1) Should this be in Git or use Git LFS instead? 2) Could it be hosted externally (CDN, cloud storage)? 3) Is it a build artifact that should be in .gitignore? 4) Can it be compressed or optimized? 5) Does it belong in a separate assets repository? Recommend the best approach to avoid repository bloat."
+  }
+}

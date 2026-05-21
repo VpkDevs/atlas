@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "name": "Schema Validation Review",
+  "description": "Analyzes data validation and schema enforcement",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*schema*.js",
+      "*schema*.ts",
+      "*model*.js",
+      "*model*.ts",
+      "*dto*.js",
+      "*dto*.ts"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Schema/model code was modified. Review for: 1) Required vs optional fields, 2) Type validation and coercion, 3) Custom validation rules, 4) Default values, 5) Nested object validation, 6) Array length and content validation, 7) Clear validation error messages. Suggest improvements for data integrity."
+  }
+}

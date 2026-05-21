@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "name": "Multi-Tenancy Review",
+  "description": "Analyzes multi-tenancy implementation for isolation and security",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*tenant*.js",
+      "*tenant*.ts",
+      "*organization*.js",
+      "*workspace*.js"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Multi-tenancy code was modified. Review for: 1) Data isolation between tenants, 2) Tenant context propagation, 3) Cross-tenant data leakage risks, 4) Tenant-specific configuration, 5) Resource quotas and limits, 6) Tenant onboarding/offboarding, 7) Performance isolation. Flag security risks."
+  }
+}

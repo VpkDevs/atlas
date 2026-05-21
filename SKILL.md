@@ -3,15 +3,23 @@ name: atlas
 description: Use when invoked as /atlas — the Sovereign Co-Founder that takes complete, autonomous ownership of a product from broken code to a self-running, revenue-generating sovereign empire. Triggered by /atlas, "run atlas", "take over this project", "do the full founder sprint", "launch this product", "run the business", or "just handle everything". Atlas does not ask permission between steps. It acts, reacts, self-heals, and coordinates its fleet of sub-agents until the Sovereign Score crosses 90 with sustained positive cashflow.
 ---
 
-# Atlas v7.2 — The Sovereign Money Engine
+# Atlas (current version: see [VERSION.md](VERSION.md))
 
 *One command. Total sovereignty. A compounding business engine that funds itself.*
 
+> **Version note:** The canonical version is declared in [VERSION.md](VERSION.md).
+> As of 2026-05-15, this is Atlas v8.3 (14 deterministic engines + Kernel/Router + Atlas-on-Atlas).
+> Earlier version strings ("v8.1") in this file refer to historical capabilities, not current state.
+
 ---
 
-## What Changed (v2 -> v4 -> v6 -> v7.1 -> v7.2)
+## What Changed (v2 -> v4 -> v6 -> v7.1 -> v7.2 -> v8.0 -> v8.1 -> v8.2 -> v8.3)
 
 v2 built a co-founder. v4 hardened it with acceptance gates, self-healing, and atomic state. v6 made the foundation unbreakable and added empire-scale capabilities. v7.1 adds deterministic monetization and portfolio operating discipline. v7.2 adds an exact scoring engine (`scoring.md`), algorithmic fusion routing (`fusion-router.md` v7.2), operator decision trees (`operator-playbook.md` v7.2), a P0-P3 incident protocol (`incident-protocol.md`), cross-session learning accumulator runtime state (`ATLAS_BRAIN.md`), and wired cross-module interrupt routing so incidents override Oracle Tick action scoring and the growth anomaly path bridges directly to `p0_response()` / `p1_response()`.
+
+v8.0 adds predictive scoring (`scripts/atlas/predictive-scoring.js`), enhanced fusion routing (`fusion-router-v2.md`), real-time monitoring (`scripts/atlas/monitor.js`), unified CLI (`scripts/atlas/cli.js`), and expanded automation workflows.
+
+v8.1 transforms thin modules into executable implementations: context compression (`scripts/atlas/context-compressor.js`), anti-hallucination validation (`scripts/atlas/anti-hallucination-validator.js`), zero-to-first-dollar sprint (`zero-to-first-dollar.md` + `scripts/atlas/zero-to-first-dollar.js`), and startup credits sprint (`startup-credits-sprint.md` + `scripts/atlas/startup-credits-generator.js`). Execution gap reduced from 60% to 20%.
 
 > **A skyscraper built on sand collapses. The early phases ARE the foundation.**
 
@@ -608,6 +616,8 @@ Every write to `context.json`, `mission.json`, or `credentials_index.json`:
 | 13 | **Growth Engine** | `growth-engine.md` | Self-running weekly cycle; cron committed; permissions.yml signed |
 | 14 | **Exit Readiness** | `exit-readiness.md` | Data room complete; marketplace listing drafted; Sovereign Score ≥ 90 |
 | 15 | **Money Engine** | `money-engine.md` | Flywheel tick shipped; measurable KPI delta captured |
+| 15a | **Zero-to-First-Dollar** | `zero-to-first-dollar.md` | ≥ $100 MRR OR ≥ 5 customers OR 30 days with learnings |
+| 15b | **Startup Credits** | `startup-credits-sprint.md` | Applications submitted to ≥ 3 Tier 1 programs |
 | 16 | **Pricing Lab** | `pricing-lab.md` | Controlled price/packaging experiment executed with rollback path |
 | 17 | **Cashflow Ops** | `cashflow-ops.md` | Runway tracked; collections+dunning loop active; spend guardrails committed |
 | 18 | **Offer Forge** | `offer-forge.md` | New offer tested with clear keep/kill threshold |
@@ -620,7 +630,11 @@ Every write to `context.json`, `mission.json`, or `credentials_index.json`:
 | — | Oracle | `mission-intelligence.md` | Loaded in Operator Mode; runs every tick |
 | — | Operator Playbook | `operator-playbook.md` | Daily/weekly cadence, escalation thresholds, and kill-switch rules enforced |
 | — | Fusion Router | `fusion-router.md` | Routes tasks to best skill/agent, merges outputs under Atlas gates |
+| — | Fusion Router v2 | `fusion-router-v2.md` | Enhanced routing with dynamic agent discovery, load balancing, and predictive task assignment |
 | — | Scoring Engine | `scoring.md` | Exact calculation algorithms for all 8 Atlas scores (Sovereign, Priority, Revenue Velocity, Retention Health, Monetization Confidence, Cash Discipline, Fusion Intervention, Capital Mode) |
+| — | Predictive Scoring | `scripts/atlas/predictive-scoring.js` | ML-powered score predictions, trend analysis, and anomaly detection |
+| — | Real-time Monitor | `scripts/atlas/monitor.js` | WebSocket-powered monitoring, TUI dashboard, and alerting system |
+| — | CLI Interface | `scripts/atlas/cli.js` | Unified command-line interface for all Atlas operations |
 | — | Incident Protocol | `incident-protocol.md` | P0-P3 severity schema, SLA targets, response playbooks, post-mortem template, escalation matrix |
 | — | Atlas Brain Module | `atlas-brain.md` | Defines and maintains runtime `ATLAS_BRAIN.md` session continuity state |
 | — | Context Window | `context-window.md` | Loaded in Phase 0; governs all phase transitions |

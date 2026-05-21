@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "name": "API Docs Review",
+  "description": "Reviews API documentation for completeness and accuracy",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "swagger.json",
+      "swagger.yaml",
+      "openapi.json",
+      "openapi.yaml",
+      "*.openapi.yaml"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "API documentation was modified. Check for: 1) All endpoints documented with examples, 2) Request/response schemas complete, 3) Error responses documented, 4) Authentication requirements clear, 5) Rate limits documented, 6) Deprecation notices, 7) Code examples in multiple languages. Suggest documentation improvements."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "name": "CSS Quality Review",
+  "description": "Analyzes CSS/SCSS changes for performance, maintainability, and design system consistency",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*.css",
+      "*.scss",
+      "*.sass",
+      "*.less",
+      "*.styled.js",
+      "*.styled.ts"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "CSS/styling was modified. Review for: 1) Performance issues (expensive selectors, layout thrashing), 2) Design system consistency (colors, spacing, typography), 3) Responsive design and mobile-first approach, 4) Browser compatibility concerns, 5) Unused or duplicate styles, 6) Proper use of CSS variables/tokens, 7) Accessibility (contrast ratios, focus states). Suggest improvements."
+  }
+}

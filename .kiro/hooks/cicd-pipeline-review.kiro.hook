@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "name": "CI/CD Pipeline Review",
+  "description": "Analyzes CI/CD pipeline changes for security, efficiency, and proper workflow structure",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      ".github/workflows/*",
+      ".gitlab-ci.yml",
+      ".circleci/*",
+      "Jenkinsfile",
+      "azure-pipelines.yml",
+      ".travis.yml"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A CI/CD pipeline was modified. Review for: 1) Secrets management (no hardcoded credentials), 2) Proper caching strategies, 3) Parallel job execution opportunities, 4) Appropriate triggers and conditions, 5) Security scanning steps, 6) Deployment safeguards and approval gates, 7) Failure notifications. Suggest improvements for speed and safety."
+  }
+}

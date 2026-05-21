@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "name": "Notification System Review",
+  "description": "Reviews notification system code for reliability and user experience",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*push*.js",
+      "*push*.ts",
+      "*fcm*.js",
+      "*apns*.js",
+      "*notification*.js",
+      "*notification*.ts"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Notification code was modified. Check for: 1) User preference management (opt-in/out), 2) Notification frequency limits, 3) Delivery retry logic, 4) Deep linking and action buttons, 5) Localization support, 6) Analytics tracking, 7) Quiet hours and do-not-disturb. Suggest UX improvements."
+  }
+}

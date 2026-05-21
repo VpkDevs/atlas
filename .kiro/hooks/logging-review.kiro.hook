@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Logging Review",
+  "description": "Reviews logging implementations for security, performance, and usefulness",
+  "version": "1",
+  "when": {
+    "type": "postToolUse",
+    "toolTypes": [
+      "write"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "After writing code, review any logging statements for: 1) No sensitive data logged (passwords, tokens, PII), 2) Appropriate log levels (debug, info, warn, error), 3) Structured logging with context, 4) Performance impact of logging, 5) Useful information for debugging, 6) Log aggregation compatibility. Suggest improvements for security and usefulness."
+  }
+}

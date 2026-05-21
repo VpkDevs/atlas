@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "name": "API Integration Review",
+  "description": "Analyzes third-party API integration code",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*client*.js",
+      "*client*.ts",
+      "*sdk*.js",
+      "*sdk*.ts",
+      "*integration*.js",
+      "*integration*.ts"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "API integration code was modified. Review for: 1) API key/credential management, 2) Rate limiting and quota handling, 3) Retry logic for transient failures, 4) Response validation and error handling, 5) Timeout configuration, 6) API version pinning, 7) Webhook verification. Suggest reliability improvements."
+  }
+}
