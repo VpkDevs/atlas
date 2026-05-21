@@ -178,7 +178,7 @@ _archive/v7_pre_triage/package-lock.json     (only relevant inside scoring-engin
 
 | Old name (v7.x) | New canonical (v8.0) | Reason |
 |---|---|---|
-| `ATLAS_KERNEL.md` | `SKILL.md` routing table | v8.0 folds the loadable routing table into the kernel; ATLAS_KERNEL.md remains reference material only |
+| `ATLAS_KERNEL.md` | `atlas-kernel.md` | v8.0 folds the routing table into SKILL.md; the former kernel deep-dive remains lowercase reference material |
 | `ADVANCED_FEATURES.md` + `advanced-features.md` | `advanced-features.md` | Same |
 | `ADVERSARIAL_AND_EPISTEMIC.md` + `adversarial-and-epistemic.md` | `adversarial-and-epistemic.md` | Same |
 | `fusion-router.md` + `fusion-router-v2.md` | `fusion-router.md` | v2 content merged into canonical name |
@@ -291,3 +291,4 @@ Both are valid. Drift between them is not.
 ---
 
 **v8.0. One kernel. One charter. One changelog. Modules unchanged. Bloat archived. Doctor watches.**
+
