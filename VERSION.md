@@ -1,3 +1,8 @@
+---
+name: version
+description: Atlas version single source of truth.
+---
+
 # Atlas Version — Single Source of Truth
 
 **Current Version:** `v8.3`

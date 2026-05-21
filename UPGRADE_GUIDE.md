@@ -1,3 +1,8 @@
+---
+name: upgrade-guide
+description: Atlas v8.0 upgrade pack installation and surgery notes.
+---
+
 # Atlas v8.0 Upgrade Pack — Install & Surgery Notes
 
 *Hi Vince. This is the walkthrough.*

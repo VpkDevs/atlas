@@ -1,3 +1,8 @@
+---
+name: charter-v8
+description: Canonical Atlas v8.0 charter and file inventory.
+---
+
 # Atlas Charter — v8.0
 
 *One document. One version. Read this first if you are confused about anything.*

@@ -1,3 +1,8 @@
+---
+name: adversarial-and-epistemic
+description: Adversarial testing and epistemic versus aleatoric uncertainty guidance.
+---
+
 # Atlas v8.2+ Enhancements: Adversarial Testing & Epistemic/Aleatoric Separation
 
 ## Overview
