@@ -146,7 +146,7 @@ When a file is retired (no longer referenced from SKILL.md or another active mod
 
 Example archive structure after v8.0 triage:
 
-```
+```text
 _archive/
 ├── INDEX.md
 ├── v7_pre_triage/

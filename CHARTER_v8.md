@@ -43,7 +43,7 @@ Atlas v8.0 is an architectural cleanup of v7.2 with two new capability additions
 
 ### CORE (always at skill root)
 
-```
+```text
 SKILL.md                          ← the kernel
 CHARTER_v8.md                     ← this file
 CHANGELOG.md                      ← the only changelog
@@ -57,7 +57,7 @@ dashboard-template.html
 The following are the modules SKILL.md routes to. Doctor verifies all are present.
 
 **New in v8.0:**
-```
+```text
 atlas-doctor.md            ← integrity check
 first-ship.md              ← 7-day on-ramp pipeline
 skill-hygiene.md           ← anti-bloat doctrine
@@ -65,7 +65,7 @@ rationalization-table.md   ← full catalog (SKILL.md keeps top 10)
 ```
 
 **Preserved from v7.2 (canonical names — see Renames below):**
-```
+```text
 SKILL.md                   ← kernel and routing table
 onboarding.md
 code-sprint.md
@@ -110,14 +110,14 @@ hands-off-gaps.md
 
 ### REFERENCE (deep-dive material, loaded on demand)
 
-```
+```text
 advanced-features.md       (was: ADVANCED_FEATURES.md)
 adversarial-and-epistemic.md (was: ADVERSARIAL_AND_EPISTEMIC.md)
 ```
 
 ### COMPILED SUB-PROJECTS
 
-```
+```text
 scoring-engine/            ← TypeScript scoring engine, its own package
 automation-library/        ← reusable workflow JSON
 ```
@@ -127,7 +127,7 @@ automation-library/        ← reusable workflow JSON
 The following files were retired in v8.0. They are not deleted — they live in `_archive/v7_pre_triage/`. They are not loaded by any module and do not affect Atlas behavior.
 
 **Duplicate uppercase variants (retired in favor of lowercase canonical):**
-```
+```text
 _archive/v7_pre_triage/ADVANCED_FEATURES.md
 _archive/v7_pre_triage/ADVERSARIAL_AND_EPISTEMIC.md
 _archive/v7_pre_triage/ATLAS_KERNEL.md
@@ -147,7 +147,7 @@ _archive/v7_pre_triage/WEAKEST_ASPECTS_FIXED.md
 ```
 
 **Meta-files that v8.0 Skill Hygiene forbids at skill root:**
-```
+```text
 _archive/v7_pre_triage/ALL_FIXES_COMPLETE.md
 _archive/v7_pre_triage/ATLAS_IMPROVEMENT_PLAN.md
 _archive/v7_pre_triage/IMPROVEMENTS_DELIVERED.txt
@@ -155,18 +155,18 @@ _archive/v7_pre_triage/improvements-delivered.txt
 ```
 
 **Old-version module files superseded by canonical names:**
-```
+```text
 _archive/v7_pre_triage/fusion-router-v2.md   (superseded by fusion-router.md)
 ```
 
 **Recursive skill copies (the nesting bug):**
-```
+```text
 _archive/v7_pre_triage/atlas-self-nested/SKILL.md      (was: atlas/SKILL.md)
 _archive/v7_pre_triage/atlas-self-nested-2/SKILL.md    (was: atlas/atlas/SKILL.md)
 ```
 
 **Bloat (does not belong in skill root):**
-```
+```text
 _archive/v7_pre_triage/node_modules/         (was: ./node_modules — 164+ subdirs)
 _archive/v7_pre_triage/package.json          (only relevant inside scoring-engine/)
 _archive/v7_pre_triage/package-lock.json     (only relevant inside scoring-engine/)
@@ -201,7 +201,7 @@ Future versions go forward from here cleanly.
 
 The full surface of `/atlas X` commands. Doctor verifies the routing table in SKILL.md matches this list.
 
-```
+```text
 /atlas                       Auto-detect mode
 /atlas doctor                Integrity check (NEW in v8.0)
 /atlas ship                  Force First Ship Mode (NEW in v8.0)
@@ -232,7 +232,7 @@ The full surface of `/atlas X` commands. Doctor verifies the routing table in SK
 /atlas retire                Mark project retired
 ```
 
-Twenty-eight commands are canonical in v8.0, including the new `/atlas doctor` and `/atlas ship` commands.
+Twenty-nine commands are canonical in v8.0, including the new `/atlas doctor` and `/atlas ship` commands.
 
 ---
 

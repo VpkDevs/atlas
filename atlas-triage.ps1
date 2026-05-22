@@ -4,7 +4,7 @@
 
 .DESCRIPTION
   This script does NOT delete anything. It moves files to _archive/v7_pre_triage/
-  with timestamps preserved. The original Atlas behavior is unaffected — Atlas
+  with timestamps preserved. The original Atlas behavior is unaffected - Atlas
   only reads files referenced from SKILL.md, and v8.0's SKILL.md does not
   reference any of the archived files.
 
@@ -23,7 +23,7 @@
   Run for real (i.e. -DryRun:$false). Equivalent to -DryRun:$false.
 
 .EXAMPLE
-  # Dry run (default — safe)
+  # Dry run (default - safe)
   .\atlas-triage.ps1 -SkillPath "C:\Users\MQ420_OL\.claude\skills\atlas"
 
 .EXAMPLE
@@ -63,9 +63,9 @@ if (-not (Test-Path -Path $SkillPath -PathType Container)) {
 $SkillPath = (Resolve-Path $SkillPath).Path
 
 Write-Host ""
-Write-Host "═══════════════════════════════════════════════════════════════════" -ForegroundColor Cyan
+Write-Host "===================================================================" -ForegroundColor Cyan
 Write-Host "  Atlas v8.0 Triage Script" -ForegroundColor Cyan
-Write-Host "═══════════════════════════════════════════════════════════════════" -ForegroundColor Cyan
+Write-Host "===================================================================" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "  Skill path:  $SkillPath"
 Write-Host "  Mode:        $(if ($DryRun) { 'DRY RUN (no files will be moved)' } else { 'LIVE (files WILL be moved to _archive)' })" -ForegroundColor $(if ($DryRun) { 'Yellow' } else { 'Green' })
@@ -74,12 +74,34 @@ Write-Host ""
 # Sanity check: is this actually an Atlas skill?
 $skillMd = Join-Path $SkillPath "SKILL.md"
 if (-not (Test-Path $skillMd)) {
-    Write-Host "ERROR: No SKILL.md at $SkillPath — this does not look like the Atlas skill directory." -ForegroundColor Red
+    Write-Host "ERROR: No SKILL.md at $SkillPath - this does not look like the Atlas skill directory." -ForegroundColor Red
     exit 1
 }
 
 $skillContent = Get-Content $skillMd -Raw
-if ($skillContent -notmatch "(?m)^\s*name\s*:\s*atlas\s*$") {
+$frontmatterMatch = [regex]::Match(
+    $skillContent,
+    "\A---\r?\n(?<frontmatter>.*?)\r?\n---",
+    [System.Text.RegularExpressions.RegexOptions]::Singleline
+)
+if (-not $frontmatterMatch.Success) {
+    Write-Host "ERROR: SKILL.md at $SkillPath does not have YAML frontmatter." -ForegroundColor Red
+    exit 1
+}
+
+$nameMatch = [regex]::Match($frontmatterMatch.Groups["frontmatter"].Value, '(?m)^\s*name\s*:\s*(?<name>.+?)\s*$')
+$frontmatterName = if ($nameMatch.Success) {
+    $nameValue = $nameMatch.Groups["name"].Value.Trim()
+    if (($nameValue.StartsWith('"') -and $nameValue.EndsWith('"')) -or ($nameValue.StartsWith("'") -and $nameValue.EndsWith("'"))) {
+        $nameValue.Substring(1, $nameValue.Length - 2)
+    } else {
+        $nameValue
+    }
+} else {
+    ""
+}
+
+if ($frontmatterName -cne "atlas") {
     Write-Host "ERROR: SKILL.md at $SkillPath does not have 'name: atlas' frontmatter." -ForegroundColor Red
     exit 1
 }
@@ -179,7 +201,7 @@ foreach ($pair in $uppercasePairs) {
             Type   = "DUPLICATE"
             Source = $upperPath
             Target = Join-Path $archiveDir $pair.Upper
-            Reason = "Uppercase duplicate of $($pair.Lower) — kebab-case is v8.0 canonical"
+            Reason = "Uppercase duplicate of $($pair.Lower) - kebab-case is v8.0 canonical"
         }
     } elseif ((Test-Path $upperPath -PathType Leaf) -and (-not (Test-Path $lowerPath -PathType Leaf))) {
         $operations += [PSCustomObject]@{
@@ -222,6 +244,7 @@ foreach ($nestedRel in ($nestedSkillPaths | Sort-Object { $_.Length })) {
     $nestedFull = Join-Path $SkillPath $nestedRel
     $nestedSkill = Join-Path $nestedFull "SKILL.md"
     if (Test-Path $nestedSkill -PathType Leaf) {
+        $nestedFull = (Get-Item $nestedFull).FullName
         $alreadyCovered = $false
         foreach ($op in ($operations | Where-Object { $_.Type -eq "RECURSION" })) {
             $prefix = $op.Source.TrimEnd('\','/') + [System.IO.Path]::DirectorySeparatorChar
@@ -239,7 +262,7 @@ foreach ($nestedRel in ($nestedSkillPaths | Sort-Object { $_.Length })) {
             Type   = "RECURSION"
             Source = $nestedFull
             Target = Join-Path $archiveDir "nested-skill-$safeName"
-            Reason = "Recursive SKILL.md nesting — Doctor Check 4 violation"
+            Reason = "Recursive SKILL.md nesting - Doctor Check 4 violation"
         }
     }
 }
@@ -247,7 +270,7 @@ foreach ($nestedRel in ($nestedSkillPaths | Sort-Object { $_.Length })) {
 # Report -------------------------------------------------------------------
 
 if ($operations.Count -eq 0) {
-    Write-Host "✅ No triage needed. Atlas is already clean." -ForegroundColor Green
+    Write-Host "OK: No triage needed. Atlas is already clean." -ForegroundColor Green
     Write-Host ""
     exit 0
 }
@@ -267,7 +290,7 @@ Write-Host "  Uppercase canonical renames: $renameCount" -ForegroundColor White
 Write-Host "  Old-version modules:         $oldVerCount" -ForegroundColor White
 Write-Host "  Root-level non-skill bloat:  $rootBloatCount" -ForegroundColor White
 Write-Host "  Recursive skill copies:      $recursionCount" -ForegroundColor $(if ($recursionCount -gt 0) { 'Yellow' } else { 'White' })
-Write-Host "  ────────────────────────────────"
+Write-Host "  --------------------------------"
 Write-Host "  Total operations:            $($operations.Count)" -ForegroundColor Cyan
 Write-Host ""
 
@@ -281,14 +304,14 @@ foreach ($op in $operations) {
         default      { "Gray" }
     }
     Write-Host ("  [{0,-10}] {1}" -f $op.Type, $relSource) -ForegroundColor $color
-    Write-Host ("              → {0}" -f $op.Reason) -ForegroundColor DarkGray
+    Write-Host ("              -> {0}" -f $op.Reason) -ForegroundColor DarkGray
 }
 Write-Host ""
 
 # Execute or just report ---------------------------------------------------
 
 if ($DryRun) {
-    Write-Host "DRY RUN — no files were moved." -ForegroundColor Yellow
+    Write-Host "DRY RUN - no files were moved." -ForegroundColor Yellow
     Write-Host ""
     Write-Host "To execute, re-run with -Force:" -ForegroundColor Yellow
     Write-Host "  .\atlas-triage.ps1 -SkillPath `"$SkillPath`" -Force" -ForegroundColor White
@@ -296,8 +319,8 @@ if ($DryRun) {
     exit 0
 }
 
-# Live mode — confirm one more time
-Write-Host "⚠️  About to move $($operations.Count) items to:" -ForegroundColor Yellow
+# Live mode - confirm one more time
+Write-Host "WARNING: About to move $($operations.Count) items to:" -ForegroundColor Yellow
 Write-Host "    $archiveDir" -ForegroundColor White
 Write-Host ""
 $confirm = Read-Host "Type 'YES' (exactly) to proceed"
@@ -340,20 +363,20 @@ foreach ($op in $operations) {
 
         Move-Item -Path $op.Source -Destination $finalTarget -Force -ErrorAction Stop
 
-        "$($op.Type): $($op.Source) → $finalTarget" | Add-Content $archiveLog
-        Write-Host "  ✅ $($op.Source.Substring($SkillPath.Length).TrimStart('\','/'))" -ForegroundColor Green
+        "$($op.Type): $($op.Source) -> $finalTarget" | Add-Content $archiveLog
+        Write-Host "  OK: $($op.Source.Substring($SkillPath.Length).TrimStart('\','/'))" -ForegroundColor Green
         $success++
     } catch {
-        "FAILED $($op.Type): $($op.Source) — $($_.Exception.Message)" | Add-Content $archiveLog
-        Write-Host "  ❌ $($op.Source.Substring($SkillPath.Length).TrimStart('\','/')) — $($_.Exception.Message)" -ForegroundColor Red
+        "FAILED $($op.Type): $($op.Source) - $($_.Exception.Message)" | Add-Content $archiveLog
+        Write-Host "  FAIL: $($op.Source.Substring($SkillPath.Length).TrimStart('\','/')) - $($_.Exception.Message)" -ForegroundColor Red
         $failed++
     }
 }
 
 Write-Host ""
-Write-Host "═══════════════════════════════════════════════════════════════════" -ForegroundColor Cyan
+Write-Host "===================================================================" -ForegroundColor Cyan
 Write-Host "  Triage complete." -ForegroundColor Cyan
-Write-Host "═══════════════════════════════════════════════════════════════════" -ForegroundColor Cyan
+Write-Host "===================================================================" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "  Moved successfully: $success" -ForegroundColor Green
 Write-Host "  Failed:             $failed" -ForegroundColor $(if ($failed -gt 0) { 'Red' } else { 'Gray' })

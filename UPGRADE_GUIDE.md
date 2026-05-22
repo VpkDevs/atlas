@@ -13,7 +13,7 @@ description: Atlas v8.0 upgrade pack installation and surgery notes.
 
 Eight new files. They drop into your existing Atlas skill directory and replace/add a small number of things while leaving the bulk of your work (30+ existing module files, scoring engine, dashboard, automation library) untouched.
 
-```
+```text
 SKILL.md                  ← replaces your current SKILL.md (944 lines → ~380)
 CHARTER_v8.md             ← new, single source of version truth
 first-ship.md             ← new module, the 7-day on-ramp
@@ -130,7 +130,7 @@ git push                                       # if you have a remote
 
 From this upgrade pack:
 
-```
+```text
 SKILL.md          → C:\Users\MQ420_OL\.claude\skills\atlas\SKILL.md          (overwrites)
 CHARTER_v8.md     → C:\Users\MQ420_OL\.claude\skills\atlas\CHARTER_v8.md     (new)
 first-ship.md     → C:\Users\MQ420_OL\.claude\skills\atlas\first-ship.md     (new)
@@ -152,7 +152,7 @@ cd C:\Users\MQ420_OL\.claude\skills\atlas
 
 You'll see a summary like:
 
-```
+```text
 Summary of operations:
   Meta/summary bloat files:    32
   Uppercase duplicate files:   3
@@ -180,13 +180,13 @@ Files move to `_archive/v7_pre_triage/`. Nothing is deleted.
 
 In a Claude session with the Atlas skill:
 
-```
+```text
 /atlas doctor
 ```
 
 Expected output:
 
-```
+```text
 ─────────────────────────────────────────────────────
 ATLAS DOCTOR — v8.0 INTEGRITY CHECK
 
@@ -218,7 +218,7 @@ git push
 
 Your profile flags SweepBot as your most-deployment-ready project. Open a session in that project's directory:
 
-```
+```text
 /atlas ship
 ```
 

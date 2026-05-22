@@ -31,7 +31,7 @@ If integrity checks fail, **Atlas refuses to run**. This is non-negotiable. A sk
 
 ## The Integrity Check
 
-```
+```text
 PROCEDURE atlas_doctor:
   1. Verify SKILL.md is canonical
   2. Verify referenced modules exist
@@ -48,10 +48,10 @@ Run in order. Each check produces ✅ / ⚠️ / ❌.
 
 ### Check 1 — SKILL.md Canonical
 
-```
+```text
 [ ] Exactly ONE SKILL.md exists in the skill root
 [ ] SKILL.md frontmatter has `name: atlas`
-[ ] SKILL.md body line count ≤ 500 for PASS, 501–700 for WARN, >700 for WARN
+[ ] SKILL.md body line count ≤ 500 for PASS, 501–700 for WARN, >700 for STRONG WARN
 [ ] SKILL.md references "v8.0" in body header
 [ ] No `SKILL.md.bak`, `SKILL.OLD.md`, `SKILL_v7.md`, or similar legacy copies at skill root
 ```
@@ -66,7 +66,7 @@ Run in order. Each check produces ✅ / ⚠️ / ❌.
 
 Parse SKILL.md for every reference of the form `` `[name].md` `` or `(name.md)`. For each, verify the file exists in the skill directory.
 
-```
+```text
 Expected core modules (referenced in v8.0 SKILL.md):
   atlas-doctor.md, first-ship.md, skill-hygiene.md,
   rationalization-table.md,
@@ -90,7 +90,7 @@ Expected core modules (referenced in v8.0 SKILL.md):
 
 Scan the skill root for any pair of files where one is the uppercased/lowercased or `snake_case`/`kebab-case` variant of the other.
 
-```
+```text
 ALGORITHM:
   - List every .md file in skill root and one level deep
   - Normalize each filename: lowercase, replace _ with -, strip trailing v[0-9]+
@@ -103,7 +103,7 @@ ALGORITHM:
 
 Known v7.x duplicate clusters that v8.0 doctor specifically watches for:
 
-```
+```text
 {IMPROVEMENTS_INDEX.md, improvements-index.md}
 {MASTER_SUMMARY.md, master-summary.md}
 {FINAL_SUMMARY.md, final-summary.md}
@@ -127,7 +127,7 @@ These specific clusters are evidence of an incomplete rename pass. If Doctor fin
 
 ### Check 4 — No Recursive Nesting
 
-```
+```text
 [ ] No directory named "atlas" exists inside the atlas skill root
 [ ] No SKILL.md exists below the skill root
 ```
@@ -137,9 +137,9 @@ These specific clusters are evidence of an incomplete rename pass. If Doctor fin
 
 ### Check 5 — State Directory Health
 
-```
+```text
 [ ] ~/.atlas/ exists and is writable
-[ ] ~/.atlas/memory.md exists (create if missing)
+[ ] ~/.atlas/memory.md exists (report missing; suggest a user-run creation command)
 [ ] ~/.atlas/founder-profile.json exists and parses as valid JSON
 [ ] ~/.atlas/portfolio/ exists
 [ ] For each portfolio subdirectory:
@@ -151,12 +151,13 @@ These specific clusters are evidence of an incomplete rename pass. If Doctor fin
 
 **FAIL conditions:**
 - `~/.atlas/` not writable → ❌ — Atlas halts; permissions issue
+- `~/.atlas/memory.md` missing → ⚠️ — Atlas warns; suggests `mkdir -p ~/.atlas && touch ~/.atlas/memory.md`
 - `context.json` exists but does not parse → ❌ — Atlas halts; attempt restore from `.bak`
 - `founder-profile.json` does not parse → ⚠️ — Atlas warns; runs in degraded mode
 
 ### Check 6 — Version Coherence
 
-```
+```text
 [ ] CHARTER_v8.md exists at skill root
 [ ] CHARTER_v8.md declares canonical version
 [ ] SKILL.md header version matches CHARTER_v8.md
@@ -168,7 +169,7 @@ These specific clusters are evidence of an incomplete rename pass. If Doctor fin
 
 ### Check 7 — Scoring Engine Reachable
 
-```
+```text
 IF scoring-engine/ directory exists:
   [ ] scoring-engine/src/index.ts exists
   [ ] scoring-engine/package.json exists
@@ -184,7 +185,7 @@ IF scoring-engine/ does not exist:
 
 ### Check 8 — `node_modules` Hygiene
 
-```
+```text
 [ ] No node_modules/ directory at the SKILL root (it should be inside scoring-engine/ or other sub-projects only)
 [ ] .gitignore includes node_modules
 ```
@@ -196,7 +197,7 @@ IF scoring-engine/ does not exist:
 
 ## Output Format
 
-```
+```text
 ─────────────────────────────────────────────────────
 ATLAS DOCTOR — v8.0 INTEGRITY CHECK
 
@@ -251,7 +252,7 @@ This is deliberate. Doctor's job is to detect, not to act. An auto-repairing sel
 
 When the universal Self-Healing Protocol exhausts its 3 retries on the same root cause, the next step (before logging as `pending_human_action`) is a Doctor check. If Doctor reports FAIL, the failure is in Atlas itself, not the user's project — and the surfaced `userMust` reflects that:
 
-```
+```text
 userMust: {
   label: "Atlas skill integrity check failed. Repair Atlas before continuing.",
   url: "(see Doctor output above)",

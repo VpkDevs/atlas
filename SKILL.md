@@ -108,7 +108,7 @@ After every code change: `git add -A && git commit -m "[Atlas] [phase]: [descrip
 
 ## Modes (Boot Order)
 
-```
+```text
 WHEN /atlas invoked:
   1. Run /atlas doctor                         (load atlas-doctor.md)
        If integrity check FAILS → halt; report; do not proceed.
@@ -259,7 +259,7 @@ For exact algorithms, load `scoring.md`. The category map:
 
 After every phase, show three numbers:
 
-```
+```text
 Score now: 58/100
   Achievable without any human action: 58
   Achievable with pending human actions (~X hrs): 74 ✅
@@ -269,7 +269,7 @@ Score now: 58/100
 
 ## State Layer
 
-```
+```text
 ~/.atlas/
 ├── memory.md                              ← cross-project learnings
 ├── founder-profile.json                   ← who the founder is
@@ -293,7 +293,7 @@ Score now: 58/100
 
 Atlas writes to the **project repo** (committed) and **founder docs** (committed):
 
-```
+```text
 docs/legal/      TERMS_OF_SERVICE.md, PRIVACY_POLICY.md, COMPLIANCE_CHECKLIST.md
 docs/founder/    RUNBOOK.md, LAUNCH_SEQUENCE.md, CONTENT_CALENDAR_30.md,
                  MARKETING_PLAYBOOK.md, BUSINESS_SETUP.md, STARTUP_CREDITS.md,

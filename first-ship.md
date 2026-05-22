@@ -66,7 +66,7 @@ Atlas runs these phases automatically. The founder does not approve between them
 
 ### Day 0 — Scope Lock (≤ 2 hours)
 
-```
+```text
 PROCEDURE first_ship_scope_lock:
   1. Read ~/.atlas/portfolio/[slug]/context.json (or initialize)
   2. From onboarding.md, run the 3-pass Business Context inference
@@ -88,7 +88,7 @@ PROCEDURE first_ship_scope_lock:
 
 Load `code-sprint.md` but apply First Ship constraint: **delete features not in `SHIP_CHARTER.md` rather than fix them**. This is the most important and most counterintuitive step. Atlas will be tempted to fix broken code. Don't. Cut it.
 
-```
+```text
 PROCEDURE first_ship_strip:
   1. List every route, page, feature, model in the codebase
   2. Mark each as IN_CHARTER or OUT_OF_CHARTER
@@ -107,7 +107,7 @@ PROCEDURE first_ship_strip:
 
 This is the day First Ship lives or dies. Stripe Checkout must work.
 
-```
+```text
 PROCEDURE first_ship_payment:
   1. If STRIPE_SECRET_KEY in .env:
        a. Call Stripe API to create product + price matching SHIP_CHARTER.md
@@ -126,7 +126,7 @@ PROCEDURE first_ship_payment:
 
 ### Day 3 — Legal Minimum + Live Verification
 
-```
+```text
 PROCEDURE first_ship_legal_min:
   1. Load legal-compliance.md but generate MINIMUM viable docs only
   2. ToS, Privacy, Cookie notice — generic templates customized with
@@ -141,7 +141,7 @@ PROCEDURE first_ship_legal_min:
 
 ### Day 4 — Landing Page That Converts
 
-```
+```text
 PROCEDURE first_ship_landing:
   1. Generate landing page from SHIP_CHARTER.md:
      - Headline = core promise
@@ -159,7 +159,7 @@ PROCEDURE first_ship_landing:
 
 ### Day 5 — Outreach List (Not Yet Sent)
 
-```
+```text
 PROCEDURE first_ship_outreach_prep:
   1. Founder identifies 10–25 specific humans who could plausibly want this product
      (NOT "tech twitter" — specific names and contexts)
@@ -178,7 +178,7 @@ PROCEDURE first_ship_outreach_prep:
 
 ### Day 6 — Send + Iterate
 
-```
+```text
 PROCEDURE first_ship_send:
   1. Founder sends 5 messages
   2. While waiting for response: Atlas works on:
@@ -193,7 +193,7 @@ PROCEDURE first_ship_send:
 
 ### Day 7 — First Dollar Gate
 
-```
+```text
 PROCEDURE first_ship_gate_check:
   1. Query Stripe API: count successful charges with customer email ≠ founder email
   2. IF count ≥ 1:
@@ -238,7 +238,7 @@ Atlas may **mention** these phases in checkpoints ("Phase 14 will run after Firs
 
 ## First Ship Checkpoint Format
 
-```
+```text
 ─────────────────────────────────────────────────────
 DAY [N] — [PHASE NAME] COMPLETE
 
