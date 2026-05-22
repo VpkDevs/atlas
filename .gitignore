@@ -1,0 +1,34 @@
+backups/
+cache/
+debug/
+.claude.json*
+node_modules/
+*.log
+
+# Local Claude state and credentials
+.credentials.json
+settings.local.json
+settings.json.bak
+mcp-needs-auth-cache.json
+stats-cache.json
+usage-cache.json
+
+# Generated workspace/runtime folders
+downloads/
+file-history/
+session-env/
+sessions/
+shell-snapshots/
+telemetry/
+tasks/
+vercel-plugin-device-id
+vercel-plugin-telemetry-preference
+
+# Local runtime temp files
+**/.temp-execution-*.js
+*.tmp
+
+# Local workspace state
+projects/
+plugins/cache/
+ide/
