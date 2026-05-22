@@ -242,7 +242,6 @@ Out of ~40 module files in the canonical inventory, a typical `/atlas` invocatio
 
 - SKILL.md (always)
 - atlas-doctor.md (always, before anything else)
-- SKILL.md (always, for the routing table)
 - One mode-specific module (e.g., `first-ship.md` OR `onboarding.md` OR `growth-engine.md` depending on mode)
 - 2–4 phase-specific modules as the pipeline progresses
 

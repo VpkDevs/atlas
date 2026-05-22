@@ -126,7 +126,7 @@ git commit -m "Pre-v8.0 snapshot"
 git push                                       # if you have a remote
 ```
 
-### Step 1: Copy the seven new files in
+### Step 1: Copy the eight new files in
 
 From this upgrade pack:
 
@@ -136,11 +136,12 @@ CHARTER_v8.md     → C:\Users\MQ420_OL\.claude\skills\atlas\CHARTER_v8.md     (
 first-ship.md     → C:\Users\MQ420_OL\.claude\skills\atlas\first-ship.md     (new)
 atlas-doctor.md   → C:\Users\MQ420_OL\.claude\skills\atlas\atlas-doctor.md   (new)
 skill-hygiene.md  → C:\Users\MQ420_OL\.claude\skills\atlas\skill-hygiene.md  (new)
+rationalization-table.md → C:\Users\MQ420_OL\.claude\skills\atlas\rationalization-table.md (new)
 atlas-triage.ps1  → C:\Users\MQ420_OL\.claude\skills\atlas\atlas-triage.ps1  (new)
 UPGRADE_GUIDE.md  → wherever you want (or skill root is fine)
 ```
 
-You only overwrite SKILL.md. The other six are new files that don't conflict with anything.
+You only overwrite SKILL.md. The other seven are new files that don't conflict with anything.
 
 ### Step 2: Run triage in dry-run mode (30 seconds)
 

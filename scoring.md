@@ -390,7 +390,7 @@ FUNCTION minimum_sample_size(baseline_rate, minimum_detectable_effect, power=0.8
   z_beta  = 0.842  # power = 0.80
 
   n = ((z_alpha + z_beta) ** 2) * (p1 * (1 - p1) + p2 * (1 - p2)) / ((p2 - p1) ** 2)
-  return ceil(n)
+  return ceil(n)  # ceil rounds up to the nearest integer
 
 # Reference table for Atlas quick decisions:
 # Baseline 2%, MDE 20%rel → n = 9,123 per variant (≈18K total)
