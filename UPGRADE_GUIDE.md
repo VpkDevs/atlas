@@ -109,7 +109,7 @@ If you want to know which version Atlas is at, you read CHARTER. If SKILL.md and
 
 ### 6. Triage script (`atlas-triage.ps1`)
 
-Safe Windows cleanup script. **Dry-run by default.** Reports what it would move; nothing happens until you re-run with `-Force` and type `YES`. Moves files to `_archive/v7_pre_triage/` with a `TRIAGE_LOG.txt` recording every operation. Idempotent. Never deletes.
+Safe Windows cleanup script. **Dry-run by default.** Reports what it would move; nothing happens until you re-run with `-Force` and type `YES`. Use it as a local migration aid before committing the lean v8 tree. Runtime packages should not commit `_archive/` output.
 
 ---
 
@@ -174,7 +174,7 @@ Read through what it wants to move. If anything in the list is something you act
 # Type YES when prompted
 ```
 
-Files move to `_archive/v7_pre_triage/`. Nothing is deleted.
+Files move to a local `_archive/v7_pre_triage/` staging area. Review that output, then keep only canonical v8 files in the committed package.
 
 ### Step 4: Verify with Doctor (1 minute)
 
@@ -230,9 +230,9 @@ Atlas will detect First Ship Mode is appropriate, write `SHIP_CHARTER.md`, lock 
 
 Three failure modes to know about:
 
-**Doctor reports FAIL after triage.** Re-read the specific check that failed. If it's check 2 (module references), one of your existing modules might reference an archived file. The fix: edit the module to remove the reference, OR un-archive the specific file from `_archive/v7_pre_triage/`. Both work; the first is better.
+**Doctor reports FAIL after triage.** Re-read the specific check that failed. If it's check 2 (module references), one of your existing modules might reference a retired file. The fix: edit the module to remove the reference, OR restore the specific file from git history and make it canonical. The first is better.
 
-**You miss one of the archived files.** Everything is in `_archive/v7_pre_triage/` with a `TRIAGE_LOG.txt`. Move it back to wherever it came from. Nothing was deleted.
+**You miss one of the retired files.** Restore it from git history, then decide whether it belongs as a canonical module or a changelog note.
 
 **You want to roll back to v7.2 entirely.** `git reset --hard HEAD~1` (or whatever commit point you want) and you're back. The triage commit is one commit; reverting it un-does the upgrade cleanly.
 

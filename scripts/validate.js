@@ -148,6 +148,11 @@ check('CHARTER_v8.md declares 28 canonical commands', () => {
     || 'CHARTER_v8.md command-count sentence is stale';
 });
 
+console.log('\n── Hygiene gates');
+for (const f of ['.atlas-state', '.kiro', '_archive']) {
+  check(`${f} is not committed`, () => !fileExists(f) || `Remove runtime/bulk directory: ${f}`);
+}
+
 // ─── SUMMARY ──────────────────────────────────────────────────────────────
 console.log(`\n${'─'.repeat(50)}`);
 console.log(`Results: ${passed} passed, ${failed} failed`);

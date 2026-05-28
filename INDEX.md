@@ -5,7 +5,7 @@ description: Atlas v8.0 documentation index and canonical module inventory.
 
 # Atlas Documentation Index
 
-Atlas v8.0 is the current canonical track. `CHARTER_v8.md` is the source of truth for version, command surface, canonical files, and archive policy.
+Atlas v8.0 is the current canonical track. `CHARTER_v8.md` is the source of truth for version, command surface, canonical files, and hygiene policy.
 
 ## Start Here
 
@@ -38,9 +38,9 @@ Atlas v8.0 is the current canonical track. `CHARTER_v8.md` is the source of trut
 
 ## Archive Policy
 
-Historical v7.x and aspirational v8.1/v8.3 files belong under `_archive/v7_pre_triage/`. They are retained for audit history but are not canonical runtime inputs.
+Historical v7.x and aspirational v8.1/v8.3 files are retained in git history, not in the active skill package. They are not canonical runtime inputs.
 
-Do not add summary, fix-report, package, or nested `atlas/` files back into the active skill root. Update this index and `CHARTER_v8.md` when a canonical module changes.
+Do not add summary, fix-report, runtime-state, `.kiro/`, `_archive/`, or nested `atlas/` files back into the active skill root. Update this index and `CHARTER_v8.md` when a canonical module changes.
 
 ## Verification
 

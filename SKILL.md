@@ -345,7 +345,7 @@ The full catalog is in `rationalization-table.md`. The ten that catch ~90% of dr
 
 ## What Changed in v8.0
 
-This is the **only** changelog entry. The IMPROVEMENTS_*, FIXES_*, MASTER_SUMMARY, FINAL_SUMMARY, CONTINUATION_SUMMARY, TREMENDOUS_IMPROVEMENTS files that accumulated through v7.x have been archived to `_archive/v7_pre_triage/`. See `CHARTER_v8.md`.
+This is the **only** changelog entry. The IMPROVEMENTS_*, FIXES_*, MASTER_SUMMARY, FINAL_SUMMARY, CONTINUATION_SUMMARY, TREMENDOUS_IMPROVEMENTS files that accumulated through v7.x were retired from the active skill package and remain recoverable from git history. See `CHARTER_v8.md`.
 
 - **Kernel-first SKILL.md.** 944 lines → ~380. Progressive disclosure per Anthropic's skill best practices. Module files are now the source of truth for their domains; the kernel routes.
 - **First Ship Mode** (`first-ship.md`). New 7-day compressed pipeline for founders with no prior shipped product. Resolves the "21 phases is too many to start" failure mode.

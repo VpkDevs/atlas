@@ -21,7 +21,6 @@ description: Atlas module — doctrine that prevents the skill from accumulating
 6. `automation-library/` — reusable workflow JSON
 7. `scoring-engine/` (or equivalent) — compiled scoring code
 8. `dashboard-template.html` — UI template
-9. `_archive/` — historical material, not loaded
 
 **The skill directory does NOT contain:**
 
@@ -31,6 +30,7 @@ description: Atlas module — doctrine that prevents the skill from accumulating
 - Multiple version-tagged copies of the same document (`foo-v7.md`, `foo-v8.md`)
 - Both uppercase and lowercase variants of the same file
 - Compiled artifacts (`dist/`, `build/`) outside their sub-project
+- Runtime or tool state directories (`.atlas-state/`, `.kiro/`, `_archive/`)
 - `.bak` files older than 7 days
 
 ---
@@ -82,13 +82,13 @@ Atlas v8.0 has exactly one changelog file: `CHANGELOG.md`. Format:
 - New: `/atlas doctor` integrity check (`atlas-doctor.md`)
 - New: Skill Hygiene doctrine (`skill-hygiene.md`)
 - New: `CHARTER_v8.md` as single source of version truth
-- Triage: 923 markdown files → ~50 canonical modules + archive
+- Triage: 923 markdown files → ~50 canonical modules
 - Removed from skill root: 14 duplicate-pair files, 15 summary/audit/fix files, nested atlas/atlas/ directory, node_modules/
 - Kernel: SKILL.md 944 lines → 380 lines
 
 ## v7.2 — 2025-05-15
 - New: Scoring engine, fusion router v7.2, operator playbook, incident protocol
-- (see _archive/v7_pre_triage/STRATEGIC_ARCHITECTURE_v8.3.md for the verbose version that v8.0 retired)
+- Verbose v7.x/v8.x planning documents are recoverable from git history if an audit needs them.
 
 ## v7.1
 ...
@@ -134,39 +134,17 @@ description: Atlas module — [one sentence purpose].
 
 ---
 
-## Archive Discipline
+## Retirement Discipline
 
 When a file is retired (no longer referenced from SKILL.md or another active module):
 
-1. **Do not delete.** Atlas's history is valuable. Future audits depend on it.
-2. **Move to `_archive/v[N]_pre_[reason]/`** where `[N]` is the version after which it was retired and `[reason]` is e.g. `triage`, `consolidation`, `redesign`.
-3. **Add to `_archive/INDEX.md`** with one line: `[filename] — [reason] — [date]`.
+1. **Do not keep it in the active package.** Atlas's current tree must stay reviewable and installable.
+2. **Preserve the reason in `CHANGELOG.md`** when the retirement is user-facing or architectural.
+3. **Rely on git history for recovery.** If a retired file matters later, restore it from a specific commit and make it canonical again.
 4. **Update SKILL.md or relevant module** to remove any reference to the retired file.
 5. **Run `/atlas doctor`** to verify no dangling references.
 
-Example archive structure after v8.0 triage:
-
-```text
-_archive/
-├── INDEX.md
-├── v7_pre_triage/
-│   ├── IMPROVEMENTS_INDEX.md
-│   ├── improvements-index.md
-│   ├── MASTER_SUMMARY.md
-│   ├── master-summary.md
-│   ├── FINAL_SUMMARY.md
-│   ├── CONTINUATION_SUMMARY.md
-│   ├── TREMENDOUS_IMPROVEMENTS_V8.1.md
-│   ├── WEAKEST_ASPECTS_FIXED.md
-│   ├── INCONSISTENCIES_FIXED.md
-│   ├── IDEAL_VS_ACTUAL.md
-│   ├── MODULE_AUDIT_v8.3.md
-│   ├── STRATEGIC_ARCHITECTURE_v8.3.md
-│   ├── (... ~30 files total)
-│   └── atlas-atlas-recursive-copy/   (the nested skill that contained itself)
-└── v6_pre_v7_consolidation/
-    └── ...
-```
+Do not commit `_archive/` directories to the skill repo. They keep the old confusion physically close to the current runtime and make automated review tools skip the PR.
 
 ---
 
@@ -241,7 +219,7 @@ The ceiling is soft because some skills genuinely need more modules. The ceiling
 
 | Excuse | Reality |
 |---|---|
-| "I'll just leave the old file for reference" | Move it to `_archive/`. Reference is a directory, not a top-level concern. |
+| "I'll just leave the old file for reference" | Git history is the reference. The active package is for runtime inputs. |
 | "Lowercase version is a backup of the uppercase one" | One is wrong. Pick one. Archive the other. |
 | "This summary file documents what I did" | Edit CHANGELOG.md. That IS the documentation. |
 | "node_modules is needed for the scoring engine" | Then it lives in `scoring-engine/node_modules/`, not at skill root. |
@@ -260,7 +238,7 @@ The ceiling is soft because some skills genuinely need more modules. The ceiling
 - ❌ Added a new module without a corresponding SKILL.md routing table entry
 - ❌ Allowed `node_modules/` to appear in the skill root
 - ❌ Did not run `/atlas doctor` after structural changes
-- ❌ The skill directory exceeded 100 files (excluding `_archive/` and committed sub-projects)
+- ❌ The skill directory exceeded 100 files (excluding committed sub-projects)
 
 ---
 

@@ -122,55 +122,11 @@ scoring-engine/            ← TypeScript scoring engine, its own package
 automation-library/        ← reusable workflow JSON
 ```
 
-### ARCHIVE (retired in v8.0, preserved for history, NOT loaded)
+### RETIRED IN v8.0 (preserved by git history, NOT committed in the skill)
 
-The following files were retired in v8.0. They are not deleted — they live in `_archive/v7_pre_triage/`. They are not loaded by any module and do not affect Atlas behavior.
+The v7.x triage removed duplicate uppercase variants, summary/fix-report files, old versioned module copies, nested Atlas skill copies, root package artifacts, and runtime state. Those files are recoverable from git history when needed, but they are not part of the active skill tree and are not loaded by any module.
 
-**Duplicate uppercase variants (retired in favor of lowercase canonical):**
-```text
-_archive/v7_pre_triage/ADVANCED_FEATURES.md
-_archive/v7_pre_triage/ADVERSARIAL_AND_EPISTEMIC.md
-_archive/v7_pre_triage/ATLAS_KERNEL.md
-_archive/v7_pre_triage/CONTINUATION_SUMMARY.md
-_archive/v7_pre_triage/FINAL_SUMMARY.md
-_archive/v7_pre_triage/FIXES_COMPLETE.md
-_archive/v7_pre_triage/IDEAL_VS_ACTUAL.md
-_archive/v7_pre_triage/IMPROVEMENTS_INDEX.md
-_archive/v7_pre_triage/IMPROVEMENTS_SUMMARY.md
-_archive/v7_pre_triage/IMPROVEMENT_GUIDE.md
-_archive/v7_pre_triage/INCONSISTENCIES_FIXED.md
-_archive/v7_pre_triage/MASTER_SUMMARY.md
-_archive/v7_pre_triage/MODULE_AUDIT_v8.3.md
-_archive/v7_pre_triage/STRATEGIC_ARCHITECTURE_v8.3.md
-_archive/v7_pre_triage/TREMENDOUS_IMPROVEMENTS_V8.1.md
-_archive/v7_pre_triage/WEAKEST_ASPECTS_FIXED.md
-```
-
-**Meta-files that v8.0 Skill Hygiene forbids at skill root:**
-```text
-_archive/v7_pre_triage/ALL_FIXES_COMPLETE.md
-_archive/v7_pre_triage/ATLAS_IMPROVEMENT_PLAN.md
-_archive/v7_pre_triage/IMPROVEMENTS_DELIVERED.txt
-_archive/v7_pre_triage/improvements-delivered.txt
-```
-
-**Old-version module files superseded by canonical names:**
-```text
-_archive/v7_pre_triage/fusion-router-v2.md   (superseded by fusion-router.md)
-```
-
-**Recursive skill copies (the nesting bug):**
-```text
-_archive/v7_pre_triage/atlas-self-nested/SKILL.md      (was: atlas/SKILL.md)
-_archive/v7_pre_triage/atlas-self-nested-2/SKILL.md    (was: atlas/atlas/SKILL.md)
-```
-
-**Bloat (does not belong in skill root):**
-```text
-_archive/v7_pre_triage/node_modules/         (was: ./node_modules — 164+ subdirs)
-_archive/v7_pre_triage/package.json          (only relevant inside scoring-engine/)
-_archive/v7_pre_triage/package-lock.json     (only relevant inside scoring-engine/)
-```
+Atlas v8.0 intentionally does **not** commit `_archive/`, `.atlas-state/`, or `.kiro/` directories. This keeps the skill reviewable, installable, and aligned with the hygiene rule that runtime state and meta-bloat do not belong in the skill package.
 
 ---
 
