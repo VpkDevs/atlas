@@ -232,7 +232,7 @@ The full surface of `/atlas X` commands. Doctor verifies the routing table in SK
 /atlas retire                Mark project retired
 ```
 
-Twenty-nine commands are canonical in v8.0, including the new `/atlas doctor` and `/atlas ship` commands.
+Twenty-eight commands are canonical in v8.0, including the new `/atlas doctor` and `/atlas ship` commands.
 
 ---
 

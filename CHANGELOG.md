@@ -6,6 +6,24 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ---
 
+## [8.0.0] - 2026-05-21
+
+### Kernel-First Atlas
+
+This release makes `CHARTER_v8.md` the canonical version authority and trims Atlas into a kernel-first Claude skill with on-demand modules, Doctor integrity checks, First Ship mode, and a stricter skill hygiene policy.
+
+#### Core Changes
+- **Kernel-first `SKILL.md`**: Runtime routing stays compact, with deeper doctrine loaded only when a command needs it.
+- **`/atlas doctor`**: Adds an explicit integrity-check command before operational work proceeds.
+- **`/atlas ship`**: Adds a compressed First Ship mode for founders who need a direct path to first public launch.
+- **Skill hygiene doctrine**: `skill-hygiene.md` defines anti-bloat rules for archives, runtime state, summaries, and generated artifacts.
+- **v7 triage archive**: Historical v7.x and aspirational v8.x materials move under `_archive/v7_pre_triage/` so the active runtime surface stays coherent.
+
+#### Validation
+- `validate.js` now checks the active v8.0 changelog section, root package manifest, and CHARTER command-surface count.
+
+---
+
 ## [7.2.0] - 2026-05-12
 
 ### The Sovereign Money Engine

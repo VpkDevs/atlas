@@ -1,0 +1,15 @@
+{
+  "name": "@vpkdevs/atlas",
+  "version": "8.0.0",
+  "private": true,
+  "description": "Atlas Claude skill and operating system documentation.",
+  "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "validate": "node scripts/validate.js",
+    "weekly-review": "node scripts/atlas/weekly-review.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

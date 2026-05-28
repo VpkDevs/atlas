@@ -6,10 +6,10 @@
  * 1. All .md files in the root have valid YAML frontmatter
  * 2. All module cross-references in SKILL.md resolve to real files
  * 3. No [TODO], [FIXME], [TBD], or <placeholder> strings in SKILL.md
- * 4. LICENSE, README.md, CHANGELOG.md, .gitignore all present
+ * 4. LICENSE, README.md, CHANGELOG.md, package.json, .gitignore all present
  * 5. No stale username references (vincekinney1991 → VpkDevs)
  * 6. docs/legal/ contains the three required documents
- * 7. CHANGELOG.md contains the current major version section
+ * 7. Version and command-surface invariants match CHARTER_v8.md
  */
 
 const fs = require('fs');
@@ -51,7 +51,7 @@ console.log('\n🔍 Atlas Schema Validator\n');
 
 // ─── CHECK 1: Required root files ─────────────────────────────────────────
 console.log('── Required files');
-for (const f of ['SKILL.md', 'README.md', 'CHANGELOG.md', 'LICENSE', '.gitignore']) {
+for (const f of ['SKILL.md', 'README.md', 'CHANGELOG.md', 'LICENSE', 'package.json', '.gitignore']) {
   check(f + ' exists', () => fileExists(f) || `Missing: ${f}`);
 }
 
@@ -120,11 +120,32 @@ for (const f of [
   check(f + ' exists', () => fileExists(f) || `Missing: ${f}`);
 }
 
-// ─── CHECK 7: CHANGELOG has a current version section ─────────────────────
-console.log('\n── CHANGELOG version coverage');
-check('CHANGELOG.md contains v7.2 section', () => {
+// ─── CHECK 7: Version and command-surface invariants ─────────────────────
+console.log('\n── Version and command surface');
+check('CHANGELOG.md contains v8.0 section', () => {
   const changelog = readFile('CHANGELOG.md');
-  return changelog.includes('[7.2.0]') || 'No [7.2.0] section found';
+  return changelog.includes('[8.0.0]') || 'No [8.0.0] section found';
+});
+
+check('package.json version is 8.0.0', () => {
+  const pkg = JSON.parse(readFile('package.json'));
+  return pkg.version === '8.0.0' || `Version is ${pkg.version}, expected 8.0.0`;
+});
+
+check('CHARTER_v8.md declares 28 canonical commands', () => {
+  const charter = readFile('CHARTER_v8.md');
+  const commandBlock = charter.match(/## Subcommand Surface \(v8\.0\)[\s\S]*?```text\r?\n([\s\S]*?)```/);
+  if (!commandBlock) return 'Subcommand surface block not found';
+  const commands = commandBlock[1]
+    .split(/\r?\n/)
+    .map(line => line.trim())
+    .filter(line => line.startsWith('/atlas'));
+  const uniqueCommands = new Set(commands.map(line => line.split(/\s{2,}/)[0]));
+  if (uniqueCommands.size !== 28) {
+    return `Found ${uniqueCommands.size} canonical commands, expected 28`;
+  }
+  return charter.includes('Twenty-eight commands are canonical in v8.0')
+    || 'CHARTER_v8.md command-count sentence is stale';
 });
 
 // ─── SUMMARY ──────────────────────────────────────────────────────────────
