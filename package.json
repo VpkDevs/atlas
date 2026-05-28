@@ -1,30 +1,15 @@
 {
-  "name": "atlas-skill",
-  "version": "6.2.0",
-  "description": "Atlas v6 — The Sovereign Empire. AI co-founder Claude Code skill.",
+  "name": "@vpkdevs/atlas",
+  "version": "8.0.0",
   "private": true,
+  "description": "Atlas Claude skill and operating system documentation.",
+  "license": "MIT",
+  "type": "commonjs",
   "scripts": {
     "validate": "node scripts/validate.js",
-    "pulse": "node scripts/atlas/pulse.js",
-    "decide": "node scripts/atlas/decide.js",
-    "weekly-review": "node scripts/atlas/weekly-review.js",
-    "diag": "node scripts/atlas/pulse.js | node scripts/atlas/decide.js"
+    "weekly-review": "node scripts/atlas/weekly-review.js"
   },
   "engines": {
-    "node": ">=18.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/VpkDevs/atlas.git"
-  },
-  "keywords": [
-    "atlas",
-    "claude-code",
-    "claude-skill",
-    "ai-cofounder",
-    "autonomous-founder",
-    "sovereign"
-  ],
-  "author": "VpkDevs",
-  "license": "MIT"
+    "node": ">=20"
+  }
 }

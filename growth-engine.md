@@ -134,6 +134,24 @@ digraph decide {
 }
 ```
 
+### Anomaly → Incident Protocol Bridge
+
+When the decision tree routes to **"Hotfix incident"** (Sev-1) or **"Resolve incident"** (Sev-2):
+```
+Sev-1 (production down, data loss, payment processor failure, auth broken):
+  → Load incident-protocol.md → execute p0_response() immediately
+  → Halt all other growth loop actions until incident resolved: true
+  → Log incident start time to ~/.atlas/incidents/[date]-p0-[slug].md
+
+Sev-2 (elevated error rate, latency spike, degraded feature, failed deploy):
+  → Load incident-protocol.md → execute p1_response()
+  → p1_response() is the mandatory first action this loop cycle
+  → Continue growth actions with remaining capacity after p1 is contained
+
+Resumption rule: growth loop actions resume ONLY after
+  resolved: true is written to the incident file by p0/p1 response procedure.
+```
+
 ### Action Library (What Atlas Picks From)
 
 Each action below has a fully-defined execution recipe Atlas follows.
@@ -314,7 +332,7 @@ If verification fails: action is **not** logged as complete; self-healing engage
 ### State Updates
 
 Atlas also updates:
-- `context.json` — runs-itself score, current phase, last action
+- `context.json` — runs-itself score (recomputed via `compute_sovereign_score()` from `scoring.md` using this week's metrics), current phase, last action
 - `dashboard.html` — refreshes the displayed state
 - `metrics/snapshot_<date>.json` — new snapshot
 - `decisions.md` — entry for this week's decision

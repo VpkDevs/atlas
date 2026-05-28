@@ -84,10 +84,13 @@ When a fix introduces a new error:
 ### Zero Tolerance Rule
 
 **Phase 2 does not exit with any P0 remaining.** If a P0 cannot be fixed:
-1. Log to `~/.atlas/incidents/[date]-[slug]-p0.md` with full diagnosis
-2. Attempt 3 different fix strategies (documented)
-3. If all 3 fail: downgrade to P1 ONLY if the product can launch without this feature
-4. Otherwise: mark phase as blocked and surface `userMust`
+1. Load `incident-protocol.md` — execute `p0_response()` immediately (5min diagnose / 30min resolve SLA)
+2. Log to `~/.atlas/incidents/[date]-[slug]-p0.md` using the 11-section incident schema from `incident-protocol.md`
+3. Attempt 3 different fix strategies; document each attempt in the incident log
+4. If all 3 fail: downgrade to P1 ONLY if the product can launch without this feature
+5. Otherwise: write `resolved: false` to the incident file, mark phase as blocked, and surface `userMust`
+
+**The incident file is the source of truth.** If `~/.atlas/incidents/` contains any file dated today with `resolved: false`, the next Oracle Tick will treat it as a mandatory P0 action regardless of other scores.
 
 ---
 

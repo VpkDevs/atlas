@@ -319,9 +319,9 @@ OWASP coverage: [N]/10 categories addressed
 ```
 
 **Gate rule:**
-- CRITICAL remaining → Phase 2b does not complete → Phase 3 blocked
-- HIGH remaining → surfaced as userMust (non-blocking, but tracked in incidents/)
-- MEDIUM/LOW → surfaced in compliance checklist
+- CRITICAL remaining → Phase 2b does not complete → Phase 3 blocked → invoke `p0_response()` from `incident-protocol.md`
+- HIGH remaining → open a P1 incident in `~/.atlas/incidents/` (see `incident-protocol.md`) + surface as userMust
+- MEDIUM/LOW → surfaced in compliance checklist; log as P3 incident for tracking
 
 ---
 

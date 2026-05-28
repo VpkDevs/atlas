@@ -4,6 +4,9 @@
 
 # Runtime state
 .atlas/
+.atlas-state/
+.kiro/
+_archive/
 context.json
 context.json.bak
 credentials_index.json

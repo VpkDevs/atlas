@@ -57,7 +57,7 @@ Atlas (Coordinator) runs the Oracle Tick (see `mission-intelligence.md`) and del
 - Auto-rollback on error rate spike >2%
 - Rotate secrets approaching expiry (if vault API available)
 - Upgrade dependencies monthly (minor/patch only; major = escalate)
-- Maintain incident log in `~/.atlas/incidents/`
+- Maintain incident log in `~/.atlas/portfolio/[slug]/incidents/`
 
 ### Atlas Growth — Distribution Commander
 
@@ -169,7 +169,7 @@ Atlas (Coordinator) runs the Oracle Tick (see `mission-intelligence.md`) and del
 
 All inter-agent communication goes through the Coordinator:
 
-```
+```text
 Agent A → Coordinator → Agent B
 Never: Agent A → Agent B directly
 ```
@@ -178,11 +178,63 @@ This prevents conflicting actions (e.g., Growth posting about a feature Product 
 
 ### Conflict Resolution
 
-When two agents propose conflicting actions:
-1. Coordinator identifies the conflict
-2. Revenue-impact analysis determines winner
-3. Losing agent adjusts its plan
-4. Decision logged to `~/.atlas/portfolio/[slug]/decisions.md`
+When two agents propose conflicting actions, execute `resolve_conflict()`:
+
+```text
+PROCEDURE resolve_conflict(action_A, agent_A, action_B, agent_B):
+
+  # 1. Domain precedence — lower number wins when domains collide
+  DOMAIN_RANK = {
+    "ops":     1,   # infrastructure > everything (prevents outages)
+    "legal":   2,   # compliance blocker > revenue
+    "product": 3,   # shipping gates growth
+    "growth":  4,
+    "wealth":  5,
+    "hr":      6,
+    "ma":      7,
+  }
+
+  # 2. Compute revenue-impact score for each action (0–100)
+  score_A = estimate_revenue_impact(action_A)  # from scoring.md rubric
+  score_B = estimate_revenue_impact(action_B)
+
+  # 3. Check reversibility — prefer reversible action if scores within 15 pts
+  rev_A = is_reversible(action_A)   # bool
+  rev_B = is_reversible(action_B)
+
+  # 4. Resolution logic
+  IF action_A blocks a P0/P1 incident OR action_B blocks a P0/P1 incident:
+    WINNER = whichever action unblocks the incident
+    REASON = "incident unblock override"
+
+  ELSE IF abs(score_A - score_B) >= 15:
+    WINNER = action with higher revenue-impact score
+    REASON = f"revenue-impact delta: {abs(score_A - score_B)} pts"
+
+  ELSE IF rev_A != rev_B:
+    WINNER = reversible action
+    REASON = "reversibility tiebreaker (scores within 15 pts)"
+
+  ELSE:
+    WINNER = action from agent with lower DOMAIN_RANK
+    REASON = f"domain precedence: {agent with lower rank} > {other agent}"
+
+  # 5. Adjust and log
+  losing_agent.adjust_plan(exclude=WINNER_action)
+  decisions.append({
+    "conflict": [action_A, action_B],
+    "winner": WINNER,
+    "reason": REASON,
+    "revenue_scores": [score_A, score_B],
+    "timestamp": now()
+  })
+  RETURN WINNER
+```
+
+**Tiebreaker chain** (applies when scores within 15 pts and both same reversibility):
+1. Ops > Legal > Product > Growth > Wealth > HR > M&A (domain precedence)
+2. If same agent type: later-queued action wins (agent already in motion)
+3. If deadlock: escalate to Coordinator + pause both tasks; log `conflict_escalation` flag
 
 ---
 
@@ -230,7 +282,7 @@ Escalations: [if any]
 The Coordinator writes to `context.json` after each tick — agents NEVER write to `context.json` directly.
 
 ### Lock Protocol
-```
+```text
 Coordinator lock acquisition:
   1. Write context.json.lock with timestamp
   2. Complete write to context.json.tmp
@@ -249,7 +301,7 @@ Agent detects stale lock (> 30 sec old):
 
 When a Fleet agent is invoked for the first time (or after a long dormant period):
 
-```
+```text
 COLD START PROCEDURE:
 
 1. READ context.json completely
@@ -269,7 +321,7 @@ An agent never self-assigns work. It always receives a delegated task from Coord
 
 The Coordinator monitors all active Fleet agents:
 
-```
+```text
 HEALTH CHECK (every Oracle tick):
   For each agent with an active task:
   - Has it reported progress in the last 2 hours?
@@ -290,7 +342,7 @@ AGENT STATUS STATES:
 
 Some tasks have cross-agent dependencies. The Coordinator enforces order:
 
-```
+```text
 Atlas Growth posting about a feature
   → requires: Atlas Product has verified feature is live (deps: Atlas Ops deployed it)
   → blocks: nothing
@@ -316,7 +368,7 @@ The Coordinator checks this dependency graph before delegating. If a dependency 
 
 When Atlas HR determines a task needs The Swarm:
 
-```
+```text
 SWARM DISPATCH PROCEDURE:
 
 1. Generate SOW from template (see Agent Roster above)
@@ -346,7 +398,7 @@ SWARM DISPATCH PROCEDURE:
 
 ## Fleet Checkpoint (Operator Mode — Every Oracle Tick)
 
-```
+```text
 ─────────────────────────────────────────────────────
 FLEET STATUS — [Product Name] — [Timestamp]
 

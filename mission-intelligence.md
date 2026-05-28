@@ -267,12 +267,31 @@ Top 3 opportunities in next 30 days:
 
 ### Decision Framework
 
-For each potential action, score:
+**P0 Incident Override (evaluate before scoring anything):**
+```
+PROCEDURE p0_override_check:
+  1. Scan ~/.atlas/incidents/ for any file where:
+       - date == today AND resolved == false
+  2. IF found AND severity == P0:
+       → Load incident-protocol.md
+       → Execute p0_response() immediately
+       → THIS TICK HAS ONE ACTION: resolve the P0
+       → All Action Score ranking is skipped
+       → Defer all other actions to next tick
+       → Log: "Tick [N] pre-empted by P0 incident [filename]"
+  3. IF found AND severity == P1:
+       → p1_response() is the mandatory first action this tick
+       → Continue to Action Score for remaining capacity (1-2 actions)
+  4. IF none found:
+       → Continue to Action Score below
+```
+
+For each non-incident action, score:
 ```
 Action Score = (Revenue Impact × Probability of Success × Time Sensitivity) / (Effort in Hours × Risk)
 ```
 
-Rank all actions by score. Execute top 3 this tick.
+Rank all actions by score. Execute top 3 this tick (or fewer if P1 consumed capacity).
 
 ### Strategy Check
 
@@ -333,6 +352,20 @@ Each delegated task follows the Six-Layer Hierarchy (see SKILL.md). The executin
 ---
 
 ## Step 7: REPORT — State Update
+
+### Sovereign Score Recompute (runs first)
+Before updating any display or log, recompute the score:
+```
+Load scoring.md → call compute_sovereign_score() with this tick's metrics
+Write to context.json:
+  {
+    "runs_itself_score": [new_score],
+    "score_updated_at": "[ISO timestamp]",
+    "score_delta": [new_score - previous_score]
+  }
+If score dropped ≥5 points: immediately classify the drop category and add to Risk Forecast
+If score crossed 90: emit sovereign milestone alert (Discord/Slack webhook if configured)
+```
 
 ### Dashboard Update
 Update `~/.atlas/dashboard.html` with:

@@ -6,6 +6,52 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ---
 
+## [8.0.0] - 2026-05-21
+
+### Kernel-First Atlas
+
+This release makes `CHARTER_v8.md` the canonical version authority and trims Atlas into a kernel-first Claude skill with on-demand modules, Doctor integrity checks, First Ship mode, and a stricter skill hygiene policy.
+
+#### Core Changes
+- **Kernel-first `SKILL.md`**: Runtime routing stays compact, with deeper doctrine loaded only when a command needs it.
+- **`/atlas doctor`**: Adds an explicit integrity-check command before operational work proceeds.
+- **`/atlas ship`**: Adds a compressed First Ship mode for founders who need a direct path to first public launch.
+- **Skill hygiene doctrine**: `skill-hygiene.md` defines anti-bloat rules for archives, runtime state, summaries, and generated artifacts.
+- **v7 triage archive**: Historical v7.x and aspirational v8.x materials move under `_archive/v7_pre_triage/` so the active runtime surface stays coherent.
+
+#### Validation
+- `validate.js` now checks the active v8.0 changelog section, root package manifest, and CHARTER command-surface count.
+
+---
+
+## [7.2.0] - 2026-05-12
+
+### The Sovereign Money Engine
+
+This release makes the `.claude` Atlas tree the canonical v7.2 skill while porting the concrete launch and operations infrastructure from the DEV integration repo.
+
+#### Core Changes
+- **Scoring Engine**: `scoring.md` defines exact algorithms for Sovereign Score, Portfolio Priority, Revenue Velocity, Retention Health, Monetization Confidence, Cash Discipline, Fusion Intervention Score, and Capital Mode.
+- **Incident Protocol**: `incident-protocol.md` adds P0-P3 response playbooks, SLA targets, incident logging, and post-mortem structure.
+- **Atlas Brain**: `atlas-brain.md` adds resumable cross-session state, decision memory, blocker tracking, and rollback registry.
+- **Revenue Modules**: `money-engine.md`, `pricing-lab.md`, `cashflow-ops.md`, `offer-forge.md`, `channel-dominance.md`, `acquisition-sniper.md`, and `capital-governor.md` extend Atlas beyond launch into compounding revenue operations.
+- **Fusion Router**: `fusion-router.md` routes work across available skills and specialist agents while preserving Atlas gates.
+
+#### Ported From DEV Integration
+- `docs/founder/` launch strategy, channel fitness matrix, timestamped launch sequence, and ready-to-post launch assets.
+- `docs/legal/` Terms of Service, Privacy Policy, and compliance checklist templates.
+- `scripts/atlas/` weekly pulse, decision, notification, and GitHub issue automation.
+- `.github/workflows/` schema validation and weekly review workflow.
+- `automation-library/` importable n8n workflow templates.
+- Package scaffolding: `package.json`, `.gitignore`, `LICENSE`, and this changelog.
+
+#### Script Fixes During Port
+- `decide.js` now reads stdin portably with file descriptor `0` instead of `/dev/stdin`.
+- `weekly-review.js` now passes pulse JSON into `decide.js` correctly and uses `os.tmpdir()` for cross-platform temp files.
+- `validate.js` now checks for this v7.2 changelog section.
+
+---
+
 ## [6.0.0] — 2026-04-30
 
 ### The Sovereign Empire

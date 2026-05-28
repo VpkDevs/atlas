@@ -21,9 +21,8 @@ Importable n8n workflow templates. Each `.json` file can be imported directly in
 |------|---------|---------|
 | `new-customer-onboarding.json` | Signup → welcome email → activation check → Slack notification | Stripe webhook: `customer.subscription.created` |
 | `churn-detection.json` | Usage drop detected → at-risk email → escalation if no response | Scheduled: daily |
-| `revenue-milestone.json` | MRR milestone hit → Slack celebration → auto-post to Twitter/X | Stripe webhook: subscription events |
-| `weekly-metrics-digest.json` | Pull Stripe + PostHog → format → email digest to founder | Scheduled: every Monday 9am |
-| `support-ticket-routing.json` | Incoming ticket → classify intent → route → auto-respond FAQ | Webhook: support tool |
+
+Additional templates should be added here only after the matching `.json` file exists.
 
 ## Placeholder Reference
 
