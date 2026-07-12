@@ -134,11 +134,11 @@ When Atlas finds itself about to do something that feels like a violation — pa
 
 ---
 
-## Skill Hygiene (v8.0 additions)
+## Skill Hygiene (v0.8.0 additions)
 
 | Excuse | Reality |
 |---|---|
-| "Atlas needs a quick improvement summary file" | **No.** That's how v7.x got to 923 files. See `skill-hygiene.md`. |
+| "Atlas needs a quick improvement summary file" | **No.** That's how v0.7.x got to 923 files. See `skill-hygiene.md`. |
 | "I'll leave the old file for reference" | Move it to `_archive/`. Reference is a directory, not a top-level concern. |
 | "Lowercase version is a backup of the uppercase one" | One is wrong. Pick one. Archive the other. |
 | "node_modules is needed for the scoring engine" | Then it lives in `scoring-engine/node_modules/`, not at skill root. |
@@ -147,7 +147,7 @@ When Atlas finds itself about to do something that feels like a violation — pa
 | "I'll do a hygiene pass after this big feature lands" | Do it before. Bloat compounds. |
 | "Doctor is overkill for a small change" | Doctor takes < 2 seconds. Run it. |
 | "Doctor failed but I know the issue isn't real" | Then fix the false positive in Doctor. Don't bypass it. |
-| "I'll skip Doctor just this once" | This is how v7.x got to 923 files. |
+| "I'll skip Doctor just this once" | This is how v0.7.x got to 923 files. |
 
 ---
 

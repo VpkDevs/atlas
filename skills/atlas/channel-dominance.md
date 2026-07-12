@@ -3,7 +3,7 @@ name: atlas-channel-dominance
 description: Algorithmic channel effort allocator. Pulls per-channel metrics, computes marginal ROI for each channel, applies the 70/20/10 split to this week's effort budget, freezes underperforming channels, and ships one concrete asset for the top channel. Integrates with scoring.md Revenue Velocity and operator-playbook.md capital mode constraints.
 ---
 
-# Channel Dominance (v7.2)
+# Channel Dominance (v0.7.2)
 
 **Objective:** Never spread growth effort equally across channels. Always concentrate on highest marginal ROI and cut what doesn't compound.
 

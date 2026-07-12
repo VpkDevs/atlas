@@ -26,6 +26,8 @@ const CANONICAL_COMMANDS = [
   { slash: '/atlas fusion', description: 'Federated skill+agent sprint', module: 'fusion-router.md', cli: 'fusion agents' },
   { slash: '/atlas fusion-report', description: 'Merged intervention report', module: 'fusion-router.md' },
   { slash: '/atlas fleet --agent --task', description: 'Direct sub-agent invocation', module: 'fleet-subagents.md' },
+  { slash: '/atlas heartbeat', description: 'Install/verify scheduled autonomous ticks', module: 'leverage-engine.md' },
+  { slash: '/atlas dashboard', description: 'Publish/refresh the hosted Sovereign Dashboard', module: 'leverage-engine.md' },
   { slash: '/atlas retire', description: 'Mark project retired' },
 ];
 
@@ -51,7 +53,7 @@ function extractSkillSubcommands(content) {
 }
 
 function extractCharterSubcommands(content) {
-  const block = content.match(/## Subcommand Surface \(v8\.0\)[\s\S]*?```text\r?\n([\s\S]*?)```/);
+  const block = content.match(/## Subcommand Surface[^\n]*[\s\S]*?```text\r?\n([\s\S]*?)```/);
   if (!block) return [];
   return uniqueCommands(
     block[1]

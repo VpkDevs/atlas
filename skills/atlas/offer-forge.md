@@ -1,9 +1,9 @@
 ---
 name: atlas-offer-forge
-description: Offer experiment module for Atlas v7.2. Creates, scores, validates, and retires offers with explicit buyer, trigger, outcome, price, proof path, telemetry, and kill criteria.
+description: Offer experiment module for Atlas v0.7.2. Creates, scores, validates, and retires offers with explicit buyer, trigger, outcome, price, proof path, telemetry, and kill criteria.
 ---
 
-# Offer Forge (v7.2)
+# Offer Forge (v0.7.2)
 
 Objective: continuously create, validate, and retire offers until the business has a high-conviction path to cashflow.
 

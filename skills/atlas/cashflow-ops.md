@@ -1,9 +1,9 @@
 ---
 name: atlas-cashflow-ops
-description: Cashflow operations module for Atlas v7.2. Tracks runway, receivables, failed payments, collections, dunning, and spend guardrails so growth work stays solvent.
+description: Cashflow operations module for Atlas v0.7.2. Tracks runway, receivables, failed payments, collections, dunning, and spend guardrails so growth work stays solvent.
 ---
 
-# Cashflow Ops (v7.2)
+# Cashflow Ops (v0.7.2)
 
 Objective: keep the business solvent, resilient, margin-aware, and able to keep compounding without founder guesswork.
 

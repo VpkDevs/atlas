@@ -3,7 +3,7 @@ name: atlas-acquisition-sniper
 description: Rapid-response acquisition module. Detects high-intent demand windows (competitor outages, keyword spikes, migration urgency, platform changes) and deploys a conversion-optimized response package within 24 hours. Every trigger must have timestamped evidence. Every deployment must have measurement hooks. Integrates with channel-dominance.md for effort allocation and scoring.md for Revenue Velocity.
 ---
 
-# Acquisition Sniper (v7.2)
+# Acquisition Sniper (v0.7.2)
 
 **Objective:** Capture demand that competitors are losing, that urgency is creating, or that the market is signaling — before the window closes.
 

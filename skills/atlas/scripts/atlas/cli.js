@@ -765,15 +765,13 @@ class AtlasCLI {
   }
 
   async importAutomation(workflow) {
-    const { getWorkflow, validateWorkflow, exportWorkflow } = require('./automation-library');
-    const slug = workflow.replace(/\.json$/i, '');
-    const { workflow: content } = getWorkflow(slug);
-    const validation = validateWorkflow(content, `${slug}.json`);
+    const { validateWorkflow } = require('./automation-library');
+    const file = path.join(ROOT, 'automation-library', workflow.endsWith('.json') ? workflow : `${workflow}.json`);
+    const content = readJson(file);
+    const validation = validateWorkflow(content, file);
     if (!validation.ok) throw new Error(`Workflow failed validation: ${validation.errors.join('; ')}`);
-    const exported = exportWorkflow(slug, path.join(require('os').tmpdir(), `atlas-${slug}.json`));
     console.log(JSON.stringify({
-      imported: slug,
-      export_path: exported,
+      imported: path.basename(file),
       name: content.name,
       node_count: Array.isArray(content.nodes) ? content.nodes.length : 0,
       readiness: validation.readiness,
@@ -783,24 +781,23 @@ class AtlasCLI {
   }
 
   async runAutomation(workflow) {
-    const { getWorkflow, validateWorkflow } = require('./automation-library');
-    const slug = workflow.replace(/\.json$/i, '');
-    const { workflow: content } = getWorkflow(slug);
-    const validation = validateWorkflow(content, `${slug}.json`);
+    const { validateWorkflow } = require('./automation-library');
+    const file = path.join(ROOT, 'automation-library', workflow.endsWith('.json') ? workflow : `${workflow}.json`);
+    const content = readJson(file);
+    const validation = validateWorkflow(content, file);
     if (!validation.ok) throw new Error(`Workflow failed validation: ${validation.errors.join('; ')}`);
     console.log(chalk.yellow(`Dry run only: ${content.name || workflow}`));
     console.log(`Nodes validated: ${Array.isArray(content.nodes) ? content.nodes.length : 0}`);
     console.log(`Readiness: ${validation.readiness}/100`);
     console.log(`Required env: ${validation.required_env.join(', ') || 'none'}`);
-    console.log('Export with `node scripts/atlas/automation-library.js export <slug>`, import into n8n, configure credentials, run once, then activate.');
+    console.log('Import into n8n, configure listed credentials, run once manually, then activate.');
   }
 
   async validateAutomations(workflow) {
-    const { buildManifest, getWorkflow, validateWorkflow } = require('./automation-library');
+    const { buildManifest, validateWorkflow } = require('./automation-library');
     if (workflow) {
-      const slug = workflow.replace(/\.json$/i, '');
-      const { workflow: content } = getWorkflow(slug);
-      const result = validateWorkflow(content, `${slug}.json`);
+      const file = path.join(ROOT, 'automation-library', workflow.endsWith('.json') ? workflow : `${workflow}.json`);
+      const result = validateWorkflow(readJson(file), file);
       console.log(JSON.stringify(result, null, 2));
       if (!result.ok) process.exitCode = 1;
       return;

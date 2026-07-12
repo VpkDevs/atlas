@@ -238,6 +238,15 @@ SOW templates:
 - Feature addition SOW template
 - Security audit SOW template
 
+### Step 9c: Heartbeat & Dashboard (v0.9)
+
+Before recalculating the score, wire the two v0.9 continuity surfaces per `leverage-engine.md`:
+
+1. **Install the Heartbeat** (`/atlas heartbeat`): nightly operator tick, weekly growth/portfolio/drift ticks, with unattended-run bounds. Verify by listing the scheduler's jobs; write `heartbeat.json`.
+2. **Publish the Sovereign Dashboard** (`/atlas dashboard`): hosted stable URL rendered from `dashboard-template.html` with live data; record `dashboard_url` in context.json; send the URL to the founder once.
+
+Both count toward Monitoring & Iteration Loop scoring categories. A launch (Phase 9) without a verified heartbeat is a kernel red flag.
+
 ### Step 10: Recalculate Score
 
 ```

@@ -3,7 +3,7 @@ name: atlas-pricing-lab
 description: Continuous pricing and packaging experimentation with statistical rigor. Runs controlled A/B tests on pricing page, checkout flow, and offer framing. Computes statistical significance before declaring any result. Never makes permanent pricing changes without evidence. Integrates with scoring.md for monetization_confidence scoring and operator-playbook.md for mode constraints.
 ---
 
-# Pricing Lab (v7.2)
+# Pricing Lab (v0.7.2)
 
 **Objective:** Run a continuous, rigorous pricing experiment cadence that compounds `monetization_confidence_score()` over time.
 

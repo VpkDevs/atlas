@@ -2,9 +2,20 @@
 
 One command. Total sovereignty. Atlas is an autonomous co-founder that takes a product from broken code to a compounding business engine with executable implementations, enhanced intelligence, automation, and orchestration.
 
-As of 2026-06-23, Atlas is at **v8.4**. v8.4 keeps the lean v8.0 kernel-first runtime, preserves the executable engines that survived validation, and makes this package the single installable canonical tree for `.agents`, `.claude`, `.codex`, and compatible skill runtimes. See [VERSION.md](VERSION.md) for canonical version history.
+As of 2026-07-12, Atlas is at **v0.9** — the last major release before v1.0, the first commercial release (see the Road to v1.0 gate in [CHARTER.md](CHARTER.md)). All prior releases (v1–v8.4) were renumbered to v0.1–v0.8.4. v0.9 keeps the lean kernel-first runtime and remains the single installable canonical tree for `.agents`, `.claude`, `.codex`, and compatible skill runtimes. See [VERSION.md](VERSION.md) for canonical version history.
 
-## 🚀 What's New in v8.1 (historical — see VERSION.md for v8.2/v8.3 additions)
+## 🚀 What's New in v0.9
+
+### The Leverage Mandate
+- **Fleet made real**: ≥3 independent tasks fan out to orchestrated subagents with a 5-part prompt contract, schema returns, and a proof obligation — serial execution of independent work is a kernel red flag
+- **The Heartbeat (`/atlas heartbeat`)**: scheduled autonomous ticks (nightly operator, weekly growth/portfolio/drift) with hard unattended-run bounds — Atlas runs while the founder sleeps
+- **Hosted Sovereign Dashboard (`/atlas dashboard`)**: a stable, phone-openable URL refreshed on every tick, plus milestone push notifications
+- **Evidence Doctrine**: every phase exit and delegated task appends captured proof to `evidence.jsonl` — claims without evidence are hypotheses
+- **Layer 3a/3b split**: sandbox browser automation vs. the founder's own logged-in browser; authenticated-portal work becomes executable while the founder personally performs sign-ins, MFA, and payment consents
+- **Real-time founder I/O**: blockers reach the founder the moment they're found (task chip + push notification), not at end-of-run
+- **Capability discovery**: ToolSearch/MCP-registry lookup is required evidence before any "no API" claim
+
+## 🕰️ Historical: v0.8.1 Additions (see VERSION.md)
 
 ### Executable Implementations (NEW)
 - **Context Compression Engine**: Automatic context management preventing drift in long runs
@@ -12,14 +23,14 @@ As of 2026-06-23, Atlas is at **v8.4**. v8.4 keeps the lean v8.0 kernel-first ru
 - **Zero-to-First-Dollar Sprint**: Systematic 7-day protocol to first $100 MRR or 5 customers
 - **Startup Credits Sprint**: Automated application to 15+ programs worth $50K-$200K
 
-### Key v8.1 Improvements
+### Key v0.8.1 Improvements
 - **80% execution rate** (up from 20%) - Atlas now executes instead of describes
 - **4 new executable scripts** with 1,200+ lines of production code
 - **$50K-$200K potential savings** through systematic credit applications
 - **Systematic first revenue** with trackable outreach and conversion metrics
 - **Automated validation** preventing hallucination and context drift
 
-## 🎯 What's in v8.0
+## 🎯 What's in v0.8.0
 
 ### Enhanced Automation Engine
 - **Expanded n8n Workflow Library**: 10+ new workflows covering customer lifecycle, revenue operations, and marketing automation
@@ -255,7 +266,7 @@ atlas monitor
 
 ## Performance Benchmarks
 
-| Metric | v7.2 | v8.0 | Improvement |
+| Metric | v0.7.2 | v0.8.0 | Improvement |
 |--------|------|------|-------------|
 | Task success rate | 85% | 92% | +7% |
 | Average execution time | 120s | 85s | -29% |
@@ -264,18 +275,18 @@ atlas monitor
 | Fault recovery time | 300s | 60s | -80% |
 | Predictive accuracy | N/A | 89% | New |
 
-## Migration from v7.2
+## Migration from v0.7.2
 
 ### Automatic Migration
 ```bash
-# Backup v7.2 state
+# Backup v0.7.2 state
 atlas backup
 
-# Install v8.0
+# Install v0.8.0
 npm install atlas-skill@8.0.0
 
 # Run migration tool
-atlas migrate --from v7.2 --to v8.0
+atlas migrate --from v0.7.2 --to v0.8.0
 
 # Verify migration
 atlas validate
@@ -283,10 +294,10 @@ atlas validate
 
 ### Manual Migration Steps
 1. Backup all state files from `~/.atlas/`
-2. Install v8.0 dependencies: `npm install`
+2. Install v0.8.0 dependencies: `npm install`
 3. Run validation: `npm run validate`
 4. Test with existing projects
-5. Decommission v7.2 after successful validation
+5. Decommission v0.7.2 after successful validation
 
 ## Support and Community
 
@@ -305,4 +316,4 @@ We welcome contributions! Please see [CONTRIBUTING.md](.github/CONTRIBUTING.md) 
 
 ---
 
-**Atlas v8.0**: From powerful co-founder to intelligent, autonomous business operating system. 🚀
+**Atlas v0.8.0**: From powerful co-founder to intelligent, autonomous business operating system. 🚀

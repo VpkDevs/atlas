@@ -1,9 +1,9 @@
 ---
 name: atlas-money-engine
-description: Revenue flywheel module for Atlas v7.2. Finds the highest-leverage revenue bottleneck, ships a measurable intervention, validates the result, and records the learning.
+description: Revenue flywheel module for Atlas v0.7.2. Finds the highest-leverage revenue bottleneck, ships a measurable intervention, validates the result, and records the learning.
 ---
 
-# Money Engine (v7.2)
+# Money Engine (v0.7.2)
 
 Objective: convert growth activity into compounding, attributable cashflow through measured interventions.
 

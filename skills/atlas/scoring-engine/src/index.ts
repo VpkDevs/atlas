@@ -1,53 +1,56 @@
 /**
- * Atlas Scoring Engine — flattened module surface
+ * Atlas Scoring Engine
+ * 
+ * A deterministic scoring engine with support for:
+ * - Deterministic computation (identical inputs → identical outputs)
+ * - Bidirectional feedback loops between scores
+ * - Granular dimension decomposition
+ * - Correlation tracking with business outcomes
+ * - Edge case handling and data validation
+ * - Uncertainty quantification
+ * - Configuration-driven extensibility
+ * 
  * @version 1.0.0
+ * @author Atlas Team
  */
 
+// Export all core interfaces
 export * from './interfaces';
 
-export { SeededRNG } from './SeededRNG';
-export { PureFunctionRegistry } from './PureFunctionRegistry';
-export type { PureFunction, FunctionContext, ExecutionResult } from './PureFunctionRegistry';
+// Export models
+export * from './models';
 
-export { CausalInferenceEngineImpl as CausalInferenceEngine } from './CausalInferenceEngine';
-export { AdvancedFeedbackLoopEngineImpl as AdvancedFeedbackLoopEngine } from './AdvancedFeedbackLoopEngine';
-export { AdaptiveUncertaintyEngineImpl as AdaptiveUncertaintyEngine } from './AdaptiveUncertaintyEngine';
-export { EpistemicAleatoicEngine, type EpistemicAleatoicDecomposition } from './EpistemicAleatoric';
+// Export deterministic components
+export * from './deterministic';
 
-export {
-  AdversarialTestingEngineImpl as AdversarialTestingEngine,
-  type AdversarialHypothesis,
-  type AdversarialTestResult,
-} from './AdversarialTestingEngine';
-export { ExperimentationEngineImpl as ExperimentationEngine } from './ExperimentationEngine';
-export * from './experimentation-types';
+// Export feedback loop components
+export * from './feedback';
 
-export { AdaptiveDecisionEngineImpl as AdaptiveDecisionEngine } from './AdaptiveDecisionEngine';
-export { DimensionWeightingEngineImpl as DimensionWeightingEngine } from './DimensionWeightingEngine';
-export {
-  HeterogeneousEffectsEngine,
-  type HeterogeneousAnalysis,
-  type SegmentTreatmentEffect,
-  type UserSegment,
-} from './HeterogeneousEffectsEngine';
-export {
-  InteractionEffectsEngine,
-  type InteractionEffect,
-  type NonLinearityDetection,
-} from './InteractionEffectsEngine';
-export * from './learning-adaptive';
+// Export dimension components
+export * from './dimensions';
 
-export { AtlasRouter, type TaskClassification, type AtlasMode, type AtlasDomain } from './AtlasRouter';
-export {
-  RealTimeFeedbackEngine,
-  type DecisionInFlight,
-  type PartialSignal,
-  type PivotPoint,
-} from './RealTimeFeedbackEngine';
-export { ValueOfInformationEngine, type VOIAnalysis, type TestOption } from './ValueOfInformationEngine';
-export {
-  ParetoOptimizationEngine,
-  type ParetoAnalysis,
-  type MultiObjectiveAction,
-  type TradeoffDiscovery,
-} from './ParetoOptimizationEngine';
+// Export correlation tracking components
+export * from './correlation';
+
+// Export edge case handling components
+export * from './edge-cases';
+
+// Export uncertainty quantification components
+export * from './uncertainty';
+
+// Export configuration components
+export * from './config';
+
+// Export new experimentation and adversarial testing engines
+export * from './experimentation/AdversarialTestingEngine';
+
+// Export epistemic/aleatoric uncertainty separation
+export { EpistemicAleatoicEngine, type EpistemicAleatoicDecomposition } from './uncertainty/EpistemicAleatoric';
+
+// Export v8.3 modules (closing gaps from IDEAL_VS_ACTUAL.md)
+export { AtlasRouter, type TaskClassification, type AtlasMode, type AtlasDomain } from './router/AtlasRouter';
+export { RealTimeFeedbackEngine, type DecisionInFlight, type PartialSignal, type PivotPoint } from './realtime/RealTimeFeedbackEngine';
+export { ValueOfInformationEngine, type VOIAnalysis, type TestOption } from './decision/ValueOfInformationEngine';
+export { HeterogeneousEffectsEngine, type HeterogeneousAnalysis, type SegmentTreatmentEffect, type UserSegment } from './learning/HeterogeneousEffectsEngine';
+export { ParetoOptimizationEngine, type ParetoAnalysis, type MultiObjectiveAction, type TradeoffDiscovery } from './optimization/ParetoOptimizationEngine';
+export { InteractionEffectsEngine, type InteractionEffect, type NonLinearityDetection } from './learning/InteractionEffectsEngine';

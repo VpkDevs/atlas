@@ -4,9 +4,32 @@ All notable changes to Atlas are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+> **Renumbering note (2026-07-12):** all releases previously labeled v1–v8.4 were
+> retroactively renumbered to v0.1–v0.8.4 (`N.M.P` → `0.N.M`). v1.0.0 is reserved for the
+> first commercial release — see the Road to v1.0 gate in `CHARTER.md`. Original labels
+> are preserved in parentheses below. Nothing about the renumbered releases changed
+> except their labels.
+
 ---
 
-## [8.4.0] - 2026-06-23
+## [0.9.0] - 2026-07-12
+
+### Concurrent, Continuous, Evidence-Bound
+
+- **Leverage Mandate + `leverage-engine.md`**: Atlas binds to the harness's force multipliers. Fleet fan-out is mandatory for ≥3 independent tasks; adversarial verification gates revenue-facing claims; ToolSearch/MCP-registry lookup is required before any "no API" claim; every capability has a logged graceful fallback.
+- **The Heartbeat (`/atlas heartbeat`)**: scheduled autonomous ticks (nightly operator, weekly growth/portfolio/drift) with hard unattended-run bounds (no spend, no new channels, no pricing changes) and a verified `heartbeat.json` manifest. Sovereign's "zero human commits for 14 days" is now mechanically achievable.
+- **Hosted Sovereign Dashboard (`/atlas dashboard`)**: the dashboard is a stable hosted URL refreshed on every tick, phone-openable; `dashboard-template.html` remains the renderer and local fallback. Milestone push notifications on score crossings, first dollar, payouts, and P0s.
+- **Evidence Doctrine**: every phase exit and delegated task appends captured proof (API response, screenshot, scheduler listing, query output) to `~/.atlas/portfolio/[slug]/evidence.jsonl`. Claims without evidence are hypotheses.
+- **Action Hierarchy Layer 3 split**: 3a sandbox browser automation vs. 3b the founder's own logged-in browser (founder personally performs sign-ins, MFA, payment consents, final submits). Authenticated-portal work becomes executable instead of falling to paste-ready artifacts. All safety boundaries preserved verbatim.
+- **Real-time founder I/O**: `userMust` items are delivered the moment they are found (task chip + push notification); end-of-run consolidation is the backstop. Deliverables ship via file delivery, not paths in prose.
+- **Fleet made real**: `fleet-subagents.md` delegation specifies actual subagent dispatch — 5-part prompt contract (ROLE/CONTEXT/TASK/BOUNDS/RETURN) with structured-schema returns and a proof obligation. `fusion-router.md` routing matrix rebuilt around capabilities that exist in the current ecosystem, with runtime discovery for the rest; ghost specialists removed.
+- **Oracle upgrades**: market/competitive INGEST may use deep-research; REPORT publishes the hosted dashboard and pushes milestones; the Sovereign-tier weekly tick runs on the heartbeat scheduler.
+- **De-versioned plumbing**: `CHARTER_v8.md` → `CHARTER.md`; validate.js/doctor.js derive the canonical version from `package.json` and check the command surface against `scripts/atlas/command-registry.js` (now 30 commands: +`/atlas heartbeat`, +`/atlas dashboard`).
+- **Renumbering**: the v0.x scheme adopted; Road to v1.0 commercial gate defined in `CHARTER.md`.
+
+---
+
+## [0.8.4] (originally v8.4) - 2026-06-23
 
 ### Canonical Runtime
 
@@ -17,29 +40,29 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ---
 
-## [8.0.0] - 2026-05-21
+## [0.8.0] (originally v8.0) - 2026-05-21
 
 ### Kernel-First Atlas
 
-This release makes `CHARTER_v8.md` the canonical version authority and trims Atlas into a kernel-first Claude skill with on-demand modules, Doctor integrity checks, First Ship mode, and a stricter skill hygiene policy.
+This release made the charter the canonical version authority and trimmed Atlas into a kernel-first Claude skill with on-demand modules, Doctor integrity checks, First Ship mode, and a stricter skill hygiene policy.
 
 #### Core Changes
 - **Kernel-first `SKILL.md`**: Runtime routing stays compact, with deeper doctrine loaded only when a command needs it.
 - **`/atlas doctor`**: Adds an explicit integrity-check command before operational work proceeds.
 - **`/atlas ship`**: Adds a compressed First Ship mode for founders who need a direct path to first public launch.
 - **Skill hygiene doctrine**: `skill-hygiene.md` defines anti-bloat rules for archives, runtime state, summaries, and generated artifacts.
-- **v7 triage archive**: Historical v7.x and aspirational v8.x materials move under `_archive/v7_pre_triage/` so the active runtime surface stays coherent.
+- **v7 triage**: Historical v7.x and aspirational v8.x materials retired from the active tree (recoverable from git history) so the runtime surface stays coherent.
 
 #### Validation
-- `validate.js` now checks the active v8.0 changelog section, root package manifest, and CHARTER command-surface count.
+- `validate.js` began checking the active changelog section, root package manifest, and charter command-surface count.
 
 ---
 
-## [7.2.0] - 2026-05-12
+## [0.7.2] (originally v7.2) - 2026-05-12
 
 ### The Sovereign Money Engine
 
-This release makes the `.claude` Atlas tree the canonical v7.2 skill while porting the concrete launch and operations infrastructure from the DEV integration repo.
+This release made the `.claude` Atlas tree the canonical skill while porting the concrete launch and operations infrastructure from the DEV integration repo.
 
 #### Core Changes
 - **Scoring Engine**: `scoring.md` defines exact algorithms for Sovereign Score, Portfolio Priority, Revenue Velocity, Retention Health, Monetization Confidence, Cash Discipline, Fusion Intervention Score, and Capital Mode.
@@ -59,15 +82,14 @@ This release makes the `.claude` Atlas tree the canonical v7.2 skill while porti
 #### Script Fixes During Port
 - `decide.js` now reads stdin portably with file descriptor `0` instead of `/dev/stdin`.
 - `weekly-review.js` now passes pulse JSON into `decide.js` correctly and uses `os.tmpdir()` for cross-platform temp files.
-- `validate.js` now checks for this v7.2 changelog section.
 
 ---
 
-## [6.0.0] — 2026-04-30
+## [0.6.0] (originally v6.0) — 2026-04-30
 
 ### The Sovereign Empire
 
-This release is a ground-up rebuild of the Atlas architecture. The goal: make the foundation unbreakable before adding empire-scale capabilities.
+This release was a ground-up rebuild of the Atlas architecture. The goal: make the foundation unbreakable before adding empire-scale capabilities.
 
 #### Core Changes
 - **Iron Rule upgraded**: Done now means Sovereign Score ≥ 90, sustained 7 days, with revenue > opex and an actual payout in the founder's bank
@@ -92,7 +114,7 @@ This release is a ground-up rebuild of the Atlas architecture. The goal: make th
 
 ---
 
-## [4.0.0] — 2026-04-28
+## [0.4.0] (originally v4.0) — 2026-04-28
 
 ### The Operator
 
@@ -110,12 +132,12 @@ First version to run the business post-launch, not just build and launch it.
 - **`growth-engine.md`** — Action library, decision tree, `atlas-permissions.yml`, weekly GitHub Action cron
 
 #### Score Changes
-- Raised target from 70 (v3) → 80 (v4) to reflect post-launch operation requirement
+- Raised target from 70 → 80 to reflect post-launch operation requirement
 - New categories: Active Acquisition Channel, Content Engine, Iteration Loop
 
 ---
 
-## [2.0.0] — 2026-03-18
+## [0.2.0] (originally v2.0) — 2026-03-18
 
 ### The Co-Founder
 
@@ -139,7 +161,7 @@ First version to treat Atlas as an operator, not a guide.
 
 ---
 
-## [1.0.0] — 2026-03
+## [0.1.0] (originally v1.0) — 2026-03
 
 ### The Sprint Guide
 

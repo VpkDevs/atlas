@@ -9,7 +9,7 @@
  * 4. LICENSE, README.md, CHANGELOG.md, package.json, .gitignore all present
  * 5. No stale username references (vincekinney1991 → VpkDevs)
  * 6. docs/legal/ contains the three required documents
- * 7. Version and command-surface invariants match CHARTER_v8.md, VERSION.md, and package.json
+ * 7. Version and command-surface invariants match CHARTER.md, VERSION.md, and package.json
  */
 
 const fs = require('fs');
@@ -161,10 +161,10 @@ check('SKILL.md header matches package.json', () => {
     || `SKILL.md header does not declare ${canonicalVersion}`;
 });
 
-check('CHARTER_v8.md status matches package.json', () => {
-  const charter = readFile('CHARTER_v8.md');
+check('CHARTER.md status matches package.json', () => {
+  const charter = readFile('CHARTER.md');
   return charter.includes(`Atlas ${canonicalVersion} is the current canonical version`)
-    || `CHARTER_v8.md does not declare ${canonicalVersion} as canonical`;
+    || `CHARTER.md does not declare ${canonicalVersion} as canonical`;
 });
 
 check('README.md status matches package.json', () => {
@@ -173,22 +173,22 @@ check('README.md status matches package.json', () => {
     || `README.md does not declare ${canonicalVersion}`;
 });
 
-check('SKILL.md and CHARTER_v8.md declare the canonical commands', () => {
-  const charter = readFile('CHARTER_v8.md');
+check('SKILL.md and CHARTER.md declare the canonical commands', () => {
+  const charter = readFile('CHARTER.md');
   const expected = getCanonicalSlashCommands();
   const skillDiff = diffCommands(extractSkillSubcommands(skillContent), expected);
   const charterDiff = diffCommands(extractCharterSubcommands(charter), expected);
   const details = [
     ...skillDiff.missing.map(command => `SKILL.md missing ${command}`),
     ...skillDiff.extra.map(command => `SKILL.md extra ${command}`),
-    ...charterDiff.missing.map(command => `CHARTER_v8.md missing ${command}`),
-    ...charterDiff.extra.map(command => `CHARTER_v8.md extra ${command}`),
+    ...charterDiff.missing.map(command => `CHARTER.md missing ${command}`),
+    ...charterDiff.extra.map(command => `CHARTER.md extra ${command}`),
   ];
   if (details.length) {
     return details.join('; ');
   }
-  return charter.includes('Twenty-eight commands are canonical in v8.0')
-    || 'CHARTER_v8.md command-count sentence is stale';
+  return charter.includes(`${expected.length} commands are canonical`)
+    || 'CHARTER.md command-count sentence is stale';
 });
 
 console.log('\n── Hygiene gates');

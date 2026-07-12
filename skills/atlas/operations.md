@@ -377,3 +377,7 @@ Sovereign Score: [X] → [Y]
 - ❌ Wealth trajectory without stating the growth rate assumption explicitly
 - ❌ ROADMAP.md phases with vague goals ("improve retention") instead of measurable exit criteria
 - ❌ Score still references 70 — the target is 90 in v6
+
+## Hosted Dashboard Gate (v0.9)
+
+The Phase 11 exit gate "North Star dashboard live" means a **hosted, phone-openable URL** refreshed on every tick (`leverage-engine.md` §4), not a local HTML file. `context.json.dashboard_url` must exist and render current data; the local file is the fallback renderer only.

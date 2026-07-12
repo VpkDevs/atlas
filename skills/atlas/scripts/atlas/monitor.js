@@ -347,17 +347,25 @@ class RealTimeMonitor {
   async collectAutomationStatus() {
     try {
       const automations = {};
-      const { listWorkflows, getWorkflow } = require('./automation-library');
-      for (const slug of listWorkflows()) {
-        const { workflow: content } = getWorkflow(slug);
-        automations[content.name || slug] = {
-          status: 'available',
-          slug,
-          last_run: null,
-          nodes: Array.isArray(content.nodes) ? content.nodes.length : 0,
-        };
+      const automationDir = path.join(ROOT, 'automation-library');
+      
+      if (fs.existsSync(automationDir)) {
+        const files = fs.readdirSync(automationDir).filter(f => f.endsWith('.json'));
+        
+        for (const file of files) {
+          const filePath = path.join(automationDir, file);
+          const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+          
+          automations[content.name] = {
+            status: 'available',
+            last_run: null, // Would track from execution logs
+            nodes: content.nodes.length
+          };
+        }
       }
+      
       return automations;
+      
     } catch (error) {
       console.error(chalk.red('Failed to collect automation status:', error.message));
       return {};

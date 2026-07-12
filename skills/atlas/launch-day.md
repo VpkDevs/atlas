@@ -228,3 +228,7 @@ The product is live at: <url>
 - ❌ Waking up the founder for non-Sev-1 issues
 - ❌ Missing a milestone celebration — these are morale fuel
 - ❌ Failing to queue Phase 10 — the work doesn't stop at sundown
+
+## Heartbeat Gate (v0.9)
+
+Launch is not complete until the Heartbeat is installed and verified (`/atlas heartbeat`, `leverage-engine.md` §3) and the hosted Sovereign Dashboard URL is live and sent to the founder (`/atlas dashboard`). Append both proofs to `evidence.jsonl`. The broadcast may go out first; the phase exit gate includes both.

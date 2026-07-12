@@ -156,7 +156,7 @@ function checkVersionCoherence(root) {
   if (!lockRoot || lockRoot.version !== pkg.version) checks.push(`package-lock packages[""].version ${lockRoot?.version} != package.json ${pkg.version}`);
   if (!readText(root, 'VERSION.md').includes(`Current canonical version:** \`${canonicalVersion}\``)) checks.push(`VERSION.md does not declare ${canonicalVersion}`);
   if (!readText(root, 'SKILL.md').includes(`# Atlas ${canonicalVersion}`)) checks.push(`SKILL.md does not declare ${canonicalVersion}`);
-  if (!readText(root, 'CHARTER_v8.md').includes(`Atlas ${canonicalVersion} is the current canonical version`)) checks.push(`CHARTER_v8.md does not declare ${canonicalVersion}`);
+  if (!readText(root, 'CHARTER.md').includes(`Atlas ${canonicalVersion} is the current canonical version`)) checks.push(`CHARTER.md does not declare ${canonicalVersion}`);
   if (!readText(root, 'README.md').includes(`Atlas is at **${canonicalVersion}**`)) checks.push(`README.md does not declare ${canonicalVersion}`);
   if (!readText(root, 'CHANGELOG.md').includes(`[${pkg.version}]`)) checks.push(`CHANGELOG.md has no [${pkg.version}] section`);
 
@@ -171,21 +171,21 @@ function checkVersionCoherence(root) {
 
 function checkCommandSurface(root) {
   const skill = readText(root, 'SKILL.md');
-  const charter = readText(root, 'CHARTER_v8.md');
+  const charter = readText(root, 'CHARTER.md');
   const expected = getCanonicalSlashCommands();
   const skillCommands = extractSkillSubcommands(skill);
   const charterCommands = extractCharterSubcommands(charter);
   const details = [];
 
   if (!skillCommands.length) details.push('SKILL.md command table not found');
-  if (!charterCommands.length) details.push('CHARTER_v8.md subcommand block not found');
+  if (!charterCommands.length) details.push('CHARTER.md subcommand block not found');
 
   const skillDiff = diffCommands(skillCommands, expected);
   const charterDiff = diffCommands(charterCommands, expected);
   for (const command of skillDiff.missing) details.push(`SKILL.md missing ${command}`);
   for (const command of skillDiff.extra) details.push(`SKILL.md extra ${command}`);
-  for (const command of charterDiff.missing) details.push(`CHARTER_v8.md missing ${command}`);
-  for (const command of charterDiff.extra) details.push(`CHARTER_v8.md extra ${command}`);
+  for (const command of charterDiff.missing) details.push(`CHARTER.md missing ${command}`);
+  for (const command of charterDiff.extra) details.push(`CHARTER.md extra ${command}`);
 
   return makeCheck(
     'command-surface',
@@ -193,7 +193,7 @@ function checkCommandSurface(root) {
     details.length ? 'fail' : 'pass',
     details.length
       ? 'Canonical command surface drift detected'
-      : `${expected.length} canonical commands match SKILL.md and CHARTER_v8.md`,
+      : `${expected.length} canonical commands match SKILL.md and CHARTER.md`,
     details.length ? details : expected
   );
 }
@@ -331,7 +331,7 @@ function maybeCheckInstallTargets(root, strict = false) {
     path.join(os.homedir(), '.cursor', 'skills', 'Atlas'),
     path.join(os.homedir(), '.trae', 'skills', 'Atlas'),
   ];
-  const probeFiles = ['SKILL.md', 'VERSION.md', 'CHARTER_v8.md', 'business-setup.md', 'automation-handoff.md', 'credential-acquisition.md', 'package.json', 'package-lock.json', 'scripts/validate.js', 'scripts/atlas/doctor.js', 'scripts/atlas/automation-library.js', 'scripts/atlas/cli.js', 'scripts/atlas/command-registry.js', 'scripts/atlas/credential-browser.js', 'scripts/atlas/predictive-scoring.js', 'scripts/atlas/state-schema.js'];
+  const probeFiles = ['SKILL.md', 'VERSION.md', 'CHARTER.md', 'business-setup.md', 'automation-handoff.md', 'credential-acquisition.md', 'package.json', 'package-lock.json', 'scripts/validate.js', 'scripts/atlas/doctor.js', 'scripts/atlas/automation-library.js', 'scripts/atlas/cli.js', 'scripts/atlas/command-registry.js', 'scripts/atlas/credential-browser.js', 'scripts/atlas/predictive-scoring.js', 'scripts/atlas/state-schema.js'];
   const failures = [];
 
   for (const target of targets) {

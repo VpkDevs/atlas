@@ -4,105 +4,24 @@ const path = require('node:path');
 
 const ROOT = path.resolve(__dirname, '..', '..');
 const AUTOMATION_DIR = path.join(ROOT, 'automation-library');
-const CATALOG_FILE = 'catalog.json';
 const PLACEHOLDER_PATTERN = /\[([A-Z][A-Z0-9_ -]{2,})\]/g;
 const ENV_PATTERN = /process\.env\.([A-Z][A-Z0-9_]+)/g;
 
-function catalogPath(dir = AUTOMATION_DIR) {
-  return path.join(dir, CATALOG_FILE);
-}
-
-function emptyCatalog() {
-  return {
-    version: 1,
-    description: 'Atlas n8n workflow catalog',
-    workflow_count: 0,
-    index: {},
-    workflows: {},
-  };
-}
-
-function readCatalog(dir = AUTOMATION_DIR) {
-  const file = catalogPath(dir);
-  if (!fs.existsSync(file)) return emptyCatalog();
-  const raw = JSON.parse(fs.readFileSync(file, 'utf8'));
-  if (!raw.workflows || typeof raw.workflows !== 'object') {
-    throw new Error(`${CATALOG_FILE} must contain a workflows object`);
-  }
-  return raw;
-}
-
-function writeCatalog(catalog, dir = AUTOMATION_DIR) {
-  fs.mkdirSync(dir, { recursive: true });
-  const next = {
-    ...catalog,
-    workflow_count: Object.keys(catalog.workflows || {}).length,
-  };
-  fs.writeFileSync(catalogPath(dir), `${JSON.stringify(next, null, 2)}\n`);
-}
-
-/** @deprecated Prefer listWorkflows — kept for callers that expect file paths */
 function workflowFiles(dir = AUTOMATION_DIR) {
-  return listWorkflows(dir).map((slug) => path.join(dir, `${slug}.json`));
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir)
+    .filter((file) => file.endsWith('.json') && file !== 'manifest.json')
+    .sort()
+    .map((file) => path.join(dir, file));
 }
 
-function listWorkflows(dir = AUTOMATION_DIR) {
-  return Object.keys(readCatalog(dir).workflows || {}).sort();
+function readWorkflow(filePath) {
+  return JSON.parse(fs.readFileSync(filePath, 'utf8'));
 }
 
-function getWorkflow(slug, dir = AUTOMATION_DIR) {
-  const clean = String(slug || '').replace(/\.json$/i, '');
-  const catalog = readCatalog(dir);
-  const workflow = catalog.workflows[clean];
-  if (!workflow) {
-    throw new Error(`Unknown workflow slug: ${clean}. Available: ${listWorkflows(dir).join(', ')}`);
-  }
-  return { slug: clean, workflow, catalog };
-}
-
-function readWorkflow(filePathOrSlug) {
-  if (typeof filePathOrSlug === 'string' && !filePathOrSlug.endsWith(path.sep) && !fs.existsSync(filePathOrSlug)) {
-    return getWorkflow(filePathOrSlug).workflow;
-  }
-  if (typeof filePathOrSlug === 'string' && path.basename(filePathOrSlug) === CATALOG_FILE) {
-    throw new Error('Pass a workflow slug, not catalog.json');
-  }
-  // Legacy path: automation-library/<slug>.json — resolve from catalog by basename
-  if (typeof filePathOrSlug === 'string' && filePathOrSlug.includes('automation-library')) {
-    const slug = path.basename(filePathOrSlug, '.json');
-    if (slug !== 'catalog') {
-      try {
-        return getWorkflow(slug).workflow;
-      } catch {
-        // fall through to disk read for temp exports
-      }
-    }
-  }
-  return JSON.parse(fs.readFileSync(filePathOrSlug, 'utf8'));
-}
-
-function writeWorkflow(filePathOrSlug, workflow, dir = AUTOMATION_DIR) {
-  let slug;
-  if (typeof filePathOrSlug === 'string' && filePathOrSlug.endsWith('.json')) {
-    slug = path.basename(filePathOrSlug, '.json');
-  } else {
-    slug = String(filePathOrSlug).replace(/\.json$/i, '');
-  }
-  const catalog = readCatalog(dir);
-  catalog.workflows[slug] = workflow;
-  if (!catalog.index) catalog.index = {};
-  if (!catalog.index[slug]) {
-    catalog.index[slug] = workflow.meta?.atlas?.description || workflow.description || workflow.name || slug;
-  }
-  writeCatalog(catalog, dir);
-}
-
-function exportWorkflow(slug, outPath, dir = AUTOMATION_DIR) {
-  const { workflow } = getWorkflow(slug, dir);
-  const target = outPath || path.join(dir, `${slug}.json`);
-  fs.mkdirSync(path.dirname(target), { recursive: true });
-  fs.writeFileSync(target, `${JSON.stringify(workflow, null, 2)}\n`);
-  return target;
+function writeWorkflow(filePath, workflow) {
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
+  fs.writeFileSync(filePath, `${JSON.stringify(workflow, null, 2)}\n`);
 }
 
 function walkValues(value, visitor) {
@@ -213,11 +132,9 @@ function validateWorkflow(workflow, filePath = '<memory>') {
   if (placeholders.length) warnings.push(`contains placeholders: ${placeholders.join(', ')}`);
 
   const readiness = Math.max(0, Math.min(100, 100 - errors.length * 30 - warnings.length * 5));
-  const label = path.basename(String(filePath).replace(/\\/g, '/'));
   return {
-    file: label.endsWith('.json') ? label : `${label}.json`,
-    slug: label.replace(/\.json$/i, ''),
-    name: workflow.name || label,
+    file: path.basename(filePath),
+    name: workflow.name || path.basename(filePath),
     ok: errors.length === 0,
     readiness,
     nodes: nodes.length,
@@ -230,22 +147,17 @@ function validateWorkflow(workflow, filePath = '<memory>') {
 }
 
 function buildManifest(dir = AUTOMATION_DIR) {
-  const catalog = readCatalog(dir);
-  const workflows = listWorkflows(dir).map((slug) =>
-    validateWorkflow(catalog.workflows[slug], `${slug}.json`)
-  );
+  const workflows = workflowFiles(dir).map((file) => validateWorkflow(readWorkflow(file), file));
   const failed = workflows.filter((workflow) => !workflow.ok).length;
   const averageReadiness = workflows.length
     ? Math.round((workflows.reduce((sum, workflow) => sum + workflow.readiness, 0) / workflows.length) * 10) / 10
     : 0;
   return {
     generated_at: new Date().toISOString(),
-    catalog: CATALOG_FILE,
     workflow_count: workflows.length,
     failed,
     average_readiness: averageReadiness,
     required_env: unique(workflows.flatMap((workflow) => workflow.required_env)),
-    index: catalog.index || {},
     workflows,
   };
 }
@@ -544,18 +456,18 @@ return [{ json: { email: body.email, source: body.source || 'lead-magnet', signe
   );
 
   return {
-    'weekly-founder-digest': weeklyDigest,
-    'uptime-incident-response': incident,
-    'support-triage-autoresponder': support,
-    'revenue-milestone-celebration': revenueMilestones,
-    'cancellation-save-and-learn': cancellation,
-    'lead-magnet-followup': leadFollowup,
+    'weekly-founder-digest.json': weeklyDigest,
+    'uptime-incident-response.json': incident,
+    'support-triage-autoresponder.json': support,
+    'revenue-milestone-celebration.json': revenueMilestones,
+    'cancellation-save-and-learn.json': cancellation,
+    'lead-magnet-followup.json': leadFollowup,
   };
 }
 
-function enhanceWorkflow(workflow, slugOrFile) {
-  const slug = path.basename(String(slugOrFile), '.json');
-  const validation = validateWorkflow(workflow, `${slug}.json`);
+function enhanceWorkflow(workflow, fileName) {
+  const validation = validateWorkflow(workflow, fileName);
+  const slug = path.basename(fileName, '.json');
   const nodes = Array.isArray(workflow.nodes)
     ? workflow.nodes.map((workflowNode, index) => ({
       ...workflowNode,
@@ -593,30 +505,27 @@ function enhanceWorkflow(workflow, slugOrFile) {
 }
 
 function seedWorkflows(dir = AUTOMATION_DIR) {
-  const catalog = readCatalog(dir);
   const written = [];
-  for (const [slug, workflow] of Object.entries(builtinWorkflows())) {
-    if (!catalog.workflows[slug]) {
-      catalog.workflows[slug] = workflow;
-      written.push(slug);
+  for (const [file, workflow] of Object.entries(builtinWorkflows())) {
+    const filePath = path.join(dir, file);
+    if (!fs.existsSync(filePath)) {
+      writeWorkflow(filePath, workflow);
+      written.push(file);
     }
   }
-  if (written.length) writeCatalog(catalog, dir);
   return written;
 }
 
 function enhanceExisting(dir = AUTOMATION_DIR) {
-  const catalog = readCatalog(dir);
   const changed = [];
-  for (const slug of Object.keys(catalog.workflows)) {
-    const workflow = catalog.workflows[slug];
-    const enhanced = enhanceWorkflow(workflow, slug);
+  for (const filePath of workflowFiles(dir)) {
+    const workflow = readWorkflow(filePath);
+    const enhanced = enhanceWorkflow(workflow, path.basename(filePath));
     if (JSON.stringify(workflow) !== JSON.stringify(enhanced)) {
-      catalog.workflows[slug] = enhanced;
-      changed.push(slug);
+      writeWorkflow(filePath, enhanced);
+      changed.push(path.basename(filePath));
     }
   }
-  if (changed.length) writeCatalog(catalog, dir);
   return changed;
 }
 
@@ -637,31 +546,12 @@ function main(argv = process.argv.slice(2)) {
     return;
   }
   if (command === 'validate') {
-    const slug = argv[1];
-    if (slug) {
-      const { workflow } = getWorkflow(slug);
-      const result = validateWorkflow(workflow, `${slug}.json`);
-      printJson(result);
-      process.exitCode = result.ok ? 0 : 1;
-      return;
-    }
     const manifest = buildManifest();
     printJson(manifest);
     process.exitCode = manifest.failed ? 1 : 0;
     return;
   }
-  if (command === 'export') {
-    const slug = argv[1];
-    if (!slug) throw new Error('Usage: automation-library.js export <slug> [outPath]');
-    const target = exportWorkflow(slug, argv[2]);
-    printJson({ exported: slug, path: target });
-    return;
-  }
-  if (command === 'list') {
-    printJson({ workflows: listWorkflows(), index: readCatalog().index || {} });
-    return;
-  }
-  throw new Error(`Unknown command: ${command}. Use: validate | manifest | seed | export | list`);
+  throw new Error(`Unknown command: ${command}`);
 }
 
 if (require.main === module) {
@@ -675,15 +565,10 @@ if (require.main === module) {
 
 module.exports = {
   AUTOMATION_DIR,
-  CATALOG_FILE,
   buildManifest,
   enhanceExisting,
-  exportWorkflow,
-  getWorkflow,
   inferEnvVars,
   inferPlaceholders,
-  listWorkflows,
-  readCatalog,
   seedWorkflows,
   validateWorkflow,
   workflowFiles,

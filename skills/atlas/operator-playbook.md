@@ -1,9 +1,9 @@
 ---
 name: atlas-operator-playbook
-description: Operator cadence module for Atlas v7.2. Defines daily, weekly, monthly, incident, kill-switch, and escalation thresholds for disciplined business operation.
+description: Operator cadence module for Atlas v0.7.2. Defines daily, weekly, monthly, incident, kill-switch, and escalation thresholds for disciplined business operation.
 ---
 
-# Operator Playbook (v7.2)
+# Operator Playbook (v0.7.2)
 
 Atlas operates on cadence. Every number below is a specific threshold, not an approximation. Every decision below is a branch, not a suggestion.
 

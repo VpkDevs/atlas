@@ -5,13 +5,13 @@ description: Atlas module — integrity check that runs before every other comma
 
 # Atlas Doctor — The Self-Check
 
-*A skill that automates a founder's business must itself be reliably testable. Doctor is the lesson learned from v7.x.*
+*A skill that automates a founder's business must itself be reliably testable. Doctor is the lesson learned from v0.7.x.*
 
 ---
 
 ## Purpose
 
-`atlas-doctor.md` runs **before every other Atlas command**. It verifies that the skill itself is internally coherent — that referenced module files exist, that the state directory is writable, that the skill structure has not drifted into the v7.x failure mode of duplicate files, nested copies, and version mismatches.
+`atlas-doctor.md` runs **before every other Atlas command**. It verifies that the skill itself is internally coherent — that referenced module files exist, that the state directory is writable, that the skill structure has not drifted into the v0.7.x failure mode of duplicate files, nested copies, and version mismatches.
 
 If integrity checks fail, **Atlas refuses to run**. This is non-negotiable. A skill that runs while broken produces silent corruption; a skill that refuses to run while broken produces a clear error.
 
@@ -67,7 +67,7 @@ Run in order. Each check produces ✅ / ⚠️ / ❌.
 Parse SKILL.md for every reference of the form `` `[name].md` `` or `(name.md)`. For each, verify the file exists in the skill directory.
 
 ```text
-Expected core modules (referenced in v8.0 SKILL.md):
+Expected core modules (referenced in the current SKILL.md — doctor parses the kernel, so this list is illustrative):
   atlas-doctor.md, first-ship.md, skill-hygiene.md,
   rationalization-table.md,
   onboarding.md, code-sprint.md, security.md, legal-compliance.md,
@@ -77,6 +77,7 @@ Expected core modules (referenced in v8.0 SKILL.md):
   growth-engine.md, exit-readiness.md, money-engine.md, pricing-lab.md,
   cashflow-ops.md, offer-forge.md, channel-dominance.md,
   acquisition-sniper.md, capital-governor.md, scoring.md,
+  leverage-engine.md, credential-acquisition.md,
   incident-protocol.md, context-window.md, fleet-subagents.md,
   mission-intelligence.md, operator-playbook.md, fusion-router.md,
   portfolio.md, portfolio-os.md, edge-cases.md
@@ -101,7 +102,7 @@ ALGORITHM:
 **FAIL conditions:**
 - Any duplicate cluster found → ❌ — Atlas halts; reports cluster and suggests which to archive
 
-Known v7.x duplicate clusters that v8.0 doctor specifically watches for:
+Known v0.7.x duplicate clusters that doctor specifically watches for:
 
 ```text
 {IMPROVEMENTS_INDEX.md, improvements-index.md}
@@ -114,10 +115,10 @@ Known v7.x duplicate clusters that v8.0 doctor specifically watches for:
 {IMPROVEMENTS_SUMMARY.md, improvements-summary.md}
 {IDEAL_VS_ACTUAL.md, ideal-vs-actual.md}
 {WEAKEST_ASPECTS_FIXED.md, weakest-aspects-fixed.md}
-{STRATEGIC_ARCHITECTURE_v8.3.md, strategic-architecture-v8.3.md}
-{TREMENDOUS_IMPROVEMENTS_V8.1.md, tremendous-improvements-v8.1.md}
+{STRATEGIC_ARCHITECTURE_v0.8.3.md, strategic-architecture-v0.8.3.md}
+{TREMENDOUS_IMPROVEMENTS_V8.1.md, tremendous-improvements-v0.8.1.md}
 {CONTINUATION_SUMMARY.md, continuation-summary.md}
-{MODULE_AUDIT_v8.3.md, module-audit-v8.3.md}
+{MODULE_AUDIT_v0.8.3.md, module-audit-v0.8.3.md}
 {ATLAS_KERNEL.md, atlas-kernel.md}
 {ADVANCED_FEATURES.md, advanced-features.md}
 {ADVERSARIAL_AND_EPISTEMIC.md, adversarial-and-epistemic.md}
@@ -133,7 +134,7 @@ These specific clusters are evidence of an incomplete rename pass. If Doctor fin
 ```
 
 **FAIL conditions:**
-- A nested `atlas/` directory contains a SKILL.md → ❌ — Atlas halts. This is the v7.x recursion bug: SKILL.md inside SKILL.md inside SKILL.md.
+- A nested `atlas/` directory contains a SKILL.md → ❌ — Atlas halts. This is the v0.7.x recursion bug: SKILL.md inside SKILL.md inside SKILL.md.
 
 ### Check 5 — State Directory Health
 
@@ -158,14 +159,14 @@ These specific clusters are evidence of an incomplete rename pass. If Doctor fin
 ### Check 6 — Version Coherence
 
 ```text
-[ ] CHARTER_v8.md exists at skill root
-[ ] CHARTER_v8.md declares canonical version
-[ ] SKILL.md header version matches CHARTER_v8.md
+[ ] CHARTER.md exists at skill root
+[ ] CHARTER.md declares canonical version
+[ ] SKILL.md header version matches CHARTER.md
 [ ] No file at skill root contains a "v[0-9]+.[0-9]+" version tag higher than the charter version
 ```
 
 **FAIL conditions:**
-- Version drift detected (e.g., charter is v8.0, a referenced doc says "v8.3 current") → ❌ — Atlas halts; one of them is wrong
+- Version drift detected (e.g., charter is v0.8.0, a referenced doc says "v0.8.3 current") → ❌ — Atlas halts; one of them is wrong
 
 ### Check 7 — Scoring Engine Reachable
 
@@ -199,7 +200,7 @@ IF scoring-engine/ does not exist:
 
 ```text
 ─────────────────────────────────────────────────────
-ATLAS DOCTOR — v8.0 INTEGRITY CHECK
+ATLAS DOCTOR — INTEGRITY CHECK (version from package.json)
 
 [1] SKILL.md canonical ............... [✅ / ⚠️ / ❌]
 [2] Module references resolve ........ [✅ / ⚠️ / ❌]
@@ -227,7 +228,7 @@ VERDICT: [PASS / WARN / FAIL]
   Recommendation: [action]
 
 [If PASS:]
-  Atlas v8.0 is healthy. Proceeding to [next mode].
+  Atlas [version] is healthy. Proceeding to [next mode].
 ─────────────────────────────────────────────────────
 ```
 
@@ -272,10 +273,10 @@ A reference test bench lives in `atlas-doctor-tests/` (separate package, not loa
 - `fixtures/healthy/` — a minimal valid skill structure; should PASS
 - `fixtures/duplicate-files/` — contains an `IMPROVEMENTS_INDEX.md` / `improvements-index.md` pair; should FAIL Check 3
 - `fixtures/nested-skill/` — contains `atlas/SKILL.md`; should FAIL Check 4
-- `fixtures/version-drift/` — SKILL.md says v8.0, CHARTER says v7.2; should FAIL Check 6
+- `fixtures/version-drift/` — SKILL.md says v0.8.0, CHARTER says v0.7.2; should FAIL Check 6
 - `fixtures/broken-reference/` — SKILL.md references `nonexistent.md`; should FAIL Check 2
 
-Run via `node atlas-doctor-tests/run.js`. Atlas v8.0 ships with these fixtures so the doctor can be regression-tested when it is itself modified.
+Run via `node atlas-doctor-tests/run.js`. Atlas ships with these fixtures so the doctor can be regression-tested when it is itself modified.
 
 ---
 
@@ -285,7 +286,7 @@ Run via `node atlas-doctor-tests/run.js`. Atlas v8.0 ships with these fixtures s
 |---|---|
 | "Doctor is overkill for a small change" | Doctor takes < 2 seconds. Run it. |
 | "Doctor failed but I know the issue isn't real" | Then fix the false positive in Doctor. Don't bypass it. |
-| "I'll skip Doctor just this once" | This is how v7.x got to 923 files. |
+| "I'll skip Doctor just this once" | This is how v0.7.x got to 923 files. |
 | "Doctor says version drift but the version is fine" | Either Doctor is wrong (fix it) or the version is wrong (fix it). Don't shrug. |
 
 ---

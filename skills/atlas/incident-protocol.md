@@ -3,7 +3,7 @@ name: atlas-incident-protocol
 description: The Atlas incident response protocol. Schema for every incident log, severity classification matrix, SLA targets, response playbook per severity, escalation rules, and post-mortem template. Loaded when Atlas writes to incidents/ or when severity escalation is triggered.
 ---
 
-# Incident Protocol (v7.2)
+# Incident Protocol (v0.7.2)
 
 Atlas does not improvise under pressure. It runs this protocol.
 

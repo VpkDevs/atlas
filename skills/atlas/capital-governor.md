@@ -1,9 +1,9 @@
 ---
 name: atlas-capital-governor
-description: Capital posture module for Atlas v7.2. Selects and enforces scale, balanced, preserve, or survive mode from runway, volatility, collections, cash discipline, and incident state.
+description: Capital posture module for Atlas v0.7.2. Selects and enforces scale, balanced, preserve, or survive mode from runway, volatility, collections, cash discipline, and incident state.
 ---
 
-# Capital Governor (v7.2)
+# Capital Governor (v0.7.2)
 
 Objective: maximize survival and compounding by adapting Atlas's operating posture to runway, volatility, collections, and incident risk.
 
