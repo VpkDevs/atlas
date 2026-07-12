@@ -1,0 +1,31 @@
+{
+  "name": "@vpkdevs/atlas",
+  "version": "8.4.0",
+  "private": true,
+  "description": "Atlas skill and operating system documentation.",
+  "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "doctor": "node scripts/atlas/doctor.js",
+    "doctor:strict": "node scripts/atlas/doctor.js --strict",
+    "commands": "node scripts/atlas/cli.js --json commands",
+    "credentials": "node scripts/atlas/cli.js credentials providers",
+    "automations": "node scripts/atlas/cli.js --json automation manifest",
+    "automations:validate": "node scripts/atlas/automation-library.js validate",
+    "test": "node --test tests/*.test.js",
+    "validate": "node scripts/validate.js",
+    "weekly-review": "node scripts/atlas/weekly-review.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "boxen": "^5.1.2",
+    "chalk": "^4.1.2",
+    "commander": "^12.1.0",
+    "figlet": "^1.11.0",
+    "inquirer": "^8.2.7",
+    "ora": "^5.4.1",
+    "playwright": "^1.61.1"
+  }
+}
