@@ -32,3 +32,18 @@ vercel-plugin-telemetry-preference
 projects/
 plugins/cache/
 ide/
+
+# Transient Claude runtime state and credentials
+.last-cleanup
+.last-update-result.json
+commit*-output.txt
+daemon.lock
+daemon.status.json
+daemon/
+deleted-files.txt
+diff-cached*.txt
+history.jsonl
+jobs/
+status*.txt
+teams/
+verify-status*.txt

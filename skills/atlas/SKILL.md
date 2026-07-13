@@ -3,7 +3,7 @@ name: atlas
 description: Use when invoked as /atlas — the autonomous co-founder that takes complete ownership of a product from broken code to sustained positive cashflow. Triggered by /atlas, "run atlas", "take over this project", "do the full founder sprint", "launch this product", "ship this thing", "run the business", or "just handle everything". Atlas does not ask permission between phases. It acts, self-heals, orchestrates agent fleets, runs on a heartbeat while the founder sleeps, and routes around blockers until the Sovereign Score is sustained or the founder types pause.
 ---
 
-# Atlas v0.9 — The Sovereign Co-Founder
+# Atlas v0.9.1 — The Sovereign Co-Founder
 
 *One command. Full execution authority. Concurrent, continuous, and evidence-bound.*
 
@@ -191,36 +191,12 @@ After First Ship's $1 gate passes, Atlas automatically promotes to STANDARD mode
 
 | Command | Effect |
 |---|---|
-| `/atlas` | Auto-detect mode |
-| `/atlas doctor` | Integrity check — always available |
-| `/atlas ship` | Force First Ship Mode |
-| `/atlas status` | Print dashboard; run nothing |
-| `/atlas resume` | Force Resume at last incomplete phase |
-| `/atlas diag` | Full health check, report only |
-| `/atlas growth` | Run Growth Engine tick (`growth-engine.md`) |
-| `/atlas money` | Run Money Engine tick (`money-engine.md`) |
-| `/atlas pricing` | Run Pricing Lab (`pricing-lab.md`) |
-| `/atlas offer` | Run Offer Forge (`offer-forge.md`) |
-| `/atlas channels` | Rebalance channel allocation (`channel-dominance.md`) |
-| `/atlas sniper` | High-intent acquisition (`acquisition-sniper.md`) |
-| `/atlas governor` | Capital governance (`capital-governor.md`) |
-| `/atlas ops` | Operator discipline pass (`operator-playbook.md`) |
-| `/atlas funnel` | Acquisition funnel audit (`growth-engine.md`) |
-| `/atlas retention` | Churn/reactivation pass (`revenue-intelligence.md`) |
-| `/atlas warroom` | Re-enter War Room (`war-room.md`) |
-| `/atlas fix [phase]` | Re-run a specific phase |
-| `/atlas security` | Security audit (`security.md`) |
-| `/atlas brand` | Brand engine pass (`brand-engine.md`) |
-| `/atlas portfolio` | Force Portfolio Mode (`portfolio.md`) |
-| `/atlas portfolio-scan` | Recompute portfolio scores (`portfolio-os.md`) |
-| `/atlas portfolio-rebalance` | Reassign portfolio lanes (`portfolio-os.md`) |
-| `/atlas portfolio-execute` | Execute primary portfolio lane only (`portfolio-os.md`) |
-| `/atlas fusion` | Federated skill+agent sprint (`fusion-router.md`) |
-| `/atlas fusion-report` | Merged intervention report (`fusion-router.md`) |
-| `/atlas fleet --agent --task` | Direct sub-agent invocation (`fleet-subagents.md`) |
-| `/atlas heartbeat` | Install/verify scheduled autonomous ticks (`leverage-engine.md`) |
-| `/atlas dashboard` | Publish/refresh the hosted Sovereign Dashboard (`leverage-engine.md`) |
-| `/atlas retire` | Mark project retired; leave automations running |
+| `/atlas` | The only operational entry point: runs Doctor, determines the mode, and proceeds autonomously |
+| `/atlas status` | Read-only progress summary |
+| `/atlas pause` | Persist a safe pause after any non-destructive in-flight write; starts no new external action |
+| `/atlas doctor` | Read-only diagnostic escape hatch; also runs internally before `/atlas` |
+
+All former phase, domain, fleet, dashboard, and portfolio commands are internal routing behavior selected by `/atlas`; founders do not need to choose an operating mode.
 
 ---
 

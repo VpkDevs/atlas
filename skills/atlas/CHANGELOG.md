@@ -12,6 +12,15 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ---
 
+## [0.9.1] - 2026-07-12
+
+### The Expansion
+- **User Interview Engine (`user-interview-engine.md`)**: Autonomous user feedback extraction via email API.
+- **Penetration Tester (`penetration-tester.md`)**: Authorized, non-destructive DAST protocol before launch gates.
+- **Edge Orchestration**: `deployment-engine.md` adds Cloudflare Workers guidance via `wrangler`.
+- **Self-Funding Capital Engine**: `capital-governor.md` adds non-dilutive capital generation during SURVIVE/PRESERVE modes.
+- **Autonomous Interface**: founders use `/atlas`; `/atlas status`, `/atlas pause`, and `/atlas doctor` are the only exceptions.
+
 ## [0.9.0] - 2026-07-12
 
 ### Concurrent, Continuous, Evidence-Bound

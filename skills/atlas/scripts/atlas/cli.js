@@ -114,6 +114,11 @@ class AtlasCLI {
       .action(this.showStatus.bind(this));
 
     this.program
+      .command('pause [project]')
+      .description('Safely pause autonomous work for a project')
+      .action(this.pauseProject.bind(this));
+
+    this.program
       .command('commands')
       .description('List canonical /atlas commands')
       .action(this.listCommands.bind(this));
@@ -352,6 +357,27 @@ class AtlasCLI {
     } catch (error) {
       this.stopSpinner(`Failed to load status: ${error.message}`, false);
     }
+  }
+
+  async pauseProject(project) {
+    const projectSlug = project || this.detectCurrentProject();
+    const projectPath = getProjectPath(projectSlug);
+    const state = this.loadProject(projectSlug);
+    const pausedAt = new Date().toISOString();
+    const nextState = {
+      ...state,
+      context: {
+        ...state.context,
+        mode: 'paused',
+        paused_at: pausedAt,
+        last_activity: pausedAt,
+      },
+    };
+
+    const error = validationError('context.json', validateContextState(nextState));
+    if (error) throw error;
+    writeJsonAtomic(path.join(projectPath, 'context.json'), nextState);
+    console.log(`Atlas paused for ${projectSlug}.`);
   }
 
   displayScoreBar(label, score, max) {

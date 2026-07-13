@@ -2,7 +2,7 @@
 
 One command. Total sovereignty. Atlas is an autonomous co-founder that takes a product from broken code to a compounding business engine with executable implementations, enhanced intelligence, automation, and orchestration.
 
-As of 2026-07-12, Atlas is at **v0.9** — the last major release before v1.0, the first commercial release (see the Road to v1.0 gate in [CHARTER.md](CHARTER.md)). All prior releases (v1–v8.4) were renumbered to v0.1–v0.8.4. v0.9 keeps the lean kernel-first runtime and remains the single installable canonical tree for `.agents`, `.claude`, `.codex`, and compatible skill runtimes. See [VERSION.md](VERSION.md) for canonical version history.
+As of 2026-07-12, Atlas is at **v0.9.1** — the last major release before v1.0, the first commercial release (see the Road to v1.0 gate in [CHARTER.md](CHARTER.md)). All prior releases (v1–v8.4) were renumbered to v0.1–v0.8.4. v0.9.1 keeps the lean kernel-first runtime and remains the single installable canonical tree for `.agents`, `.claude`, `.codex`, and compatible skill runtimes. See [VERSION.md](VERSION.md) for canonical version history.
 
 ## 🚀 What's New in v0.9
 
