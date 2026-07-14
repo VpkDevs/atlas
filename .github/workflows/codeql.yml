@@ -1,0 +1,66 @@
+name: CodeQL Security Scan
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sunday
+
+jobs:
+  analyze:
+    name: Analyze with CodeQL
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['javascript-typescript']
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          queries: security-and-quality
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{matrix.language}}"
+
+  dependency-check:
+    name: Check Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - name: Check package.json integrity
+        run: |
+          cd skills/atlas
+          npm install --dry-run
+          if [ $? -eq 0 ]; then
+            echo "✅ All dependencies are valid"
+          else
+            echo "❌ Dependency issues found"
+            exit 1
+          fi
+
+      - name: Audit for vulnerabilities
+        run: |
+          cd skills/atlas
+          npm audit --audit-level=moderate || true
