@@ -2,64 +2,46 @@ name: PR Review Checklist
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened]
+
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
   checklist:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Comment with review checklist
+      - name: Post review checklist
         uses: actions/github-script@v7
         with:
           script: |
-            const body = `
-## 🔍 Code Review Checklist
+            const body = [
+              '## Review checklist',
+              '',
+              '### Schema & coherence',
+              '- [ ] `node scripts/validate.js` passes',
+              '- [ ] `node scripts/atlas/doctor.js` returns PASS',
+              '- [ ] Version matches across package.json, CHARTER.md, VERSION.md',
+              '- [ ] CHARTER.md file inventory matches the tree',
+              '',
+              '### Security',
+              '- [ ] No secrets, API keys, or credentials committed',
+              '- [ ] Secret scans passed',
+              '',
+              '### Documentation',
+              '- [ ] New .md files have `name:` and `description:` frontmatter',
+              '- [ ] CHANGELOG.md updated if the version changed',
+              '- [ ] No broken cross-file references',
+              '',
+              '### Hygiene',
+              '- [ ] No `_archive/` or runtime state committed',
+              '- [ ] No leftover `[TODO]` / `[FIXME]` / `PLACEHOLDER` strings',
+            ].join('\n');
 
-Before merging, please verify:
-
-### Schema & Coherence
-- [ ] \`node scripts/validate.js\` passes (98+ checks)
-- [ ] \`node scripts/atlas/doctor.js\` returns PASS
-- [ ] Version in package.json matches CHARTER.md and VERSION.md
-- [ ] File inventory in CHARTER.md matches actual files
-
-### Security
-- [ ] No secrets, API keys, or credentials in code
-- [ ] No new \`console.log\` statements left behind
-- [ ] TruffleHog secret scan passed
-- [ ] No hardcoded environment variables
-
-### Documentation
-- [ ] All new .md files have valid frontmatter (\`name:\`, \`description:\`)
-- [ ] CHANGELOG.md updated for new version
-- [ ] README.md or INDEX.md updated if applicable
-- [ ] No broken cross-file references
-
-### File Hygiene
-- [ ] No \`_archive/\` directories
-- [ ] No runtime state files (\`.env.local\`, \`.atlas/\`, etc.)
-- [ ] File count under 100 (currently monitored)
-- [ ] No \`[TODO]\`, \`[FIXME]\`, or \`PLACEHOLDER\` strings
-
-### Testing
-- [ ] New scripts have been tested locally
-- [ ] GitHub Actions workflows pass
-- [ ] No regressions in existing functionality
-
----
-
-**🤖 Automated checks:** CodeQL, TruffleHog, and Validator workflows run automatically.
-**📊 File metrics:** Monitored for bloat (keep under 100 files).
-**🔐 Secrets:** Scanned on every push/PR.
-`;
-
-            github.rest.issues.createComment({
+            await github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: body
+              body
             });

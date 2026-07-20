@@ -6,7 +6,10 @@ on:
   pull_request:
     branches: [master, main]
   schedule:
-    - cron: '0 0 * * 0'  # Weekly on Sunday
+    - cron: '0 0 * * 0'  # Weekly, Sunday 00:00 UTC
+
+permissions:
+  contents: read
 
 jobs:
   analyze:
@@ -17,11 +20,6 @@ jobs:
       contents: read
       security-events: write
 
-    strategy:
-      fail-fast: false
-      matrix:
-        language: ['javascript-typescript']
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -29,16 +27,15 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: ${{ matrix.language }}
+          languages: javascript-typescript
           queries: security-and-quality
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v3
-
-      - name: Perform CodeQL Analysis
+      # No autobuild step: javascript-typescript is interpreted, CodeQL
+      # extracts it directly. Running autobuild here is redundant.
+      - name: Perform CodeQL analysis
         uses: github/codeql-action/analyze@v3
         with:
-          category: "/language:${{matrix.language}}"
+          category: "/language:javascript-typescript"
 
   dependency-check:
     name: Check Dependencies
@@ -48,19 +45,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20.x'
+          cache: 'npm'
+          cache-dependency-path: skills/atlas/package-lock.json
 
-      - name: Check package.json integrity
-        run: |
-          cd skills/atlas
-          npm install --dry-run
-          if [ $? -eq 0 ]; then
-            echo "✅ All dependencies are valid"
-          else
-            echo "❌ Dependency issues found"
-            exit 1
-          fi
+      - name: Verify lockfile is installable
+        run: npm ci --dry-run
+        working-directory: skills/atlas
 
-      - name: Audit for vulnerabilities
-        run: |
-          cd skills/atlas
-          npm audit --audit-level=moderate || true
+      - name: Audit for known vulnerabilities
+        run: npm audit --audit-level=high
+        working-directory: skills/atlas
+        continue-on-error: true
