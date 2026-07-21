@@ -1,0 +1,204 @@
+{
+  "name": "Atlas: Uptime Incident Response",
+  "active": false,
+  "nodes": [
+    {
+      "id": "health-trigger",
+      "name": "Every 5 Minutes",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -840,
+        0
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "health-check",
+      "name": "Check Live URL",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -600,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "={{$env.LIVE_URL + \"/health\"}}",
+        "options": {
+          "timeout": 10000
+        }
+      }
+    },
+    {
+      "id": "is-down",
+      "name": "Health Failed?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -360,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true
+          },
+          "conditions": [
+            {
+              "leftValue": "={{$json.statusCode || 200}}",
+              "operation": "largerEqual",
+              "rightValue": 400
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "alert-slack",
+      "name": "Alert Slack",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -120,
+        -120
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.SLACK_WEBHOOK_URL}}",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "={{\":rotating_light: Atlas incident: \" + $env.LIVE_URL + \" health check failed. Status: \" + ($json.statusCode || \"unknown\")}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "open-linear",
+      "name": "Open Linear Incident",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -120,
+        80
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.linear.app/graphql",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyContentType": "json",
+        "jsonBody": "={{JSON.stringify({query:\"mutation IssueCreate($input: IssueCreateInput!) { issueCreate(input: $input) { issue { id title url } } }\",variables:{input:{title:\"Atlas incident: production health check failed\",description:\"Health check failed for \" + $env.LIVE_URL + \". Inspect logs, rollback if needed, and update incident notes.\"}}})}}"
+      }
+    },
+    {
+      "id": "email-founder",
+      "name": "Email Founder",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 1,
+      "position": [
+        160,
+        0
+      ],
+      "parameters": {
+        "fromEmail": "={{$env.FROM_EMAIL || \"founder@example.com\"}}",
+        "toEmail": "={{$json.email || $env.FOUNDER_EMAIL}}",
+        "subject": "Atlas incident: production health failed",
+        "html": "={{\"<p>Atlas detected a production health failure for \" + $env.LIVE_URL + \".</p><p>Slack and Linear have been notified.</p>\"}}"
+      },
+      "credentials": {
+        "smtp": {
+          "id": "[SMTP_CREDENTIAL_ID]",
+          "name": "SMTP / Resend SMTP"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Every 5 Minutes": {
+      "main": [
+        [
+          {
+            "node": "Check Live URL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Live URL": {
+      "main": [
+        [
+          {
+            "node": "Health Failed?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Health Failed?": {
+      "main": [
+        [
+          {
+            "node": "Alert Slack",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Open Linear Incident",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Email Founder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true
+  },
+  "staticData": null,
+  "tags": [
+    "atlas",
+    "monitoring"
+  ],
+  "meta": {
+    "atlas": {
+      "slug": "uptime-incident-response",
+      "category": "monitoring",
+      "description": "Checks the production URL, opens an incident when health fails, alerts the founder, and schedules a follow-up.",
+      "required_env": [
+        "LIVE_URL",
+        "SLACK_WEBHOOK_URL",
+        "LINEAR_API_KEY",
+        "FOUNDER_EMAIL"
+      ],
+      "placeholders": [
+        "SMTP_CREDENTIAL_ID"
+      ],
+      "activation_gate": "replace placeholders, set credentials, run once manually, then activate",
+      "generated_by": "scripts/atlas/automation-library.js"
+    }
+  }
+}

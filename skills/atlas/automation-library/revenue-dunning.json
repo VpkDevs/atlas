@@ -1,0 +1,495 @@
+{
+  "name": "Revenue Dunning Automation",
+  "nodes": [
+    {
+      "name": "Stripe Failed Payment Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        250,
+        300
+      ],
+      "parameters": {
+        "path": "stripe-failed-payment",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "revenue-dunning-stripe-failed-payment-webhook",
+      "typeVersion": 2
+    },
+    {
+      "name": "Verify Stripe Signature",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        450,
+        300
+      ],
+      "parameters": {
+        "functionCode": "const crypto = require('crypto');\nconst stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);\n\nconst webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;\nconst sig = $input.first().json.headers['stripe-signature'];\nconst payload = JSON.stringify($input.first().json.body);\n\nlet event;\ntry {\n  event = stripe.webhooks.constructEvent(payload, sig, webhookSecret);\n  return [{json: {event, valid: true}}];\n} catch (err) {\n  return [{json: {error: err.message, valid: false}}];\n}"
+      },
+      "id": "revenue-dunning-verify-stripe-signature",
+      "typeVersion": 1
+    },
+    {
+      "name": "Filter Failed Payments",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        650,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.event.type}}",
+              "operation": "equals",
+              "value2": "payment_intent.payment_failed"
+            }
+          ]
+        }
+      },
+      "id": "revenue-dunning-filter-failed-payments",
+      "typeVersion": 2
+    },
+    {
+      "name": "Extract Customer Details",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        850,
+        300
+      ],
+      "parameters": {
+        "functionCode": "const event = $input.first().json.event;\nconst customerId = event.data.object.customer;\nconst paymentIntentId = event.data.object.id;\nconst amount = event.data.object.amount / 100;\nconst currency = event.data.object.currency;\n\n// Get customer details from Stripe\nconst stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);\nconst customer = await stripe.customers.retrieve(customerId);\n\nreturn [{\n  json: {\n    customerId,\n    paymentIntentId,\n    amount,\n    currency,\n    customerEmail: customer.email,\n    customerName: customer.name,\n    failureCode: event.data.object.last_payment_error?.code,\n    failureMessage: event.data.object.last_payment_error?.message,\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "revenue-dunning-extract-customer-details",
+      "typeVersion": 1
+    },
+    {
+      "name": "Check Payment History",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        1050,
+        300
+      ],
+      "parameters": {
+        "functionCode": "const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);\nconst customerId = $input.first().json.customerId;\n\n// Get payment history\nconst payments = await stripe.paymentIntents.list({\n  customer: customerId,\n  limit: 10\n});\n\nconst failedCount = payments.data.filter(p => p.status === 'requires_payment_method').length;\nconst successfulCount = payments.data.filter(p => p.status === 'succeeded').length;\n\nreturn [{\n  json: {\n    ...$input.first().json,\n    totalPayments: payments.data.length,\n    failedPayments: failedCount,\n    successfulPayments: successfulCount,\n    isFirstFailure: failedCount === 1,\n    isChronicFailure: failedCount >= 3\n  }\n}];"
+      },
+      "id": "revenue-dunning-check-payment-history",
+      "typeVersion": 1
+    },
+    {
+      "name": "Determine Dunning Strategy",
+      "type": "n8n-nodes-base.switch",
+      "position": [
+        1250,
+        300
+      ],
+      "parameters": {
+        "rules": {
+          "rules": [
+            {
+              "conditions": {
+                "string": [
+                  {
+                    "value1": "={{$json.isFirstFailure}}",
+                    "operation": "equals",
+                    "value2": "true"
+                  }
+                ]
+              },
+              "output": "First Failure"
+            },
+            {
+              "conditions": {
+                "string": [
+                  {
+                    "value1": "={{$json.isChronicFailure}}",
+                    "operation": "equals",
+                    "value2": "true"
+                  }
+                ]
+              },
+              "output": "Chronic Failure"
+            }
+          ],
+          "defaultOutput": "Standard Failure"
+        }
+      },
+      "id": "revenue-dunning-determine-dunning-strategy",
+      "typeVersion": 1
+    },
+    {
+      "name": "Send First Failure Email",
+      "type": "n8n-nodes-base.emailSend",
+      "position": [
+        1450,
+        200
+      ],
+      "parameters": {
+        "fromEmail": "billing@[PRODUCT_NAME].com",
+        "toEmail": "={{$json.customerEmail}}",
+        "subject": "Payment Issue - Let's fix this together",
+        "text": "Hi {{$json.customerName}},\n\nWe noticed your recent payment of {{$json.amount}} {{$json.currency}} didn't go through.\n\nThis happens sometimes! Common reasons:\n• Card expired\n• Insufficient funds\n• Bank security block\n\nPlease update your payment method here:\n[UPDATE_PAYMENT_LINK]\n\nYour service will continue uninterrupted for 7 days while we sort this out.\n\nBest,\n[PRODUCT_NAME] Team",
+        "credentials": {
+          "id": "resend",
+          "name": "Resend"
+        }
+      },
+      "id": "revenue-dunning-send-first-failure-email",
+      "typeVersion": 1
+    },
+    {
+      "name": "Send Chronic Failure Email",
+      "type": "n8n-nodes-base.emailSend",
+      "position": [
+        1450,
+        400
+      ],
+      "parameters": {
+        "fromEmail": "billing@[PRODUCT_NAME].com",
+        "toEmail": "={{$json.customerEmail}}",
+        "subject": "Important: Multiple Payment Failures",
+        "text": "Hi {{$json.customerName}},\n\nWe've noticed multiple payment failures on your account.\n\nTo avoid service interruption, please update your payment method within 48 hours:\n[UPDATE_PAYMENT_LINK]\n\nIf you're experiencing financial difficulty, please reply to this email - we're happy to discuss options.\n\nBest,\n[PRODUCT_NAME] Team",
+        "credentials": {
+          "id": "resend",
+          "name": "Resend"
+        }
+      },
+      "id": "revenue-dunning-send-chronic-failure-email",
+      "typeVersion": 1
+    },
+    {
+      "name": "Send Standard Failure Email",
+      "type": "n8n-nodes-base.emailSend",
+      "position": [
+        1450,
+        600
+      ],
+      "parameters": {
+        "fromEmail": "billing@[PRODUCT_NAME].com",
+        "toEmail": "={{$json.customerEmail}}",
+        "subject": "Payment Update Needed",
+        "text": "Hi {{$json.customerName}},\n\nYour payment of {{$json.amount}} {{$json.currency}} failed.\n\nReason: {{$json.failureMessage || 'Payment method issue'}}\n\nPlease update your payment method:\n[UPDATE_PAYMENT_LINK]\n\nBest,\n[PRODUCT_NAME] Team",
+        "credentials": {
+          "id": "resend",
+          "name": "Resend"
+        }
+      },
+      "id": "revenue-dunning-send-standard-failure-email",
+      "typeVersion": 1
+    },
+    {
+      "name": "Log to Database",
+      "type": "n8n-nodes-base.postgres",
+      "position": [
+        1650,
+        300
+      ],
+      "parameters": {
+        "operation": "insert",
+        "table": "dunning_events",
+        "columns": "customer_id,payment_intent_id,amount,currency,strategy,sent_at",
+        "values": "={{$json.customerId}},={{$json.paymentIntentId}},={{$json.amount}},={{$json.currency}},={{$node[\"Determine Dunning Strategy\"].json.strategy}},={{$json.timestamp}}",
+        "credentials": {
+          "id": "postgres",
+          "name": "PostgreSQL"
+        }
+      },
+      "id": "revenue-dunning-log-to-database",
+      "typeVersion": 1
+    },
+    {
+      "name": "Slack Alert",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        1850,
+        300
+      ],
+      "parameters": {
+        "resource": "message",
+        "operation": "post",
+        "channel": "#billing-alerts",
+        "text": "💰 Dunning email sent\n• Customer: {{$json.customerName}} ({{$json.customerEmail}})\n• Amount: {{$json.amount}} {{$json.currency}}\n• Strategy: {{$node[\"Determine Dunning Strategy\"].json.strategy}}\n• Failure: {{$json.failureCode || 'Unknown'}}",
+        "credentials": {
+          "id": "slack",
+          "name": "Slack"
+        }
+      },
+      "id": "revenue-dunning-slack-alert",
+      "typeVersion": 1
+    },
+    {
+      "name": "Schedule Follow-up",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        2050,
+        300
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "days",
+              "minutesInterval": 1440
+            }
+          ]
+        }
+      },
+      "id": "revenue-dunning-schedule-follow-up",
+      "typeVersion": 1.2
+    },
+    {
+      "name": "Check Payment Status",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        2250,
+        300
+      ],
+      "parameters": {
+        "functionCode": "const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);\nconst paymentIntentId = $input.first().json.paymentIntentId;\n\nconst paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);\n\nif (paymentIntent.status === 'succeeded') {\n  return [{json: {...$input.first().json, status: 'recovered', recoveredAt: new Date().toISOString()}}];\n} else {\n  return [{json: {...$input.first().json, status: 'still_failed', daysSinceFailure: 1}}];\n}"
+      },
+      "id": "revenue-dunning-check-payment-status",
+      "typeVersion": 1
+    },
+    {
+      "name": "Escalate if Unresolved",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        2450,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json.daysSinceFailure}}",
+              "operation": "larger",
+              "value2": "3"
+            }
+          ]
+        }
+      },
+      "id": "revenue-dunning-escalate-if-unresolved",
+      "typeVersion": 2
+    },
+    {
+      "name": "Create Support Ticket",
+      "type": "n8n-nodes-base.linear",
+      "position": [
+        2650,
+        300
+      ],
+      "parameters": {
+        "resource": "issue",
+        "operation": "create",
+        "teamId": "=[LINEAR_TEAM_ID]",
+        "title": "Chronic payment failure: {{$json.customerEmail}}",
+        "description": "Customer has failed payments for 3+ days.\n\nCustomer: {{$json.customerName}}\nEmail: {{$json.customerEmail}}\nAmount: {{$json.amount}} {{$json.currency}}\nFailure count: {{$json.failedPayments}}\n\nNeeds manual outreach.",
+        "credentials": {
+          "id": "linear",
+          "name": "Linear"
+        }
+      },
+      "id": "revenue-dunning-create-support-ticket",
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Stripe Failed Payment Webhook": {
+      "main": [
+        [
+          {
+            "node": "Verify Stripe Signature",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verify Stripe Signature": {
+      "main": [
+        [
+          {
+            "node": "Filter Failed Payments",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Failed Payments": {
+      "main": [
+        [
+          {
+            "node": "Extract Customer Details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Customer Details": {
+      "main": [
+        [
+          {
+            "node": "Check Payment History",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Payment History": {
+      "main": [
+        [
+          {
+            "node": "Determine Dunning Strategy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Determine Dunning Strategy": {
+      "main": [
+        [
+          {
+            "node": "Send First Failure Email",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Chronic Failure Email",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Send Standard Failure Email",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Send First Failure Email": {
+      "main": [
+        [
+          {
+            "node": "Log to Database",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Chronic Failure Email": {
+      "main": [
+        [
+          {
+            "node": "Log to Database",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Standard Failure Email": {
+      "main": [
+        [
+          {
+            "node": "Log to Database",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log to Database": {
+      "main": [
+        [
+          {
+            "node": "Slack Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack Alert": {
+      "main": [
+        [
+          {
+            "node": "Schedule Follow-up",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Follow-up": {
+      "main": [
+        [
+          {
+            "node": "Check Payment Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Payment Status": {
+      "main": [
+        [
+          {
+            "node": "Escalate if Unresolved",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Escalate if Unresolved": {
+      "main": [
+        [
+          {
+            "node": "Create Support Ticket",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true
+  },
+  "staticData": "{}",
+  "versionId": "1.0",
+  "active": false,
+  "tags": [
+    "atlas"
+  ],
+  "meta": {
+    "atlas": {
+      "slug": "revenue-dunning",
+      "category": "library",
+      "description": "Atlas automation workflow",
+      "required_env": [
+        "LINEAR_TEAM_ID",
+        "STRIPE_SECRET_KEY",
+        "STRIPE_WEBHOOK_SECRET"
+      ],
+      "placeholders": [
+        "LINEAR_TEAM_ID",
+        "PRODUCT_NAME",
+        "UPDATE_PAYMENT_LINK"
+      ],
+      "activation_gate": "replace placeholders, configure credentials, run once manually, then activate"
+    }
+  }
+}

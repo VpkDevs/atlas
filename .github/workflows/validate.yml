@@ -35,16 +35,9 @@ jobs:
         run: node scripts/validate.js
         working-directory: skills/atlas
 
-      # Non-blocking: doctor.js currently fails on a pre-existing repo issue
-      # unrelated to this workflow -- automation-library/ is referenced by
-      # CHARTER.md, doctor.js and package.json, but the directory was deleted
-      # in 945d755. Restore the directory (in the format scripts/atlas/
-      # automation-library.js expects) or drop the reference, then make this
-      # step blocking again by removing continue-on-error.
       - name: Run doctor
         run: node scripts/atlas/doctor.js
         working-directory: skills/atlas
-        continue-on-error: true
 
   security:
     name: Secrets & Security Scan

@@ -1,0 +1,199 @@
+{
+  "name": "Atlas: Revenue Milestone Celebration",
+  "active": false,
+  "nodes": [
+    {
+      "id": "daily-revenue-trigger",
+      "name": "Daily Revenue Check",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -760,
+        0
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 24
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "stripe-subscriptions",
+      "name": "Fetch Stripe Subscriptions",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -520,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.stripe.com/v1/subscriptions?status=active&limit=100",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      }
+    },
+    {
+      "id": "calculate-mrr",
+      "name": "Calculate MRR Milestone",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        -280,
+        0
+      ],
+      "parameters": {
+        "functionCode": "const subscriptions = $json.data || [];\nconst mrr = subscriptions.reduce((sum, sub) => {\n  const cents = (sub.items?.data || []).reduce((itemSum, item) => itemSum + (item.price?.unit_amount || 0), 0);\n  return sum + cents / 100;\n}, 0);\nconst milestones = [1, 10, 100, 500, 1000, 5000, 10000];\nconst reached = milestones.filter(m => mrr >= m).pop() || 0;\nconst next = milestones.find(m => m > mrr) || Math.ceil((mrr + 1) / 10000) * 10000;\nreturn [{ json: { mrr, reached, next, email: $env.FOUNDER_EMAIL } }];"
+      }
+    },
+    {
+      "id": "milestone-hit",
+      "name": "Milestone Hit?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -40,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "conditions": [
+            {
+              "leftValue": "={{$json.reached}}",
+              "operation": "larger",
+              "rightValue": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "slack-milestone",
+      "name": "Post Milestone",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        200,
+        -80
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.SLACK_WEBHOOK_URL}}",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "={{\":tada: Revenue milestone reached: $\" + $json.reached + \" MRR. Current MRR: $\" + Math.round($json.mrr) + \". Next target: $\" + $json.next + \".\"}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "email-milestone",
+      "name": "Email Milestone",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 1,
+      "position": [
+        200,
+        100
+      ],
+      "parameters": {
+        "fromEmail": "={{$env.FROM_EMAIL || \"founder@example.com\"}}",
+        "toEmail": "={{$json.email || $env.FOUNDER_EMAIL}}",
+        "subject": "Atlas revenue milestone reached",
+        "html": "={{\"<p>MRR is now $\" + Math.round($json.mrr) + \".</p><p>Next target: $\" + $json.next + \".</p>\"}}"
+      },
+      "credentials": {
+        "smtp": {
+          "id": "[SMTP_CREDENTIAL_ID]",
+          "name": "SMTP / Resend SMTP"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Daily Revenue Check": {
+      "main": [
+        [
+          {
+            "node": "Fetch Stripe Subscriptions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Stripe Subscriptions": {
+      "main": [
+        [
+          {
+            "node": "Calculate MRR Milestone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculate MRR Milestone": {
+      "main": [
+        [
+          {
+            "node": "Milestone Hit?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Milestone Hit?": {
+      "main": [
+        [
+          {
+            "node": "Post Milestone",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Email Milestone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true
+  },
+  "staticData": null,
+  "tags": [
+    "atlas",
+    "revenue"
+  ],
+  "meta": {
+    "atlas": {
+      "slug": "revenue-milestone-celebration",
+      "category": "revenue",
+      "description": "Watches Stripe MRR and posts founder-visible celebration plus next revenue target when milestones are crossed.",
+      "required_env": [
+        "STRIPE_SECRET_KEY",
+        "SLACK_WEBHOOK_URL",
+        "FOUNDER_EMAIL"
+      ],
+      "placeholders": [
+        "SMTP_CREDENTIAL_ID"
+      ],
+      "activation_gate": "replace placeholders, set credentials, run once manually, then activate",
+      "generated_by": "scripts/atlas/automation-library.js"
+    }
+  }
+}

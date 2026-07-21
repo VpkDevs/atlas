@@ -1,0 +1,210 @@
+{
+  "name": "Atlas: Lead Magnet Follow-Up",
+  "active": false,
+  "nodes": [
+    {
+      "id": "lead-webhook",
+      "name": "Lead Signup Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -860,
+        0
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "atlas-lead-signup",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "webhookId": "atlas-lead-signup"
+    },
+    {
+      "id": "normalize-lead",
+      "name": "Normalize Lead",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        -620,
+        0
+      ],
+      "parameters": {
+        "functionCode": "const body = $json.body || $json;\nreturn [{ json: { email: body.email, source: body.source || 'lead-magnet', signedUpAt: new Date().toISOString() } }];"
+      }
+    },
+    {
+      "id": "track-lead",
+      "name": "Track Lead in PostHog",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -360,
+        -120
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{\"https://app.posthog.com/capture/\"}}",
+        "sendBody": true,
+        "bodyContentType": "json",
+        "jsonBody": "={{JSON.stringify({api_key:$env.POSTHOG_API_KEY,event:\"lead_magnet_signup\",distinct_id:$json.email,properties:{source:$json.source}})}}"
+      }
+    },
+    {
+      "id": "send-day-zero",
+      "name": "Send Day 0 Email",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -360,
+        80
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.resend.com/emails",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyContentType": "json",
+        "jsonBody": "={{JSON.stringify({from:$env.FROM_EMAIL,to:$json.email,subject:\"Here is the resource\",html:\"<p>Here is the resource you asked for. Tomorrow I will send the fastest way to get value from it.</p>\"})}}"
+      }
+    },
+    {
+      "id": "wait-two-days",
+      "name": "Wait 2 Days",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -120,
+        80
+      ],
+      "parameters": {
+        "amount": 2,
+        "unit": "days"
+      }
+    },
+    {
+      "id": "send-conversion-email",
+      "name": "Send Conversion Email",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        120,
+        80
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.resend.com/emails",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyContentType": "json",
+        "jsonBody": "={{JSON.stringify({from:$env.FROM_EMAIL,to:$json.email,subject:\"Want this done for you?\",html:\"<p>If you want the outcome without the setup, here is the paid path.</p>\"})}}"
+      }
+    },
+    {
+      "id": "notify-new-lead",
+      "name": "Notify New Lead",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -120,
+        -120
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.SLACK_WEBHOOK_URL}}",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "={{\":mag: New lead from \" + $json.source + \": \" + $json.email}}"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Lead Signup Webhook": {
+      "main": [
+        [
+          {
+            "node": "Normalize Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Lead": {
+      "main": [
+        [
+          {
+            "node": "Track Lead in PostHog",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send Day 0 Email",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Notify New Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Day 0 Email": {
+      "main": [
+        [
+          {
+            "node": "Wait 2 Days",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 2 Days": {
+      "main": [
+        [
+          {
+            "node": "Send Conversion Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true
+  },
+  "staticData": null,
+  "tags": [
+    "atlas",
+    "growth"
+  ],
+  "meta": {
+    "atlas": {
+      "slug": "lead-magnet-followup",
+      "category": "growth",
+      "description": "Turns a lead magnet signup into a seven-day conversion sequence with behavior-aware founder alerting.",
+      "required_env": [
+        "RESEND_API_KEY",
+        "POSTHOG_API_KEY",
+        "POSTHOG_PROJECT_ID",
+        "SLACK_WEBHOOK_URL"
+      ],
+      "placeholders": [],
+      "activation_gate": "replace placeholders, set credentials, run once manually, then activate",
+      "generated_by": "scripts/atlas/automation-library.js"
+    }
+  }
+}
