@@ -18,7 +18,7 @@ Three new modules are now part of the canonical tree:
 | Module | When Loaded | Purpose |
 |---|---|---|
 | `user-interview-engine.md` | Phase 12+ (Revenue Intel) or continuously in Phase 13 (Growth) | Autonomous user feedback extraction via email API. Replace assumptions with direct evidence. |
-| `penetration-tester.md` | Phase 2b (Security) or `/atlas security-scan` | Authorized, non-destructive DAST (Dynamic Application Security Testing). OWASP Top 10 coverage before launch gates. |
+| `penetration-tester.md` | Phase 2b (Security); `/atlas` routes to it automatically when security work is required | Authorized, non-destructive DAST (Dynamic Application Security Testing). OWASP Top 10 coverage before launch gates. |
 | `deployment-engine.md` | Phase 9 (Launch) during platform detection | Deployment platform detection and execution protocol. Vercel, Heroku, Railway, Render, AWS, Cloudflare Workers. |
 
 **Your existing projects are unaffected.** These modules load only when their phase is reached or when explicitly invoked.
@@ -73,19 +73,33 @@ cd /path/to/atlas/repo
 git pull origin main
 
 # 3. Validate the new tree
-node scripts/atlas/validate.js
+cd skills/atlas
+node scripts/validate.js
 # Expected: ✓ all checks pass
 
 # 4. Verify doctor passes
-node scripts/atlas/scripts/atlas/doctor.js
+node scripts/atlas/doctor.js
 # Expected: Atlas Doctor: PASS
 
-# 5. Verify in Claude session
+# 5. Propagate to your runtime target(s) — pulling the canonical repo does
+#    NOT update ~/.claude/skills/atlas or ~/.agents/atlas by itself; per
+#    CANONICAL_INSTALL.md these are separate copies, not a symlink.
+rm -rf ~/.claude/skills/atlas
+cp -r . ~/.claude/skills/atlas
+# OR, if you run from .agents:
+# rm -rf ~/.agents/atlas
+# cp -r . ~/.agents/atlas
+
+# 6. Verify the propagated copy, not just the canonical checkout
+node ~/.claude/skills/atlas/scripts/atlas/doctor.js
+# Expected: Atlas Doctor: PASS
+
+# 7. Verify in Claude session
 # Invoke /atlas doctor
 # Expected: VERDICT: PASS, header includes "Atlas v0.9.1"
 ```
 
-**No user action required.** Your next `/atlas` invocation will automatically use v0.9.1.
+Once the propagation step (5) has run, your next `/atlas` invocation will use v0.9.1. Skipping it leaves Claude running the old skill even though the canonical repo is up to date.
 
 ---
 
@@ -109,13 +123,12 @@ cd atlas/skills/atlas
 # 4. Validate
 node scripts/validate.js
 
-# 5. Install to your runtime
+# 5. Install to your runtime — pick ONE target and verify that same one
 cp -r . ~/.claude/skills/atlas
-# OR
-cp -r . ~/.agents/atlas
-
-# 6. Verify
 node ~/.claude/skills/atlas/scripts/atlas/doctor.js
+# OR, if you run from .agents instead:
+# cp -r . ~/.agents/atlas
+# node ~/.agents/atlas/scripts/atlas/doctor.js
 ```
 
 **Your portfolio state (`~/.atlas/`) is preserved.** When you invoke `/atlas` with the new skill, it will read your existing context.json and resume from where it left off.
@@ -180,18 +193,29 @@ node scripts/atlas/doctor.js
 # New: `/atlas` invokes autonomously; check ~/.atlas/portfolio/[slug]/dashboard.json or /atlas status
 ```
 
-### 3. No Phase Selection
+### 3. No Manual Phase Selection
 
 If you have a process that explicitly invokes `/atlas` with phase selection:
 
 ```bash
 # Old: /atlas fix phase 5
-# New: Not supported. Instead:
-# - `/atlas` routes to RECOVERY or RESUME based on state
-# - If you need to re-run a specific phase, delete the state file and `/atlas` will restart
-rm ~/.atlas/portfolio/[slug]/context.json
-/atlas  # Re-enters FIRST RUN mode and runs Phases 0+
 ```
+
+v0.9.1 has no equivalent command. `/atlas` picks the mode automatically from state:
+RESUME continues from the last incomplete phase; RECOVERY re-enters from Phase 2
+when `live_url` stops returning 200. Neither lets you target an arbitrary phase.
+
+**Do not delete `context.json` to force a specific phase to rerun.** That discards
+all resume state and drops you into FIRST RUN — Atlas will redo Phases 0+ from
+scratch, including anything with real external side effects (emails sent, API
+calls made, accounts created).
+
+If you genuinely need one already-completed phase to rerun — its output was
+wrong and needs regenerating — edit only that phase's entry back to `pending`
+in `~/.atlas/portfolio/[slug]/context.json` (the file has a `phases` object
+keyed by phase number, each with a `status` field) and leave every other
+phase's `status` untouched. That reruns the one phase without discarding the
+rest. Back up the file first.
 
 ---
 
@@ -319,7 +343,7 @@ If you encounter an issue that doesn't fit the troubleshooting above, report it 
    ```bash
    cat ~/.claude/skills/atlas/package.json | jq '.version'
    node ~/.claude/skills/atlas/scripts/atlas/doctor.js
-   cat ~/.atlas/portfolio/*/context.json | jq '.mode'
+   cat ~/.atlas/portfolio/*/context.json | jq '.status.mode'
    ```
 
 2. **Last error:**

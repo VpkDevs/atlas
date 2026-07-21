@@ -4,10 +4,10 @@
 
 ✅ **Automated (Done)**
 - GitHub Actions workflows deployed
-- CodeQL security scanning enabled
+- CodeQL security scanning enabled (has not completed a successful run yet — see Troubleshooting)
 - Secret detection (TruffleHog) enabled
 - JavaScript linting enabled
-- Frontmatter validation enabled
+- Frontmatter checked as part of schema validation (`node scripts/validate.js`) — there is no separate frontmatter job
 - PR review checklist automated
 
 🔧 **Manual Setup Required (Below)**
@@ -31,12 +31,16 @@
 
    - ✅ **Require status checks to pass**
      - Require branches to be up to date: ✓
-     - Status checks:
-       - `Validate Atlas`
+     - Status checks (these are the real job names GitHub exposes — "Validate
+       Atlas" is only the workflow's file-level name and is never itself a
+       selectable check; each check only appears in the picker after it has
+       run at least once):
+       - `Schema & Coherence Validation`
+       - `Secrets & Security Scan`
+       - `Lint JavaScript`
+       - `Monitor File Count`
        - `Analyze with CodeQL`
        - `Check Dependencies`
-       - `Lint JavaScript`
-       - `Secrets & Security Scan`
 
    - ✅ **Additional settings**
      - Restrict who can push: (optional)
@@ -119,51 +123,37 @@
 
 ## 3. GitHub Actions Workflows (Already Enabled)
 
-### Validate Atlas
-- **Runs on:** Every push to master, every PR
-- **Checks:**
-  - 110+ schema coherence checks
-  - Doctor diagnostic pass
-  - Version consistency (package.json ↔ CHARTER.md ↔ VERSION.md)
-  - File inventory validation
+### Validate Atlas (workflow file: `validate.yml`)
+- **Runs on:** pushes to `master`/`main` that touch `skills/atlas/**` (or the
+  workflow file itself), and pull requests targeting those branches that touch
+  `skills/atlas/**`. A PR that only changes root-level docs like this file
+  will **not** trigger it.
+- **Jobs:**
+  - `Schema & Coherence Validation` — runs `node scripts/validate.js` (98
+    checks as of this writing — verify with your own run rather than trusting
+    a number in this doc, since it will drift as checks are added) and
+    `node scripts/atlas/doctor.js`. Frontmatter is checked here, not by a
+    separate job.
+  - `Secrets & Security Scan` — TruffleHog (PR events only) plus a grep for
+    hardcoded GitHub tokens.
+  - `Lint JavaScript` — `node --check` on every `.js` file under
+    `scripts/` and `tests/`.
+  - `Monitor File Count` — warns (does not fail) if `skills/atlas` exceeds
+    100 files, and comments the count on the PR.
 
-### CodeQL Security Scanning
-- **Runs on:** Every push, every PR, weekly
-- **Detects:**
-  - Security vulnerabilities
-  - Code patterns
-  - TypeScript/JavaScript issues
+### CodeQL Security Scanning (workflow file: `codeql.yml`)
+- **Runs on:** pushes to `master`/`main`, pull requests targeting those
+  branches, and weekly on a schedule. Not triggered by feature-branch pushes
+  or PRs against other branches.
+- **Jobs:**
+  - `Analyze with CodeQL` — security-and-quality query suite.
+  - `Check Dependencies` — `npm ci --dry-run` plus `npm audit --audit-level=high`.
 
-### Secrets Detection (TruffleHog)
-- **Runs on:** Every push, every PR
-- **Detects:**
-  - API keys, tokens, credentials
-  - Common secret patterns
-  - High-entropy strings
-
-### Lint & Syntax Check
-- **Runs on:** Every PR
-- **Checks:**
-  - JavaScript syntax validity
-  - Leftover `console.log` statements
-  - Markdown frontmatter completeness
-
-### File Count Monitoring
-- **Runs on:** Every PR
-- **Reports:**
-  - Total file count in `skills/atlas`
-  - Warning if exceeding 100 files
-  - Inline comment on PR
-
-### PR Review Checklist
-- **Runs on:** Every PR created
-- **Posts:**
-  - Automated checklist comment
-  - Schema validation checklist
-  - Security checklist
-  - Documentation checklist
-  - File hygiene checklist
-  - Testing checklist
+### PR Review Checklist (workflow file: `pr-comment.yml`)
+- **Runs on:** every PR, on open only (not on later pushes to the same PR).
+- **Posts:** one comment with a static checklist (schema, security,
+  documentation, hygiene) — it does not evaluate anything itself, it's a
+  reminder for the human reviewer.
 
 ---
 
@@ -174,6 +164,10 @@ Even with all automation, manually verify:
 ```bash
 # In your worktree
 cd skills/atlas
+
+# Install dependencies first — the commands below fail on a fresh
+# checkout without this
+npm ci
 
 # Validate schema
 node scripts/validate.js
@@ -238,15 +232,9 @@ A: Adjust workflow conditions in `.github/workflows/` or bot settings to run onl
 
 ---
 
-## 8. Next: Update PR #4
+## 8. After Setup
 
-The workflows are now live. Push the `CODEBOT_SETUP.md` file and update PR #4 with a note about the automation setup.
-
-```bash
-git add CODEBOT_SETUP.md
-git commit -m "docs: code review bot setup guide"
-git push origin claude/v0-9-1-reminders-metadata-20b1b8
-```
-
-Then visit PR #4 and add a comment:
-> 🤖 **Automation enabled!** All GitHub Actions workflows are now live. CodeQL, secret scanning, linting, and validation run on every PR. See [CODEBOT_SETUP.md](CODEBOT_SETUP.md) for next steps (third-party bots: DeepSource, Snyk, GitGuardian).
+Once the workflows are live and you've walked through sections 1–2 above, a
+good habit for future PRs: link this file in the PR description so reviewers
+know automation is expected to run, e.g. "See CODEBOT_SETUP.md for what's
+automated on this repo."
