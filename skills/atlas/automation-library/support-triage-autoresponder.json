@@ -1,0 +1,169 @@
+{
+  "name": "Atlas: Support Triage Autoresponder",
+  "active": false,
+  "nodes": [
+    {
+      "id": "support-webhook",
+      "name": "Support Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -900,
+        0
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "atlas-support-triage",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "webhookId": "atlas-support-triage"
+    },
+    {
+      "id": "classify-ticket",
+      "name": "Classify Ticket",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        -640,
+        0
+      ],
+      "parameters": {
+        "functionCode": "const body = $json.body || $json;\nconst text = String(body.message || body.text || '').toLowerCase();\nconst p0 = /charged|billing|security|breach|down|cannot access|data loss/.test(text);\nconst p1 = /bug|broken|error|failed|refund/.test(text);\nreturn [{\n  json: {\n    email: body.email,\n    message: body.message || body.text,\n    priority: p0 ? 'P0' : p1 ? 'P1' : 'P2',\n    response: p0\n      ? 'We received this and are escalating it immediately. Atlas is checking the system now.'\n      : 'Thanks for the note. We received it and will follow up with the next useful step shortly.'\n  }\n}];"
+      }
+    },
+    {
+      "id": "send-response",
+      "name": "Send Safe First Response",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 1,
+      "position": [
+        -360,
+        -120
+      ],
+      "parameters": {
+        "fromEmail": "={{$env.FROM_EMAIL || \"founder@example.com\"}}",
+        "toEmail": "={{$json.email || $env.FOUNDER_EMAIL}}",
+        "subject": "We received your request",
+        "html": "={{\"<p>\" + $json.response + \"</p><p>Your message:</p><blockquote>\" + $json.message + \"</blockquote>\"}}"
+      },
+      "credentials": {
+        "smtp": {
+          "id": "[SMTP_CREDENTIAL_ID]",
+          "name": "SMTP / Resend SMTP"
+        }
+      }
+    },
+    {
+      "id": "needs-escalation",
+      "name": "Needs Escalation?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -360,
+        120
+      ],
+      "parameters": {
+        "conditions": {
+          "conditions": [
+            {
+              "leftValue": "={{$json.priority}}",
+              "operation": "in",
+              "rightValue": "P0,P1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "escalate-slack",
+      "name": "Escalate Slack",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -80,
+        120
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.SLACK_WEBHOOK_URL}}",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "={{\":warning: \" + $json.priority + \" support ticket from \" + $json.email + \"\\n\" + $json.message}}"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Support Webhook": {
+      "main": [
+        [
+          {
+            "node": "Classify Ticket",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Classify Ticket": {
+      "main": [
+        [
+          {
+            "node": "Send Safe First Response",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Needs Escalation?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Needs Escalation?": {
+      "main": [
+        [
+          {
+            "node": "Escalate Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true
+  },
+  "staticData": null,
+  "tags": [
+    "atlas",
+    "support"
+  ],
+  "meta": {
+    "atlas": {
+      "slug": "support-triage-autoresponder",
+      "category": "support",
+      "description": "Receives support requests, classifies urgency, sends safe first response, and escalates P0/P1 issues.",
+      "required_env": [
+        "SUPPORT_SHARED_SECRET",
+        "FOUNDER_EMAIL",
+        "SLACK_WEBHOOK_URL"
+      ],
+      "placeholders": [
+        "SMTP_CREDENTIAL_ID"
+      ],
+      "activation_gate": "replace placeholders, set credentials, run once manually, then activate",
+      "generated_by": "scripts/atlas/automation-library.js"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+name: PR Review Checklist
+
+on:
+  pull_request:
+    types: [opened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  checklist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post review checklist
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = [
+              '## Review checklist',
+              '',
+              '### Schema & coherence',
+              '- [ ] `node scripts/validate.js` passes',
+              '- [ ] `node scripts/atlas/doctor.js` returns PASS',
+              '- [ ] Version matches across package.json, CHARTER.md, VERSION.md',
+              '- [ ] CHARTER.md file inventory matches the tree',
+              '',
+              '### Security',
+              '- [ ] No secrets, API keys, or credentials committed',
+              '- [ ] Secret scans passed',
+              '',
+              '### Documentation',
+              '- [ ] New .md files have `name:` and `description:` frontmatter',
+              '- [ ] CHANGELOG.md updated if the version changed',
+              '- [ ] No broken cross-file references',
+              '',
+              '### Hygiene',
+              '- [ ] No `_archive/` or runtime state committed',
+              '- [ ] No leftover `[TODO]` / `[FIXME]` / `PLACEHOLDER` strings',
+            ].join('\n');
+
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body
+            });

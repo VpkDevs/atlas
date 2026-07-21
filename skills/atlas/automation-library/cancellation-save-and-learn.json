@@ -1,0 +1,168 @@
+{
+  "name": "Atlas: Cancellation Save & Learn",
+  "active": false,
+  "nodes": [
+    {
+      "id": "cancellation-webhook",
+      "name": "Stripe Cancellation Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -860,
+        0
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "atlas-stripe-cancellation",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "webhookId": "atlas-stripe-cancellation"
+    },
+    {
+      "id": "parse-cancellation",
+      "name": "Parse Cancellation",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        -620,
+        0
+      ],
+      "parameters": {
+        "functionCode": "const event = $json.body || $json;\nconst object = event.data?.object || event;\nreturn [{\n  json: {\n    customerId: object.customer,\n    email: object.customer_email || object.email,\n    canceledAt: new Date().toISOString(),\n    reason: object.cancellation_details?.reason || 'unknown'\n  }\n}];"
+      }
+    },
+    {
+      "id": "send-save-email",
+      "name": "Send Save Email",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -360,
+        -100
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.resend.com/emails",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyContentType": "json",
+        "jsonBody": "={{JSON.stringify({from:$env.FROM_EMAIL,to:$json.email,subject:\"Before you go\",html:\"<p>Sorry to see you go. Reply with what went wrong and I will personally fix what I can.</p>\"})}}"
+      }
+    },
+    {
+      "id": "notify-founder",
+      "name": "Notify Founder",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -360,
+        100
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.SLACK_WEBHOOK_URL}}",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "={{\":broken_heart: Cancellation from \" + $json.email + \". Reason: \" + $json.reason}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "founder-learning-loop",
+      "name": "Founder Learning Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        0
+      ],
+      "parameters": {
+        "fromEmail": "={{$env.FROM_EMAIL || \"founder@example.com\"}}",
+        "toEmail": "={{$json.email || $env.FOUNDER_EMAIL}}",
+        "subject": "Cancellation learning loop",
+        "html": "={{\"<p>Customer canceled: \" + $json.email + \"</p><p>Reason: \" + $json.reason + \"</p><p>Action: identify one product or positioning fix.</p>\"}}"
+      },
+      "credentials": {
+        "smtp": {
+          "id": "[SMTP_CREDENTIAL_ID]",
+          "name": "SMTP / Resend SMTP"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Stripe Cancellation Webhook": {
+      "main": [
+        [
+          {
+            "node": "Parse Cancellation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Cancellation": {
+      "main": [
+        [
+          {
+            "node": "Send Save Email",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Notify Founder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Save Email": {
+      "main": [
+        [
+          {
+            "node": "Founder Learning Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true
+  },
+  "staticData": null,
+  "tags": [
+    "atlas",
+    "retention"
+  ],
+  "meta": {
+    "atlas": {
+      "slug": "cancellation-save-and-learn",
+      "category": "retention",
+      "description": "Handles cancellation events with a save offer, cancellation reason capture, and founder learning loop.",
+      "required_env": [
+        "STRIPE_WEBHOOK_SECRET",
+        "RESEND_API_KEY",
+        "FOUNDER_EMAIL",
+        "SLACK_WEBHOOK_URL"
+      ],
+      "placeholders": [
+        "SMTP_CREDENTIAL_ID"
+      ],
+      "activation_gate": "replace placeholders, set credentials, run once manually, then activate",
+      "generated_by": "scripts/atlas/automation-library.js"
+    }
+  }
+}

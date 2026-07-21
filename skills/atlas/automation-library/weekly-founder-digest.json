@@ -1,0 +1,272 @@
+{
+  "name": "Atlas: Weekly Founder Digest",
+  "active": false,
+  "nodes": [
+    {
+      "id": "weekly-trigger",
+      "name": "Every Monday 8am",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -900,
+        0
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "weeksInterval": 1,
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "stripe-mrr",
+      "name": "Stripe MRR Snapshot",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -660,
+        -240
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.stripe.com/v1/subscriptions?status=active&limit=100",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      }
+    },
+    {
+      "id": "posthog-activation",
+      "name": "PostHog Activation Snapshot",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -660,
+        -80
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "={{\"https://app.posthog.com/api/projects/\" + $env.POSTHOG_PROJECT_ID + \"/insights/trend/\"}}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      }
+    },
+    {
+      "id": "better-uptime",
+      "name": "Better Uptime Snapshot",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -660,
+        80
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "https://betteruptime.com/api/v2/monitors",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      }
+    },
+    {
+      "id": "sentry-issues",
+      "name": "Sentry Issue Snapshot",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -660,
+        240
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "={{$env.SENTRY_ISSUES_URL || \"https://sentry.io/api/0/organizations/[SENTRY_ORG]/issues/\"}}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      }
+    },
+    {
+      "id": "compose-digest",
+      "name": "Compose Digest",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        -360,
+        0
+      ],
+      "parameters": {
+        "functionCode": "const now = new Date().toISOString();\nreturn [{\n  json: {\n    email: $env.FOUNDER_EMAIL,\n    subject: 'Atlas weekly digest - ' + now.slice(0, 10),\n    summary: 'Revenue, activation, uptime, and error snapshots collected. Review attached execution data before Monday planning.',\n    actions: [\n      'Fix any monitor that is not green',\n      'Investigate top Sentry issue',\n      'Pick one activation bottleneck',\n      'Ship one revenue experiment'\n    ]\n  }\n}];"
+      }
+    },
+    {
+      "id": "send-founder-email",
+      "name": "Send Founder Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        -80
+      ],
+      "parameters": {
+        "fromEmail": "={{$env.FROM_EMAIL || \"founder@example.com\"}}",
+        "toEmail": "={{$json.email || $env.FOUNDER_EMAIL}}",
+        "subject": "={{$json.subject}}",
+        "html": "={{\"<h2>Atlas Weekly Digest</h2><p>\" + $json.summary + \"</p><ul>\" + $json.actions.map(a => \"<li>\" + a + \"</li>\").join(\"\") + \"</ul>\"}}"
+      },
+      "credentials": {
+        "smtp": {
+          "id": "[SMTP_CREDENTIAL_ID]",
+          "name": "SMTP / Resend SMTP"
+        }
+      }
+    },
+    {
+      "id": "post-slack-summary",
+      "name": "Post Slack Summary",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -80,
+        120
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.SLACK_WEBHOOK_URL}}",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "={{\"*Atlas Weekly Digest*\\n\" + $json.summary + \"\\nActions:\\n- \" + $json.actions.join(\"\\n- \")}}"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Every Monday 8am": {
+      "main": [
+        [
+          {
+            "node": "Stripe MRR Snapshot",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "PostHog Activation Snapshot",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Better Uptime Snapshot",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Sentry Issue Snapshot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Stripe MRR Snapshot": {
+      "main": [
+        [
+          {
+            "node": "Compose Digest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PostHog Activation Snapshot": {
+      "main": [
+        [
+          {
+            "node": "Compose Digest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Better Uptime Snapshot": {
+      "main": [
+        [
+          {
+            "node": "Compose Digest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sentry Issue Snapshot": {
+      "main": [
+        [
+          {
+            "node": "Compose Digest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compose Digest": {
+      "main": [
+        [
+          {
+            "node": "Send Founder Email",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Post Slack Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true
+  },
+  "staticData": null,
+  "tags": [
+    "atlas",
+    "ops"
+  ],
+  "meta": {
+    "atlas": {
+      "slug": "weekly-founder-digest",
+      "category": "ops",
+      "description": "Pulls revenue, product, uptime, and error signals into one founder email and Slack summary.",
+      "required_env": [
+        "STRIPE_SECRET_KEY",
+        "POSTHOG_API_KEY",
+        "POSTHOG_PROJECT_ID",
+        "BETTER_UPTIME_API_KEY",
+        "SENTRY_AUTH_TOKEN",
+        "FOUNDER_EMAIL",
+        "SLACK_WEBHOOK_URL"
+      ],
+      "placeholders": [
+        "SENTRY_ORG",
+        "SMTP_CREDENTIAL_ID"
+      ],
+      "activation_gate": "replace placeholders, set credentials, run once manually, then activate",
+      "generated_by": "scripts/atlas/automation-library.js"
+    }
+  }
+}

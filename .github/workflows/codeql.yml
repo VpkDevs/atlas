@@ -1,0 +1,58 @@
+name: CodeQL Security Scan
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly, Sunday 00:00 UTC
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    name: Analyze with CodeQL
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+          queries: security-and-quality
+
+      # No autobuild step: javascript-typescript is interpreted, CodeQL
+      # extracts it directly. Running autobuild here is redundant.
+      - name: Perform CodeQL analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:javascript-typescript"
+
+  dependency-check:
+    name: Check Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+          cache-dependency-path: skills/atlas/package-lock.json
+
+      - name: Verify lockfile is installable
+        run: npm ci --dry-run
+        working-directory: skills/atlas
+
+      - name: Audit for known vulnerabilities
+        run: npm audit --audit-level=high
+        working-directory: skills/atlas
+        continue-on-error: true

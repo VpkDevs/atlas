@@ -4,12 +4,19 @@ One command. Total sovereignty. Atlas is an autonomous co-founder that takes a p
 
 As of 2026-07-12, Atlas is at **v0.9.1** — the last major release before v1.0, the first commercial release (see the Road to v1.0 gate in [CHARTER.md](CHARTER.md)). All prior releases (v1–v8.4) were renumbered to v0.1–v0.8.4. v0.9.1 keeps the lean kernel-first runtime and remains the single installable canonical tree for `.agents`, `.claude`, `.codex`, and compatible skill runtimes. See [VERSION.md](VERSION.md) for canonical version history.
 
-## 🚀 What's New in v0.9
+## 🚀 What's New in v0.9.1
 
-### The Leverage Mandate
+### The Expansion (New in v0.9.1)
+- **User Interview Engine** (`user-interview-engine.md`): Autonomous user feedback extraction via email API. Phase 12+ interviews replace assumptions with direct evidence.
+- **Penetration Tester** (`penetration-tester.md`): Authorized, non-destructive DAST protocol before launch gates. OWASP Top 10 coverage runs autonomously pre-Phase 9.
+- **Edge Orchestration**: `deployment-engine.md` adds Cloudflare Workers guidance via `wrangler` for edge deployment and global latency optimization.
+- **Self-Funding Capital Engine**: `capital-governor.md` adds non-dilutive capital generation in SURVIVE/PRESERVE modes — founder runway extended without dilution.
+- **Autonomous Interface**: Founders use `/atlas`; `/atlas status`, `/atlas pause`, and `/atlas doctor` are the only exceptions. 30 subcommands collapsed to 4 canonical.
+
+### v0.9 Foundation (The Leverage Mandate)
 - **Fleet made real**: ≥3 independent tasks fan out to orchestrated subagents with a 5-part prompt contract, schema returns, and a proof obligation — serial execution of independent work is a kernel red flag
-- **The Heartbeat (`/atlas heartbeat`)**: scheduled autonomous ticks (nightly operator, weekly growth/portfolio/drift) with hard unattended-run bounds — Atlas runs while the founder sleeps
-- **Hosted Sovereign Dashboard (`/atlas dashboard`)**: a stable, phone-openable URL refreshed on every tick, plus milestone push notifications
+- **The Heartbeat**: scheduled autonomous ticks (nightly operator, weekly growth/portfolio/drift) with hard unattended-run bounds — Atlas runs while the founder sleeps
+- **Hosted Sovereign Dashboard**: a stable, phone-openable URL refreshed on every tick, plus milestone push notifications
 - **Evidence Doctrine**: every phase exit and delegated task appends captured proof to `evidence.jsonl` — claims without evidence are hypotheses
 - **Layer 3a/3b split**: sandbox browser automation vs. the founder's own logged-in browser; authenticated-portal work becomes executable while the founder personally performs sign-ins, MFA, and payment consents
 - **Real-time founder I/O**: blockers reach the founder the moment they're found (task chip + push notification), not at end-of-run
@@ -65,69 +72,18 @@ Atlas is done only when all are true:
 - Founder is not required for day-to-day revenue operations
 - All critical systems have automated failover and recovery
 
-## Command Surface
+## Command Surface (v0.9.1)
 
-### CLI Commands
-```bash
-# Project Management
-atlas init <project-name>          # Initialize new project
-atlas status [project]             # Show project status
-atlas diagnose [project]           # Run comprehensive diagnostics
+The entire surface of `/atlas` commands. Founders never select phases, domains, fleets, or dashboards manually; `/atlas` routes to the appropriate internal module autonomously.
 
-# Automation
-atlas automation list              # List available workflows
-atlas automation import <workflow> # Import automation workflow
-atlas automation run <workflow>    # Run automation workflow
-
-# Scoring & Intelligence
-atlas score calculate [project]    # Calculate current scores
-atlas score predict [project]      # Generate score predictions
-atlas score history [project]      # Show score history
-
-# Fusion & Agents
-atlas fusion agents                # List available agents
-atlas fusion route <task>          # Route task to best agent
-atlas fusion performance           # Show agent performance metrics
-
-# Monitoring
-atlas monitor                      # Start real-time monitor
-atlas dashboard                    # Open web dashboard
-
-# Portfolio Management
-atlas portfolio list               # List all projects
-atlas portfolio rebalance          # Rebalance portfolio lanes
-atlas portfolio focus <project>    # Set project as primary focus
-```
-
-### Chat Commands
 ```text
-/atlas
-/atlas status
-/atlas resume
-/atlas growth
-/atlas money
-/atlas pricing
-/atlas offer
-/atlas channels
-/atlas sniper
-/atlas governor
-/atlas ops
-/atlas funnel
-/atlas retention
-/atlas warroom
-/atlas fix [phase]
-/atlas diag
-/atlas security
-/atlas brand
-/atlas portfolio
-/atlas portfolio-scan
-/atlas portfolio-rebalance
-/atlas portfolio-execute
-/atlas fusion
-/atlas fusion-report
-/atlas fleet --agent [name] --task [desc]
-/atlas retire
+/atlas                 Autonomously start, resume, recover, or operate Atlas
+/atlas status          Read-only progress summary
+/atlas pause           Safely pause autonomous work  
+/atlas doctor          Read-only installation diagnostic
 ```
+
+**4 commands are canonical.** `/atlas` runs Doctor internally and dispatches to the appropriate module based on state (context.json, live URL status, prior phase completion). `/atlas pause` persists the pause after any non-destructive in-flight write and starts no new external action. See `CHARTER.md` for the complete surface definition and routing logic.
 
 ## Operating Modes
 
@@ -316,4 +272,4 @@ We welcome contributions! Please see [CONTRIBUTING.md](.github/CONTRIBUTING.md) 
 
 ---
 
-**Atlas v0.8.0**: From powerful co-founder to intelligent, autonomous business operating system. 🚀
+**Atlas v0.9.1**: One command. Fleet real. Heartbeat live. Evidence or it didn't happen. 🚀
