@@ -42,6 +42,8 @@ Launch floor = ⌈0.6 × earnable⌉ = **39 of 65** with the full set earnable. 
 
 The score is always calculated from the canonical rubric across the whole pipeline — never from a module-local table. The categories above are the ones this module can move; the rest are earned in other phases.
 
+**Computed, not estimated:** the score and this floor are calculated by `scripts/atlas/score.js` from the measurable signals recorded in `atlas-state.json` (test results, file presence, git/config state). The floor rule above is implemented verbatim — the 39-of-65 worked example is the script's own unit test — and the same signals in always produce the same number out. If a checkpoint states a score, it is score.js output, not an operator's estimate.
+
 ---
 
 ## Process

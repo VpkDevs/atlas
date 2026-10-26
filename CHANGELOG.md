@@ -6,6 +6,24 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ---
 
+## [6.4.0] — 2026-10-26
+
+The programmatic/autonomy release: everything in Atlas that repeats is now code, and Atlas can be granted bounded, auditable autonomy.
+
+### Added
+- **Deterministic scoring** (`scripts/atlas/score.js`): the SKILL.md rubric as code, computed from measurable signals in `atlas-state.json` — no judgment in the number. The launch-floor rule (60% of pre-launch-earnable points) is implemented verbatim; the docs' 39-of-65 worked example is the script's unit test.
+- **Executable gates** (`scripts/atlas/gates.js`): Pre-Flight's mechanically checkable checks with real exit codes (0 PASS / 1 BLOCKED), implementing the N/A and DEFERRED rules and the EC-17 non-web variants; non-mechanical checks report MANUAL — never silently passed.
+- **Shipped secrets scan** (`scripts/atlas/scan.js`): security.md Step 1 as code — whole-tree, path-based exclusions, both assignment shapes, case-insensitive, values redacted, `--history` mode for git history. The Resend prefix (`re_…`) joins the token-prefix list in script and spec.
+- **Machine-readable state** (`atlas-state.json` + `scripts/atlas/atlas-state.js`): product, phases, signals, computed score and gate verdict, autonomy settings. `/atlas status` is now a computation over this file. New subcommands: `/atlas score`, `/atlas gates`.
+- **Autonomy ladder** (`scripts/atlas/autonomy.js` + `atlas.config.json`): founder-set tiers 0–3 (advise → act-and-report → pull requests → scheduled maintenance), dry-run ON by default, an append-only actions log (`atlas-actions.jsonl`) with revert hints, and hard lines enforced in code — spending, public posts, messages to real people, production deploys, deletions, and force-pushes exist as capabilities at no tier.
+- **Script test suite** (`scripts/atlas/test/run-tests.js`, `npm run test:scripts`): plain-Node tests for scoring determinism and the floor rule, gate exit codes and N/A/DEFERRED/EC-17 routing, scan coverage of the round-2 audit shapes, and tier gating of PR creation.
+
+### Changed
+- **`open_pr.js`** can now open a **real** pull request — at Tier ≥ 2, with dry-run off and `gh` available, invoked with `--pr --branch --title`; every step is logged, and any refusal or failure falls back to the weekly review issue. Default mode is unchanged: it files the review issue (and the shipped weekly workflow now sets its tier/dry-run explicitly, because filing that issue is the workflow's job).
+- **`pulse.js`** gains local sources — Git/GitHub (git activity + `gh` when present), npm audit/outdated, and project health including the deterministic score. Sources it does not collect (email tool, Search Console, Twitter/X, Product Hunt, support inbox) are named in `sources_not_collected` — reported, never fabricated.
+- **`decide.js`** implements the decision tree's activation and churn branches; all thresholds live in `atlas.config.json` (founder-tunable) instead of being referenced to a phase module.
+- Modules updated to name the scripts as the mechanism: `SKILL.md` (Programmatic Layer + Autonomy Ladder), `automation-handoff.md`, `pre-flight.md`, `security.md`, `growth-engine.md`, `edge-cases.md`.
+
 ## [6.3.0] — 2026-05-08
 
 ### Added

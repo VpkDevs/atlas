@@ -183,13 +183,15 @@ Non-web products (EC-17): wherever the state machine reads `live_url`, the insta
 | Command | Effect |
 |---------|--------|
 | `/atlas` | Auto-detect mode via state machine above |
-| `/atlas status` | Print dashboard without running anything |
+| `/atlas status` | Print the project status **computed from `atlas-state.json`** by `scripts/atlas/atlas-state.js status` — phases, score, gates verdict, autonomy tier — without running anything. Status is read from measured state, never narrated from memory |
+| `/atlas score` | Run `scripts/atlas/score.js` — recompute the Sovereign Score deterministically from the signals in `atlas-state.json` and show the per-category breakdown |
+| `/atlas gates` | Run `scripts/atlas/gates.js` — the executable Pre-Flight (Phase 4): mechanically checkable checks with real exit codes; N/A / DEFERRED / MANUAL reported per `pre-flight.md` |
 | `/atlas resume` | Force Resume Mode at last incomplete phase |
 | `/atlas growth` | Run only Growth Engine tick |
 | `/atlas warroom` | Re-enter War Room (post-launch hotfix) |
 | `/atlas fix [phase]` | Re-run a specific phase |
 | `/atlas diag` | Run all health checks, report only — see Diagnostic Protocol below |
-| `/atlas security` | Run security audit pass only (OWASP top 10, secrets scan, deps) — loads `atlas:security` |
+| `/atlas security` | Run security audit pass only (OWASP top 10, secrets scan via `scripts/atlas/scan.js`, deps) — loads `atlas:security` |
 | `/atlas brand` | Run brand engine pass only — loads `atlas:brand-engine` |
 | `/atlas portfolio` | Force Portfolio Mode |
 | `/atlas fleet --agent [name] --task [desc]` | Direct sub-agent invocation |
@@ -290,6 +292,9 @@ PROCEDURE context_load:
   4. IF context.json missing:
        a. Initialize from skeleton schema
        b. Set mode = FIRST-RUN
+  4b. IF atlas-state.json missing (the machine-readable state the scripts use):
+       a. Initialize it: node scripts/atlas/atlas-state.js init --type [product type]
+       b. Record product type there at Onboarding (EC-17 variants read it)
   5. Copy dashboard-template.html → ~/.atlas/dashboard.html
   6. Inject ATLAS_STATE JSON block
   7. Open dashboard (platform-aware: Start-Process / open / xdg-open)
@@ -312,9 +317,9 @@ Every write to `context.json`, `mission.json`, or `credentials_index.json`:
 | 0 | Context Load | (this file) | `context.json` parsed; mode determined |
 | 1 | **Onboarding** | `onboarding.md` | Business Context confirmed; `context.json` + `credentials_index.json` written |
 | 2 | **Code Sprint** | `code-sprint.md` | Zero P0s; deployed; `curl <prod>/ → 200`; CI green; RUNBOOK committed (EC-17 variant for non-web: clean install launches + smoke test passes) |
-| 2b | **Security Hardening** | `security.md` | OWASP top 10 checked; 0 HIGH/CRITICAL vulns; no secrets in git; rate limiting confirmed |
+| 2b | **Security Hardening** | `security.md` | OWASP top 10 checked; 0 HIGH/CRITICAL vulns; no secrets in git (scan: `scripts/atlas/scan.js`, exit 0); rate limiting confirmed |
 | 3 | **Legal** | `legal-compliance.md` | ToS + Privacy live at served routes (EC-17 variant for non-web: shipped in-app / in repo); GDPR/AI Act compliance; DMCA agent registered (products hosting user-generated content only — otherwise N/A) |
-| 4 | **Pre-Flight** | `pre-flight.md` | All 11 checks GREEN (or <3 YELLOW with incident log) |
+| 4 | **Pre-Flight** | `pre-flight.md` | All 11 checks GREEN (or <3 YELLOW with incident log) — executable form: `scripts/atlas/gates.js` exits 0 |
 | 5 | **Launch Strategy** | `launch-strategy.md` | `LAUNCH_SEQUENCE.md` generated; 0 `[TODO]` placeholders |
 | 6 | **Marketing + Brand** | `marketing-playbook.md` + `brand-engine.md` | Content scheduled; brand system applied; press kit committed; visual QA passed |
 | 7 | **Business Setup** | `business-setup.md` | Entity decided; credit applications PREPARED (all 7, ready to submit); banking path ready |
@@ -390,12 +395,48 @@ PROCEDURE self_heal(error):
 
 **Targets:** Launch floor = score ≥ 60% of the points earnable before launch (earnable set in automation-handoff.md; once every category is earnable, the absolute floor is 60). 80 = Sustained. **90 = Sovereign.**
 
+**The score is computed, not estimated.** `scripts/atlas/score.js` implements this rubric verbatim over the measurable signals recorded in `atlas-state.json` — test results, file presence, git and config state. No judgment enters the number: the same signals in produce the same score out, and the launch-floor worked example (39 of 65, from automation-handoff.md) is the script's own unit test. The "Achievable…" numbers below are computed from the same breakdown (current total; total if every pending sub-check the founder's pending actions would flip were true).
+
 After every module, show **three numbers**:
 ```
 Score now: 58/100
   Achievable without any human action: 58
   Achievable with pending human actions (est. X hrs): 74 ✅
 ```
+
+---
+
+## The Programmatic Layer (v6.4) — Scripts, State, and the Autonomy Ladder
+
+Everything in Atlas that repeats is code, not prose. The modules above describe *what* and *why*; these scripts are the mechanism, and where a module and a script ever disagree, the script's behavior is the truth to fix the prose against.
+
+| Script | What it does |
+|--------|--------------|
+| `scripts/atlas/atlas-state.js` | Reads/writes `atlas-state.json` — the machine-readable project state (product, phases, signals, score, gates, autonomy). `status` computes the project summary from it. |
+| `scripts/atlas/score.js` | The Sovereign Score rubric as code (see above). Deterministic; writes the score + history back to state. |
+| `scripts/atlas/gates.js` | Pre-Flight as an executable: mechanically checkable checks, real exit codes (0 PASS / 1 BLOCKED), the N/A + DEFERRED rules, EC-17 variants for non-web products, MANUAL for the checks no script can run. |
+| `scripts/atlas/scan.js` | The secrets scan from `security.md` Step 1 as a shipped script (whole-tree, both assignment shapes, case-insensitive, values redacted; `--history` covers git history). Exit 1 = findings. |
+| `scripts/atlas/autonomy.js` | The autonomy ladder (below): effective tier/dry-run config, per-action permission checks, hard lines, and the append-only actions log. |
+| `scripts/atlas/pulse.js` · `decide.js` · `open_pr.js` · `notify.js` · `weekly-review.js` | The weekly Growth Engine pipeline — see `growth-engine.md`'s Cron Layer for exactly what each collects, decides, and files. |
+
+### State: atlas-state.json
+
+Alongside `context.json` (the narrative/session state), every project carries `atlas-state.json`: product identity and type, per-phase status, the measured **signals** the score consumes, the last computed score and gate verdict, and the project's autonomy settings. Initialize it in Phase 0 (`atlas-state.js init`); the scripts keep it current. `/atlas status` is a computation over this file — if it isn't in the state file, it isn't in the status.
+
+### The Autonomy Ladder
+
+The founder sets one tier per project (`atlas.config.json` → `autonomy.tier`, mirrored in `atlas-state.json`; a commented template ships as `atlas.config.example.json`). Atlas never acts above its tier, and **dry-run defaults ON at every tier**: action-taking scripts print and log what they *would* do until the founder turns dry-run off.
+
+| Tier | Atlas may, on its own |
+|------|------------------------|
+| 0 — Advise | Report only (pulse, decide, score, gates, the weekly review). No product-modifying action. |
+| 1 — Act & report | Reversible work: branch commits, scaffolding/generators, dependency updates — each logged with a revert hint. |
+| 2 — Pull requests | Open real PRs (`open_pr.js --pr`, via `gh`); merge only with green CI. |
+| 3 — Scheduled | The weekly maintenance loop runs unattended at the tiers above, with a digest to the founder. |
+
+**Hard lines — at every tier, enforced in `autonomy.js`, not by convention:** spending money, posting publicly, messaging a real person, deploying to production, deleting resources, and force-pushing **do not exist as Atlas capabilities**. They are founder actions (userMust) no setting enables.
+
+**Actions log:** every attempted autonomous action appends one JSON line to `atlas-actions.jsonl` — timestamp, tier, dry-run flag, action, target, result, and a revert hint (branch-per-action keeps every change revertible). If it isn't in the log, Atlas didn't do it.
 
 ---
 

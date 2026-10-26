@@ -20,11 +20,27 @@
  *
  * All fields are optional — missing keys produce null values, not failures.
  * The pulse always completes; missing data is surfaced as gaps, not errors.
+ *
+ * Round 3 (v6.4): local sources added — Git/GitHub (git history + gh CLI when
+ * present), npm (audit + outdated, Node projects), and project health (test/CI
+ * presence + the deterministic score from atlas-state.json via score.js).
+ * Sources that require external APIs this script does not call (email tool,
+ * Search Console, Twitter/X, Product Hunt, support inbox) are reported in
+ * `sources_not_collected` with available:false — named as NOT collected,
+ * never estimated, never fabricated.
  */
 
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
+const { execFile } = require('child_process');
+
+function run(cmd, args, opts = {}) {
+  return new Promise((resolve) => {
+    execFile(cmd, args, { timeout: opts.timeout || 20000, cwd: opts.cwd || process.cwd(), maxBuffer: 32 * 1024 * 1024 },
+      (err, stdout) => resolve({ code: err ? (err.code ?? 1) : 0, stdout: String(stdout || '') }));
+  });
+}
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -199,6 +215,119 @@ async function getSentryMetrics() {
   };
 }
 
+// ─── Local source: Git / GitHub ───────────────────────────────────────────────
+
+async function getGitMetrics() {
+  const inside = await run('git', ['rev-parse', '--is-inside-work-tree']);
+  if (inside.code !== 0) return { available: false, reason: 'not a git repository' };
+
+  const [logWeek, logAll, branches, status] = await Promise.all([
+    run('git', ['log', '--since=7 days ago', '--oneline']),
+    run('git', ['log', '--oneline']),
+    run('git', ['branch', '--list']),
+    run('git', ['status', '--porcelain']),
+  ]);
+  const count = (s) => s.split('\n').filter(Boolean).length;
+  const result = {
+    available: true,
+    source: 'local git',
+    commits_7d: count(logWeek.stdout),
+    commits_total: count(logAll.stdout),
+    branches: count(branches.stdout),
+    uncommitted_files: count(status.stdout),
+  };
+
+  // gh CLI, when present, adds the GitHub side (stars, open issues/PRs).
+  const ghVersion = await run('gh', ['--version']);
+  if (ghVersion.code === 0) {
+    const view = await run('gh', ['repo', 'view', '--json', 'stargazerCount,forkCount']);
+    const issues = await run('gh', ['issue', 'list', '--limit', '200', '--json', 'number']);
+    const prs = await run('gh', ['pr', 'list', '--limit', '200', '--json', 'number']);
+    try {
+      const v = JSON.parse(view.stdout);
+      result.stars = v.stargazerCount;
+      result.forks = v.forkCount;
+    } catch {}
+    try { result.open_issues = JSON.parse(issues.stdout).length; } catch {}
+    try { result.open_prs = JSON.parse(prs.stdout).length; } catch {}
+    result.source = 'local git + gh CLI';
+  } else {
+    result.github_api = 'gh CLI not installed — stars/issues/PRs not collected';
+  }
+  return result;
+}
+
+// ─── Local source: npm (Node projects) ────────────────────────────────────────
+
+async function getNpmMetrics() {
+  if (!fs.existsSync(path.join(process.cwd(), 'package.json'))) {
+    return { available: false, reason: 'no package.json in project root (not a Node project)' };
+  }
+  const result = { available: true };
+  const audit = await run('npm', ['audit', '--json'], { timeout: 60000 });
+  try {
+    const a = JSON.parse(audit.stdout);
+    const v = a.metadata?.vulnerabilities || {};
+    result.vulnerabilities = {
+      total: v.total ?? null, critical: v.critical ?? null, high: v.high ?? null,
+      moderate: v.moderate ?? null, low: v.low ?? null,
+    };
+  } catch {
+    result.vulnerabilities = null;
+    result.audit_note = 'npm audit produced no parseable output (offline registry?) — vulnerability counts NOT collected';
+  }
+  const outdated = await run('npm', ['outdated', '--json'], { timeout: 60000 });
+  try {
+    result.outdated_packages = Object.keys(JSON.parse(outdated.stdout || '{}')).length;
+  } catch {
+    result.outdated_packages = null;
+  }
+  return result;
+}
+
+// ─── Local source: project health + deterministic score ──────────────────────
+
+function getProjectMetrics() {
+  const root = process.cwd();
+  const has = (p) => fs.existsSync(path.join(root, p));
+  const workflows = (() => {
+    try { return fs.readdirSync(path.join(root, '.github', 'workflows')).filter(f => /\.ya?ml$/.test(f)).length; }
+    catch { return 0; }
+  })();
+  const result = {
+    available: true,
+    has_tests: has('tests') || has('test') || has('__tests__') || has('src/__tests__'),
+    ci_workflows: workflows,
+    has_readme: has('README.md') || has('README'),
+    has_runbook: has('RUNBOOK.md'),
+  };
+  // Deterministic Sovereign Score from atlas-state.json, when the project has one.
+  try {
+    const { loadState } = require('./atlas-state');
+    const { computeScore } = require('./score');
+    const st = loadState({ root });
+    if (st) {
+      const r = computeScore(st.signals || {}, { launched: !!st.product.launched });
+      result.sovereign_score = r.total;
+      result.score_earnable = r.earnable;
+      result.score_floor = r.floor;
+      result.score_floor_met = r.floor_met;
+      result.applicable_systems = st.applicable_systems;
+    }
+  } catch {}
+  return result;
+}
+
+// Sources the Growth Engine's table lists that this script does NOT collect:
+// they need external APIs pulse.js does not call. Reported, never fabricated.
+const NOT_COLLECTED = [
+  { source: 'email_tool', reason: 'Email platform metrics (list growth, open/click rates) require the provider API — not called by pulse.js' },
+  { source: 'search_console', reason: 'Search Console requires Google OAuth credentials — not called by pulse.js' },
+  { source: 'twitter_x', reason: 'Twitter/X requires a paid API tier — not called by pulse.js' },
+  { source: 'product_hunt', reason: 'Product Hunt has no public metrics API for this — not collected by pulse.js' },
+  { source: 'support_inbox', reason: 'Support inbox requires Crisp/Intercom/IMAP credentials — not called by pulse.js' },
+];
+
 // ─── Context: read previous pulse for deltas ──────────────────────────────────
 
 function loadPreviousPulse() {
@@ -224,18 +353,21 @@ function computeDelta(current, previous, field) {
 
 function detectAnomalies(metrics, prev) {
   const anomalies = [];
+  // Thresholds are founder-tunable in atlas.config.json (see autonomy.js).
+  let T = { mrr_drop_pct: -10, mrr_growth_pct: 20 };
+  try { T = require('./autonomy').loadConfig().thresholds; } catch {}
 
   if (metrics.stripe?.available) {
     const mrrDelta = computeDelta(metrics.stripe.mrr, prev?.stripe, 'mrr');
-    if (mrrDelta !== null && mrrDelta < -10) {
+    if (mrrDelta !== null && mrrDelta < T.mrr_drop_pct) {
       anomalies.push({
         type: 'THREAT',
         metric: 'mrr',
         message: `MRR dropped ${Math.abs(mrrDelta)}% week-over-week`,
-        severity: mrrDelta < -25 ? 'critical' : 'warning',
+        severity: mrrDelta < T.mrr_drop_pct * 2.5 ? 'critical' : 'warning',
       });
     }
-    if (mrrDelta !== null && mrrDelta > 20) {
+    if (mrrDelta !== null && mrrDelta > T.mrr_growth_pct) {
       anomalies.push({
         type: 'OPPORTUNITY',
         metric: 'mrr',
@@ -266,6 +398,24 @@ function detectAnomalies(metrics, prev) {
     }
   }
 
+  if (metrics.npm?.available && metrics.npm.vulnerabilities?.critical > 0) {
+    anomalies.push({
+      type: 'THREAT',
+      metric: 'dependencies',
+      message: `${metrics.npm.vulnerabilities.critical} critical npm vulnerabilities in the dependency tree`,
+      severity: 'warning',
+    });
+  }
+
+  if (metrics.git?.available && metrics.git.uncommitted_files > 25) {
+    anomalies.push({
+      type: 'HYGIENE',
+      metric: 'git',
+      message: `${metrics.git.uncommitted_files} uncommitted files in the working tree`,
+      severity: 'info',
+    });
+  }
+
   return anomalies;
 }
 
@@ -278,14 +428,17 @@ async function main() {
   process.stderr.write(`[pulse] Running at ${timestamp}\n`);
   process.stderr.write(`[pulse] Previous pulse: ${prev ? prev.timestamp : 'none'}\n`);
 
-  const [stripe, posthog, uptime, sentry] = await Promise.all([
+  const [stripe, posthog, uptime, sentry, git, npm, project] = await Promise.all([
     getStripeMetrics(),
     getPostHogMetrics(),
     getUptimeMetrics(),
     getSentryMetrics(),
+    getGitMetrics(),
+    getNpmMetrics(),
+    Promise.resolve(getProjectMetrics()),
   ]);
 
-  const metrics = { stripe, posthog, uptime, sentry };
+  const metrics = { stripe, posthog, uptime, sentry, git, npm, project };
 
   const deltas = {
     mrr: computeDelta(stripe?.mrr, prev?.metrics?.stripe, 'mrr'),
@@ -295,14 +448,28 @@ async function main() {
 
   const anomalies = detectAnomalies(metrics, prev?.metrics);
 
-  // Sovereign Score estimation (basic — full score requires context.json)
-  let sovereignScore = null;
-  try {
-    const ctxPath = path.join(process.env.HOME || '', '.atlas', 'portfolio',
-      path.basename(process.cwd()), 'context.json');
-    const ctx = JSON.parse(fs.readFileSync(ctxPath, 'utf8'));
-    sovereignScore = ctx?.product?.runs_itself_score || null;
-  } catch {}
+  // Sovereign Score: deterministic, from atlas-state.json via score.js when the
+  // project has one (computed in the project source above). Falls back to the
+  // legacy context.json value only when no state file exists.
+  let sovereignScore = project?.sovereign_score ?? null;
+  if (sovereignScore == null) {
+    try {
+      const ctxPath = path.join(process.env.HOME || '', '.atlas', 'portfolio',
+        path.basename(process.cwd()), 'context.json');
+      const ctx = JSON.parse(fs.readFileSync(ctxPath, 'utf8'));
+      sovereignScore = ctx?.product?.runs_itself_score || null;
+    } catch {}
+  }
+
+  // A source the product doesn't have is not a "gap" — e.g. Stripe for a
+  // product that takes no payments (founder-recorded in atlas-state.json).
+  // Those are reported as not_applicable and kept out of data_gaps, so
+  // decide.js never recommends wiring a system the product will never have.
+  const notApplicable = [];
+  if (project?.applicable_systems?.payments === false && metrics.stripe && !metrics.stripe.available) {
+    metrics.stripe = { available: false, not_applicable: true, reason: 'Not applicable — the product takes no payments (atlas-state.json applicable_systems.payments = false)' };
+    notApplicable.push({ source: 'stripe', reason: metrics.stripe.reason });
+  }
 
   const pulse = {
     timestamp,
@@ -311,9 +478,14 @@ async function main() {
     metrics,
     deltas,
     anomalies,
-    data_gaps: Object.entries(metrics)
-      .filter(([, v]) => !v.available)
-      .map(([k, v]) => ({ source: k, reason: v.reason })),
+    sources_not_collected: NOT_COLLECTED,
+    not_applicable: notApplicable,
+    data_gaps: [
+      ...Object.entries(metrics)
+        .filter(([, v]) => !v.available && !v.not_applicable)
+        .map(([k, v]) => ({ source: k, reason: v.reason })),
+      ...NOT_COLLECTED,
+    ],
   };
 
   // Write to stdout (captured by GitHub Action → /tmp/pulse.json)

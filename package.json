@@ -1,6 +1,6 @@
 {
   "name": "atlas-skill",
-  "version": "6.3.0",
+  "version": "6.4.0",
   "description": "Atlas v6 — The Sovereign Empire. AI co-founder Claude Code skill.",
   "private": true,
   "scripts": {
@@ -8,7 +8,13 @@
     "pulse": "node scripts/atlas/pulse.js",
     "decide": "node scripts/atlas/decide.js",
     "weekly-review": "node scripts/atlas/weekly-review.js",
-    "diag": "node scripts/atlas/pulse.js | node scripts/atlas/decide.js"
+    "diag": "node scripts/atlas/pulse.js | node scripts/atlas/decide.js",
+    "score": "node scripts/atlas/score.js",
+    "gates": "node scripts/atlas/gates.js",
+    "scan": "node scripts/atlas/scan.js",
+    "state": "node scripts/atlas/atlas-state.js",
+    "autonomy": "node scripts/atlas/autonomy.js",
+    "test:scripts": "node scripts/atlas/test/run-tests.js"
   },
   "engines": {
     "node": ">=18.0.0"

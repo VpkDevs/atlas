@@ -25,7 +25,7 @@ If Atlas finds a CRITICAL vulnerability, it fixes it before proceeding. If it ca
 # Check for common secret patterns in git history — the prefix patterns catch known token
 # shapes; the generic identifier alternative catches secrets committed under ordinary names
 git log --all --full-history -p | grep -iE \
-  "(sk_live_|pk_live_|sk_test_|AKIA[0-9A-Z]{16}|ghp_|github_pat_|xoxb-|xoxp-|AIza|ya29\.|-----BEGIN (RSA |OPENSSH |EC )?PRIVATE KEY|(api[-_]?key|secret|token|passwd|password|private[-_]?key|client[-_]?secret)\s*[:=]\s*['\"][^'\"]{8,}['\"])" \
+  "(sk_live_|pk_live_|sk_test_|re_[A-Za-z0-9_]{16,}|AKIA[0-9A-Z]{16}|ghp_|github_pat_|xoxb-|xoxp-|AIza|ya29\.|-----BEGIN (RSA |OPENSSH |EC )?PRIVATE KEY|(api[-_]?key|secret|token|passwd|password|private[-_]?key|client[-_]?secret)\s*[:=]\s*['\"][^'\"]{8,}['\"])" \
   | head -20
 ```
 
@@ -49,6 +49,8 @@ grep -rniE "(password|passwd|secret|api[-_]?key|apikey|access[-_]?token|auth[-_]
 ```
 
 Any hardcoded secret in source = CRITICAL. Extract to environment variable, commit the change.
+
+**Shipped as code:** these scans are implemented by `scripts/atlas/scan.js` — run `node scripts/atlas/scan.js` (add `--history` for the git-history scan). The script implements exactly the rules below: whole-tree from the root, path-based exclusions, both assignment shapes, case-insensitive — and redacts values in its output so the report is never a second leak. Exit 1 means findings. The grep blocks above remain the specification (and a fallback where Node is unavailable); where the two ever disagree, the script is the mechanism and this text is the explanation — file the discrepancy as a bug. (v6.4: the Resend prefix `re_…` was added to both the script and the history pattern — the shape a `resend: "re_…"` object literal in `pages/api/` used to slip through.)
 
 **Case rule (applies to every scan in this module):** secret identifiers are always matched case-insensitively. Every `grep` in this module runs with `-i`, and where a pattern can't rely on the flag, it carries uppercase variants. A scan that only matches lowercase names (`api_key` but not `API_KEY`) is a failed scan — real codebases name keys in SCREAMING_CASE constants, and the scan that misses them finds nothing and reports "clean."
 

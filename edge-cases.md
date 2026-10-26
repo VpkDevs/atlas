@@ -409,5 +409,6 @@ Please confirm: [SaaS] [Browser Extension] [Mobile App] [CLI Tool] [API] [Market
 
 **Rules:**
 - The substitution is recorded in context.json (`product_type` + which variants apply) at Onboarding — not improvised at the gate.
+- The executable gates (`scripts/atlas/gates.js`) apply these variants automatically from `product.type` in `atlas-state.json`: check 1 runs the product's recorded smoke command, check 5 looks for legal text in the repo, and the web-only checks (2, 9, 11) report N/A instead of failing a product that has no served pages.
 - Everything else in the pipeline is unchanged: security, legal substance, scoring, and launch prep all still apply; only the *shape* of the liveness checks changes.
 - Mobile apps: store review timelines are a launch-scheduling input (Phase 5), not a blocker discovered at Phase 9.

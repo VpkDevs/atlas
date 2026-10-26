@@ -34,6 +34,8 @@ The cost of a delayed launch is one day. The cost of a broken launch is the enti
 | 10 | Rollback procedure tested | Run `scripts/rollback.sh` in staging | Completes; previous version live in staging |
 | 11 | Mobile responsiveness | Lighthouse via chrome-devtools-mcp on `/` | Mobile score ≥ 80 |
 
+**Executable form:** the mechanically checkable checks run as code — `node scripts/atlas/gates.js` (reads `atlas-state.json`; exit 0 = PASS, 1 = BLOCKED). It implements the N/A and DEFERRED rules below exactly, applies the EC-17 non-web variants automatically from the product type, and writes its verdict back to state. Checks that are applicable and due but **not mechanically checkable** (3 Auth E2E, 4 Payment E2E, 11 Lighthouse) report **MANUAL**: excluded from the pass/fail count, never silently counted as passed, and listed so a human or agent session verifies them by the procedures below. The Detailed Check Procedures in this module remain the specification for every check, MANUAL ones included.
+
 ---
 
 ## N/A and DEFERRED — Checks That Don't Apply (Yet)
