@@ -1,6 +1,6 @@
 ---
 name: atlas-pre-flight
-description: Use during Atlas Phase 4 — the gating verification step before launch. Runs an 11-point check across deployment health, legal compliance, monitoring, payment flow, security, and recovery procedures. A red on any check sends Atlas back to the relevant phase to fix; only green on all 11 unlocks Phase 5+. This is the brake that prevents v3's "we launched broken" failure mode.
+description: Use during Atlas Phase 4 — the gating verification step before launch. Runs an 11-point check across deployment health, legal compliance, monitoring, payment flow, security, and recovery procedures. A red on any applicable check sends Atlas back to the relevant phase to fix; checks for systems the product doesn't have are N/A, and checks owned by later phases are DEFERRED — neither blocks. Only green (or N/A / DEFERRED) on all 11 unlocks Phase 5+. This is the brake that prevents v3's "we launched broken" failure mode.
 ---
 
 # Atlas Pre-Flight — The Launch Gate
@@ -33,6 +33,21 @@ The cost of a delayed launch is one day. The cost of a broken launch is the enti
 | 9 | DNS, SSL, security headers | `curl -I <prod>` + ssl-labs API | A grade SSL; security headers present |
 | 10 | Rollback procedure tested | Run `scripts/rollback.sh` in staging | Completes; previous version live in staging |
 | 11 | Mobile responsiveness | Lighthouse via chrome-devtools-mcp on `/` | Mobile score ≥ 80 |
+
+---
+
+## N/A and DEFERRED — Checks That Don't Apply (Yet)
+
+Not every product has every system, and not every check belongs to this phase. Two extra statuses keep the gate honest without making it impossible:
+
+- **N/A (not applicable)** — the product has no such system at all. A free tool with no accounts has no auth flow (Check 3); a product that takes no payments has no payment flow (Check 4); a product that sends no email has no email delivery (Check 6). Mark the check N/A, record the one-line reason in PRE_FLIGHT_CHECKLIST.md, and exclude it from the pass/fail count. N/A is decided by what the product IS — never by whether the check would pass.
+- **DEFERRED (belongs to a later phase)** — the system is planned, but the pipeline builds it in a later phase. Error monitoring and uptime monitoring (Checks 7–8) are configured in Phase 8 (Automation Handoff); email infrastructure (Check 6) likewise. If that phase hasn't run yet, mark the check DEFERRED — not RED, not YELLOW. When the owning phase completes, the check is re-run and must pass for real.
+
+Rules:
+- N/A and DEFERRED checks never block launch and never count toward the yellow total.
+- Every N/A needs its reason written down. "No user accounts exist in this product" is a reason; "didn't get to it" is not — that's a RED.
+- A DEFERRED check whose owning phase HAS run is no longer deferred: it runs now, and a RED blocks like anything else.
+- The gate stays absolute for everything that genuinely applies and is due: any RED still sends Atlas back to the responsible phase.
 
 ---
 
@@ -209,6 +224,8 @@ Yellow items (warnings, not blockers):
 Atlas next action: Phase 5 (Launch Strategy)
 ```
 
+Checks that don't apply appear as `⬜ N/A — [reason]` and later-phase checks as `⏳ DEFERRED — due Phase [N]`. Neither counts in the green/yellow/red totals above.
+
 ---
 
 ## Decision Tree After Pre-Flight
@@ -240,6 +257,8 @@ digraph preflight {
 - **RED** = blocks launch entirely
 - **YELLOW** = launch can proceed; logged to incidents/ for Phase 11 to address in next loop
 - **GREEN** = clean
+- **N/A** = the product has no such system; excluded from the count, reason recorded (see "N/A and DEFERRED")
+- **DEFERRED** = owned by a later phase that hasn't run yet; excluded from the count, re-run when that phase completes
 
 3+ yellows = Atlas pauses and asks the founder, because patterns of warnings indicate systemic fragility.
 
@@ -247,7 +266,7 @@ digraph preflight {
 
 ## Acceptance Test (Phase 4)
 
-- [ ] All 11 checks have run and produced a status
+- [ ] All 11 checks have a status (GREEN / YELLOW / RED / N/A with reason recorded / DEFERRED with owning phase named)
 - [ ] PRE_FLIGHT_CHECKLIST.md exists with timestamps
 - [ ] If any RED: phase returned to and re-Pre-Flight-tested before this checkpoint
 - [ ] If any YELLOW: incident logged to `~/.atlas/incidents/`
@@ -261,7 +280,7 @@ digraph preflight {
 ─────────────────────────────────────────────────────
 PRE-FLIGHT [GREEN | YELLOW | RED]
 
-Checks: [N green / N yellow / N red]
+Checks: [N green / N yellow / N red / N n/a / N deferred]
 
 [If GREEN:]
   ✅ Cleared for Phase 5 — Launch Strategy
@@ -296,3 +315,4 @@ Type 'continue' to proceed if cleared.
 - ❌ Not testing payment in actual Stripe test mode (synthetic success isn't validation)
 - ❌ Skipping mobile check because "we'll polish later" — half of launch traffic is mobile
 - ❌ Failing to log the test results to disk for the post-launch retro
+- ❌ Marking a check N/A without a written reason, or leaving a check DEFERRED after its owning phase has already run — that's skipping with extra steps

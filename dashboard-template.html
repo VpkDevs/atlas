@@ -611,126 +611,64 @@
 // Replace from "const ATLAS_STATE = {" through the closing "};" below.
 const ATLAS_STATE = {
   project: {
-    name: "SweepBot",
-    slug: "sweepbot",
-    lastUpdated: "2026-03-19 09:00",
-    tagline: "We give players what the house never wants them to have.",
-    sovereignScore: 36,
+    name: "Your Product",
+    slug: "your-product",
+    lastUpdated: "—",
+    tagline: "",
+    sovereignScore: 0,
     targetScore: 90,
-    previousScore: 22
+    previousScore: 0
   },
-  currentModule: "marketing",
-  founder: "Vincent",
+  currentModule: "none",
+  founder: "",
   modules: [
     {
       id: "onboarding", number: 1, name: "Onboarding",
-      status: "complete",
-      atlasDid: [
-        "Read 147 files across the codebase",
-        "Built complete Business Context (confirmed by founder)",
-        "Identified 4 remaining infrastructure blockers",
-        "Flagged 2 legal gaps (resolved in Module 3)"
-      ],
-      userMust: [
-        { id: "a", label: "Confirmed Business Context was accurate", required: false },
-        { id: "b", label: "Provided location, runway, and success definition", required: false }
-      ]
+      status: "pending",
+      atlasDid: [],
+      userMust: []
     },
     {
       id: "code-sprint", number: 2, name: "Code Sprint",
-      status: "complete",
-      atlasDid: [
-        "Fixed 6 missing database tables",
-        "Resolved 4 routing bugs (protected routes, 404 handling)",
-        "Scaffolded Vercel + Railway config files",
-        "Wrote docs/founder/RUNBOOK.md",
-        "Generated API documentation from route files"
-      ],
-      userMust: [
-        { id: "a", label: "Review the committed changes: git log --oneline -10", required: false },
-        { id: "b", label: "Run pnpm db:migrate once production database is live", required: true },
-        { id: "c", label: "Set STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, and remaining .env vars", required: true }
-      ]
+      status: "pending",
+      atlasDid: [],
+      userMust: []
     },
     {
       id: "legal", number: 3, name: "Legal & Compliance",
-      status: "complete",
-      atlasDid: [
-        "Drafted Terms of Service (specific to SweepBot data practices)",
-        "Drafted Privacy Policy (specific to actual data collected)",
-        "Added 18+ age gate checkbox to SignUpPage.tsx",
-        "Added automation ToS disclosure to signup flow",
-        "Wrote docs/legal/COMPLIANCE_CHECKLIST.md"
-      ],
-      userMust: [
-        { id: "a", label: "Deploy web app so /privacy and /terms are live at sweepbot.app", required: true },
-        { id: "b", label: "Register privacy URL in Chrome Web Store developer console", required: true },
-        { id: "c", label: "Add visible affiliate link labels in extension popup at runtime", required: true },
-        { id: "d", label: "Optional: Have a lawyer review ToS before $10K+ MRR", required: false }
-      ]
+      status: "pending",
+      atlasDid: [],
+      userMust: []
     },
     {
       id: "launch-strategy", number: 4, name: "Launch Strategy",
-      status: "complete",
-      atlasDid: [
-        "Ranked launch channels by ROI for sweepstakes audience",
-        "Wrote Product Hunt: tagline, description, first comment, maker story",
-        "Wrote Show HN post in authentic HN voice",
-        "Wrote Reddit posts for r/sweepstakescasinos, r/beermoney, r/Sweepstakes",
-        "Built 30-day day-by-day launch timeline (LAUNCH_TIMELINE.md)",
-        "Generated building-in-public thread draft",
-        "Wrote 5 affiliate outreach emails (Stake.us, McLuck, Pulsz, WOW Vegas, Fortune Coins)"
-      ],
-      userMust: [
-        { id: "a", label: "Create Product Hunt account if not exists: producthunt.com/auth/sign-up", required: true },
-        { id: "b", label: "Choose launch date (Day 1 = infrastructure done — see LAUNCH_TIMELINE.md)", required: true },
-        { id: "c", label: "Review and approve all launch copy before posting", required: true },
-        { id: "d", label: "Take 3 extension screenshots at 1280×800 — exact instructions in LAUNCH_STRATEGY.md", required: true }
-      ]
+      status: "pending",
+      atlasDid: [],
+      userMust: []
     },
     {
       id: "marketing", number: 5, name: "Marketing",
-      status: "active",
+      status: "pending",
       atlasDid: [],
-      userMust: [
-        { id: "a", label: "Create Buffer account and connect social profiles: buffer.com/signup", required: true },
-        { id: "b", label: "Create business Twitter/X account for @SweepBot (or your handle)", required: true },
-        { id: "c", label: "Set up Google Search Console (requires domain ownership): search.google.com/search-console", required: true },
-        { id: "d", label: "Import 30-day content calendar to Buffer after Atlas generates it", required: true },
-        { id: "e", label: "Create business LinkedIn page (optional — low ROI for this audience)", required: false }
-      ]
+      userMust: []
     },
     {
       id: "business-setup", number: 6, name: "Business Setup",
       status: "pending",
       atlasDid: [],
-      userMust: [
-        { id: "a", label: "File LLC with your state (Atlas will provide exact steps + direct link)", required: true },
-        { id: "b", label: "Open business bank account (Atlas will recommend + provide application link)", required: true },
-        { id: "c", label: "Connect Stripe payouts to business bank account", required: true },
-        { id: "d", label: "Set up accounting software — Wave is free: waveapps.com", required: false }
-      ]
+      userMust: []
     },
     {
       id: "automation", number: 7, name: "Automation Handoff",
       status: "pending",
       atlasDid: [],
-      userMust: [
-        { id: "a", label: "Create Better Uptime account and add BETTER_UPTIME_API_KEY to .env: betteruptime.com", required: true },
-        { id: "b", label: "Create Sentry account and add SENTRY_DSN to .env: sentry.io", required: true },
-        { id: "c", label: "Configure Stripe webhook endpoint in Stripe Dashboard → Developers → Webhooks", required: true },
-        { id: "d", label: "Approve n8n/Make workflows before activating (Atlas will show you each one)", required: false }
-      ]
+      userMust: []
     },
     {
       id: "operations", number: 8, name: "Operations",
       status: "pending",
       atlasDid: [],
-      userMust: [
-        { id: "a", label: "Add POSTHOG_API_KEY to .env for product analytics: app.posthog.com", required: true },
-        { id: "b", label: "Schedule recurring 15-minute weekly review — Atlas will specify what to review", required: false },
-        { id: "c", label: "Configure Stripe automatic weekly payouts in Stripe Dashboard → Payouts", required: false }
-      ]
+      userMust: []
     }
   ]
 };

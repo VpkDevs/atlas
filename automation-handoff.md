@@ -21,19 +21,22 @@ For every automation in this module, the protocol is:
 
 ## The Runs-Itself Score
 
-| Category | Max Points | What Earns It |
+The Sovereign Score has exactly ONE rubric — the one in `SKILL.md` ("Sovereign Score (v6 — Recalibrated)"). This module does not score itself; it moves these canonical categories:
+
+| Canonical Category (SKILL.md) | Max | What This Module Earns |
 |----------|-----------|---------------|
-| Monitoring & alerting | 20 | Uptime monitoring + error alerting + revenue alerting |
-| Email automation | 20 | Welcome + activation + retention sequences live |
-| Support automation | 15 | FAQ bot or scripted responses for top 20 questions |
-| Social/content automation | 10 | 30+ days of content scheduled |
-| Documentation | 15 | RUNBOOK + contractor onboarding docs complete |
-| Deployment pipeline | 10 | Auto-deploy on push, no manual steps |
-| Payment/billing automation | 10 | Dunning, failed payment recovery, receipts |
+| Monitoring & Alerting | 10 | Uptime monitoring + error alerting + revenue alerting firing to a real channel |
+| Email Automation | 10 | Welcome + activation + retention sequences live |
+| Support Automation | 10 | Top-20 FAQ live; auto-responder; ticket routing |
+| Content Engine | 10 | 30+ days scheduled AND a recurring generation cycle running |
+| Social Presence | 5 | Real-time community engagement (replies, not just posts) |
+| Documentation | 5 | RUNBOOK + contractor onboarding + investor update template |
+| Code & Deployment | 15 | The auto-deploy pipeline this module hardens (Code Sprint builds it) |
+| Economic Sovereignty | 10 | The payment side: dunning, failed-payment recovery, receipts (full category also covers P&L / tax reserve / credits) |
 
 **Launch floor: 60. Sovereign target: 90. This module must reach 60 before Phase 9 launches.**
 
-Note: The score table above sums to 80. Additional points come from Operations (weekly review cron, alert channels) and Growth Engine (content engine, iteration loop). Full 90 is achieved across the pipeline — not this module alone.
+The score is always calculated from the canonical rubric across the whole pipeline — never from a module-local table. The categories above are the ones this module can move; the rest are earned in other phases.
 
 ---
 
@@ -44,7 +47,7 @@ Note: The score table above sums to 80. Additional points come from Operations (
 **Pre-revenue check:** If `monetization_status: pre-revenue` in Business Context:
 - Skip: dunning, failed payment recovery, revenue alerting, billing automation
 - Note in checkpoint: "Payment automations skipped — no payment processor detected. These activate once Stripe/equivalent is added."
-- Adjust max score: payment/billing automation points (10) are marked `[LOCKED: pre-revenue]`, not missing
+- Mark the payment-dependent part of Economic Sovereignty `[LOCKED: pre-revenue]`, not missing — it is excluded from the achievable score until a payment processor exists
 
 Calculate current score. List every automation that adds points, sorted by points-per-hour.
 

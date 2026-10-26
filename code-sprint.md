@@ -271,15 +271,11 @@ git push origin $(git branch --show-current)
 
 ## Step 10: Recalculate Score
 
-| Factor | Max Points |
-|--------|-----------|
-| Zero P0 blockers | +20 |
-| Deployment succeeded + live URL confirmed | +15 |
-| GitHub Actions CI/CD committed | +10 |
-| Error monitoring configured (Sentry) | +5 |
-| Health check endpoint live | +5 |
-| RUNBOOK.md written | +10 |
-| API documented | +5 |
+The Sovereign Score has exactly ONE rubric — the one in `SKILL.md` ("Sovereign Score (v6 — Recalibrated)"). There is no Code Sprint score table; never award points from a phase-local table.
+
+This phase's work lands almost entirely in **Code & Deployment (max 15)**: zero P0s, a working auto-deploy pipeline with a confirmed live URL, a live health check, CI/CD committed, and the RUNBOOK written. Error monitoring counts under **Monitoring & Alerting (max 10)**, and only once it is actually firing to a real channel (Phase 2b verifies).
+
+State the score as before → after, naming which canonical categories moved and by how much.
 
 ---
 

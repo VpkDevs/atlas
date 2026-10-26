@@ -21,7 +21,7 @@ If Atlas finds a CRITICAL vulnerability, it fixes it before proceeding. If it ca
 ### Check git history for committed secrets
 ```bash
 # Check for common secret patterns in git history
-git log --all --full-history -p | grep -E \
+git log --all --full-history -p | grep -iE \
   "(sk_live_|pk_live_|sk_test_|AKIA[0-9A-Z]{16}|ghp_|github_pat_|xoxb-|xoxp-|AIza|ya29\.|-----BEGIN (RSA |OPENSSH |EC )?PRIVATE KEY)" \
   | head -20
 ```
@@ -34,14 +34,17 @@ If ANY match found:
 
 ### Check current working tree
 ```bash
-# Scan for hardcoded secrets in source (not git history)
-grep -rn \
-  -E "(password|secret|api_key|apikey|access_token|auth_token)\s*=\s*['\"][^'\"]{8,}['\"]" \
+# Scan for hardcoded secrets in source (not git history) — case-insensitive (-i):
+# PANTRYPAL_API_KEY, ApiKey, and api_key are the same hit
+grep -rni \
+  -E "(password|passwd|secret|api[-_]?key|apikey|access[-_]?token|auth[-_]?token|private[-_]?key|client[-_]?secret)\s*=\s*['\"][^'\"]{8,}['\"]" \
   --include="*.ts" --include="*.js" --include="*.py" --include="*.env" \
-  src/ app/ lib/ utils/ 2>/dev/null | grep -v ".env.example" | grep -v "test\|spec\|mock"
+  src/ app/ lib/ utils/ 2>/dev/null | grep -v ".env.example" | grep -vi "test\|spec\|mock"
 ```
 
 Any hardcoded secret in source = CRITICAL. Extract to environment variable, commit the change.
+
+**Case rule (applies to every scan in this module):** secret identifiers are always matched case-insensitively. Every `grep` in this module runs with `-i`, and where a pattern can't rely on the flag, it carries uppercase variants. A scan that only matches lowercase names (`api_key` but not `API_KEY`) is a failed scan — real codebases name keys in SCREAMING_CASE constants, and the scan that misses them finds nothing and reports "clean."
 
 ### Verify .gitignore
 ```bash
@@ -341,7 +344,8 @@ OWASP coverage: [N]/10 categories addressed
 
 ## Acceptance Test
 
-- [ ] `git log --all -p | grep -E "(sk_live_|AKIA|ghp_)" | wc -l` returns 0
+- [ ] Working tree + current HEAD clean: the Step 1 scans return zero matches — no secret in the code as it stands now
+- [ ] Git history clean, by one of two paths: (a) the history scan returns zero matches, or (b) every secret it finds has been **rotated/revoked at the provider** (a secret that ever entered history is compromised forever — deleting it from the code is NOT a fix) **and purged from history** with `git filter-repo` (or BFG Repo-Cleaner), the rewritten history force-pushed, and the history scan re-run clean. Until both halves of path (b) are done, this item stays unchecked and the secret counts as CRITICAL-remaining
 - [ ] `npm audit --audit-level=critical` returns 0 critical vulnerabilities
 - [ ] Security headers present: `curl -I <prod_url>` shows `X-Content-Type-Options`, `X-Frame-Options`, `Strict-Transport-Security`
 - [ ] Rate limiting on `/api/auth/*` confirmed (test: 11 rapid requests → 429 on 11th)
