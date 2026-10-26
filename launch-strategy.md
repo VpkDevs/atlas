@@ -394,7 +394,7 @@ This file replaces all the "checklists" of v3. It is a **timestamped serial reci
 ## T-7 Days — Tuesday 2026-05-05
 
 [ ] 09:00 — Atlas posts the "launching next Tuesday" tweet (auto, via Twitter API if key present, else userMust)
-[ ] 09:30 — Atlas sends warmup DMs to 5 PH hunters (auto via API where possible)
+[ ] 09:30 — Founder sends warmup DMs to 5 PH hunters (Atlas-drafted, paste-ready in the Asset Bundle — Product Hunt has no DM API)
 [ ] 10:00 — Founder posts BTS thread (Atlas-drafted, paste-ready below)
 [ ] 14:00 — Atlas verifies all DNS, SSL, healthchecks
 [ ] 17:00 — Atlas runs Pre-Flight Phase 4 again (gate)
@@ -402,7 +402,7 @@ This file replaces all the "checklists" of v3. It is a **timestamped serial reci
 ## T-1 Day — Monday 2026-05-11
 
 [ ] 08:00 — Atlas runs final Pre-Flight (acceptance test)
-[ ] 09:00 — Atlas schedules PH submission as draft (via API or pre-filled URL)
+[ ] 09:00 — Founder schedules the PH launch in the Product Hunt web UI, using the complete pre-filled Asset Bundle (Atlas prepares every field — PH has no submission API) (~10 min)
 [ ] 11:00 — Atlas pre-schedules Twitter thread to fire 06:00 PST Tuesday
 [ ] 12:00 — Atlas verifies all asset URLs return 200
 [ ] 14:00 — Founder reviews LAUNCH_SCRIPTS.md (only thing they need to do today)
@@ -412,7 +412,7 @@ This file replaces all the "checklists" of v3. It is a **timestamped serial reci
 
 ## T-0 Day — Tuesday 2026-05-12 (LAUNCH DAY)
 
-[ ] 00:01 PST — Product Hunt goes live (Atlas submits via API; verifies live URL)
+[ ] 00:01 PST — Product Hunt goes live (scheduled by the founder at T-1 in the PH web UI; Atlas verifies the live URL)
         ↳ verification: curl producthunt.com/posts/<slug> returns 200 with post visible
         ↳ if 4xx/5xx: war-room incident alpha-1, see WAR_ROOM_PROTOCOL.md
 
@@ -522,7 +522,7 @@ These auto-fire if Atlas has API access OR sit in `WAR_ROOM_RESPONSES.md` for in
 | Negative HN top comment dominating | Sentiment scan | Atlas drafts measured response, surfaces for founder approval, posts within 15 min of approval | Read draft, approve or edit |
 | Major bug discovered in product | Sentry / user reports | Atlas reproduces, fixes, deploys hotfix, posts "fix is live" reply on the channel where bug was reported | None unless fix requires architecture call |
 | Domain DNS not propagated | Atlas's curl returns NXDOMAIN | Verify Cloudflare/Vercel record, force propagation, fall back to apex domain if subdomain fails | None |
-| PH submission rejected | API error or moderator email | Atlas reads rejection reason, regenerates submission, retries; if rules require change, surfaces userMust with exact fix | Approve revision |
+| PH submission rejected | Moderator email | Atlas reads rejection reason, regenerates submission copy; founder re-posts via the PH web UI; if rules require change, surfaces userMust with exact fix | Approve revision + re-post |
 | HN flagged | "[flagged]" appears | Atlas drafts an honest "I'm the maker, AMA" comment, requests vouch via founder's HN network if any | Use the network |
 | Reddit removed by mod | Post removed | Atlas reads mod message if accessible, regenerates per their notes, identifies a more permissive sub | Reach out to mod if Atlas's regenerated version is rejected |
 | No signups in first 4 hours | Metric < 5 | Atlas pulls landing-page conversion logs (PostHog), identifies drop-off point, drafts an A/B variant for hero copy, deploys via feature flag | None — Atlas iterates |
@@ -622,7 +622,7 @@ Phase 5 is not complete until ALL of these are true:
 - [ ] `LAUNCH_SEQUENCE.md` exists with no `[TODO]` or placeholder strings
 - [ ] `LAUNCH_SCRIPTS.md` items are sequentially numbered and each has a destination URL
 - [ ] All asset files render valid Markdown
-- [ ] All asset URLs (e.g., demo videos, screenshots referenced) resolve to 200
+- [ ] All Phase 5 asset URLs (launch copy links, waitlist page) resolve to 200 — demo videos and screenshots are produced in Phase 6 and verified at Phase 6's exit and again in Pre-Flight
 - [ ] `rollback.sh` is committed and executable
 - [ ] `WAR_ROOM_RESPONSES.md` has ≥ 30 pre-drafted responses across all channels
 - [ ] Audience Map identifies ≥ 5 specific communities with mod policy notes

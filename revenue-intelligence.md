@@ -1,6 +1,6 @@
 ---
 name: atlas-revenue-intelligence
-description: Use during Atlas Module 9 — runs after operations to find the first paying customer if MRR is zero, audit pricing for money left on the table, and fix conversion funnel leaks. Produces 10 personalized outreach messages, a pricing recommendation, and specific funnel fixes committed to the codebase.
+description: Use during Atlas Phase 12 — runs after operations to find the first paying customer if MRR is zero, audit pricing for money left on the table, and fix conversion funnel leaks. Produces 10 personalized outreach messages, a pricing recommendation, and specific funnel fixes committed to the codebase.
 ---
 
 # Atlas Revenue Intelligence

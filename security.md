@@ -14,15 +14,18 @@ Atlas does not produce a security audit report for the founder to read later. At
 
 If Atlas finds a CRITICAL vulnerability, it fixes it before proceeding. If it cannot fix it, Phase 2b does not complete and Phase 3 (Legal) is blocked.
 
+> **Reading this module standalone?** SKILL.md's pipeline order and exit gates govern on any conflict between modules (e.g. this phase runs before the first push, even where another module says "push early").
+
 ---
 
 ## Step 1: Secrets Scan (Run First — Fastest Highest-Impact Check)
 
 ### Check git history for committed secrets
 ```bash
-# Check for common secret patterns in git history
+# Check for common secret patterns in git history — the prefix patterns catch known token
+# shapes; the generic identifier alternative catches secrets committed under ordinary names
 git log --all --full-history -p | grep -iE \
-  "(sk_live_|pk_live_|sk_test_|AKIA[0-9A-Z]{16}|ghp_|github_pat_|xoxb-|xoxp-|AIza|ya29\.|-----BEGIN (RSA |OPENSSH |EC )?PRIVATE KEY)" \
+  "(sk_live_|pk_live_|sk_test_|AKIA[0-9A-Z]{16}|ghp_|github_pat_|xoxb-|xoxp-|AIza|ya29\.|-----BEGIN (RSA |OPENSSH |EC )?PRIVATE KEY|(api[-_]?key|secret|token|passwd|password|private[-_]?key|client[-_]?secret)\s*[:=]\s*['\"][^'\"]{8,}['\"])" \
   | head -20
 ```
 
@@ -36,15 +39,20 @@ If ANY match found:
 ```bash
 # Scan for hardcoded secrets in source (not git history) — case-insensitive (-i):
 # PANTRYPAL_API_KEY, ApiKey, and api_key are the same hit
-grep -rni \
-  -E "(password|passwd|secret|api[-_]?key|apikey|access[-_]?token|auth[-_]?token|private[-_]?key|client[-_]?secret)\s*=\s*['\"][^'\"]{8,}['\"]" \
-  --include="*.ts" --include="*.js" --include="*.py" --include="*.env" \
-  src/ app/ lib/ utils/ 2>/dev/null | grep -v ".env.example" | grep -vi "test\|spec\|mock"
+grep -rniE "(password|passwd|secret|api[-_]?key|apikey|access[-_]?token|auth[-_]?token|private[-_]?key|client[-_]?secret)\s*[:=]\s*['\"][^'\"]{8,}['\"]" \
+  --include="*.ts" --include="*.tsx" --include="*.js" --include="*.jsx" --include="*.py" \
+  --include="*.json" --include="*.yml" --include="*.yaml" --include="*.env" \
+  --exclude-dir=.git --exclude-dir=node_modules \
+  --exclude-dir=test --exclude-dir=tests --exclude-dir=spec --exclude-dir=__tests__ --exclude-dir=fixtures \
+  --exclude=".env.example" \
+  .
 ```
 
 Any hardcoded secret in source = CRITICAL. Extract to environment variable, commit the change.
 
 **Case rule (applies to every scan in this module):** secret identifiers are always matched case-insensitively. Every `grep` in this module runs with `-i`, and where a pattern can't rely on the flag, it carries uppercase variants. A scan that only matches lowercase names (`api_key` but not `API_KEY`) is a failed scan — real codebases name keys in SCREAMING_CASE constants, and the scan that misses them finds nothing and reports "clean."
+
+**Exclusion rule:** exclusions are **path-based** (test/spec/fixture directories via `--exclude-dir`), never line-content filters. A filter on words like "test" silently drops real secrets in files like `src/latest.js`, or in any line mentioning "latest" or "special". The scan runs from the repo root so no directory is silently skipped, and the pattern accepts both `name = "value"` and `name: "value"` (object literals — the most common JS shape).
 
 ### Verify .gitignore
 ```bash
@@ -187,11 +195,11 @@ Auto-fix if vulnerable:
 Checks:
 - Are npm packages pinned to exact versions or use lockfile?
 - Is CI/CD pipeline protected (branch protection, required reviews)?
-- Are GitHub Actions using specific SHA versions, not @main?
+- Are GitHub Actions pinned to immutable refs — a full commit SHA is strongest; a release tag (`@v4`) is the minimum; never `@main` / `@master`?
 
 Auto-fix if vulnerable:
   - Add lockfile if missing (npm ci vs npm install)
-  - Update GitHub Actions to use SHA-pinned versions
+  - Pin GitHub Actions to commit SHAs or release tags (never @main/@master)
 ```
 
 ### A09: Security Logging and Monitoring Failures

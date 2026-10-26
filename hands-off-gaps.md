@@ -19,7 +19,7 @@ For each gap below: `[ATLAS CAN DO]`, `[PARTIAL]`, or `[IRREDUCIBLE HUMAN STEP]`
 
 ---
 
-## Module 1 — Onboarding
+## Phase 1 — Onboarding
 
 | Task | Current | Should Be |
 |------|---------|-----------|
@@ -37,7 +37,7 @@ For each gap below: `[ATLAS CAN DO]`, `[PARTIAL]`, or `[IRREDUCIBLE HUMAN STEP]`
 
 ---
 
-## Module 2 — Code Sprint
+## Phase 2 — Code Sprint
 
 | Task | Current | Status | Fix |
 |------|---------|--------|-----|
@@ -57,7 +57,7 @@ For each gap below: `[ATLAS CAN DO]`, `[PARTIAL]`, or `[IRREDUCIBLE HUMAN STEP]`
 
 ---
 
-## Module 3 — Legal & Compliance
+## Phase 3 — Legal & Compliance
 
 | Task | Current | Status | Fix |
 |------|---------|--------|-----|
@@ -73,7 +73,7 @@ For each gap below: `[ATLAS CAN DO]`, `[PARTIAL]`, or `[IRREDUCIBLE HUMAN STEP]`
 
 ---
 
-## Module 4 — Launch Strategy
+## Phase 5 — Launch Strategy
 
 | Task | Current | Status | Fix |
 |------|---------|--------|-----|
@@ -90,7 +90,7 @@ For each gap below: `[ATLAS CAN DO]`, `[PARTIAL]`, or `[IRREDUCIBLE HUMAN STEP]`
 
 ---
 
-## Module 5 — Marketing
+## Phase 6 — Marketing
 
 | Task | Current | Status | Fix |
 |------|---------|--------|-----|
@@ -109,7 +109,7 @@ For each gap below: `[ATLAS CAN DO]`, `[PARTIAL]`, or `[IRREDUCIBLE HUMAN STEP]`
 
 ---
 
-## Module 6 — Business Setup
+## Phase 7 — Business Setup
 
 | Task | Current | Status | Fix |
 |------|---------|--------|-----|
@@ -123,11 +123,11 @@ For each gap below: `[ATLAS CAN DO]`, `[PARTIAL]`, or `[IRREDUCIBLE HUMAN STEP]`
 | Apply for Vercel startup credits | Missing | `[ATLAS CAN DO]` | Write the application email for Vercel's startup program |
 | Calculate estimated tax payments | Does | `[ATLAS CAN DO]` | Already done — improve to generate actual IRS Form 1040-ES payment schedule |
 
-**The startup credits gap:** AWS Activate, Stripe Atlas, Vercel Pro, GitHub for Startups, Cloudflare for Startups — together these can cover >$50K in infrastructure costs. Atlas should apply to all of them as part of Module 6, not mention them optionally.
+**The startup credits gap:** AWS Activate, Stripe Atlas, Vercel Pro, GitHub for Startups, Cloudflare for Startups — together these are typically worth $5,000–$25,000 to a self-funded founder (advertised program ceilings run higher). Atlas prepares applications to all of them as part of Phase 7, not mention them optionally.
 
 ---
 
-## Module 7 — Automation Handoff
+## Phase 8 — Automation Handoff
 
 | Task | Current | Status | Fix |
 |------|---------|--------|-----|
@@ -144,7 +144,7 @@ For each gap below: `[ATLAS CAN DO]`, `[PARTIAL]`, or `[IRREDUCIBLE HUMAN STEP]`
 
 ---
 
-## Module 8 — Operations
+## Phase 11 — Operations
 
 | Task | Current | Status | Fix |
 |------|---------|--------|-----|
@@ -164,7 +164,7 @@ For each gap below: `[ATLAS CAN DO]`, `[PARTIAL]`, or `[IRREDUCIBLE HUMAN STEP]`
 
 These capabilities don't exist in any module and should:
 
-**1. Deployment Automation (New: runs automatically in Module 2)**
+**1. Deployment Automation (New: runs automatically in Phase 2)**
 ```
 If vercel.json present → vercel --prod
 If railway.toml present → railway up
@@ -172,19 +172,19 @@ If Dockerfile present → ask for platform choice, then deploy
 In all cases: confirm live URL, ping it to verify 200 response
 ```
 
-**2. Startup Credits Sprint (New: runs in Module 6)**
+**2. Startup Credits Sprint (New: runs in Phase 7)**
 ```
 For each program below, if product qualifies:
-- AWS Activate (up to $100K): atlas.amazon.com
-- Stripe Atlas ($500 credit + US entity formation): stripe.com/atlas
+- AWS Activate (program ceiling up to $100K): aws.amazon.com/activate
+- Stripe Atlas (PAID service — $500 one-time fee for US entity formation, not a credit): stripe.com/atlas
 - Vercel startup credits: vercel.com/support/contact (email template)
 - GitHub for Startups: github.com/solutions/startups
 - Cloudflare for Startups: cloudflare.com/forstartups
 - Anthropic startup credits: console.anthropic.com/settings/credits
-Atlas outputs: complete application content for each, direct link, expected turnaround
+Atlas outputs: complete, ready-to-submit application content for each, direct link, expected turnaround
 ```
 
-**3. Zero-to-First-Dollar Sprint (New: runs after Module 4 if MRR = 0)**
+**3. Zero-to-First-Dollar Sprint (New: runs after Phase 5 if MRR = 0)**
 ```
 Find the 5-10 most likely first paying customers:
 - Search the relevant subreddits for people who expressed the pain this product solves
@@ -194,7 +194,7 @@ Write: personalized cold DM for each (not a template — a genuine message)
 Track: don't move on until one response is received
 ```
 
-**4. Launch Sequencer (Enhancement to Module 4)**
+**4. Launch Sequencer (Enhancement to Phase 5)**
 ```
 Instead of: "Here are the posts to copy-paste"
 Generate: LAUNCH_SEQUENCE.md — numbered steps in exact chronological order
@@ -205,7 +205,7 @@ Generate: LAUNCH_SEQUENCE.md — numbered steps in exact chronological order
 Human follows a recipe, not a strategy doc.
 ```
 
-**5. Press Kit Generator (New: in Module 5)**
+**5. Press Kit Generator (New: in Phase 6)**
 ```
 Create: /public/press/ folder with:
   - press-kit.md (founder bio, product facts, key stats, logo usage)
@@ -233,9 +233,9 @@ Everything else is a failure of imagination or automation.
 
 ## Priority Order (Highest-Impact Gaps to Close First)
 
-1. **Deployment execution** (Module 2) — Atlas should deploy, not describe deployment
-2. **Startup credits applications** (Module 6) — could save $50K+ in infrastructure costs
-3. **Launch Sequencer format** (Module 4) — numbered recipe eliminates all copy-paste anxiety
-4. **Buffer API scheduling** (Module 5) — if key exists, actually schedule the posts
+1. **Deployment execution** (Phase 2) — Atlas should deploy, not describe deployment
+2. **Startup credits applications** (Phase 7) — typically worth $5,000–$25,000 to a self-funded founder
+3. **Launch Sequencer format** (Phase 5) — numbered recipe eliminates all copy-paste anxiety
+4. **Buffer API scheduling** (Phase 6) — if key exists, actually schedule the posts
 5. **Zero-to-First-Dollar Sprint** (new module) — revenue before MRR, not after
-6. **Sentry + Better Uptime API calls** (Module 7) — configure monitoring, don't describe it
+6. **Sentry + Better Uptime API calls** (Phase 8) — configure monitoring, don't describe it

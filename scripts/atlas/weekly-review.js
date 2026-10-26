@@ -6,7 +6,7 @@
  * Runs the full weekly review pipeline:
  *   1. Pulse   — collect metrics
  *   2. Decide  — pick this week's action
- *   3. Open PR — create GitHub issue with review
+ *   3. File review — create GitHub issue with the review
  *   4. Notify  — send digest to configured channels
  *
  * All steps are independent — a failure in one does not block the others.

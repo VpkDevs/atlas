@@ -1,12 +1,14 @@
 ---
 name: atlas-war-room
-description: Use during Atlas Phase 10 — the 72-hour live-ops period after launch. Atlas runs continuous monitoring, drives the post-launch content cycle, fields support requests, fires follow-up engagement on every channel, watches for incidents, runs T+24h / T+48h / T+72h retros, and hands off to Phase 11 (Growth Engine) with a clean baseline.
+description: Use during Atlas Phase 10 — the 72-hour live-ops period after launch. Atlas runs continuous monitoring, drives the post-launch content cycle, fields support requests, fires follow-up engagement on every channel, watches for incidents, runs T+24h / T+48h / T+72h retros, and hands off to Phase 13 (Growth Engine) with a clean baseline.
 ---
 
 # Atlas War Room — The 72-Hour Live-Ops Period
 
 **Input:** LAUNCH_DAY_SUMMARY.md, all post-launch channels active, monitoring infrastructure live
-**Output:** Stable post-launch baseline + clean handoff to Phase 11 Growth Engine
+**Output:** Stable post-launch baseline + clean handoff to Phase 13 Growth Engine
+
+**Session model:** the war room runs on founder-opened check-in sessions at the T+ checkpoints below — Atlas is an interactive agent, not a 72-hour background process. While a session is open, monitoring is continuous (5-minute loop). Between sessions, uptime/error alerts and pre-scheduled posts keep watch; on `/atlas resume`, Atlas reconciles everything since the last checkpoint from `war_room.md` and the alert history.
 
 ## The Iron Rule
 
@@ -25,7 +27,7 @@ T+4h     Mid-day check-in + content fire-off
 T+12h    First full retro
 T+24h    Day-1 milestone post + iteration decision
 T+48h    Day-2 momentum decision
-T+72h    Final retro; transition to Phase 11
+T+72h    Final retro; transition to Phase 13
 ```
 
 Between checkpoints: 5-min monitoring loops (per Phase 9), auto-response engagement, support coverage.
@@ -155,13 +157,13 @@ Atlas writes `WAR_ROOM_FINAL_RETRO.md`:
 ## Top customer feedback themes
 - [Distilled from comments + support tickets]
 
-## What changes for Phase 11
+## What changes for Phase 13
 - [Specific channel/content/feature decisions to carry forward]
 
 ## Patterns saved to ~/.atlas/patterns/launch.md
 - [What worked for THIS founder, in their voice, captured for next launch]
 
-## Phase 11 starting baseline
+## Phase 13 starting baseline
 - MRR: $X
 - Active users: X
 - 7-day trailing growth: X%
@@ -173,8 +175,8 @@ Atlas writes `WAR_ROOM_FINAL_RETRO.md`:
 1. Write all retros + summaries to disk
 2. Update context.json with post-launch baseline metrics
 3. Append to `~/.atlas/patterns/launch.md` (cross-project learning)
-4. Commit cron workflows for Phase 11 (the GH Action that fires the weekly loop)
-5. Schedule the first Phase 11 cycle for next Monday
+4. Commit cron workflows for Phase 13 (the GH Action that fires the weekly loop)
+5. Schedule the first Phase 13 cycle for next Monday
 6. Final dashboard update: "War Room closed. Growth Engine begins [date]."
 
 ---
@@ -192,7 +194,7 @@ Track: response time SLA target < 1 hour during launch window.
 
 ### Content Cycling
 
-Pre-scheduled posts continue firing per LAUNCH_SEQUENCE.md and CONTENT_CALENDAR_30.md. Atlas verifies each fired correctly. If a scheduled post failed: Atlas reschedules it OR posts the fallback variant.
+Pre-scheduled posts continue firing per LAUNCH_SEQUENCE.md and CONTENT_CALENDAR_90.md. Atlas verifies each fired correctly. If a scheduled post failed: Atlas reschedules it OR posts the fallback variant.
 
 ### Sentiment Monitoring
 
@@ -231,7 +233,7 @@ If Atlas is consuming > 1 hr/day of founder time: it's a violation, log to feedb
 - [ ] At least one iteration shipped between T+0 and T+72h based on data
 - [ ] All comments/messages either replied to or queued
 - [ ] No incidents in `~/.atlas/incidents/` left unresolved
-- [ ] Phase 11 cron workflow committed
+- [ ] Phase 13 cron workflow committed
 - [ ] Patterns appended to `~/.atlas/patterns/launch.md`
 - [ ] context.json updated with post-launch baseline
 
@@ -253,11 +255,11 @@ WAR ROOM CLOSED — T+72h Retro
 
 Wins: [3 bullets]
 Misses: [2 bullets]
-Carry forward: [what Phase 11 starts with]
+Carry forward: [what Phase 13 starts with]
 
 Runs-itself score: [X] → [Y]
 
-Phase 11 (Growth Engine) begins [date]. Cron workflow committed.
+Phase 13 (Growth Engine) begins [date]. Cron workflow committed.
 
 The launch is over. The business begins.
 ─────────────────────────────────────────────────────
@@ -271,7 +273,7 @@ The launch is over. The business begins.
 - ❌ Letting comments/messages go unanswered overnight
 - ❌ Not iterating between T+0 and T+72 based on data
 - ❌ Treating War Room as "wait and watch" — it is "watch and act"
-- ❌ Failing to commit Phase 11 cron before declaring complete
+- ❌ Failing to commit Phase 13 cron before declaring complete
 - ❌ Missing the patterns/launch.md update — losing cross-project learning
 - ❌ Auto-firing replies on negative-sentiment comments
 - ❌ Going silent on the founder during stable periods (post a "things are stable" once per shift)

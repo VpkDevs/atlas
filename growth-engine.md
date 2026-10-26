@@ -1,6 +1,6 @@
 ---
 name: atlas-growth-engine
-description: Use during Atlas Phase 11 — the perpetual operator loop that runs the business after launch. Pulls metrics, identifies the highest-leverage action, executes it (content, outreach, iteration, A/B test, support fix), logs it, repeats. Triggered automatically after Phase 10 (War Room) ends, on `/atlas resume`, on `/atlas growth`, or by the weekly GitHub Action. This is the module that turns Atlas from a launcher into a co-founder.
+description: Use during Atlas Phase 13 — the perpetual operator loop that runs the business after launch. Pulls metrics, identifies the highest-leverage action, executes it (content, outreach, iteration, A/B test, support fix), logs it, repeats. Triggered automatically after Phase 10 (War Room) ends, on `/atlas resume`, on `/atlas growth`, or by the weekly GitHub Action. This is the module that turns Atlas from a launcher into a co-founder.
 ---
 
 # Atlas Growth Engine — The Perpetual Co-Founder Loop
@@ -16,7 +16,7 @@ Every successful indie business is a chain of weekly cycles: **measure → decid
 
 **Atlas IS the cycle.** Atlas does not let the cycle break.
 
-Phase 11 runs perpetually. Every `/atlas`, every weekly cron tick, every `/atlas growth` invocation — Atlas runs one full loop and writes evidence of forward motion to `growth_log.md`. If the founder skips a week, Atlas catches up. If the founder vanishes for a month, Atlas keeps the lights on and resumes momentum on return.
+Phase 13 runs perpetually. Every `/atlas`, every weekly cron tick, every `/atlas growth` invocation — Atlas runs one full loop and writes evidence of forward motion to `growth_log.md`. If the founder skips a week, Atlas catches up. If the founder vanishes for a month, the weekly cron keeps filing its review and Atlas resumes momentum on return.
 
 ---
 
@@ -26,18 +26,18 @@ Phase 11 runs perpetually. Every `/atlas`, every weekly cron tick, every `/atlas
 Loop start:  Monday 09:00 local (founder's TZ from context.json)
 Loop length: ~30 min Atlas-time, < 15 min founder-time
 
-11.1 Pulse      Pull metrics; compute deltas; surface anomalies
-11.2 Decide     Choose THIS WEEK'S highest-leverage action (one)
-11.3 Execute    Atlas does the action (or queues it for human if irreducible)
-11.4 Ship       Push, deploy, post, send — verify it landed
-11.5 Log        Write to growth_log.md, update context.json, regenerate dashboard
+13.1 Pulse      Pull metrics; compute deltas; surface anomalies
+13.2 Decide     Choose THIS WEEK'S highest-leverage action (one)
+13.3 Execute    Atlas does the action (or queues it for human if irreducible)
+13.4 Ship       Push, deploy, post, send — verify it landed
+13.5 Log        Write to growth_log.md, update context.json, regenerate dashboard
 ```
 
 The cycle repeats forever or until `/atlas retire`.
 
 ---
 
-## 11.1 Pulse — Metrics Pull
+## 13.1 Pulse — Metrics Pull
 
 Every loop starts here. Atlas reads from every configured source:
 
@@ -93,13 +93,13 @@ For each unconfigured source: Atlas surfaces a `userMust` to wire it (only on fi
 Atlas compares to:
 - Last week (week-over-week)
 - Trailing 4-week average (smooths noise)
-- Phase 12-defined thresholds
+- Default thresholds (activation −3pp WoW, error rate +0.5pp WoW, MRR ±10% WoW — tunable in context.json)
 
 If a metric crosses an action threshold, Atlas raises an **incident** to `~/.atlas/incidents/` and the loop's Decide step prioritizes that incident over the default plan.
 
 ---
 
-## 11.2 Decide — One Action per Week
+## 13.2 Decide — One Action per Week
 
 Most founders fail because they try to do five things and finish none. Atlas chooses **one** action per loop, ranked by Impact × Confidence ÷ Effort.
 
@@ -199,7 +199,7 @@ Deferred actions (queued for future weeks):
 
 ---
 
-## 11.3 Execute — Atlas Does The Action
+## 13.3 Execute — Atlas Does The Action
 
 For each action category, Atlas has a complete execution recipe. Examples:
 
@@ -261,9 +261,9 @@ Each recipe handles failures with the universal Self-Healing Protocol.
 
 ---
 
-## 11.4 Ship — Verify It Actually Landed
+## 13.4 Ship — Verify It Actually Landed
 
-**Action without verification is not action.** Every Phase 11 action ends with proof.
+**Action without verification is not action.** Every Phase 13 action ends with proof.
 
 | Action type | Verification |
 |-------------|--------------|
@@ -278,7 +278,7 @@ If verification fails: action is **not** logged as complete; self-healing engage
 
 ---
 
-## 11.5 Log — Write Forward Motion to Disk
+## 13.5 Log — Write Forward Motion to Disk
 
 `~/.atlas/portfolio/[slug]/growth_log.md` — append-only chronological log.
 
@@ -323,53 +323,26 @@ Atomic writes per the Self-Healing Protocol's atomic-write rule.
 
 ---
 
-## Cron Layer (Atlas Runs Itself)
+## Cron Layer (What Actually Runs Without You)
 
-Phase 11 commits a GitHub Action that runs the loop on a schedule, even when the founder is away.
+The pack ships a weekly review pipeline in `scripts/atlas/`. It **collects and recommends — it does not execute, and it merges nothing.** Execution happens in Atlas sessions.
 
-```yaml
-# .github/workflows/weekly-review.yml
-name: Atlas Weekly Growth Loop
-on:
-  schedule:
-    - cron: "0 17 * * 1"   # Mondays 09:00 PST = 17:00 UTC
-  workflow_dispatch:
+`.github/workflows/weekly-review.yml` — schedule `0 14 * * 1` (Mondays 09:00 EST / 14:00 UTC) — runs `node scripts/atlas/weekly-review.js`, which runs four steps:
 
-jobs:
-  growth-tick:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Pull metrics
-        run: node scripts/atlas/pulse.js > /tmp/pulse.json
-        env:
-          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
-          POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
-          # ...
-      - name: Open growth-loop PR
-        run: node scripts/atlas/open_pr.js /tmp/pulse.json
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Notify founder
-        run: node scripts/atlas/notify.js
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-```
+1. **pulse.js** — metrics snapshot from the sources it supports: Stripe, PostHog, Better Uptime, Sentry. A source with no API key is recorded as a data gap, not a failure. Computes week-over-week deltas; flags anomalies.
+2. **decide.js** — priority rules map the snapshot to ONE recommended action, with reasoning and a confidence score.
+3. **open_pr.js** — opens a GitHub **issue** containing the snapshot, the anomalies, and the recommended action, with a 15-minute review checklist. (Despite the filename, it creates an issue — no PR, no diff, no merge.) Without `GITHUB_TOKEN`, it prints the review to stdout instead.
+4. **notify.js** — Discord/Slack digest, if webhooks are configured.
 
-`scripts/atlas/pulse.js`, `open_pr.js`, `notify.js` — Atlas commits these in Phase 11's first run.
+A step failing does not block the others. The scripts ship with the pack; Atlas copies them into the product repo and adds the API keys as GitHub secrets on Phase 13's first run.
 
-The PR contains:
-- This week's metrics snapshot (committed to `~/.atlas/...` mirror in repo)
-- The decision Atlas would make
-- The proposed action's diff if it's a code change
-
-The founder reviews + merges, OR replies "go" in Discord and Atlas merges itself, OR ignores it for 24h and Atlas merges if the action is in a pre-approved category.
+**Between weekly reviews:** the founder opens an Atlas session (`/atlas growth`) to execute the recommended action. The cron keeps the scoreboard current; it does not ship code on its own.
 
 ---
 
-## Pre-Approved Action Categories (Auto-Merge)
+## Pre-Approved Action Categories (Act Without Asking)
 
-To prevent the founder becoming a bottleneck, Phase 11 establishes pre-approval scopes the founder signs once at Phase 11 start:
+To prevent the founder becoming a bottleneck, Phase 13 establishes pre-approval scopes the founder signs once at Phase 13 start. These govern what Atlas may do **inside a session** without asking. They do not make the weekly cron execute anything — the cron only files its review issue.
 
 ```yaml
 # config/atlas-permissions.yml — committed, founder edits
@@ -410,20 +383,20 @@ This is the **trust contract** — Atlas operates aggressively inside its lane, 
 | Scenario | Atlas Response |
 |----------|----------------|
 | No metrics available (APIs down) | Use last snapshot; reduce confidence on decision; surface the data gap as the action |
-| Founder hasn't reviewed PR in 7 days | Auto-merge if pre-approved; escalate via Discord if requires approval; never block on missing approval forever |
+| Founder hasn't reviewed the weekly review issue in 7 days | The recommendation waits — the cron never executes or merges. Atlas executes it in the next session if it is still the highest-leverage action; escalate via Discord if it requires approval |
 | All metrics flat for 4+ weeks | Trigger a "stagnation special" — Atlas runs a 5-channel acquisition sprint AND a customer interview drive |
 | MRR drops > 25% in a week | Sev-1 incident; Atlas pauses normal loop, triggers retention emergency, drafts customer interview outreach |
-| Founder runs `/atlas growth` mid-week | Run the partial loop (Pulse + Decide + Execute); skip the 11.4/11.5 cron-specific bits; resume on Monday |
+| Founder runs `/atlas growth` mid-week | Run the partial loop (Pulse + Decide + Execute); skip the 13.4/13.5 cron-specific bits; resume on Monday |
 | Founder runs `/atlas growth` and there's no completed Phase 10 | Refuse with: "War Room (Phase 10) hasn't completed. Run /atlas warroom first." |
 | 3+ failed actions in a row | Atlas pauses execution; surfaces a recap to the founder; asks for direction |
 | Action is in `requires_explicit_approval` and founder is unreachable | Atlas does the **next-best safe action** instead, logs the deferred one |
 | Action requires money the founder doesn't have | Atlas falls back to the cheapest equivalent, surfaces a userMust if the gap is critical |
 | Two competing anomalies | Pick the one with worst impact-on-business; document the choice in decisions.md |
-| Founder explicitly says "stop" | Atlas pauses Phase 11; commits to context.json; resumes on next /atlas |
+| Founder explicitly says "stop" | Atlas pauses Phase 13; commits to context.json; resumes on next /atlas |
 
 ---
 
-## Output Files (Phase 11 — first run + recurring)
+## Output Files (Phase 13 — first run + recurring)
 
 ```
 ~/.atlas/portfolio/[slug]/
@@ -434,14 +407,12 @@ This is the **trust contract** — Atlas operates aggressively inside its lane, 
 │   └── trends.json             (rolling 4-week)
 └── incidents/                  (anomaly-driven)
 
-scripts/atlas/
-├── pulse.js
-├── decide.js
-├── execute_<recipe>.js   (one per action recipe)
-├── ship.js
-├── log.js
-├── open_pr.js
-└── notify.js
+scripts/atlas/            (shipped with the pack; copied into the product repo on first run)
+├── pulse.js              (metrics snapshot: Stripe, PostHog, Better Uptime, Sentry)
+├── decide.js             (priority rules → one recommended action)
+├── open_pr.js            (files the weekly review as a GitHub issue)
+├── notify.js             (Discord/Slack digest)
+└── weekly-review.js      (orchestrator — the workflow's entry point)
 
 .github/workflows/
 └── weekly-review.yml
@@ -455,9 +426,9 @@ docs/founder/
 
 ---
 
-## Acceptance Test (Phase 11 — first cycle)
+## Acceptance Test (Phase 13 — first cycle)
 
-Phase 11's first cycle must produce:
+Phase 13's first cycle must produce:
 
 - [ ] One metrics snapshot file
 - [ ] One decision recorded in decisions.md with reasoning
@@ -510,7 +481,7 @@ Founder action needed: [none | specific small ask]
 
 ## Red Flags
 
-- ❌ Phase 11 cycle that doesn't write a snapshot file
+- ❌ Phase 13 cycle that doesn't write a snapshot file
 - ❌ "I would do X this week" without actually doing X
 - ❌ More than one primary action selected (focus is the whole point)
 - ❌ Executing an action that requires explicit approval without approval
@@ -519,6 +490,6 @@ Founder action needed: [none | specific small ask]
 - ❌ Pulling metrics but ignoring an anomaly
 - ❌ Picking a "compound" action when an anomaly demands attention
 - ❌ Failing to commit the cron workflow on first cycle
-- ❌ Treating Phase 11 as optional — it's the entire point of the post-launch product
+- ❌ Treating Phase 13 as optional — it's the entire point of the post-launch product
 - ❌ Promising the founder a result without a measurable success metric + failure exit
 - ❌ Letting an action run > 7 days without checking back

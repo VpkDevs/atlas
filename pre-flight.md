@@ -161,7 +161,7 @@ curl -H "Authorization: Bearer $BETTER_UPTIME_API_KEY" \
   jq ".data[] | select(.attributes.url == \"$PROD_URL\")"
 ```
 
-If no monitor: Atlas creates one via API. If API key missing: userMust to add it; check temporarily marked YELLOW (warning, not blocker — but logs anomaly).
+If no monitor: Atlas creates one via API. If API key missing: userMust to add it; check marked **DEFERRED** per the N/A and DEFERRED rule above (uptime monitoring is built in Phase 8) — re-run this check for real when Phase 8 completes.
 
 ### Check 9: DNS, SSL, Security Headers
 
@@ -255,7 +255,7 @@ digraph preflight {
 ### Severity Mapping
 
 - **RED** = blocks launch entirely
-- **YELLOW** = launch can proceed; logged to incidents/ for Phase 11 to address in next loop
+- **YELLOW** = launch can proceed; logged to incidents/ for Phase 13 (Growth Engine) to address in next loop
 - **GREEN** = clean
 - **N/A** = the product has no such system; excluded from the count, reason recorded (see "N/A and DEFERRED")
 - **DEFERRED** = owned by a later phase that hasn't run yet; excluded from the count, re-run when that phase completes
@@ -289,7 +289,7 @@ Checks: [N green / N yellow / N red / N n/a / N deferred]
 [If YELLOW with < 3:]
   ⚠ Proceeding with warnings logged
   Yellows: [list with severity]
-  Continuing to Phase 5; Phase 11 will address.
+  Continuing to Phase 5; Phase 13 (Growth Engine) will address.
 
 [If YELLOW with >= 3, or RED:]
   🛑 Launch BLOCKED

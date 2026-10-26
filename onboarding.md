@@ -19,9 +19,9 @@ Before reading any code, check:
 ```
 If it exists and contains `completed_modules` with entries → **Continuation Sprint (EC-5).** Load `edge-cases.md`. Skip completed modules. Announce:
 ```
-Resuming [Product Name] from Module [N].
-Modules 1–[N-1] complete from previous run.
-Starting with [Module Name].
+Resuming [Product Name] from Phase [N].
+Phases 0–[N-1] complete from previous run.
+Starting with [Phase Name].
 ```
 
 If it does not exist → first run. Continue to Pass 1.
@@ -102,8 +102,11 @@ Build a structured picture. Tag everything with evidence:
 | Zero source files + README exists | **Blueprint Mode (EC-2)** | Scaffold project from README |
 | Structure + deps + no README | **Inference Mode (EC-3)** | Infer boldly from deps |
 | `deployment_status: production` AND `completion ≥ 85%` | **Code Audit Mode (EC-1)** | Verify + fill infra gaps |
+| Codebase exists, completion roughly 25–85%, not in production | **Build-in-Progress Mode** | Code Sprint (Phase 2) focus — finish and harden what exists; never route back to idea stage |
 | Multiple deployment configs | **Multi-Target Mode (EC-9)** | Deploy each target |
 | 50+ source files or multiple `package.json` | **Monorepo Mode (EC-13)** | Priority-ordered reading |
+
+**Completion % never routes backward.** A product with substantial code (roughly 25%+) is a build in progress, whatever stage its idea validation reached — it routes forward into Code Sprint and the normal pipeline. Idea-stage handling (Blueprint / Inference) applies only to projects with no meaningful code.
 
 ### Additional Inferences
 

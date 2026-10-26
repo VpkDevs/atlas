@@ -1,18 +1,18 @@
 ---
 name: atlas-business-setup
-description: Use during Atlas Module 6 — sets up the legal and financial infrastructure for this specific founder's situation. Entity type, banking, accounting, taxes, deductions, S-Corp timing, exit strategy. Outputs complete applications for all 7 startup credit programs. Specific, not generic.
+description: Use during Atlas Phase 7 — sets up the legal and financial infrastructure for this specific founder's situation. Entity type, banking, accounting, taxes, deductions, S-Corp timing, exit strategy. Outputs complete applications for all 7 startup credit programs. Specific, not generic.
 ---
 
 # Atlas Business Setup
 
 **Input:** Business Context + founder location + financial situation
-**Purpose:** Get the legal/financial infrastructure right the first time. And unlock up to $200K+ in free infrastructure credits.
+**Purpose:** Get the legal/financial infrastructure right the first time. And prepare applications for all 7 startup credit programs — realistically worth $5,000–$25,000 to a self-funded founder (advertised program ceilings run higher).
 
 ## The Rule
 
 Atlas gives specific recommendations with reasoning, not a menu of options to research. If confidence is low, it says so — but it still gives a recommendation.
 
-**Atlas applies for all 7 startup credit programs in this module. Every time. Not optionally.**
+**Atlas prepares complete, ready-to-submit applications for all 7 startup credit programs in this module. Every time. Not optionally.** Submission is the founder's step — every program requires founder identity, attestations, or account credentials Atlas doesn't hold (userMust).
 
 ---
 
@@ -113,8 +113,8 @@ Recommendation: [elect now / set calendar reminder for $X milestone]
 
 Atlas outputs complete application content for every applicable program. These are not optional suggestions — they are outputs of this module.
 
-**1. AWS Activate (up to $100K)**
-URL: atlas.amazon.com
+**1. AWS Activate (program ceiling up to $100K)**
+URL: aws.amazon.com/activate
 Application text:
 ```
 Company name: [product name]
@@ -126,13 +126,13 @@ AWS services used: [list from detected services in codebase]
 ```
 Expected: $5,000-$25,000 for self-funded founders
 
-**2. Stripe Atlas ($500 credit + US entity)**
+**2. Stripe Atlas — PAID service ($500 one-time fee, NOT a credit)**
 URL: stripe.com/atlas
 Application text:
 ```
 [Complete answers to all Stripe Atlas questions]
 ```
-Note: Stripe Atlas also handles LLC formation and US bank account — if entity not yet formed, this may cover it.
+Note: Stripe Atlas also handles LLC formation and US bank account — if entity not yet formed, this may cover it. Budget the $500 fee; do not count Stripe Atlas in credit value.
 
 **3. Vercel Startup Credits**
 Email to: startups@vercel.com
@@ -150,7 +150,7 @@ Application:
 [Complete application answers]
 ```
 
-**5. Cloudflare for Startups ($250K credits)**
+**5. Cloudflare for Startups (program ceiling $250K credits)**
 URL: cloudflare.com/forstartups
 Application:
 ```
@@ -165,7 +165,7 @@ Application:
 [Complete application if AI features are used in the product]
 ```
 
-**7. Google for Startups ($200K GCP)**
+**7. Google for Startups (program ceiling $200K GCP)**
 URL: cloud.google.com/startup
 Application:
 ```
@@ -174,7 +174,7 @@ Application:
 
 **Output:** `docs/founder/STARTUP_CREDITS.md` — all 7 applications in one file, ready to submit in order.
 
-**Estimated value:** $5,000–$300,000 in infrastructure credits depending on product and stage.
+**Estimated value:** $5,000–$25,000 for a self-funded founder. Program ceilings sum much higher, but ceilings are what the largest funded startups receive — plan on the self-funded range.
 
 ### Step 8: Exit Strategy Options
 
@@ -245,14 +245,14 @@ Human must do (non-blocking):
 - [ ] Formation guide written with exact state SOS URL + fee + timeline
 - [ ] Banking recommendation includes specific account link (not generic "find a bank")
 - [ ] `docs/founder/TAX_CALENDAR.md` committed with all applicable deadlines
-- [ ] `docs/founder/STARTUP_CREDITS.md` committed with ≥ 5 program applications (complete text)
+- [ ] `docs/founder/STARTUP_CREDITS.md` committed with all 7 program applications prepared (complete text, ready to submit)
 - [ ] Acquisition Readiness Score calculated and shown
 - [ ] All docs committed and pushed to remote
 
 ## Red Flags
 
 - ❌ Recommending "consult a lawyer" without also providing a specific entity recommendation
-- ❌ Not applying for all 7 credit programs — each takes 5-15 min and can save thousands
+- ❌ Not preparing all 7 credit applications — each takes 5-15 min to prepare and can save thousands
 - ❌ Generic "open a bank account" without recommending Mercury specifically for indie founders
 - ❌ Tax calendar without actual deadlines — "[Q1 estimated taxes]" is not a date
 - ❌ Acquisition Readiness Score without showing which specific improvements would raise it

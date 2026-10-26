@@ -1,6 +1,6 @@
 ---
 name: atlas-legal-compliance
-description: Use during Atlas Module 3 — generates product-specific Terms of Service, Privacy Policy, compliance checklist based on actual data practices in the codebase, AND commits the routes that serve them. Not templates. Specific to this product.
+description: Use during Atlas Phase 3 — generates product-specific Terms of Service, Privacy Policy, compliance checklist based on actual data practices in the codebase, AND commits the routes that serve them. Not templates. Specific to this product.
 ---
 
 # Atlas Legal & Compliance
@@ -213,6 +213,28 @@ If product allows user content uploads (images, text, files, code):
 
 Atlas surfaces this as a userMust if user-generated content detected,
 with the exact copyright.gov URL and 15-minute time estimate.
+
+The userMust, in SKILL.md's schema:
+
+```json
+{
+  "id": "um-dmca-agent",
+  "label": "Register DMCA designated agent (US Copyright Office)",
+  "url": "https://www.copyright.gov/dmca-directory/",
+  "prefilled_content": "N/A — UI form (requires founder legal name/entity + contact details)",
+  "estimated_minutes": 15,
+  "required": true,
+  "blocks_phase": "3 — only for products hosting user-generated content; otherwise N/A",
+  "layers_attempted": [
+    "api: Copyright Office offers no registration API",
+    "cli: not available",
+    "browser: requires founder legal details + $6 fee payment",
+    "artifact: an official filing, not a document",
+    "swarm: legal filing in the founder's own name"
+  ],
+  "alternative_if_skipped": "Launch without a registered agent and register before the first takedown notice — DMCA safe-harbor protection does not apply until registration"
+}
+```
 ```
 
 #### Accessibility (ADA + Section 508, US Products)

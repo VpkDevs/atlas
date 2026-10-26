@@ -20,7 +20,7 @@ description: Load when Onboarding detects an unusual scenario — finished proje
 2. Fill infrastructure gaps only: CI/CD if missing, health check endpoint if missing, RUNBOOK if missing or stale.
 3. Confirm deployment is green — re-deploy if infrastructure changes were made.
 4. Skip P0/P1/P2 triage framing entirely. Report: "Deployment verified ✓, infrastructure gaps filled."
-5. Proceed to Module 3 (Legal) immediately. Modules 3–11 run identically — they don't care whether the product is "finished."
+5. Proceed to Phase 3 (Legal) immediately. Phases 3–14 run identically — they don't care whether the product is "finished."
 
 **Checkpoint adjustment:**
 ```
@@ -327,7 +327,7 @@ PENDING HUMAN ACTIONS (priority order):
                       vercel.com/[project]/settings/env
   [optional, ~5 min]  Create Buffer account — buffer.com/signup
                       (phone verification required)
-                      Your 30 posts are in CONTENT_CALENDAR_30.md, ready to paste
+                      Your 90 days of posts are in CONTENT_CALENDAR_90.md, ready to paste
   [optional, ~30 min] Submit 7 startup credit applications
                       See STARTUP_CREDITS.md — all text pre-filled
 
@@ -389,3 +389,25 @@ Please confirm: [SaaS] [Browser Extension] [Mobile App] [CLI Tool] [API] [Market
 - Marketplace → Two-sided legal, escrow considerations
 
 **If the founder doesn't correct Atlas:** The classification stands. The confirmation ritual is the safeguard. Atlas proceeds.
+
+---
+
+## EC-17: Non-Web Product (Desktop / CLI / Library / Mobile)
+
+**Detection:** Onboarding's product-type classification (EC-16) returns Desktop App, CLI Tool, Library/Package, or Mobile App — anything without a served production URL.
+
+**Why it matters:** Several pipeline gates are written for deployed web products (`curl <prod_url>/ → 200`, legal pages "live at served routes", a product URL for launch). Applied literally to a desktop app or a library, those gates can never pass — the product is fine; the check is wrong-shaped.
+
+**Gate variants (substitute wherever a gate or mode check reads `live_url`):**
+
+| Web-product check | Non-web substitute |
+|---|---|
+| `curl <prod_url>/ → 200` (Phase 2 exit, Phase 9) | Clean install on a fresh machine/VM launches successfully and the smoke test passes |
+| Legal documents live at served routes (Phase 3) | Terms/Privacy shipped in-app (About/Legal screen), in the installer, or in the repo (`docs/legal/` + a link from the README) |
+| Product URL returns 200 (Phase 9 launch) | Release artifact published (installer/binary on the store or releases page; package live on its registry) and a fresh install from that artifact verified |
+| Uptime monitoring (Phase 8) | Crash/error reporting wired into the artifact (where the product type supports it); otherwise N/A per pre-flight's rule |
+
+**Rules:**
+- The substitution is recorded in context.json (`product_type` + which variants apply) at Onboarding — not improvised at the gate.
+- Everything else in the pipeline is unchanged: security, legal substance, scoring, and launch prep all still apply; only the *shape* of the liveness checks changes.
+- Mobile apps: store review timelines are a launch-scheduling input (Phase 5), not a blocker discovered at Phase 9.

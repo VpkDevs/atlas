@@ -1,11 +1,11 @@
 ---
 name: atlas-exit-readiness
-description: Use during Atlas Module 11 — builds the exit infrastructure whether or not the founder plans to sell. Acquisition-ready products are more valuable, run better, and attract better customers. Produces a complete data room, registers on acquisition marketplaces, calculates exit value scenarios, and identifies likely acquirers.
+description: Use during Atlas Phase 14 — builds the exit infrastructure whether or not the founder plans to sell. Acquisition-ready products are more valuable, run better, and attract better customers. Produces a complete data room, registers on acquisition marketplaces, calculates exit value scenarios, and identifies likely acquirers.
 ---
 
 # Atlas Exit Readiness
 
-**Input:** Business Context + all prior module outputs + Acquisition Readiness Score from Module 6
+**Input:** Business Context + all prior phase outputs + Acquisition Readiness Score from Phase 7 (Business Setup)
 **Purpose:** Make this product acquisition-ready. Not because the founder must sell — because acquireable products are better products.
 
 ## The Rule
@@ -20,7 +20,7 @@ The founder doesn't have to sell. But if someone makes an offer tomorrow, they s
 
 ### Step 1: Acquisition Readiness Score (Final)
 
-Recalculate from Module 6 with all modules now complete:
+Recalculate from Phase 7 (Business Setup) with all phases now complete:
 
 ```
 Documentation:         [X]/20  (RUNBOOK, API docs, CONTRACTOR_ONBOARDING, all legal)
@@ -31,7 +31,7 @@ Clean books:           [X]/15  (accounting set up, tax calendar, entity formed)
 IP ownership:          [X]/15  (no contractor IP issues, no GPL contamination, clear ownership)
 
 Total: [X]/100
-Delta from Module 6: +[N] points
+Delta from Phase 7: +[N] points
 
 Estimated valuation:
   Conservative ([X]x MRR): $[Y]
@@ -58,7 +58,8 @@ docs/founder/DATA_ROOM/
 ├── OPERATIONS.md         — how the product runs day-to-day (points to RUNBOOK)
 ├── RISKS.md              — known risks + mitigations (honest)
 └── TRANSITION.md         — how would a buyer take over in 30 days
-```
+
+Plus `ACQUIRERS.md` — the target acquirer list written in Step 3. The data room is 11 documents in total.
 
 Write each of these documents from the Business Context + module outputs. Atlas does not ask the founder to fill them in — it generates them from everything already known.
 
@@ -185,7 +186,7 @@ This feeds into Portfolio Mode's sell signal detection.
 
 ## Output
 
-- `docs/founder/DATA_ROOM/` (complete — all 9 documents)
+- `docs/founder/DATA_ROOM/` (complete — all 11 documents)
 - `docs/founder/EXIT_READINESS.md` (summary + valuation + ARS)
 - `docs/founder/ACQUIRE_LISTING.md` (complete marketplace listing text)
 - `~/.atlas/portfolio/[slug]/context.json` updated with exit data
@@ -200,9 +201,9 @@ This feeds into Portfolio Mode's sell signal detection.
 EXIT READINESS COMPLETE
 
 Atlas did:
-  ✓ Final ARS: [X]/100 (+[N] from Module 6)
+  ✓ Final ARS: [X]/100 (+[N] from Phase 7)
   ✓ Estimated valuation: $[X] - $[Y]
-  ✓ Data room: 9 documents written in DATA_ROOM/
+  ✓ Data room: 11 documents written in DATA_ROOM/
   ✓ TRANSITION.md: 30-day handover plan written
   ✓ [N] potential acquirers identified and documented
   ✓ Marketplace listing text written (ready to post in 5 min)
@@ -220,7 +221,7 @@ ATLAS SINGLE-PROJECT PIPELINE COMPLETE
 
 Sovereign Score: [FINAL]/100
 
-[If < 60:] ❌ Score [X] — below launch floor. Return to Phase 8: Automation Handoff.
+[If < 60:] ❌ Score [X] — below the launch floor. The gap list feeds the Growth Engine (Phase 13); exit readiness does not send the product back to Phase 8.
 [If 60-79:] ⚠️ Launched but not sovereign. Growth Engine running — keep going.
 [If 80-89:] ✅ Sustained operation. Growth Engine will reach 90.
 [If ≥ 90:] 🏆 SOVEREIGN. Atlas mandate fulfilled. This product runs itself.
@@ -251,5 +252,5 @@ Type 'pause' to save state and end this session
 - ❌ Identifying "PE firms" as acquirers instead of specific named companies
 - ❌ Not committing the data room — a data room that exists only in the chat is useless
 - ❌ Not updating portfolio context.json with exit metrics
-- ❌ Declaring the run complete without checking the Sovereign Score against all 6 criteria
+- ❌ Declaring the run complete without verifying the exit-readiness package (data room, ARS, listing) and stating Sovereign status honestly — Sovereign ≥ 90 sustained is a standing Operator-Mode condition, not a Phase 14 completion claim
 - ❌ Not updating portfolio context.json with exit data

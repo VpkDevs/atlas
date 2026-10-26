@@ -67,7 +67,7 @@ Atlas (Coordinator) runs the Oracle Tick (see `mission-intelligence.md`) and del
 **Cannot:** Change product, modify pricing, spend money, create accounts requiring phone verification
 
 **Standing Orders:**
-- Execute weekly content cycle from `CONTENT_CALENDAR_30.md`
+- Execute weekly content cycle from `CONTENT_CALENDAR_90.md`
 - Monitor social mentions and draft replies (Layer 1: API; Layer 4: artifact for founder)
 - Track which channels produce signups; reallocate effort toward winners
 - Submit to new directories/aggregators monthly

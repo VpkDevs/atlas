@@ -1,12 +1,12 @@
 ---
 name: atlas-marketing-playbook
-description: Use during Atlas Phase 6 — builds the executable marketing engine that runs through and after launch. Audience archaeology informs channel choice; content is written AND scheduled via API where possible; press kit is committed; micro-influencer outreach is personalized; SEO foundations ship; and the 90-day cycle is set up so Phase 11 (Growth Engine) has fuel.
+description: Use during Atlas Phase 6 — builds the executable marketing engine that runs through and after launch. Audience archaeology informs channel choice; content is written AND scheduled via API where possible; press kit is committed; micro-influencer outreach is personalized; SEO foundations ship; and the 90-day cycle is set up so Phase 13 (Growth Engine) has fuel.
 ---
 
 # Atlas Marketing Playbook — The Executable Marketing System
 
 **Input:** Business Context (Phase 1) + Audience Map (Phase 5) + channel ranking (Phase 5) + Press Kit folder (this phase)
-**Purpose:** Build a marketing engine that produces output without daily founder input. Phase 6 lays the foundation; Phase 11 (Growth Engine) runs it.
+**Purpose:** Build a marketing engine that produces output without daily founder input. Phase 6 lays the foundation; Phase 13 (Growth Engine) runs it.
 
 ## The Iron Rule of Marketing
 
@@ -206,7 +206,7 @@ Why: pure promo accounts get throttled by every algorithm. Atlas knows this. Atl
 Each pillar post is broken into 5 derivative pieces across formats:
 - LinkedIn long-form → Twitter thread → Instagram carousel → TikTok script → newsletter section
 
-This is committed as a generator script `scripts/repurpose.ts` that takes a pillar URL and outputs the derivative drafts. Phase 11 calls this script weekly.
+This is committed as a generator script `scripts/repurpose.ts` that takes a pillar URL and outputs the derivative drafts. Phase 13 calls this script weekly.
 
 ---
 
@@ -297,7 +297,7 @@ product_mention_when:
   template: "<exact text that introduces product naturally>"
 ```
 
-This gives Phase 11 (Growth Engine) a recurring source of community contributions to draft each week.
+This gives Phase 13 (Growth Engine) a recurring source of community contributions to draft each week.
 
 ---
 
@@ -400,7 +400,6 @@ Each is set up as a scheduled send if API supports it.
 docs/founder/
 ├── MARKETING_PLAYBOOK.md
 ├── BRAND_VOICE.md
-├── CONTENT_CALENDAR_30.md
 ├── CONTENT_CALENDAR_90.md
 ├── CONTENT_PASTE_QUEUE.md           (fallback if no scheduling API)
 ├── SEO_STRATEGY.md

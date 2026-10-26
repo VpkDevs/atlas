@@ -1,6 +1,6 @@
 {
   "name": "atlas-skill",
-  "version": "6.2.0",
+  "version": "6.3.0",
   "description": "Atlas v6 — The Sovereign Empire. AI co-founder Claude Code skill.",
   "private": true,
   "scripts": {

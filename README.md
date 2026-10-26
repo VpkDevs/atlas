@@ -23,7 +23,7 @@ That's the full interface. Atlas reads your codebase, understands your product, 
 | 4 | 11-point pre-flight check. Blocks launch if anything is RED. |
 | 5 | Channel intelligence research. Writes every launch asset. Generates LAUNCH_SEQUENCE.md — a timestamped recipe, not a strategy doc. |
 | 6 | Schedules 90 days of content. Builds press kit. Applies the brand system. Visual QA loop. |
-| 7 | Recommends entity type. Applies to every startup credit program ($50K+ available). |
+| 7 | Recommends entity type. Prepares complete applications for all 7 startup credit programs ($5,000–$25,000 typical for a self-funded founder). |
 | 8 | Configures monitoring, email sequences, and support automation via API — not descriptions. |
 | 9 | Executes the launch sequence in real time. |
 | 10 | 72-hour war room: live ops, fires patched, one data-driven iteration shipped. |
@@ -38,7 +38,7 @@ That's the full interface. Atlas reads your codebase, understands your product, 
 | ❌ AI assistant | ✅ Atlas |
 |----------------|---------|
 | "You should deploy to Vercel" | Runs `vercel --prod`. Curls the URL. Reports it live. |
-| "Set up email sequences" | Calls the Resend API. Creates the sequences. Sends a test. |
+| "Set up email sequences" | Writes the sequences and commits the trigger code that sends them via the Resend API. Verifies a test send through the code path. |
 | "Apply for AWS Activate" | Outputs the complete, paste-ready application. Opens the URL. |
 | "Schedule your content" | Calls the Buffer API. Schedules 30 days. Returns the schedule URL. |
 | "You need a ToS" | Reads your actual data collection from code. Writes a specific ToS. Commits the route. |
@@ -57,7 +57,7 @@ Score now: 58/100
   With pending human actions (est. 2 hrs): 74 ✅
 ```
 
-**Targets:** 60 = launch floor. 80 = sustained. **90 = sovereign.**
+**Targets:** launch floor = 60% of pre-launch-earnable points. 80 = sustained. **90 = sovereign.**
 
 ---
 
@@ -111,7 +111,7 @@ Verify in Claude Code:
 | `launch-strategy.md` | Channel intelligence, LAUNCH_SEQUENCE.md, war room prep |
 | `marketing-playbook.md` | Brand voice, 90-day content, press kit, micro-influencers |
 | `brand-engine.md` | Visual identity system, CSS tokens, Visual QA loop |
-| `business-setup.md` | Entity type, banking, startup credits ($50K+) |
+| `business-setup.md` | Entity type, banking, startup credit applications (all 7 programs, prepared ready-to-submit) |
 | `automation-handoff.md` | Monitoring, email sequences, support — all via API |
 | `launch-day.md` | Live launch execution driver |
 | `war-room.md` | 72-hour post-launch live ops |
@@ -139,7 +139,7 @@ After launch, Atlas activates 7 specialized sub-agents:
 | Atlas Growth | Content, social, SEO, distribution |
 | Atlas Product | Features, A/B tests, UX |
 | Atlas Wealth | P&L, tax, credits, M&A readiness |
-| Atlas HR | Swarm coordination (API-driven freelancer hiring) |
+| Atlas HR | Swarm coordination (pre-filled freelancer-hiring artifacts — founder posts the job) |
 | Atlas Legal | Entity, IP, compliance |
 | Atlas M&A | Acquisition scouting, due diligence |
 
@@ -149,11 +149,7 @@ The Oracle runs **INGEST → ANALYZE → PREDICT → DECIDE → DELEGATE → EXE
 
 ## Pricing
 
-| Tier | Price | What you get |
-|------|-------|-------------|
-| **Free** | $0/mo | Phases 1–3 (Onboarding, Code Sprint, Legal) |
-| **Individual** | $29/mo | Full 14-phase pipeline, single project |
-| **Studio** | $99/mo | Full pipeline, unlimited projects, Fleet activation |
+**One-time purchase. MIT licensed. No tiers, no license server, no subscription.**
 
 ---
 

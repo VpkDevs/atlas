@@ -1,12 +1,12 @@
 ---
 name: atlas-automation-handoff
-description: Use during Atlas Phase 8 — gets the product to Sovereign Score 60+ (launch floor) before Phase 9. Configures uptime monitoring, error alerting, email sequences, and social scheduling via API calls (not descriptions). Implements n8n/Make workflows as importable JSON. Does not complete until score reaches 60. Target is 90.
+description: Use during Atlas Phase 8 — gets the product to the launch floor (Sovereign Score ≥ 60% of the points earnable before launch) before Phase 9. Configures uptime monitoring, error alerting, email sequences (copy + trigger code committed in the product), and social scheduling via API calls (not descriptions). Implements n8n/Make workflows as importable JSON. Does not complete until the launch floor is reached. Target is 90.
 ---
 
 # Atlas Automation Handoff
 
 **Input:** Business Context + current runs-itself score + `~/.atlas/automation-library/`
-**Purpose:** Get the product to runs-itself score ≥ 60 (launch floor) and pushing toward 90 (sovereign) by actually configuring automations, not describing them.
+**Purpose:** Get the product to the launch floor — a Sovereign Score of at least 60% of the points earnable before launch — and pushing toward 90 (sovereign) by actually configuring automations, not describing them.
 
 ## The Automation Doctrine
 
@@ -34,7 +34,11 @@ The Sovereign Score has exactly ONE rubric — the one in `SKILL.md` ("Sovereign
 | Code & Deployment | 15 | The auto-deploy pipeline this module hardens (Code Sprint builds it) |
 | Economic Sovereignty | 10 | The payment side: dunning, failed-payment recovery, receipts (full category also covers P&L / tax reserve / credits) |
 
-**Launch floor: 60. Sovereign target: 90. This module must reach 60 before Phase 9 launches.**
+**Launch floor: 60% of the points earnable before launch. Sovereign target: 90. This module must reach the floor before Phase 9 launches.**
+
+The earnable set before launch, from the table above: Code & Deployment 15 + Monitoring & Alerting 10 + Email Automation 10 + Support Automation 10 + Content Engine 10 + Social Presence 5 + Documentation 5 = **65 points**. (Economic Sovereignty's payment-dependent part is excluded while `[LOCKED: pre-revenue]`; Active Acquisition and Iteration Loop are not earnable before launch at all — the first needs a launched product, the second is Phase 13's machinery.)
+
+Launch floor = ⌈0.6 × earnable⌉ = **39 of 65** with the full set earnable. If a category does not apply to this product, remove it from the earnable set and recompute — the floor is a share of what can be earned, not a fixed number. After launch, when every category is earnable, the absolute benchmarks apply: 60 = launch floor, 80 = sustained, 90 = sovereign.
 
 The score is always calculated from the canonical rubric across the whole pipeline — never from a module-local table. The categories above are the ones this module can move; the rest are earned in other phases.
 
@@ -108,7 +112,9 @@ MAILCHIMP_API_KEY → Use Mailchimp API
 None detected → Write sequences as markdown; flag irreducible step (get Resend key — free tier: 3K/mo)
 ```
 
-**If Resend API key exists:**
+**The deliverable — sequences + trigger code.** Atlas does not create provider-side automations: the Resend/SendGrid APIs send individual emails; they do not host sequence logic. A sequence is real when both exist — (1) the sequence copy, written by Atlas, and (2) **trigger code committed in the product** that calls the provider's send API at the right moment: the signup handler fires the welcome email, scheduled jobs fire the timer emails, the usage-drop check fires churn prevention. Provider-side automation is used only where the provider's API genuinely supports creating it.
+
+**If Resend API key exists:** Atlas writes the sequences below AND commits the trigger code that sends them. The send call the trigger code makes:
 ```bash
 # Create each email via Resend API
 curl -X POST "https://api.resend.com/emails" \
@@ -122,7 +128,7 @@ curl -X POST "https://api.resend.com/emails" \
   }'
 ```
 
-Write and configure ALL of the following sequences:
+Write and wire ALL of the following sequences:
 - **Welcome email** (trigger: signup): confirm value, set expectations, one CTA
 - **Activation email** (trigger: Day 1, if activation event not fired): nudge to complete setup
 - **Day 3 value** (trigger: timer): feature highlight most users miss
@@ -136,7 +142,9 @@ For each email, write:
 - Full email body copy (HTML + plain text)
 - Trigger condition (exact event or timer)
 
-Confirm: "Created [N] email sequences via [service] API — live and triggered on signup"
+**A sequence counts as live only when its trigger code is committed and a test send through that code path is verified.** Copy without trigger code is a draft.
+
+Confirm: "Wrote [N] email sequences and committed their trigger code — test sends verified, live and triggered on signup"
 
 ### Step 4: Support Automation
 
@@ -164,14 +172,14 @@ Write FAQ page component and commit to codebase.
 
 ### Step 5: Social Scheduling
 
-Content calendar from Module 5 (30 days of posts).
+Content calendar from Phase 6 (CONTENT_CALENDAR_90.md — 90 days of posts).
 
 ```
-BUFFER_ACCESS_TOKEN in .env → YES → Already done in Module 5 (verify scheduled)
-                             → NO  → Output CONTENT_CALENDAR_30.md
+BUFFER_ACCESS_TOKEN in .env → YES → Already done in Phase 6 (verify scheduled)
+                             → NO  → Output CONTENT_CALENDAR_90.md
 ```
 
-If not yet scheduled via Buffer in Module 5, schedule now.
+If not yet scheduled via Buffer in Phase 6, schedule now.
 
 ### Step 6: Importable n8n/Make Workflows
 
@@ -233,13 +241,13 @@ SOW templates:
 ```
 New runs-itself score: [X]/100
 
-If X >= 60: ✅ Launch floor reached → proceed to Phase 9
+If X >= launch floor (⌈0.6 × earnable⌉ — 39 of 65 with the full pre-launch set): ✅ Launch floor reached → proceed to Phase 9
 If X >= 80: ✅ Sustained operation level
 If X >= 90: ✅ Sovereign
-If X < 60: ❌ BLOCKED — cannot launch. List gap + exactly what would close it.
+If X < launch floor: ❌ BLOCKED — cannot launch. List gap + exactly what would close it.
 ```
 
-**If 60 is not reachable without human action:**
+**If the floor is not reachable without human action:**
 ```
 Current score: [X]
 Achievable without human: [Y]
@@ -253,11 +261,11 @@ After human actions: score will reach [Z]
 - Git commit + push to remote
 
 - Monitoring configured (Better Uptime API calls confirmed)
-- Email sequences created (via email service API)
+- Email sequences written + trigger code committed (test sends verified)
 - Support automations configured
 - n8n workflow JSONs committed to `~/.atlas/automation-library/`
 - `docs/founder/CONTRACTOR_ONBOARDING.md`
-- Updated runs-itself score (launch floor: 60, target: 90)
+- Updated runs-itself score (launch floor: 60% of pre-launch-earnable points, target: 90)
 - Git commit + push
 
 ---
@@ -272,7 +280,7 @@ Atlas did:
   ✓ Uptime monitoring: [N] monitors created via [Better Uptime / UptimeRobot] API
   ✓ Error alerting: Sentry [configured / verified]
   ✓ Revenue alerting: Stripe webhook committed (new customer, churn, anomaly)
-  ✓ Email sequences: [N] created via [Resend / SendGrid] API
+  ✓ Email sequences: [N] written + trigger code committed ([Resend / SendGrid] send API)
   ✓ Support: [N] responses scripted in SUPPORT_PLAYBOOK.md
   ✓ Social: [N] posts [scheduled via Buffer API / queued in CONTENT_CALENDAR.md]
   ✓ [N] n8n workflow JSONs committed to automation-library
@@ -282,11 +290,11 @@ Atlas did:
 
 Runs-itself score: [X] → [Y]
 
-[If Y >= 60:]
+[If Y >= launch floor:]
 ── PROCEEDING TO PHASE 9: LAUNCH ────────────────────
 
-[If Y < 60:]
-❌ LAUNCH BLOCKED: Score is [Y]. Need [N] more points to reach launch floor (60).
+[If Y < launch floor:]
+❌ LAUNCH BLOCKED: Score is [Y]. Need [N] more points to reach the launch floor ([F] of [E] pre-launch-earnable points).
 Gap: [specific items with point values]
 Blocked on human actions: [list with direct URLs + estimated time each]
 Continuing to implement what I can now...
@@ -296,10 +304,10 @@ Will re-score and check again before declaring blocked.
 
 ## Red Flags
 
-- ❌ Declaring this module complete when score is below 60
+- ❌ Declaring this module complete when score is below the launch floor
 - ❌ API key exists and Atlas described the setup instead of calling the API
 - ❌ Writing contractor docs as an afterthought
 - ❌ Not saving automation blocks to `~/.atlas/automation-library/`
 - ❌ Writing about n8n workflows without committing importable JSON
-- ❌ Not configuring email sequences via API when key exists
+- ❌ Writing email sequence copy without committing the trigger code that sends it
 - ❌ Not verifying CI/CD pipeline is actually working

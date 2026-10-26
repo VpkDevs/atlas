@@ -1,6 +1,6 @@
 ---
 name: atlas-operations
-description: Use during Atlas Module 11 — builds the permanent operating system: 5 product-specific North Star metrics with live queries committed, a 15-minute weekly review ritual as an actual runnable script, alert webhooks configured via API, investor update template, and a wealth trajectory. Atlas commits the monitoring infrastructure — it does not describe it.
+description: Use during Atlas Phase 11 — builds the permanent operating system: 5 product-specific North Star metrics with live queries committed, a 15-minute weekly review ritual as an actual runnable script, alert webhooks configured via API, investor update template, and a wealth trajectory. Atlas commits the monitoring infrastructure — it does not describe it.
 ---
 
 # Atlas Operations
@@ -67,15 +67,15 @@ For Stripe (if `STRIPE_SECRET_KEY` present):
 
 ### Step 2: Weekly Review Ritual (Runnable, Not Described)
 
-Atlas commits `.github/workflows/weekly-review.yml` — a GitHub Action that:
+Atlas commits `.github/workflows/weekly-metrics.yml` — a GitHub Action that (distinct from the Growth Engine's `weekly-review.yml` in Phase 13 — different job, different file):
 1. Pulls all 5 North Star metrics from their APIs
 2. Computes week-over-week deltas
 3. Opens a GitHub issue titled "Weekly Review — [Date]" with the data pre-populated
 4. Sends a Slack/Discord digest (if webhook configured)
 
 ```yaml
-# .github/workflows/weekly-review.yml
-name: Weekly Review
+# .github/workflows/weekly-metrics.yml
+name: Weekly Metrics
 on:
   schedule:
     - cron: '0 14 * * 1'  # Mondays 9am EST / 14:00 UTC
@@ -92,7 +92,7 @@ jobs:
           POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        run: node scripts/weekly-review.js
+        run: node scripts/weekly-metrics.js
 ```
 
 Atlas also writes the human ritual (15 min) as the issue template:
@@ -326,7 +326,7 @@ PHASE 3: [Scale/Exit/Lifestyle] — [Status: FUTURE]
 - `docs/founder/ROADMAP.md`
 - `docs/founder/INVESTOR_UPDATE_TEMPLATE.md`
 - `docs/founder/YOUR_NEXT_ACTION.md` — exactly one thing
-- `.github/workflows/weekly-review.yml` — committed and active
+- `.github/workflows/weekly-metrics.yml` — committed and active
 - Alert webhooks configured (or userMust if keys missing)
 - 5 North Star queries saved in analytics platform (or as saved SQL)
 
@@ -352,7 +352,7 @@ OPERATIONS COMPLETE
 
 Atlas did:
   ✓ 5 North Star metrics: [list with current values]
-  ✓ Weekly review workflow committed: .github/workflows/weekly-review.yml
+  ✓ Weekly metrics workflow committed: .github/workflows/weekly-metrics.yml
   ✓ Alert channel [configured via webhook / userMust logged]
   ✓ Support playbook: [N] questions, [N] auto-responses configured
   ✓ Milestone triggers calibrated to [product stage + goal]

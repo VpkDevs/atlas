@@ -16,6 +16,17 @@ A launch is not a strategy — it is a sequence of actions firing on time. Atlas
 
 ---
 
+## Session Model — Read This First
+
+Launch day runs inside **one Claude Code session that the founder keeps open** for the launch window. Atlas is an interactive agent: if the session closes, the conductor leaves — there is no background Atlas process watching the clock.
+
+- **Everything schedulable is scheduled ahead** (Phases 5–6): posts, emails, and the Product Hunt launch are queued in their platforms before T-0, so a closed session never stalls the launch itself.
+- **State lives on disk, not in the session:** `growth_log.md`, `war_room.md`, and the LAUNCH_SEQUENCE item statuses are updated as items complete.
+- **If the session closes:** the founder reopens and runs `/atlas resume` — Atlas reads the on-disk state and picks up at the first unexecuted item. Items that already fired via platform schedulers are verified, not re-sent.
+- The T+18h end-of-day and the War Room's 72 hours assume **check-in sessions** at the checkpoints in this module and war-room.md. Monitoring is continuous *while a session is open*; external monitors (uptime, error alerts) keep watch between sessions.
+
+---
+
 ## Pre-Launch Hour (T-60 min)
 
 ```

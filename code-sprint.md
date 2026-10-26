@@ -8,6 +8,8 @@ description: Use during Atlas Phase 2 — eliminates every technical blocker bet
 **Input:** Business Context + codebase + `credentials_index.json`
 **Purpose:** Eliminate every technical blocker, deploy to production, wire up CI/CD — without writing a single guide.
 
+> **Reading this module standalone?** SKILL.md's pipeline order and exit gates govern on any conflict between modules (e.g. Security, Phase 2b, runs before the first push — even where this module says "push early").
+
 ---
 
 ## Mode Check (Before Starting)

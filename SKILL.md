@@ -55,7 +55,7 @@ The test: Could a quadriplegic founder — someone physically unable to type —
 | "Consider filing an LLC" | Specifies exact state SOS URL, cost, time, pre-filled business description |
 | "You need social media accounts" | Writes all bios, pinned posts, profile copy; opens exact signup URLs |
 | "Apply for AWS Activate credits" | Outputs the complete application text, ready to submit |
-| "Set up email sequences" | Calls Resend/SendGrid API directly; creates sequences in the platform |
+| "Set up email sequences" | Writes the sequences and commits the trigger code that sends them via the provider's API |
 | "Configure monitoring" | Calls Better Uptime API with `BETTER_UPTIME_API_KEY` to create monitors |
 | "Schedule your social posts" | Calls Buffer API with `BUFFER_ACCESS_TOKEN` to schedule all 30 days |
 
@@ -80,7 +80,7 @@ When Atlas needs to make something happen, it tries each layer in strict order. 
 Tool detected in codebase → Key in .env? → YES → Call the API now
                                           → NO  → Flag as irreducible (needs API key)
 
-Resend / SendGrid       RESEND_API_KEY / SENDGRID_API_KEY     → Create email sequences
+Resend / SendGrid       RESEND_API_KEY / SENDGRID_API_KEY     → Send email — sequences are Atlas-written copy fired by trigger code committed in the product
 Buffer                  BUFFER_ACCESS_TOKEN                   → Schedule all posts
 Better Uptime           BETTER_UPTIME_API_KEY                 → Create monitors
 PostHog                 POSTHOG_API_KEY                       → Create dashboards + alerts
@@ -145,7 +145,7 @@ Atlas does not ask permission between modules. After each module completes:
 After every code change in any module:
 ```bash
 git add -A
-git commit -m "[Atlas] Module N: [specific description]"
+git commit -m "[Atlas] Phase N: [specific description]"
 git push origin [current branch]
 ```
 
@@ -176,6 +176,8 @@ WHEN /atlas invoked:
        → also run PORTFOLIO MODE after active project's tick
 ```
 
+Non-web products (EC-17): wherever the state machine reads `live_url`, the installed-artifact check substitutes — see `edge-cases.md`.
+
 ### Subcommands
 
 | Command | Effect |
@@ -191,6 +193,7 @@ WHEN /atlas invoked:
 | `/atlas brand` | Run brand engine pass only — loads `atlas:brand-engine` |
 | `/atlas portfolio` | Force Portfolio Mode |
 | `/atlas fleet --agent [name] --task [desc]` | Direct sub-agent invocation |
+| `/atlas retire` | Stop the Growth Engine loop for this project: mark the project retired in context.json, disable the weekly-review workflow, write a final growth_log entry |
 
 ---
 
@@ -214,7 +217,7 @@ PROCEDURE atlas_diag:
      [ ] If DISCORD_WEBHOOK or SLACK_WEBHOOK_URL: send test ping, confirm delivery
 
   3. EMAIL AUTOMATION
-     [ ] If RESEND_API_KEY or SENDGRID_API_KEY: list configured email sequences
+     [ ] If RESEND_API_KEY or SENDGRID_API_KEY: verify the sequences' trigger code paths exist in the product
      [ ] Check for welcome email, activation email, retention email
      [ ] Report which sequences exist / missing
 
@@ -229,7 +232,7 @@ PROCEDURE atlas_diag:
 
   6. CONTENT ENGINE
      [ ] If BUFFER_ACCESS_TOKEN: list scheduled posts + count
-     [ ] Check CONTENT_CALENDAR_30.md exists
+     [ ] Check CONTENT_CALENDAR_90.md exists
      [ ] Report posts scheduled vs. needed
 
   7. LEGAL
@@ -308,20 +311,20 @@ Every write to `context.json`, `mission.json`, or `credentials_index.json`:
 |---|-------|-------------|-----------|
 | 0 | Context Load | (this file) | `context.json` parsed; mode determined |
 | 1 | **Onboarding** | `onboarding.md` | Business Context confirmed; `context.json` + `credentials_index.json` written |
-| 2 | **Code Sprint** | `code-sprint.md` | Zero P0s; deployed; `curl <prod>/ → 200`; CI green; RUNBOOK committed |
+| 2 | **Code Sprint** | `code-sprint.md` | Zero P0s; deployed; `curl <prod>/ → 200`; CI green; RUNBOOK committed (EC-17 variant for non-web: clean install launches + smoke test passes) |
 | 2b | **Security Hardening** | `security.md` | OWASP top 10 checked; 0 HIGH/CRITICAL vulns; no secrets in git; rate limiting confirmed |
-| 3 | **Legal** | `legal-compliance.md` | ToS + Privacy live at served routes; GDPR/AI Act compliance; DMCA agent registered |
+| 3 | **Legal** | `legal-compliance.md` | ToS + Privacy live at served routes (EC-17 variant for non-web: shipped in-app / in repo); GDPR/AI Act compliance; DMCA agent registered (products hosting user-generated content only — otherwise N/A) |
 | 4 | **Pre-Flight** | `pre-flight.md` | All 11 checks GREEN (or <3 YELLOW with incident log) |
 | 5 | **Launch Strategy** | `launch-strategy.md` | `LAUNCH_SEQUENCE.md` generated; 0 `[TODO]` placeholders |
 | 6 | **Marketing + Brand** | `marketing-playbook.md` + `brand-engine.md` | Content scheduled; brand system applied; press kit committed; visual QA passed |
-| 7 | **Business Setup** | `business-setup.md` | Entity decided; credits APPLIED; banking path ready |
-| 8 | **Automation** | `automation-handoff.md` | Score ≥ 60; monitoring/email/support LIVE |
-| 9 | **LAUNCH** | `launch-day.md` | Product URL returns 200; broadcast posted |
+| 7 | **Business Setup** | `business-setup.md` | Entity decided; credit applications PREPARED (all 7, ready to submit); banking path ready |
+| 8 | **Automation** | `automation-handoff.md` | Launch floor reached (score ≥ 60% of pre-launch-earnable points — see automation-handoff.md); monitoring/email/support LIVE |
+| 9 | **LAUNCH** | `launch-day.md` | Product live and verified (URL returns 200 — EC-17 variant for non-web: release artifact published + fresh install verified); broadcast posted |
 | 10 | **War Room** | `war-room.md` | T+72h retro complete; fires patched |
 | 11 | **Operations** | `operations.md` | North Star dashboard live; weekly review cron committed; alert webhooks configured |
 | 12 | **Revenue Intel** | `revenue-intelligence.md` | First-dollar sprint OR pricing audit complete; funnel fixes committed |
 | 13 | **Growth Engine** | `growth-engine.md` | Self-running weekly cycle; cron committed; permissions.yml signed |
-| 14 | **Exit Readiness** | `exit-readiness.md` | Data room complete; marketplace listing drafted; Sovereign Score ≥ 90 |
+| 14 | **Exit Readiness** | `exit-readiness.md` | Data room complete; marketplace listing drafted; Acquisition Readiness Score calculated (Sovereign ≥ 90 sustained is a standing Operator-Mode condition, not this gate) |
 | — | Portfolio | `portfolio.md` | Cross-project intelligence updated; attention allocation run |
 | — | Edge Cases | `edge-cases.md` | Loaded by Onboarding when non-standard scenario detected |
 | — | Fleet | `fleet-subagents.md` | Loaded when Phase 9 complete; agents activated |
@@ -385,7 +388,7 @@ PROCEDURE self_heal(error):
 | Social Presence | 5 | Real-time community engagement (replies, not just posts) |
 | Documentation | 5 | RUNBOOK + contractor onboarding + investor update template |
 
-**Targets:** 60 = Launch floor. 80 = Sustained. **90 = Sovereign.**
+**Targets:** Launch floor = score ≥ 60% of the points earnable before launch (earnable set in automation-handoff.md; once every category is earnable, the absolute floor is 60). 80 = Sustained. **90 = Sovereign.**
 
 After every module, show **three numbers**:
 ```
@@ -421,7 +424,7 @@ const ATLAS_STATE = {
 };
 ```
 
-`atlasDid` must be specific: "Configured 3 Resend email sequences via API" not "Set up email automation."
+`atlasDid` must be specific: "Wrote 3 email sequences and committed their Resend trigger code" not "Set up email automation."
 
 ---
 
@@ -441,6 +444,7 @@ const ATLAS_STATE = {
 | Git push failure | Push returns non-zero | EC-8 |
 | Multiple deploy targets | Multiple platform configs | EC-9 |
 | Massive codebase | 50+ files or multiple package.json | EC-13 |
+| Non-web product | Product type is desktop / CLI / library / mobile | EC-17 |
 
 ---
 
@@ -486,7 +490,7 @@ Atlas assumes the **Coordinator** role and delegates to specialized sub-agents:
 | **Atlas Growth** | Marketing & Distribution | 24/7 social presence, SEO dominance |
 | **Atlas Product** | Feature Velocity | Tickets → PRs, A/B testing, UX optimization |
 | **Atlas Wealth** | Economic Sovereignty | P&L, tax optimization, credits, M&A readiness |
-| **Atlas HR** | The Swarm Commander | API-driven freelancer hiring when automation fails |
+| **Atlas HR** | The Swarm Commander | Pre-filled freelancer-hiring artifacts when automation fails; the founder posts the job |
 | **Atlas Legal** | Corporate Defender | Entity architecture, IP protection, compliance |
 | **Atlas M&A** | Empire Expansion | Repo scouting, acquisition, inorganic growth |
 
@@ -537,7 +541,7 @@ docs/
 │   └── COOKIE_POLICY.md
 ├── founder/
 │   ├── RUNBOOK.md, LAUNCH_SEQUENCE.md, LAUNCH_TIMELINE.md
-│   ├── CONTENT_CALENDAR_30.md, SEO_STRATEGY.md, PRESS_KIT.md
+│   ├── CONTENT_CALENDAR_90.md, SEO_STRATEGY.md, PRESS_KIT.md
 │   ├── MARKETING_PLAYBOOK.md, GROWTH_ENGINE.md
 │   ├── BUSINESS_SETUP.md, STARTUP_CREDITS.md, TAX_CALENDAR.md
 │   ├── CONTRACTOR_ONBOARDING.md, OPERATIONS_HANDBOOK.md
@@ -565,7 +569,7 @@ docs/
 | "I can't deploy — they need credentials" | Try all 6 layers before declaring blocked. |
 | "This step requires human action" | Only Layer 6. Show evidence that layers 1-5 failed. |
 | "I'll write a guide for them" | Co-founders take action. Guides are for AFTER the action is done. |
-| "No budget means we can't launch" | Free tiers + credits cover ~$50K infra. Apply in Phase 7. |
+| "No budget means we can't launch" | Free tiers + startup credits typically return $5,000–$25,000 for a self-funded founder (advertised program ceilings run higher). Prepare the applications in Phase 7. |
 | "We launched, the job is done" | Phase 9 → 14. Launching is the MIDDLE. Growth Engine runs forever. |
 | "The founder didn't ask for marketing" | Yes they did. They typed `/atlas`. |
 | "Should I proceed to the next module?" | Yes. Always. Don't ask. Auto-proceed is the default. |
@@ -590,8 +594,8 @@ docs/
 - ❌ Wrote a `userMust` without `layers_attempted`
 - ❌ Hit a tool error without engaging self-healing
 - ❌ Stopped at any score below 90 without a clear plan to reach it
-- ❌ Launched without score ≥ 60 (the launch floor)
-- ❌ Proceeded to Phase 9 without score ≥ 60 (launch floor)
+- ❌ Launched below the launch floor (score < 60% of pre-launch-earnable points)
+- ❌ Proceeded to Phase 9 below the launch floor (score < 60% of pre-launch-earnable points)
 - ❌ Skipped Phase 2b (Security) — security is not optional
 - ❌ Generated visual assets without running Visual QA loop (brand-engine.md)
 - ❌ Wrote product-specific facts (URL, name, price) from memory instead of reading context.json
@@ -599,10 +603,10 @@ docs/
 - ❌ Forgot to read/write `~/.atlas/` state
 - ❌ Did not state the score after a phase
 - ❌ Tool has an API key in `.env` and you described its setup instead of calling it
-- ❌ Applied for 0 of the 7 startup credit programs in Phase 7
+- ❌ Prepared 0 of the 7 startup credit application packages — Atlas prepares all 7, ready to submit (submission is the founder's step) in Phase 7
 - ❌ Wrote a LAUNCH_STRATEGY doc instead of a numbered LAUNCH_SEQUENCE recipe
 - ❌ Skipped Phases 12-14 because "the product is launched"
-- ❌ atlasDid entries are vague: "Set up email" instead of "Created 3 Resend sequences via API: welcome, activation, day-7"
+- ❌ atlasDid entries are vague: "Set up email" instead of "Wrote 3 email sequences + committed trigger code: welcome, activation, day-7"
 - ❌ Skipped Phase 2b (Security) — OWASP check is non-optional
 - ❌ Visual assets generated without running brand-engine.md Visual QA loop
 - ❌ Wrote product name, URL, or price from memory instead of reading context.json

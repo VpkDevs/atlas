@@ -6,6 +6,53 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ---
 
+## [6.3.0] — 2026-05-08
+
+### Added
+- **Growth Engine scripts** (`scripts/atlas/`): `pulse.js` (metrics collector: Stripe, PostHog, Better Uptime, Sentry — WoW deltas + anomaly detection), `decide.js` (priority rules → one recommended action), `open_pr.js` (files the weekly review as a GitHub issue), `notify.js` (Discord/Slack digest), `weekly-review.js` (orchestrator). The weekly cron collects and recommends; it does not execute or merge.
+- **n8n workflow templates** in `automation-library/`: new-customer onboarding and churn detection, as real importable JSON.
+- `package.json` — npm scripts for pulse, weekly-review, validate, diag.
+
+### Changed
+- `.github/workflows/weekly-review.yml` now runs the full weekly-review pipeline.
+- Dashboard template: Sovereign Score naming throughout (was Runs-Itself Score); target score 90.
+- ATLAS_STATE schema: `sovereignScore` field.
+
+### Fixed (post-release coherence pass)
+- Dashboard template ships with a clean, empty product state (was pre-filled with another product's data).
+- Scoring conflicts removed — SKILL.md's rubric is the single canonical table; the Phase 8 launch gate is now expressed as 60% of pre-launch-earnable points.
+- Secret scans are case-insensitive, scan the whole repo, and match object-literal shapes; the git-history cleanliness criterion is now achievable (rotate + purge + re-scan).
+- Phase numbering normalized to the 0–14 scheme across all modules; startup-credit claims corrected (Atlas prepares applications; typical self-funded value $5,000–$25,000; Stripe Atlas is a paid service); email sequences described by their real deliverable (copy + committed trigger code); Product Hunt steps reflect that PH has no submission/DM API.
+
+## [6.2.0] — 2026-05-08
+
+### Fixed
+- **Score integrity:** stale '70' references removed across README, edge-cases, exit-readiness, portfolio, SKILL.md — score language consistent everywhere (60 launch floor, 80 sustained, 90 sovereign).
+- README replaced: v3-era content (8 modules, personal session notes) → accurate 24-module reference with full phase table, Fleet, Oracle, pricing, install.
+- Phase routing fixed in exit-readiness (`/atlas portfolio`, `/atlas growth`, `/atlas status`) and business-setup (Module → Phase references).
+- Git push steps added to security, automation-handoff, and operations outputs.
+
+### Added
+- Acceptance tests: business-setup (7 checks), legal-compliance (8), revenue-intelligence (5), portfolio (7), exit-readiness (7).
+- Red flags: business-setup (7), revenue-intelligence (3), portfolio (9), exit-readiness (6); fleet-subagents and mission-intelligence gained full checkpoints, red flags, and acceptance tests.
+- SKILL.md: 6 new Rationalization Table entries; 6 new Red Flags.
+
+## [6.1.0] — 2026-05-08
+
+### Added
+- **security.md** — Phase 2b: OWASP Top 10, secrets scan, dependency audit, rate limiting, security headers, CSP generation. Critical vulnerabilities block launch.
+- **brand-engine.md** — visual identity system: palette, typography, motion language, Playwright visual QA loop, brand profile persistence.
+- **context-window.md** — phase transition protocol, context drift detection, anti-hallucination checks, long-run checkpoints.
+
+### Changed
+- SKILL.md: full `/atlas diag` procedure; `/atlas security` and `/atlas brand` subcommands; phase table updated; 5 new Red Flags; stale 70-score references fixed.
+- operations.md rewritten: live queries committed, weekly-review GitHub Action, alert webhooks, investor update template, stage-calibrated thresholds.
+- automation-handoff.md: score floor corrected (60 launch, 90 sovereign).
+- legal-compliance.md: FTC AI guidance, EU AI Act, DMCA registration, WCAG auto-fixes.
+- fleet-subagents.md, mission-intelligence.md, portfolio.md, hands-off-gaps.md upgraded (shared state protocol, churn prediction model, attention allocation formula, v6 frontmatter).
+
+---
+
 ## [6.0.0] — 2026-04-30
 
 ### The Sovereign Empire
